@@ -82,6 +82,18 @@ export interface Content {
       title: string;
       description: string;
     };
+    servingAreasSection?: {
+      title: string;
+      description: string;
+    };
+    servingAreas?: Array<{
+      name: string;
+      description: string;
+      image: string;
+      tags: string[];
+      ctaText?: string;
+      ctaLink?: string;
+    }>;
     features: Array<{
       title: string;
       description: string;
@@ -273,6 +285,20 @@ function getDefaultContent(): Content {
         title: 'Services Section Title',
         description: 'Services section description'
       },
+      servingAreasSection: {
+        title: 'Serving Areas Section Title',
+        description: 'Serving areas section description'
+      },
+      servingAreas: [
+        {
+          name: 'Area 1',
+          description: 'Description of area 1',
+          image: '/images/area1.jpg',
+          tags: ['Tag1', 'Tag2'],
+          ctaText: 'Learn More',
+          ctaLink: '/areas'
+        }
+      ],
       features: [
         {
           title: 'Expert Team',

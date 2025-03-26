@@ -92,7 +92,8 @@
       {
         "quote": "Exceptional service from start to finish. Highly recommended!",
         "author": "John Smith",
-        "role": "Homeowner"
+        "role": "Homeowner",
+        "text": "Test"
       },
       {
         "quote": "Professional team that delivered exactly what they promised.",
@@ -133,7 +134,49 @@
     "servicesSection": {
       "title": "Comprehensive Roofing Solutions",
       "description": "From installation and repairs to maintenance and emergency services, our expert roofers provide a full range of professional roofing solutions for residential and commercial properties."
-    }
+    },
+    "servingAreasSection": {
+      "title": "Serving Crewe & Surrounding Areas",
+      "description": "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Crewe and Cheshire. We understand the unique weather patterns and building requirements of the local area."
+    },
+    "servingAreas": [
+      {
+        "name": "Crewe",
+        "description": "As Crewe's trusted roofing contractor, we understand the unique challenges that Cheshire weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Crewe's diverse architectural styles.",
+        "image": "/images/areas/crewe.jpg",
+        "tags": [
+          "Weather Resistant",
+          "Local Crewe Roofers",
+          "Energy Efficient"
+        ],
+        "ctaText": "Request a Free Quote",
+        "ctaLink": "/contact"
+      },
+      {
+        "name": "Nantwich",
+        "description": "Nantwich homeowners trust our Crewe roofers for traditional and modern roofing solutions. Our specialised materials and installation techniques help protect your home from the varied weather conditions of Cheshire.",
+        "image": "/images/areas/nantwich.jpg",
+        "tags": [
+          "Traditional Style Compatible",
+          "Heritage Building Expertise",
+          "Local Weather Protection"
+        ],
+        "ctaText": "Get Your Free Quote",
+        "ctaLink": "/contact"
+      },
+      {
+        "name": "Sandbach",
+        "description": "Serving Sandbach with expert roofing solutions from our base in Crewe. Our team of experienced roofers specialises in both traditional and contemporary roofing styles, ensuring your property is well-protected against Cheshire's weather.",
+        "image": "/images/areas/sandbach.jpg",
+        "tags": [
+          "Experienced Crewe Roofers",
+          "Mixed Style Solutions",
+          "Comprehensive Protection"
+        ],
+        "ctaText": "Contact Us for a Quote",
+        "ctaLink": "/contact"
+      }
+    ]
   },
   "about": {
     "title": "About Us",

@@ -14,6 +14,8 @@ import { MdApartment, MdRoofing, MdHouse, MdConstruction, MdWaterDrop } from 're
 import { GiHouse, GiWindow, GiCementShoes } from 'react-icons/gi';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import { BsHouseDoor } from 'react-icons/bs';
+import ImagePicker from '@/components/admin/ImagePicker';
+import AreaImagePicker from '@/components/admin/AreaImagePicker';
 
 // Component to render icons for preview
 const IconPreview = ({ iconName }: { iconName: string }) => {
@@ -921,6 +923,153 @@ export default function Admin() {
                       </button>
                     </div>
 
+                    <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200 mb-8">
+                      <h3 className="text-xl font-bold text-indigo-700 mb-4">Serving Areas Section</h3>
+                      <p className="text-indigo-600 mb-6">Edit the section title, description, and locations for the serving areas section.</p>
+                      
+                      {/* Initialize the serving areas section object if it doesn't exist */}
+                      {!content.homepage.servingAreasSection && (
+                        <button
+                          onClick={() => handleContentChange('homepage.servingAreasSection', {
+                            title: "Serving Crewe & Surrounding Areas",
+                            description: "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Crewe and Cheshire. We understand the unique weather patterns and building requirements of the local area."
+                          })}
+                          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+                        >
+                          Initialize Serving Areas Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.servingAreasSection && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.servingAreasSection.title}
+                                  onChange={(e) => handleContentChange('homepage.servingAreasSection.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Serving Crewe & Surrounding Areas"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
+                                <textarea
+                                  value={content.homepage.servingAreasSection.description}
+                                  onChange={(e) => handleContentChange('homepage.servingAreasSection.description', e.target.value)}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="Description text that appears below the section title"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Locations/Areas We Serve</label>
+                            {(content.homepage.servingAreas || []).map((area, index) => (
+                              <div key={index} className="mb-4 p-4 border rounded">
+                                <div className="flex justify-between mb-2">
+                                  <h4 className="font-medium">Area {index + 1}</h4>
+                                  <button
+                                    onClick={() => handleArrayItemChange('homepage.servingAreas', index, null)}
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                                <div className="space-y-3">
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Area Name</label>
+                                    <input
+                                      type="text"
+                                      value={area.name || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, name: e.target.value })}
+                                      placeholder="e.g., Crewe, Nantwich, etc."
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Description</label>
+                                    <textarea
+                                      value={area.description || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, description: e.target.value })}
+                                      placeholder="Description of services in this area"
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      rows={3}
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Area Image</label>
+                                    <AreaImagePicker
+                                      value={area.image || ''}
+                                      onChange={(imageUrl) => handleArrayItemChange('homepage.servingAreas', index, { ...area, image: imageUrl })}
+                                      areaName={area.name}
+                                    />
+                                    <p className="mt-1 text-xs text-gray-500">
+                                      Click the image to select from available options or enter a custom URL
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Tags (comma separated)</label>
+                                    <input
+                                      type="text"
+                                      value={(area.tags || []).join(', ')}
+                                      onChange={(e) => {
+                                        const tagsArray = e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag);
+                                        handleArrayItemChange('homepage.servingAreas', index, { ...area, tags: tagsArray });
+                                      }}
+                                      placeholder="e.g., Weather Resistant, Local Roofers, etc."
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">CTA Text</label>
+                                    <input
+                                      type="text"
+                                      value={area.ctaText || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, ctaText: e.target.value })}
+                                      placeholder="e.g., Get a Free Quote"
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">CTA Link</label>
+                                    <input
+                                      type="text"
+                                      value={area.ctaLink || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, ctaLink: e.target.value })}
+                                      placeholder="e.g., /contact"
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                            <button
+                              onClick={() => {
+                                const newArea = {
+                                  name: 'New Area',
+                                  description: 'Description of services in this area',
+                                  image: '/images/areas/residential1.jpg',
+                                  tags: ['Tag 1', 'Tag 2'],
+                                  ctaText: 'Request a Free Quote',
+                                  ctaLink: '/contact'
+                                };
+                                const areas = content.homepage.servingAreas || [];
+                                handleArrayItemChange('homepage.servingAreas', areas.length, newArea);
+                              }}
+                              className="mt-2 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                            >
+                              Add Area
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Testimonials</label>
                       {content.homepage.testimonials.map((testimonial, index) => (
@@ -935,1022 +1084,29 @@ export default function Admin() {
                             </button>
                           </div>
                           <div className="space-y-2">
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700">Author Name</label>
-                              <input
-                                type="text"
-                                value={testimonial.author || ''}
-                                onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, author: e.target.value })}
-                                placeholder="Author Name"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700">Location</label>
-                              <input
-                                type="text"
-                                value={testimonial.role || ''}
-                                onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, role: e.target.value })}
-                                placeholder="e.g., Homeowner, Business Owner"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700">Testimonial Quote</label>
-                              <textarea
-                                value={testimonial.quote || ''}
-                                onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, quote: e.target.value })}
-                                placeholder="Enter the testimonial quote"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                rows={3}
-                              />
-                            </div>
+                            <input
+                              type="text"
+                              value={testimonial.text}
+                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, text: e.target.value })}
+                              placeholder="Testimonial text"
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                            <input
+                              type="text"
+                              value={testimonial.author}
+                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, author: e.target.value })}
+                              placeholder="Author"
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
                           </div>
                         </div>
                       ))}
                       <button
-                        onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { author: '', role: '', quote: '' })}
+                        onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { text: '', author: '' })}
                         className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         Add Testimonial
                       </button>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'about' && (
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Title</label>
-                      <input
-                        type="text"
-                        value={content.about.title}
-                        onChange={(e) => handleContentChange('about.title', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Subtitle</label>
-                      <input
-                        type="text"
-                        value={content.about.subtitle}
-                        onChange={(e) => handleContentChange('about.subtitle', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Hero Image Path</label>
-                      <input
-                        type="text"
-                        value={content.about.heroImage}
-                        onChange={(e) => handleContentChange('about.heroImage', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Main Content</label>
-                      <div className="space-y-4">
-                        <input
-                          type="text"
-                          value={content.about.mainContent.title}
-                          onChange={(e) => handleContentChange('about.mainContent.title', e.target.value)}
-                          placeholder="Title"
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                        <textarea
-                          value={content.about.mainContent.description}
-                          onChange={(e) => handleContentChange('about.mainContent.description', e.target.value)}
-                          placeholder="Description"
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          rows={3}
-                        />
-                        <textarea
-                          value={content.about.mainContent.history}
-                          onChange={(e) => handleContentChange('about.mainContent.history', e.target.value)}
-                          placeholder="History"
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          rows={3}
-                        />
-                        <textarea
-                          value={content.about.mainContent.mission}
-                          onChange={(e) => handleContentChange('about.mainContent.mission', e.target.value)}
-                          placeholder="Mission"
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          rows={3}
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Team Members</label>
-                      {content.about.team.map((member, index) => (
-                        <div key={index} className="mb-4 p-4 border rounded">
-                          <div className="flex justify-between mb-2">
-                            <h4 className="font-medium">Team Member {index + 1}</h4>
-                            <button
-                              onClick={() => handleArrayItemChange('about.team', index, null)}
-                              className="text-red-600 hover:text-red-800"
-                            >
-                              Remove
-                            </button>
-                          </div>
-                          <div className="space-y-2">
-                            <input
-                              type="text"
-                              value={member.name}
-                              onChange={(e) => handleArrayItemChange('about.team', index, { ...member, name: e.target.value })}
-                              placeholder="Name"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <input
-                              type="text"
-                              value={member.role}
-                              onChange={(e) => handleArrayItemChange('about.team', index, { ...member, role: e.target.value })}
-                              placeholder="Role"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <textarea
-                              value={member.bio}
-                              onChange={(e) => handleArrayItemChange('about.team', index, { ...member, bio: e.target.value })}
-                              placeholder="Bio"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              rows={2}
-                            />
-                            <input
-                              type="text"
-                              value={member.image}
-                              onChange={(e) => handleArrayItemChange('about.team', index, { ...member, image: e.target.value })}
-                              placeholder="Image Path"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-                      ))}
-                      <button
-                        onClick={() => handleArrayItemChange('about.team', content.about.team.length, { name: '', role: '', bio: '', image: '' })}
-                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                      >
-                        Add Team Member
-                      </button>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Values</label>
-                      {content.about.values.map((value, index) => (
-                        <div key={index} className="mb-4 p-4 border rounded">
-                          <div className="flex justify-between mb-2">
-                            <h4 className="font-medium">Value {index + 1}</h4>
-                            <button
-                              onClick={() => handleArrayItemChange('about.values', index, null)}
-                              className="text-red-600 hover:text-red-800"
-                            >
-                              Remove
-                            </button>
-                          </div>
-                          <div className="space-y-2">
-                            <input
-                              type="text"
-                              value={value.title}
-                              onChange={(e) => handleArrayItemChange('about.values', index, { ...value, title: e.target.value })}
-                              placeholder="Title"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <textarea
-                              value={value.description}
-                              onChange={(e) => handleArrayItemChange('about.values', index, { ...value, description: e.target.value })}
-                              placeholder="Description"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              rows={2}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                      <button
-                        onClick={() => handleArrayItemChange('about.values', content.about.values.length, { title: '', description: '' })}
-                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                      >
-                        Add Value
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'services' && (
-                  <div className="space-y-8">
-                    {/* Hero Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Hero Section</h3>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Title</label>
-                        <input
-                          type="text"
-                          value={content.services.hero.title}
-                          onChange={(e) => handleContentChange('services.hero.title', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Subtitle</label>
-                        <input
-                          type="text"
-                          value={content.services.hero.subtitle}
-                          onChange={(e) => handleContentChange('services.hero.subtitle', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Services List */}
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-lg font-medium">Services</h3>
-                        <button
-                          onClick={() => handleArrayItemChange('services.services', content.services.services.length, {
-                            title: '',
-                            description: '',
-                            image: '',
-                            features: []
-                          })}
-                          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                        >
-                          Add Service
-                        </button>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        {content.services.services.map((service, index) => (
-                          <div key={index} className="p-4 border rounded-lg">
-                            <div className="flex justify-between items-center mb-4">
-                              <h4 className="text-md font-medium">Service {index + 1}</h4>
-                              <button
-                                onClick={() => handleArrayItemChange('services.services', index, null)}
-                                className="text-red-600 hover:text-red-800"
-                              >
-                                Remove
-                              </button>
-                            </div>
-                            <div className="space-y-4">
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700">Title</label>
-                                <input
-                                  type="text"
-                                  value={service.title}
-                                  onChange={(e) => handleArrayItemChange('services.services', index, {
-                                    ...service,
-                                    title: e.target.value
-                                  })}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700">Description</label>
-                                <textarea
-                                  value={service.description}
-                                  onChange={(e) => handleArrayItemChange('services.services', index, {
-                                    ...service,
-                                    description: e.target.value
-                                  })}
-                                  rows={3}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700">Image Path</label>
-                                <input
-                                  type="text"
-                                  value={service.image}
-                                  onChange={(e) => handleArrayItemChange('services.services', index, {
-                                    ...service,
-                                    image: e.target.value
-                                  })}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Features</label>
-                                {service.features.map((feature, featureIndex) => (
-                                  <div key={featureIndex} className="flex gap-2 mb-2">
-                                    <input
-                                      type="text"
-                                      value={feature}
-                                      onChange={(e) => {
-                                        const newFeatures = [...service.features];
-                                        newFeatures[featureIndex] = e.target.value;
-                                        handleArrayItemChange('services.services', index, {
-                                          ...service,
-                                          features: newFeatures
-                                        });
-                                      }}
-                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    />
-                                    <button
-                                      onClick={() => {
-                                        const newFeatures = service.features.filter((_, i) => i !== featureIndex);
-                                        handleArrayItemChange('services.services', index, {
-                                          ...service,
-                                          features: newFeatures
-                                        });
-                                      }}
-                                      className="px-2 text-red-600 hover:text-red-800"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                ))}
-                                <button
-                                  onClick={() => {
-                                    const newFeatures = [...service.features, ''];
-                                    handleArrayItemChange('services.services', index, {
-                                      ...service,
-                                      features: newFeatures
-                                    });
-                                  }}
-                                  className="mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
-                                >
-                                  Add Feature
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Call to Action</h3>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Title</label>
-                        <input
-                          type="text"
-                          value={content.services.cta.title}
-                          onChange={(e) => handleContentChange('services.cta.title', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea
-                          value={content.services.cta.description}
-                          onChange={(e) => handleContentChange('services.cta.description', e.target.value)}
-                          rows={2}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Button Text</label>
-                        <input
-                          type="text"
-                          value={content.services.cta.buttonText}
-                          onChange={(e) => handleContentChange('services.cta.buttonText', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Button Link</label>
-                        <input
-                          type="text"
-                          value={content.services.cta.buttonLink}
-                          onChange={(e) => handleContentChange('services.cta.buttonLink', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'contact' && (
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Address</label>
-                      <textarea
-                        value={content.contact.address}
-                        onChange={(e) => handleContentChange('contact.address', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        rows={3}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Phone</label>
-                      <input
-                        type="text"
-                        value={content.contact.phone}
-                        onChange={(e) => handleContentChange('contact.phone', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Email</label>
-                      <input
-                        type="email"
-                        value={content.contact.email}
-                        onChange={(e) => handleContentChange('contact.email', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Business Hours</label>
-                      <input
-                        type="text"
-                        value={content.contact.hours}
-                        onChange={(e) => handleContentChange('contact.hours', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Form Title</label>
-                      <input
-                        type="text"
-                        value={content.contact.formTitle}
-                        onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Form Description</label>
-                      <textarea
-                        value={content.contact.formDescription}
-                        onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        rows={3}
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'socials' && (
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Facebook URL</label>
-                      <input
-                        type="url"
-                        value={content.socials.facebook}
-                        onChange={(e) => handleContentChange('socials.facebook', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Twitter URL</label>
-                      <input
-                        type="url"
-                        value={content.socials.twitter}
-                        onChange={(e) => handleContentChange('socials.twitter', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Instagram URL</label>
-                      <input
-                        type="url"
-                        value={content.socials.instagram}
-                        onChange={(e) => handleContentChange('socials.instagram', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">LinkedIn URL</label>
-                      <input
-                        type="url"
-                        value={content.socials.linkedin}
-                        onChange={(e) => handleContentChange('socials.linkedin', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'design' && (
-                  <div className="space-y-8">
-                    {/* Header Design Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Header Design</h3>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Background Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.header?.backgroundColor || '#ffffff'}
-                            onChange={(e) => handleContentChange('theme.header.backgroundColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.header?.backgroundColor || '#ffffff'}
-                            onChange={(e) => handleContentChange('theme.header.backgroundColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#ffffff"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Text Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.header?.textColor || '#000000'}
-                            onChange={(e) => handleContentChange('theme.header.textColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.header?.textColor || '#000000'}
-                            onChange={(e) => handleContentChange('theme.header.textColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#000000"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Link Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.header?.linkColor || '#4B5563'}
-                            onChange={(e) => handleContentChange('theme.header.linkColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.header?.linkColor || '#4B5563'}
-                            onChange={(e) => handleContentChange('theme.header.linkColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#4B5563"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Link Hover Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.header?.linkHoverColor || '#1F2937'}
-                            onChange={(e) => handleContentChange('theme.header.linkHoverColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.header?.linkHoverColor || '#1F2937'}
-                            onChange={(e) => handleContentChange('theme.header.linkHoverColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#1F2937"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Icon Color</label>
-                        <input
-                          type="color"
-                          value={content.theme?.header?.iconColor || '#4B5563'}
-                          onChange={(e) => handleContentChange('theme.header.iconColor', e.target.value)}
-                          className="mt-1 block w-full h-10 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-
-                      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                        <h4 className="text-sm font-medium text-gray-700 mb-2">Preview</h4>
-                        <div 
-                          className="border rounded-lg overflow-hidden"
-                          style={{
-                            backgroundColor: content.theme?.header?.backgroundColor || '#ffffff'
-                          }}
-                        >
-                          <div className="p-4">
-                            <div className="flex items-center justify-between">
-                              <div 
-                                className="font-medium"
-                                style={{
-                                  color: content.theme?.header?.textColor || '#000000'
-                                }}
-                              >
-                                Logo
-                              </div>
-                              <div className="flex gap-4">
-                                {['Home', 'About', 'Services', 'Contact'].map((item) => (
-                                  <div
-                                    key={item}
-                                    className="cursor-pointer transition-colors duration-200"
-                                    style={{
-                                      color: content.theme?.header?.linkColor || '#4B5563'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                      e.currentTarget.style.color = content.theme?.header?.linkHoverColor || '#1F2937';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                      e.currentTarget.style.color = content.theme?.header?.linkColor || '#4B5563';
-                                    }}
-                                  >
-                                    {item}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Footer Design Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Footer Design</h3>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Background Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.footer?.backgroundColor || '#1F2937'}
-                            onChange={(e) => handleContentChange('theme.footer.backgroundColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.footer?.backgroundColor || '#1F2937'}
-                            onChange={(e) => handleContentChange('theme.footer.backgroundColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#1F2937"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Text Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.footer?.textColor || '#ffffff'}
-                            onChange={(e) => handleContentChange('theme.footer.textColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.footer?.textColor || '#ffffff'}
-                            onChange={(e) => handleContentChange('theme.footer.textColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#ffffff"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Link Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.footer?.linkColor || '#60A5FA'}
-                            onChange={(e) => handleContentChange('theme.footer.linkColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.footer?.linkColor || '#60A5FA'}
-                            onChange={(e) => handleContentChange('theme.footer.linkColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#60A5FA"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Link Hover Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.footer?.linkHoverColor || '#93C5FD'}
-                            onChange={(e) => handleContentChange('theme.footer.linkHoverColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.footer?.linkHoverColor || '#93C5FD'}
-                            onChange={(e) => handleContentChange('theme.footer.linkHoverColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#93C5FD"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Icon Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.footer?.iconColor || '#60A5FA'}
-                            onChange={(e) => handleContentChange('theme.footer.iconColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.footer?.iconColor || '#60A5FA'}
-                            onChange={(e) => handleContentChange('theme.footer.iconColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#60A5FA"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Border Color</label>
-                        <div className="mt-1 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={content.theme?.footer?.borderColor || '#374151'}
-                            onChange={(e) => handleContentChange('theme.footer.borderColor', e.target.value)}
-                            className="h-10 w-20"
-                          />
-                          <input
-                            type="text"
-                            value={content.theme?.footer?.borderColor || '#374151'}
-                            onChange={(e) => handleContentChange('theme.footer.borderColor', e.target.value)}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="#374151"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                        <h4 className="text-sm font-medium text-gray-700 mb-2">Preview</h4>
-                        <div 
-                          className="border rounded-lg overflow-hidden"
-                          style={{
-                            backgroundColor: content.theme?.footer?.backgroundColor || '#1F2937'
-                          }}
-                        >
-                          <div className="p-4">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                              <div>
-                                <h3 className="text-lg font-semibold mb-4" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
-                                  Contact Us
-                                </h3>
-                                <div className="space-y-2" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
-                                  <p>123 Main St</p>
-                                  <p>Phone: (555) 123-4567</p>
-                                  <p>Email: info@example.com</p>
-                                </div>
-                              </div>
-                              <div>
-                                <h3 className="text-lg font-semibold mb-4" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
-                                  Quick Links
-                                </h3>
-                                <ul className="space-y-2">
-                                  {['Home', 'About', 'Services', 'Contact'].map((item) => (
-                                    <li key={item}>
-                                      <div
-                                        className="cursor-pointer transition-colors duration-200"
-                                        style={{
-                                          color: content.theme?.footer?.linkColor || '#60A5FA'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                          e.currentTarget.style.color = content.theme?.footer?.linkHoverColor || '#93C5FD';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                          e.currentTarget.style.color = content.theme?.footer?.linkColor || '#60A5FA';
-                                        }}
-                                      >
-                                        {item}
-                                      </div>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div>
-                                <h3 className="text-lg font-semibold mb-4" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
-                                  Connect With Us
-                                </h3>
-                                <div className="flex space-x-4">
-                                  {['Facebook', 'Twitter', 'Instagram', 'LinkedIn'].map((social) => (
-                                    <div
-                                      key={social}
-                                      className="cursor-pointer transition-colors duration-200"
-                                      style={{
-                                        color: content.theme?.footer?.iconColor || '#60A5FA'
-                                      }}
-                                      onMouseEnter={(e) => {
-                                        e.currentTarget.style.color = content.theme?.footer?.linkHoverColor || '#93C5FD';
-                                      }}
-                                      onMouseLeave={(e) => {
-                                        e.currentTarget.style.color = content.theme?.footer?.iconColor || '#60A5FA';
-                                      }}
-                                    >
-                                      {social}
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                            <div className="mt-8 pt-8 border-t" style={{ borderColor: content.theme?.footer?.borderColor || '#374151' }}>
-                              <p className="text-center" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
-                                © 2024 Example Company. All rights reserved.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'header' && (
-                  <div className="space-y-8">
-                    {/* Top Bar Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Top Bar Settings</h3>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Business Hours</label>
-                        <input
-                          type="text"
-                          value={content.header?.businessHours || "Mon-Fri: 8am-6pm"}
-                          onChange={(e) => handleContentChange('header.businessHours', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="e.g., Mon-Fri: 8am-6pm"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Insurance Text</label>
-                        <input
-                          type="text"
-                          value={content.header?.insuranceText || "Fully Insured"}
-                          onChange={(e) => handleContentChange('header.insuranceText', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="e.g., Fully Insured"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Experience Text</label>
-                        <input
-                          type="text"
-                          value={content.header?.experienceText || "5+ Years Experience"}
-                          onChange={(e) => handleContentChange('header.experienceText', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="e.g., 5+ Years Experience"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Show Top Bar</label>
-                        <div className="mt-1">
-                          <label className="inline-flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={content.header?.showTopBar !== false}
-                              onChange={(e) => handleContentChange('header.showTopBar', e.target.checked)}
-                              className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <span className="ml-2 text-sm text-gray-600">Display top bar with business information</span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Navigation Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Navigation Menu</h3>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Menu Items</label>
-                        {(content.header?.menuItems || [
-                          { text: 'Home', link: '/' },
-                          { text: 'About', link: '/about' },
-                          { text: 'Services', link: '/services' },
-                          { text: 'Areas', link: '/areas' },
-                          { text: 'Blog', link: '/blog' },
-                          { text: 'FAQ', link: '/faq' },
-                          { text: 'Contact', link: '/contact' }
-                        ]).map((item, index) => (
-                          <div key={index} className="flex items-center gap-2 mb-4">
-                            <div className="flex-1 grid grid-cols-2 gap-2">
-                              <div>
-                                <label className="block text-xs text-gray-500 mb-1">Display Text</label>
-                                <input
-                                  type="text"
-                                  value={item.text}
-                                  onChange={(e) => {
-                                    const newItems = [...(content.header?.menuItems || [
-                                      { text: 'Home', link: '/' },
-                                      { text: 'About', link: '/about' },
-                                      { text: 'Services', link: '/services' },
-                                      { text: 'Areas', link: '/areas' },
-                                      { text: 'Blog', link: '/blog' },
-                                      { text: 'FAQ', link: '/faq' },
-                                      { text: 'Contact', link: '/contact' }
-                                    ])];
-                                    newItems[index] = { ...newItems[index], text: e.target.value };
-                                    handleContentChange('header.menuItems', newItems);
-                                  }}
-                                  placeholder="e.g., Home"
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-xs text-gray-500 mb-1">Link URL</label>
-                                <input
-                                  type="text"
-                                  value={item.link}
-                                  onChange={(e) => {
-                                    const newItems = [...(content.header?.menuItems || [
-                                      { text: 'Home', link: '/' },
-                                      { text: 'About', link: '/about' },
-                                      { text: 'Services', link: '/services' },
-                                      { text: 'Areas', link: '/areas' },
-                                      { text: 'Blog', link: '/blog' },
-                                      { text: 'FAQ', link: '/faq' },
-                                      { text: 'Contact', link: '/contact' }
-                                    ])];
-                                    newItems[index] = { ...newItems[index], link: e.target.value };
-                                    handleContentChange('header.menuItems', newItems);
-                                  }}
-                                  placeholder="e.g., /home"
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                              </div>
-                            </div>
-                            <button
-                              onClick={() => {
-                                const newItems = (content.header?.menuItems || [
-                                  { text: 'Home', link: '/' },
-                                  { text: 'About', link: '/about' },
-                                  { text: 'Services', link: '/services' },
-                                  { text: 'Areas', link: '/areas' },
-                                  { text: 'Blog', link: '/blog' },
-                                  { text: 'FAQ', link: '/faq' },
-                                  { text: 'Contact', link: '/contact' }
-                                ]).filter((_, i) => i !== index);
-                                handleContentChange('header.menuItems', newItems);
-                              }}
-                              className="p-2 text-red-600 hover:text-red-800"
-                            >
-                              Remove
-                            </button>
-                          </div>
-                        ))}
-                        <button
-                          onClick={() => {
-                            const newItems = [...(content.header?.menuItems || [
-                              { text: 'Home', link: '/' },
-                              { text: 'About', link: '/about' },
-                              { text: 'Services', link: '/services' },
-                              { text: 'Areas', link: '/areas' },
-                              { text: 'Blog', link: '/blog' },
-                              { text: 'FAQ', link: '/faq' },
-                              { text: 'Contact', link: '/contact' }
-                            ]), { text: '', link: '' }];
-                            handleContentChange('header.menuItems', newItems);
-                          }}
-                          className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                        >
-                          Add Menu Item
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* CTA Button Section */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Call-to-Action Button</h3>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Button Text</label>
-                        <input
-                          type="text"
-                          value={content.header?.ctaButton?.text || "Get a Free Quote"}
-                          onChange={(e) => handleContentChange('header.ctaButton.text', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="e.g., Get a Free Quote"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Button Link</label>
-                        <input
-                          type="text"
-                          value={content.header?.ctaButton?.link || "/quote"}
-                          onChange={(e) => handleContentChange('header.ctaButton.link', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="e.g., /quote"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Show CTA Button</label>
-                        <div className="mt-1">
-                          <label className="inline-flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={content.header?.ctaButton?.show !== false}
-                              onChange={(e) => handleContentChange('header.ctaButton.show', e.target.checked)}
-                              className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <span className="ml-2 text-sm text-gray-600">Display call-to-action button</span>
-                          </label>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 )}

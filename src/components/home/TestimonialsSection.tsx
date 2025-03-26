@@ -30,16 +30,18 @@ export default function TestimonialsSection({ content }: TestimonialsSectionProp
           {content.homepage.testimonials.map((testimonial, index) => (
             <div 
               key={index} 
-              className="bg-white p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl"
+              className="bg-white p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl flex flex-col h-[24rem]"
             >
-              <div className="mb-6">
-                <svg className="w-10 h-10 text-blue-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <div className="flex-1 flex flex-col">
+                <svg className="w-10 h-10 text-blue-400 mb-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p className="text-gray-700 text-lg leading-relaxed italic mb-6">
-                  "{testimonial.quote}"
-                </p>
-                <div className="flex text-yellow-400 mb-4">
+                <div className="quote-container flex-1 mb-6">
+                  <p className="text-gray-700 text-lg leading-relaxed italic line-clamp-6 max-h-36">
+                    "{testimonial.quote}"
+                  </p>
+                </div>
+                <div className="flex text-yellow-400 mb-4 mt-auto">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
@@ -52,8 +54,8 @@ export default function TestimonialsSection({ content }: TestimonialsSectionProp
                   ))}
                 </div>
               </div>
-              <div className="flex items-center border-t pt-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4">
+              <div className="flex items-center border-t pt-6 mt-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
