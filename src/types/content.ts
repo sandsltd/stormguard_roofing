@@ -8,11 +8,6 @@ export interface Content {
     tagline?: string;
   };
   homepage: {
-    hero: {
-      title: string;
-      subtitle: string;
-      image: string;
-    };
     introduction?: {
       title: string;
       subtitle: string;
@@ -37,6 +32,10 @@ export interface Content {
       description: string;
     };
     faqSection?: {
+      title: string;
+      description: string;
+    };
+    gallerySection?: {
       title: string;
       description: string;
     };
@@ -131,19 +130,12 @@ export interface Content {
     };
   };
   contact: {
-    title: string;
-    subtitle: string;
     address: string;
     phone: string;
     email: string;
     hours: string;
-    form: {
-      nameLabel: string;
-      emailLabel: string;
-      phoneLabel: string;
-      messageLabel: string;
-      submitButton: string;
-    };
+    formTitle: string;
+    formDescription: string;
   };
   socials: {
     facebook: string;

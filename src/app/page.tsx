@@ -7,6 +7,7 @@ import IntroductionSection from '@/components/home/IntroductionSection';
 import ContactSection from '@/components/home/ContactSection';
 import ServingAreasSectionWrapper from '@/components/home/ServingAreasSectionWrapper';
 import FAQSectionWrapper from '@/components/home/FAQSectionWrapper';
+import GallerySectionWrapper from '@/components/home/GallerySectionWrapper';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -36,6 +37,9 @@ export default async function Home() {
 
       {/* FAQ Section */}
       <FAQSectionWrapper content={content} />
+      
+      {/* Gallery Section - Only displays if images exist */}
+      <GallerySectionWrapper content={content} />
 
       {/* Testimonials Section */}
       <TestimonialsSection content={content} />

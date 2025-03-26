@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchContent, saveContent } from '@/utils/client-content.ts';
+import { fetchContent, saveContent } from '@/utils/client-content';
 import type { Content } from '@/types/content';
 import { 
   FaHome, FaTools, FaSearch, FaCalendarAlt, FaCloudRain, 
@@ -1169,6 +1169,76 @@ export default function Admin() {
                       )}
                     </div>
 
+                    <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-8">
+                      <h3 className="text-xl font-bold text-purple-700 mb-4">Gallery Section</h3>
+                      <p className="text-purple-600 mb-6">Edit the title and description for the gallery section. <strong>Note:</strong> The gallery will only display on the website if there are images in the <code className="bg-gray-100 p-1 rounded">public/images/client-images</code> folder.</p>
+                      
+                      {/* Alert explaining how the gallery works */}
+                      <div className="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-200">
+                        <div className="flex">
+                          <div className="flex-shrink-0">
+                            <svg className="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 100-16 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div className="ml-3">
+                            <h3 className="text-sm font-medium text-blue-800">How the Gallery Works</h3>
+                            <div className="mt-2 text-sm text-blue-700">
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Upload your images to the <code className="bg-gray-100 p-1 rounded">public/images/client-images</code> folder on your server</li>
+                                <li>Supported formats: JPG, JPEG, PNG, GIF, WebP</li>
+                                <li>The gallery section will automatically appear on your homepage when images are detected</li>
+                                <li>If no images are found, the gallery section will not be displayed</li>
+                                <li>Images will be arranged in a responsive grid and can be clicked to view full-size</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Initialize the gallery section object if it doesn't exist */}
+                      {!content.homepage.gallerySection && (
+                        <button
+                          onClick={() => handleContentChange('homepage.gallerySection', {
+                            title: "Our Portfolio",
+                            description: "Browse through our gallery of completed projects showcasing our craftsmanship and attention to detail."
+                          })}
+                          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                        >
+                          Initialize Gallery Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.gallerySection && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.gallerySection.title}
+                                  onChange={(e) => handleContentChange('homepage.gallerySection.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                  placeholder="e.g., Our Portfolio"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
+                                <textarea
+                                  value={content.homepage.gallerySection.description}
+                                  onChange={(e) => handleContentChange('homepage.gallerySection.description', e.target.value)}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                  placeholder="Description text that appears below the section title"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Testimonials</label>
                       {content.homepage.testimonials.map((testimonial, index) => (
@@ -1185,8 +1255,8 @@ export default function Admin() {
                           <div className="space-y-2">
                             <input
                               type="text"
-                              value={testimonial.text}
-                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, text: e.target.value })}
+                              value={testimonial.quote}
+                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, quote: e.target.value })}
                               placeholder="Testimonial text"
                               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                             />
@@ -1201,7 +1271,7 @@ export default function Admin() {
                         </div>
                       ))}
                       <button
-                        onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { text: '', author: '' })}
+                        onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { quote: '', author: '', role: '' })}
                         className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         Add Testimonial
