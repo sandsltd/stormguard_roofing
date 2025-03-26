@@ -1,118 +1,84 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Content } from '@/utils/content';
+import { fetchContent, saveContent } from '@/utils/client-content.ts';
 import Link from 'next/link';
 
 export default function Admin() {
-  const [content, setContent] = useState<Content | null>(null);
+  const [content, setContent] = useState(null);
   const [activeTab, setActiveTab] = useState('business');
   const [isSaving, setIsSaving] = useState(false);
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [previewMode, setPreviewMode] = useState(false);
+  const [saveStatus, setSaveStatus] = useState('');
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
 
   useEffect(() => {
-    // Load content data when component mounts
-    fetchContent();
+    const loadContent = async () => {
+      try {
+        const data = await fetchContent();
+        if (data) {
+          setContent(data);
+        }
+      } catch (error) {
+        console.error('Error loading content:', error);
+      }
+    };
+    loadContent();
   }, []);
 
-  const fetchContent = async () => {
-    try {
-      const response = await fetch('/api/content');
-      const result = await response.json();
-      
-      if (result.success) {
-        setContent(result.data);
-      } else {
-        console.error('Error loading content:', result.error);
-      }
-    } catch (error) {
-      console.error('Error loading content:', error);
-    }
-  };
-
-  const handleContentChange = (section: string, field: string, value: any) => {
-    if (!content) return;
-
-    setContent({
-      ...content,
+  const handleContentChange = (section, field, value) => {
+    setContent(prev => ({
+      ...prev,
       [section]: {
-        ...content[section as keyof Content],
+        ...prev[section],
         [field]: value
       }
-    });
+    }));
   };
 
-  const handleNestedChange = (section: string, subsection: string, field: string, value: any) => {
-    if (!content) return;
-    
-    setContent({
-      ...content,
+  const handleNestedChange = (section, parent, field, value) => {
+    setContent(prev => ({
+      ...prev,
       [section]: {
-        ...content[section as keyof Content],
-        [subsection]: {
-          ...((content[section as keyof Content] as any)[subsection]),
+        ...prev[section],
+        [parent]: {
+          ...prev[section][parent],
           [field]: value
         }
       }
-    });
+    }));
   };
 
-  const handleArrayItemChange = (section: string, index: number, field: string, value: any) => {
-    if (!content) return;
-    
-    const newArray = [...((content[section as keyof Content]) as any[])];
-    newArray[index] = {
-      ...newArray[index],
-      [field]: value
-    };
-    
-    setContent({
-      ...content,
-      [section]: newArray
-    });
+  const handleArrayItemChange = (section, index, field, value) => {
+    setContent(prev => ({
+      ...prev,
+      [section]: prev[section].map((item, i) => 
+        i === index ? { ...item, [field]: value } : item
+      )
+    }));
   };
 
   const handleSave = async () => {
-    if (!content) return;
-    
     setIsSaving(true);
-    setSaveStatus('idle');
+    setSaveStatus('Saving...');
     
     try {
-      const response = await fetch('/api/save', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(content)
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        setSaveStatus('success');
-      } else {
-        console.error('Error saving content:', result.error);
-        setSaveStatus('error');
-      }
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSaveStatus('idle');
-      }, 3000);
+      await saveContent(content);
+      setSaveStatus('Changes saved successfully!');
     } catch (error) {
       console.error('Error saving content:', error);
-      setSaveStatus('error');
+      setSaveStatus('Error saving changes');
     } finally {
       setIsSaving(false);
+      setTimeout(() => setSaveStatus(''), 3000);
     }
   };
 
   if (!content) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <p className="text-xl">Loading content data...</p>
+      <div className="min-h-screen bg-gray-100 p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center text-xl">Loading content data...</div>
+        </div>
       </div>
     );
   }
@@ -404,10 +370,10 @@ export default function Admin() {
           <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
           <div className="flex items-center space-x-4">
             <button
-              onClick={() => setPreviewMode(!previewMode)}
+              onClick={() => setIsPreviewMode(!isPreviewMode)}
               className="text-blue-600 hover:text-blue-800"
             >
-              {previewMode ? 'Exit Preview' : 'Preview Site'}
+              {isPreviewMode ? 'Exit Preview' : 'Preview Site'}
             </button>
             <Link href="/" className="text-gray-600 hover:text-gray-800">
               Back to Site
@@ -417,13 +383,13 @@ export default function Admin() {
       </header>
 
       {/* Preview iframe */}
-      {previewMode && (
+      {isPreviewMode && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-6xl h-[90vh] flex flex-col">
             <div className="flex justify-between items-center p-4 border-b">
               <h2 className="text-xl font-semibold">Site Preview</h2>
               <button
-                onClick={() => setPreviewMode(false)}
+                onClick={() => setIsPreviewMode(false)}
                 className="text-gray-500 hover:text-gray-700"
               >
                 Close
@@ -516,11 +482,10 @@ export default function Admin() {
 
         {/* Save Button */}
         <div className="flex items-center justify-end space-x-4">
-          {saveStatus === 'success' && (
-            <p className="text-green-600">Content saved successfully!</p>
-          )}
-          {saveStatus === 'error' && (
-            <p className="text-red-600">Error saving content. Please try again.</p>
+          {saveStatus && (
+            <span className={`text-sm ${saveStatus.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>
+              {saveStatus}
+            </span>
           )}
           <button
             onClick={handleSave}

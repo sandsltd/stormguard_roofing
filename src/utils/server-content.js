@@ -8,7 +8,7 @@ const contentFilePath = path.join(process.cwd(), 'src/data/content.json');
  * Read content from content.json file
  * @returns {Object} Content data
  */
-function getContent() {
+export function getContent() {
   try {
     const contentFile = fs.readFileSync(contentFilePath, 'utf8');
     return JSON.parse(contentFile);
@@ -23,7 +23,7 @@ function getContent() {
  * @param {Object} data - Content data to save
  * @returns {Promise<void>}
  */
-async function saveContent(data) {
+export async function saveContent(data) {
   try {
     const contentJson = JSON.stringify(data, null, 2);
     fs.writeFileSync(contentFilePath, contentJson, 'utf8');
@@ -31,9 +31,4 @@ async function saveContent(data) {
     console.error('Error writing content file:', error);
     throw new Error('Failed to update content data');
   }
-}
-
-module.exports = {
-  getContent,
-  saveContent
-}; 
+} 

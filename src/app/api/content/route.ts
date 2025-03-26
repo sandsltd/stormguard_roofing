@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getContent, updateContent, Content } from '@/utils/content';
+import { getContent, saveContent } from '@/utils/server-content';
+
+// Set revalidation time to 1 hour (3600 seconds)
+export const revalidate = 3600;
 
 export async function GET() {
   try {
     const content = getContent();
-    return NextResponse.json(content);
+    return NextResponse.json({ success: true, data: content });
   } catch (error) {
     console.error('Error fetching content:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch content' },
+      { success: false, error: 'Failed to fetch content' },
       { status: 500 }
     );
   }
@@ -26,8 +29,8 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Update content
-    await updateContent(body as Content);
+    // Save content
+    await saveContent(body);
     
     return NextResponse.json({ success: true });
   } catch (error) {
