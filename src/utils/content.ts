@@ -97,9 +97,9 @@ export interface Content {
       buttonLink?: string;
     }>;
     testimonials: Array<{
-      name: string;
-      text: string;
-      rating: number;
+      quote: string;
+      author: string;
+      role: string;
     }>;
   };
   about: {
@@ -158,7 +158,7 @@ export interface Content {
   };
 }
 
-const contentPath = path.join(process.cwd(), 'content/content.json');
+const contentPath = path.join(process.cwd(), 'src/data/content.json');
 
 export async function getContent(): Promise<Content> {
   try {
@@ -307,9 +307,9 @@ function getDefaultContent(): Content {
       ],
       testimonials: [
         {
-          name: 'John Doe',
-          text: 'Great service!',
-          rating: 5
+          quote: 'Great service!',
+          author: 'John Doe',
+          role: 'Role'
         }
       ]
     },

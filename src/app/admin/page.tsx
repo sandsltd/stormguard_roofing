@@ -935,32 +935,41 @@ export default function Admin() {
                             </button>
                           </div>
                           <div className="space-y-2">
-                            <input
-                              type="text"
-                              value={testimonial.name}
-                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, name: e.target.value })}
-                              placeholder="Name"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <textarea
-                              value={testimonial.text}
-                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, text: e.target.value })}
-                              placeholder="Testimonial Text"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              rows={2}
-                            />
-                            <input
-                              type="number"
-                              value={testimonial.rating}
-                              onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, rating: parseInt(e.target.value) })}
-                              placeholder="Rating (1-5)"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Author Name</label>
+                              <input
+                                type="text"
+                                value={testimonial.author || ''}
+                                onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, author: e.target.value })}
+                                placeholder="Author Name"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Location</label>
+                              <input
+                                type="text"
+                                value={testimonial.role || ''}
+                                onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, role: e.target.value })}
+                                placeholder="e.g., Homeowner, Business Owner"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Testimonial Quote</label>
+                              <textarea
+                                value={testimonial.quote || ''}
+                                onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, quote: e.target.value })}
+                                placeholder="Enter the testimonial quote"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                rows={3}
+                              />
+                            </div>
                           </div>
                         </div>
                       ))}
                       <button
-                        onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { name: '', text: '', rating: 5 })}
+                        onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { author: '', role: '', quote: '' })}
                         className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         Add Testimonial

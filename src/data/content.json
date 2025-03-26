@@ -98,14 +98,37 @@
         "quote": "Professional team that delivered exactly what they promised.",
         "author": "Sarah Johnson",
         "role": "Property Manager"
+      },
+      {
+        "author": "Happy Man",
+        "role": "Happyland, Cornwall",
+        "quote": "Great service, very happy!"
       }
     ],
     "heroTitle": "Profesional Roofing Solutions In Dorchester",
     "heroSubtitle": "Trusted roofers near you",
     "premiumHero": {
-      "title": "Professional Roofing Services",
-      "subtitle": "Quality Work, Guaranteed Results",
-      "image": "/images/hero.jpg"
+      "backgroundImage": "/images/roofers/roofer_fixing_tile_on_roof.png",
+      "title": {
+        "line1": "Expert",
+        "line2": "Roofing Services",
+        "line3": "In Dorchester"
+      },
+      "subtitle": "Professional roofing solutions with superior craftsmanship and unmatched customer service. We've got you covered.",
+      "ctaPrimary": {
+        "text": "Get a Free Quote",
+        "link": "/contact"
+      },
+      "ctaSecondary": {
+        "text": "Our Services",
+        "link": "/services"
+      },
+      "featureBadges": [
+        "Licensed & Insured",
+        "10+ Years Experience",
+        "Free Inspections",
+        "Emergency Service"
+      ]
     },
     "servicesSection": {
       "title": "Comprehensive Roofing Solutions",
@@ -230,14 +253,14 @@
   },
   "theme": {
     "header": {
-      "backgroundColor": "#919191",
+      "backgroundColor": "#ffffff",
       "textColor": "#000000",
       "linkColor": "#000000",
       "iconColor": "#ff2600",
-      "linkHoverColor": "#f5ec00"
+      "linkHoverColor": "#3f37ff"
     },
     "footer": {
-      "backgroundColor": "#ff40ff",
+      "backgroundColor": "#3a88fe",
       "linkColor": "#ffffff"
     }
   },

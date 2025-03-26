@@ -183,22 +183,14 @@
     ],
     "testimonials": [
       {
+        "quote": "Exceptional service from start to finish. Highly recommended!",
         "author": "John Smith",
-        "role": "Homeowner in Dorchester",
-        "quote": "Absolutely thrilled with the roof replacement! The team was professional, punctual, and left our property spotless. The quality of work is exceptional and they completed the job ahead of schedule.",
-        "name": "Nick",
-        "text": "Great Service!",
-        "rating": 5
+        "role": "Homeowner"
       },
       {
+        "quote": "Professional team that delivered exactly what they promised.",
         "author": "Sarah Johnson",
-        "role": "Business Owner",
-        "quote": "We've used their services for our commercial building twice now. Their attention to detail and commitment to quality is unmatched. Highly recommend for any commercial roofing needs."
-      },
-      {
-        "author": "David Wilson",
-        "role": "Property Manager",
-        "quote": "Managing multiple properties means I need reliable contractors. This team has never let me down - responsive, reasonably priced, and they stand behind their work with excellent warranties."
+        "role": "Property Manager"
       }
     ]
   },
