@@ -122,25 +122,29 @@ const contentPath = path.join(process.cwd(), 'content/content.json');
 
 export async function getContent(): Promise<Content> {
   try {
-    console.log('Reading content from:', contentPath);
     const fileContents = await fs.promises.readFile(contentPath, 'utf8');
     const content = JSON.parse(fileContents);
-    console.log('Content loaded successfully');
+    
+    // Ensure logo path has a leading slash
+    if (content.business.logo && !content.business.logo.startsWith('/')) {
+      content.business.logo = '/' + content.business.logo;
+    }
+    
     return content;
   } catch (error) {
-    console.error('Error reading content:', error);
-    console.log('Falling back to default content');
     return getDefaultContent();
   }
 }
 
 export async function saveContent(content: Content): Promise<void> {
   try {
-    console.log('Saving content to:', contentPath);
+    // Ensure logo path has a leading slash
+    if (content.business.logo && !content.business.logo.startsWith('/')) {
+      content.business.logo = '/' + content.business.logo;
+    }
+    
     await fs.promises.writeFile(contentPath, JSON.stringify(content, null, 2));
-    console.log('Content saved successfully');
   } catch (error) {
-    console.error('Error saving content:', error);
     throw error;
   }
 }

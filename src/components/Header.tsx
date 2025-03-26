@@ -37,8 +37,6 @@ interface HeaderProps {
 }
 
 export default function Header({ business, theme, header }: HeaderProps) {
-  console.log('Header component rendered with props:', { business, theme, header });
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 

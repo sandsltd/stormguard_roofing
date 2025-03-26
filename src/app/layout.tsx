@@ -27,9 +27,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log('Root layout rendering');
   const content = await getContent();
-  console.log('Content loaded in root layout:', content);
 
   return (
     <html lang="en">

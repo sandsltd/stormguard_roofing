@@ -2,9 +2,9 @@ import type { Content } from './content';
 
 /**
  * Fetch content from the API
- * @returns {Promise<Content | null>} Content data
+ * @returns {Promise<Content>} Content data
  */
-export async function fetchContent(): Promise<Content | null> {
+export async function fetchContent(): Promise<Content> {
   try {
     const response = await fetch('/api/content');
     if (!response.ok) {
@@ -13,7 +13,7 @@ export async function fetchContent(): Promise<Content | null> {
     return response.json();
   } catch (error) {
     console.error('Error fetching content:', error);
-    return null;
+    throw error;
   }
 }
 
