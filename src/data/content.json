@@ -1,0 +1,139 @@
+{
+  "business": {
+    "name": "Saunders and Smalls",
+    "tagline": "Your child's safety is our number one priority",
+    "description": "Based in Yeovil, Somerset, we specialise in extended rear-facing car seats, Swedish Plus-tested models, and a curated range of car seat accessories for babies, toddlers, and children. Every product we stock is one we trust enough to use with our own children.",
+    "logo": "/images/logo.png",
+    "phone": "(123) 456-7890",
+    "email": "info@saundersandsmalls.com",
+    "address": "Yeovil, Somerset, UK"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Professional Roofing Services",
+      "subtitle": "Protect Your Home with Quality Roofing",
+      "buttonText": "Free Estimate",
+      "buttonUrl": "/contact",
+      "image": "/images/hero.jpg"
+    },
+    "features": [
+      {
+        "title": "Residential Roofing",
+        "description": "Quality roofing solutions for your home",
+        "icon": "home"
+      },
+      {
+        "title": "Commercial Roofing",
+        "description": "Reliable solutions for your business",
+        "icon": "building"
+      },
+      {
+        "title": "Roof Repairs",
+        "description": "Quick and effective repair services",
+        "icon": "tools"
+      }
+    ],
+    "testimonials": [
+      {
+        "name": "John Smith",
+        "position": "Homeowner",
+        "comment": "Excellent service and quality work. Highly recommended!",
+        "image": "/images/testimonial1.jpg",
+        "rating": 5
+      },
+      {
+        "name": "Sarah Johnson",
+        "position": "Business Owner",
+        "comment": "Professional team and great results. Very satisfied!",
+        "image": "/images/testimonial2.jpg",
+        "rating": 5
+      }
+    ]
+  },
+  "about": {
+    "title": "About Elite Roofing Solutions",
+    "content": "Elite Roofing Solutions has been providing top-quality roofing services since 2000. Our team of experienced professionals is dedicated to delivering exceptional results for all your roofing needs.\n\nWith a commitment to quality materials and workmanship, we ensure that every project meets our high standards and your expectations. We take pride in our attention to detail and customer satisfaction.",
+    "mission": "Our mission is to provide reliable, high-quality roofing solutions that protect our customers' homes and businesses for years to come.",
+    "vision": "To be the most trusted roofing company in the region, known for our integrity, quality, and exceptional customer service.",
+    "team": [
+      {
+        "name": "Michael Johnson",
+        "position": "Founder & CEO",
+        "bio": "With over 25 years in the industry, Michael leads our team with expertise and vision.",
+        "image": "/images/team1.jpg"
+      },
+      {
+        "name": "Robert Williams",
+        "position": "Lead Technician",
+        "bio": "Robert ensures that every project is completed to the highest standards of quality.",
+        "image": "/images/team2.jpg"
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "residential",
+      "title": "Residential Roofing",
+      "description": "Comprehensive roofing solutions for homeowners, including installation, repair, and maintenance.",
+      "image": "/images/residential.jpg",
+      "features": [
+        "Roof installation and replacement",
+        "Shingle, tile, and metal roofing",
+        "Leak detection and repair",
+        "Roof maintenance programs"
+      ]
+    },
+    {
+      "id": "commercial",
+      "title": "Commercial Roofing",
+      "description": "Professional roofing services for businesses and commercial properties.",
+      "image": "/images/commercial.jpg",
+      "features": [
+        "Flat roof installation and repair",
+        "TPO and EPDM roofing systems",
+        "Commercial roof maintenance",
+        "Energy-efficient solutions"
+      ]
+    },
+    {
+      "id": "repairs",
+      "title": "Roof Repairs",
+      "description": "Expert repair services to fix leaks, damage, and wear on all types of roofs.",
+      "image": "/images/repairs.jpg",
+      "features": [
+        "Emergency leak repairs",
+        "Storm damage assessment",
+        "Shingle and tile replacement",
+        "Flashing repair and installation"
+      ]
+    }
+  ],
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for a free estimate or to learn more about our services.",
+    "formFields": [
+      "name",
+      "email",
+      "phone",
+      "message",
+      "service"
+    ]
+  },
+  "socials": [
+    {
+      "platform": "Facebook",
+      "url": "https://facebook.com/eliteroofing",
+      "icon": "facebook"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://instagram.com/eliteroofing",
+      "icon": "instagram"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/eliteroofing",
+      "icon": "twitter"
+    }
+  ]
+} 

@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Roofing Business Template
+
+A modern, responsive website template for roofing businesses built with Next.js and Tailwind CSS. This template includes an admin panel for easy content management.
+
+## Features
+
+- Modern, responsive design optimized for all devices
+- 4 static pages: Home, About, Services, and Contact
+- Content management system with live preview
+- Easy to customize for different businesses
+- Built with Next.js and Tailwind CSS for excellent performance and maintainability
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18.17 or later
+- npm or yarn
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone this repository to create a new project for your client
+   ```bash
+   git clone https://github.com/yourusername/roofing-template.git client-name-website
+   cd client-name-website
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Learn More
+3. Run the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the template
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Customizing Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Visit the admin panel at [http://localhost:3000/admin](http://localhost:3000/admin)
+2. Update the business information, homepage content, services, and more
+3. Click "Save Changes" to update the content
+4. Use the "Preview Site" button to see how the changes look before publishing
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/src/app` - Next.js app directory containing page routes
+- `/src/components` - Reusable React components
+- `/src/data` - Content data (content.json)
+- `/src/utils` - Utility functions for content management
+- `/public` - Static assets like images and fonts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Content Management
+
+All website content is stored in `/src/data/content.json`. This file is updated through the admin panel using the utility functions in `/src/utils/content.ts`.
+
+The content is structured as follows:
+
+- `business` - Basic business information (name, logo, contact details)
+- `homepage` - Homepage content (hero section, features, testimonials)
+- `about` - About page content (company history, team members)
+- `services` - Services offered by the business
+- `contact` - Contact page content
+- `socials` - Social media links
+
+## Deployment
+
+### With Vercel (Recommended)
+
+1. Push your customized template to a GitHub repository
+2. Connect the repository to Vercel
+3. Deploy with a single click
+
+### Manual Deployment
+
+1. Build the application
+   ```bash
+   npm run build
+   # or
+   yarn build
+   ```
+
+2. Start the production server
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+## Future Enhancements
+
+- Add authentication to the admin panel
+- Implement image upload capabilities
+- Add a blog section with CMS functionality
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Credits
+
+Created by [Your Name]
+
+Icons from [Heroicons](https://heroicons.com)
