@@ -1,11 +1,58 @@
 {
   "business": {
-    "name": "Saunders Simmons Roofing",
+    "name": "Saunders & Simmons Roofing",
     "phone": "07432205615",
-    "email": "info@yourroofingcompany.com",
-    "address": "123 Main St, Anytown, USA 12345",
+    "email": "info@saunders-simmons.co.uk",
+    "address": "123 Main St, Dorchester, Dorset DT1 1AA",
     "logo": "/images/logo/saunders_simmons_ltd.png",
-    "tagline": "Dorsets Premier Roofing Company"
+    "tagline": "Dorset's Premier Roofing Company",
+    "establishedYear": "2005",
+    "description": "At Saunders & Simmons Roofing, we have been serving Dorset and the surrounding areas since 2005. Our commitment to quality craftsmanship, attention to detail, and exceptional customer service has made us the trusted choice for all roofing needs in the region.",
+    "mission": "Our mission at Saunders & Simmons Roofing is to provide superior roofing solutions with uncompromising quality, integrity, and professionalism, ensuring that every client receives personalized attention and complete satisfaction.",
+    "hero": "/images/roofers/roofer_fixing_tile_on_roof.png",
+    "about": {
+      "image": "/images/roofers/roofer_team.jpg"
+    },
+    "coreValues": [
+      {
+        "title": "Integrity",
+        "description": "We conduct our business with honesty, transparency, and ethical standards that earn your trust."
+      },
+      {
+        "title": "Excellence",
+        "description": "We strive for excellence in every aspect of our work, from customer service to the quality of our products."
+      },
+      {
+        "title": "Sustainability",
+        "description": "We are committed to sustainable practices that minimize our environmental impact and benefit our community."
+      }
+    ],
+    "team": [
+      {
+        "name": "James Saunders",
+        "position": "Co-Founder & Managing Director",
+        "bio": "With over 20 years of experience in the roofing industry, James leads our team with expertise and dedication to quality craftsmanship.",
+        "image": "/images/placeholders/james.jpg"
+      },
+      {
+        "name": "Robert Simmons",
+        "position": "Co-Founder & Technical Director",
+        "bio": "Robert's technical knowledge and attention to detail ensure that every project meets the highest standards of quality and performance.",
+        "image": "/images/placeholders/robert.jpg"
+      },
+      {
+        "name": "Emma Thompson",
+        "position": "Operations Manager",
+        "bio": "Emma oversees day-to-day operations, ensuring that all projects are completed on time, within budget, and to our exacting standards.",
+        "image": "/images/placeholders/emma.jpg"
+      },
+      {
+        "name": "David Wilson",
+        "position": "Lead Roofing Specialist",
+        "bio": "David brings over 15 years of hands-on experience to every project, specializing in complex installations and challenging repairs.",
+        "image": "/images/placeholders/david.jpg"
+      }
+    ]
   },
   "homepage": {
     "hero": {
@@ -215,12 +262,6 @@
         "role": "Project Manager",
         "bio": "Expert in commercial roofing",
         "image": "/images/team/jane.jpg"
-      },
-      {
-        "name": "Mike Johnson",
-        "role": "Lead Installer",
-        "bio": "Specialized in residential roofing",
-        "image": "/images/team/mike.jpg"
       }
     ],
     "values": [
@@ -351,7 +392,7 @@
   "theme": {
     "header": {
       "backgroundColor": "#0433ff",
-      "textColor": "#000000",
+      "textColor": "#ffffff",
       "linkColor": "#000000",
       "iconColor": "#ff2600",
       "linkHoverColor": "#3f37ff"

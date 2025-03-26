@@ -286,6 +286,57 @@ export default function Admin() {
                       />
                     </div>
                     <div>
+                      <label className="block text-sm font-medium text-gray-700">Established Year</label>
+                      <input
+                        type="text"
+                        value={content.business.establishedYear || ""}
+                        onChange={(e) => handleContentChange('business.establishedYear', e.target.value)}
+                        placeholder="e.g., 2005"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Business Description</label>
+                      <textarea
+                        value={content.business.description || ""}
+                        onChange={(e) => handleContentChange('business.description', e.target.value)}
+                        placeholder="A comprehensive description of your business"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        rows={4}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Mission Statement</label>
+                      <textarea
+                        value={content.business.mission || ""}
+                        onChange={(e) => handleContentChange('business.mission', e.target.value)}
+                        placeholder="Your company's mission statement"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        rows={4}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Hero Image</label>
+                      <ImagePicker
+                        value={content.business.hero || ""}
+                        onChange={(value) => handleContentChange('business.hero', value)}
+                        category="hero"
+                      />
+                      <p className="mt-1 text-xs text-gray-500">Main hero image used on the About page and elsewhere.</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">About Image</label>
+                      <ImagePicker
+                        value={content.business.about?.image || ""}
+                        onChange={(value) => {
+                          const aboutContent = content.business.about || {};
+                          handleContentChange('business.about', { ...aboutContent, image: value });
+                        }}
+                        category="about"
+                      />
+                      <p className="mt-1 text-xs text-gray-500">Image displayed in the About section.</p>
+                    </div>
+                    <div>
                       <label className="block text-sm font-medium text-gray-700">Phone</label>
                       <input
                         type="text"
@@ -320,6 +371,84 @@ export default function Admin() {
                         onChange={(e) => handleContentChange('business.logo', e.target.value)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
+                    </div>
+                    
+                    {/* Core Values Section */}
+                    <div className="pt-6 mt-6 border-t border-gray-200">
+                      <h3 className="text-lg font-medium text-gray-900 mb-4">Core Values</h3>
+                      <p className="text-sm text-gray-500 mb-4">
+                        Edit your core values that appear on the About page.
+                      </p>
+                      
+                      <div className="space-y-4">
+                        {(content.business.coreValues || [
+                          { title: "Integrity", description: "We conduct our business with honesty, transparency, and ethical standards that earn your trust." },
+                          { title: "Excellence", description: "We strive for excellence in every aspect of our work, from customer service to the quality of our products." },
+                          { title: "Sustainability", description: "We are committed to sustainable practices that minimize our environmental impact and benefit our community." }
+                        ]).map((value, index) => (
+                          <div key={index} className="p-4 bg-blue-50 rounded-lg border border-blue-100">
+                            <div className="flex justify-between mb-2">
+                              <h4 className="font-medium text-blue-800">{value.title || `Value ${index + 1}`}</h4>
+                              {(content.business.coreValues?.length || 0) > 1 && (
+                                <button
+                                  onClick={() => {
+                                    const coreValues = [...(content.business.coreValues || [])];
+                                    coreValues.splice(index, 1);
+                                    handleContentChange('business.coreValues', coreValues);
+                                  }}
+                                  className="text-red-600 hover:text-red-800"
+                                  title="Remove this value"
+                                >
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                  </svg>
+                                </button>
+                              )}
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Title</label>
+                                <input
+                                  type="text"
+                                  value={value.title || ''}
+                                  onChange={(e) => {
+                                    const coreValues = [...(content.business.coreValues || [])];
+                                    coreValues[index] = { ...coreValues[index], title: e.target.value };
+                                    handleContentChange('business.coreValues', coreValues);
+                                  }}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                              
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Description</label>
+                                <textarea
+                                  value={value.description || ''}
+                                  onChange={(e) => {
+                                    const coreValues = [...(content.business.coreValues || [])];
+                                    coreValues[index] = { ...coreValues[index], description: e.target.value };
+                                    handleContentChange('business.coreValues', coreValues);
+                                  }}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                        
+                        <button
+                          onClick={() => {
+                            const coreValues = [...(content.business.coreValues || [])];
+                            coreValues.push({ title: "New Value", description: "Description of this value" });
+                            handleContentChange('business.coreValues', coreValues);
+                          }}
+                          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mt-2"
+                        >
+                          Add Value
+                        </button>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -1938,6 +2067,258 @@ export default function Admin() {
                           </div>
                         </div>
                       )}
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'about' && (
+                  <div className="space-y-8">
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">About Page Content</h3>
+                      <p className="text-blue-600 mb-6">Edit the content of your About page.</p>
+                      
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Page Title</label>
+                          <input
+                            type="text"
+                            value={content.about.title}
+                            onChange={(e) => handleContentChange('about.title', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="e.g., About Our Roofing Company"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Page Subtitle</label>
+                          <input
+                            type="text"
+                            value={content.about.subtitle}
+                            onChange={(e) => handleContentChange('about.subtitle', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="e.g., Your Trusted Local Roofing Specialists Since 2005"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Hero Image</label>
+                          <ImagePicker
+                            value={content.about.heroImage}
+                            onChange={(value) => handleContentChange('about.heroImage', value)}
+                            category="about-hero"
+                          />
+                          <p className="mt-1 text-xs text-gray-500">Select an image to display at the top of your About page.</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Main Content</h3>
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Main Content Title</label>
+                          <input
+                            type="text"
+                            value={content.about.mainContent?.title || ''}
+                            onChange={(e) => handleNestedChange('about.mainContent.title', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="e.g., Our Story"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Main Description</label>
+                          <textarea
+                            value={content.about.mainContent?.description || ''}
+                            onChange={(e) => handleNestedChange('about.mainContent.description', e.target.value)}
+                            rows={4}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="General description of your company"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">History</label>
+                          <textarea
+                            value={content.about.mainContent?.history || ''}
+                            onChange={(e) => handleNestedChange('about.mainContent.history', e.target.value)}
+                            rows={4}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="The history of your company"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Mission Statement</label>
+                          <textarea
+                            value={content.about.mainContent?.mission || ''}
+                            onChange={(e) => handleNestedChange('about.mainContent.mission', e.target.value)}
+                            rows={4}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Your company's mission statement"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Our Team</h3>
+                      <p className="text-blue-600 mb-6">Add and edit team members that appear on your About page.</p>
+                      
+                      {(content.about.team || []).map((member, index) => (
+                        <div key={index} className="mb-6 p-4 border rounded bg-white">
+                          <div className="flex justify-between mb-4">
+                            <h4 className="font-semibold text-lg">{member.name || `Team Member ${index + 1}`}</h4>
+                            <button
+                              onClick={() => handleArrayItemChange('about.team', index, null)}
+                              className="text-red-600 hover:text-red-800"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                              <input
+                                type="text"
+                                value={member.name || ''}
+                                onChange={(e) => handleArrayItemChange('about.team', index, { ...member, name: e.target.value })}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="Full name"
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Position</label>
+                              <input
+                                type="text"
+                                value={member.position || member.role || ''}
+                                onChange={(e) => handleArrayItemChange('about.team', index, { ...member, position: e.target.value })}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="e.g., Managing Director"
+                              />
+                            </div>
+                            
+                            <div className="md:col-span-2">
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                              <textarea
+                                value={member.bio || ''}
+                                onChange={(e) => handleArrayItemChange('about.team', index, { ...member, bio: e.target.value })}
+                                rows={3}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="Short biography"
+                              />
+                            </div>
+                            
+                            <div className="md:col-span-2">
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Photo</label>
+                              <ImagePicker
+                                value={member.image || ''}
+                                onChange={(value) => handleArrayItemChange('about.team', index, { ...member, image: value })}
+                                category="team"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      
+                      <button
+                        onClick={() => {
+                          const newMember = {
+                            name: 'New Team Member',
+                            position: 'Job Title',
+                            bio: 'Short biography about this team member.',
+                            image: '/images/placeholders/default.jpg'
+                          };
+                          
+                          // Create a deep copy of the current content
+                          const updatedContent = JSON.parse(JSON.stringify(content));
+                          
+                          // Ensure the team array exists
+                          if (!updatedContent.about.team) {
+                            updatedContent.about.team = [];
+                          }
+                          
+                          // Add the new team member
+                          updatedContent.about.team.push(newMember);
+                          
+                          // Update the state with the new content
+                          setContent(updatedContent);
+                        }}
+                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                      >
+                        Add Team Member
+                      </button>
+                    </div>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Company Values</h3>
+                      <p className="text-blue-600 mb-6">Add your company's core values.</p>
+                      
+                      {(content.about.values || []).map((value, index) => (
+                        <div key={index} className="mb-4 p-4 border rounded bg-white">
+                          <div className="flex justify-between mb-2">
+                            <h4 className="font-semibold">{value.title || `Value ${index + 1}`}</h4>
+                            <button
+                              onClick={() => handleArrayItemChange('about.values', index, null)}
+                              className="text-red-600 hover:text-red-800"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                          
+                          <div className="space-y-3">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                              <input
+                                type="text"
+                                value={value.title || ''}
+                                onChange={(e) => handleArrayItemChange('about.values', index, { ...value, title: e.target.value })}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="e.g., Quality, Integrity, etc."
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                              <textarea
+                                value={value.description || ''}
+                                onChange={(e) => handleArrayItemChange('about.values', index, { ...value, description: e.target.value })}
+                                rows={3}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="Describe this value and why it's important to your company"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      
+                      <button
+                        onClick={() => {
+                          const newValue = {
+                            title: 'New Value',
+                            description: 'Description of this value and why it matters to our company.'
+                          };
+                          
+                          // Create a deep copy of the current content
+                          const updatedContent = JSON.parse(JSON.stringify(content));
+                          
+                          // Ensure the values array exists
+                          if (!updatedContent.about.values) {
+                            updatedContent.about.values = [];
+                          }
+                          
+                          // Add the new value
+                          updatedContent.about.values.push(newValue);
+                          
+                          // Update the state with the new content
+                          setContent(updatedContent);
+                        }}
+                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                      >
+                        Add Value
+                      </button>
                     </div>
                   </div>
                 )}
