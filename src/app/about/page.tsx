@@ -5,6 +5,7 @@ import { getContent } from '@/utils/content';
 import AboutGalleryWrapper from '@/components/about/AboutGalleryWrapper';
 import { ExtendedBusinessContent, ValueItem } from '@/components/about/BusinessTypes';
 import ContactSection from '@/components/home/ContactSection';
+import AboutHeroAnimations from '@/components/about/AboutHeroAnimations';
 
 export const metadata = {
   title: 'About Us',
@@ -18,34 +19,83 @@ export default async function AboutPage() {
   return (
     <main className="relative min-h-screen">
       {/* Hero Section with Background Image */}
-      <div className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
+      <div className="relative h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden pt-56 md:pt-64 pb-36">
         <div className="absolute inset-0">
           <Image 
             src={business.hero || "/images/hero-placeholder.jpg"} 
             alt={`${business.name} Team`}
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
+            quality={90}
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          {/* Gradient Overlay - Stronger gradient for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/70"></div>
+          
+          {/* Pattern Overlay with different opacity */}
+          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10"></div>
+          
+          {/* Different animated highlights positioning */}
+          <div className="absolute top-[20%] right-[10%] w-1/2 h-1/2 rounded-full blur-3xl animate-pulse-slow" 
+            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}15` }}></div>
+          <div className="absolute -bottom-[10%] left-[5%] w-2/3 h-2/3 rounded-full blur-3xl animate-pulse-slow animation-delay-2000" 
+            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}10` }}></div>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center text-center">
-          <div className="max-w-4xl px-4">
-            <div className="inline-block bg-white bg-opacity-10 backdrop-blur-sm px-4 py-1 rounded-full text-white text-sm font-medium mb-4">
-              Established {business.establishedYear || '2000'}
+        
+        {/* Content Container - Clean layout with no background container */}
+        <div className="relative z-10 h-full flex items-center justify-center px-6 md:px-12">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="max-w-3xl mx-auto text-center">
+              {/* Badge - Clean style with border accent */}
+              <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 animate-fade-in-up border-b-2"
+                  style={{ borderColor: content.theme?.primaryColor || '#3b82f6' }}>
+                  <span className="text-white font-medium text-sm tracking-wider">ESTABLISHED {business.establishedYear || '2000'}</span>
+              </div>
+              
+              {/* Main Heading - No background container */}
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+                <span className="text-white">About</span>
+                <span className="block mt-2" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>{business.name}</span>
+              </h1>
+              
+              {/* Subtitle with divider line */}
+              <div className="mb-10 animate-fade-in-up animation-delay-600">
+                <p className="text-xl md:text-2xl text-white leading-relaxed mx-auto" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
+                  {business.tagline || 'Your trusted local business dedicated to excellent service and exceptional quality'}
+                </p>
+                <div className="w-20 h-1 mx-auto mt-6" style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}></div>
+              </div>
+              
+              {/* CTA Buttons - Clean styling */}
+              <div className="flex flex-wrap gap-4 justify-center animate-fade-in-up animation-delay-900">
+                <a
+                  href="#contact"
+                  className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-md text-lg font-medium transition-all duration-300"
+                >
+                  <span className="flex items-center">
+                    Get a Quote
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </a>
+                <a
+                  href="#history"
+                  className="text-white border-2 border-white hover:bg-white/10 px-8 py-3 rounded-md text-lg font-medium transition-all duration-300"
+                >
+                  Our History
+                </a>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              About {business.name}
-            </h1>
-            <p className="text-lg md:text-xl text-white max-w-3xl mx-auto">
-              {business.tagline || 'Your trusted local business dedicated to excellent service'}
-            </p>
           </div>
         </div>
       </div>
 
+      {/* Animation styles are moved to a client component */}
+      <AboutHeroAnimations />
+
       {/* Main Content Section */}
-      <section className="py-16 bg-white">
+      <section id="history" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -175,9 +225,11 @@ export default async function AboutPage() {
                   ))}
                 </div>
                 <div className="relative mb-8 flex-grow">
-                  <FaQuoteLeft className="absolute -top-4 -left-2 text-4xl opacity-10" style={{ color: content.theme?.primaryColor || '#1e3a8a' }} />
-                  <blockquote className="text-lg text-gray-700 relative z-10">
-                    "{testimonial.quote}"
+                  <div className="text-6xl font-serif text-gray-100 absolute top-0 left-0 leading-none z-0" aria-hidden="true">
+                    "
+                  </div>
+                  <blockquote className="text-lg text-gray-700 relative z-10 pt-3 pl-2">
+                    {testimonial.quote}
                   </blockquote>
                 </div>
                 <div className="mt-auto pt-6 border-t border-gray-100 flex items-center">
@@ -199,7 +251,7 @@ export default async function AboutPage() {
       <AboutGalleryWrapper content={content} />
       
       {/* Contact Form Section */}
-      <section className="py-16 bg-white relative overflow-hidden">
+      <section id="contact" className="py-16 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
@@ -216,50 +268,6 @@ export default async function AboutPage() {
           
           <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
             <ContactSection content={content as any} />
-          </div>
-          
-          {/* Contact info cards below the form */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
-              <div className="text-white p-3 mr-4"
-                   style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Our Address</h3>
-                <p className="text-gray-600">{business.address}</p>
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
-              <div className="text-white p-3 mr-4"
-                   style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" />
-                  <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
-                <p className="text-gray-600">{business.businessHours || "Mon-Fri: 8am-6pm"}</p>
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
-              <div className="text-white p-3 mr-4"
-                   style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Contact</h3>
-                <p className="text-gray-600">{business.phone}</p>
-                <p className="text-gray-600">{business.email}</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

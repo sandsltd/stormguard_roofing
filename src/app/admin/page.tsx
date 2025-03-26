@@ -491,37 +491,37 @@ export default function Admin() {
                       )}
                       
                       {content.homepage.premiumHero && (
-                        <div className="space-y-6">
-                          <div>
+                  <div className="space-y-6">
+                    <div>
                             <label className="block text-sm font-medium text-gray-700">Background Image Path</label>
-                            <input
-                              type="text"
+                      <input
+                        type="text"
                               value={content.homepage.premiumHero.backgroundImage}
                               onChange={(e) => handleContentChange('homepage.premiumHero.backgroundImage', e.target.value)}
-                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
                           
                           <div className="bg-gray-50 p-4 rounded-lg">
                             <h4 className="font-medium text-gray-700 mb-4">Heading (Three Lines)</h4>
                             <div className="space-y-4">
-                              <div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700">Line 1</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.premiumHero.title.line1}
                                   onChange={(e) => handleContentChange('homepage.premiumHero.title.line1', e.target.value)}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                              </div>
-                              <div>
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700">Line 2 (Gradient Effect)</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.premiumHero.title.line2}
                                   onChange={(e) => handleContentChange('homepage.premiumHero.title.line2', e.target.value)}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
                               </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700">Line 3</label>
@@ -533,9 +533,9 @@ export default function Admin() {
                                 />
                               </div>
                             </div>
-                          </div>
-                          
-                          <div>
+                    </div>
+
+                    <div>
                             <label className="block text-sm font-medium text-gray-700">Subtitle</label>
                             <textarea
                               value={content.homepage.premiumHero.subtitle}
@@ -551,8 +551,8 @@ export default function Admin() {
                               <div className="space-y-4">
                                 <div>
                                   <label className="block text-sm font-medium text-gray-700">Button Text</label>
-                                  <input
-                                    type="text"
+                            <input
+                              type="text"
                                     value={content.homepage.premiumHero.ctaPrimary.text}
                                     onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.text', e.target.value)}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -565,15 +565,15 @@ export default function Admin() {
                                     value={content.homepage.premiumHero.ctaPrimary.link}
                                     onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.link', e.target.value)}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            
+                            />
+                          </div>
+                        </div>
+                    </div>
+
                             <div className="bg-gray-50 p-4 rounded-lg">
                               <h4 className="font-medium text-gray-700 mb-4">Secondary Button (Transparent)</h4>
                               <div className="space-y-4">
-                                <div>
+                    <div>
                                   <label className="block text-sm font-medium text-gray-700">Button Text</label>
                                   <input
                                     type="text"
@@ -581,11 +581,11 @@ export default function Admin() {
                                     onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.text', e.target.value)}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   />
-                                </div>
+                          </div>
                                 <div>
                                   <label className="block text-sm font-medium text-gray-700">Button Link</label>
-                                  <input
-                                    type="text"
+                            <input
+                              type="text"
                                     value={content.homepage.premiumHero.ctaSecondary.link}
                                     onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.link', e.target.value)}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -600,16 +600,16 @@ export default function Admin() {
                             <div className="space-y-2">
                               {content.homepage.premiumHero.featureBadges.map((badge, index) => (
                                 <div key={index} className="flex items-center space-x-2">
-                                  <input
-                                    type="text"
+                            <input
+                              type="text"
                                     value={badge}
                                     onChange={(e) => {
                                       const newBadges = [...content.homepage.premiumHero.featureBadges];
                                       newBadges[index] = e.target.value;
                                       handleContentChange('homepage.premiumHero.featureBadges', newBadges);
                                     }}
-                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  />
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
                                   <button
                                     onClick={() => {
                                       const newBadges = [...content.homepage.premiumHero.featureBadges];
@@ -622,17 +622,17 @@ export default function Admin() {
                                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                                     </svg>
                                   </button>
-                                </div>
-                              ))}
-                              <button
+                        </div>
+                      ))}
+                      <button
                                 onClick={() => {
                                   const newBadges = [...content.homepage.premiumHero.featureBadges, ''];
                                   handleContentChange('homepage.premiumHero.featureBadges', newBadges);
                                 }}
-                                className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                              >
+                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                      >
                                 Add Feature Badge
-                              </button>
+                      </button>
                             </div>
                           </div>
                         </div>
@@ -645,7 +645,7 @@ export default function Admin() {
                       
                       {/* Initialize the features section object if it doesn't exist */}
                       {!content.homepage.featuresSection && (
-                        <button
+                            <button
                           onClick={() => handleContentChange('homepage.featuresSection', {
                             title: "Why Choose Us",
                             description: "We combine expertise, quality materials, and exceptional service to deliver outstanding results for every project.",
@@ -655,7 +655,7 @@ export default function Admin() {
                           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                         >
                           Initialize Features Section
-                        </button>
+                            </button>
                       )}
                       
                       {content.homepage.featuresSection && (
@@ -664,8 +664,8 @@ export default function Admin() {
                             <div className="space-y-4">
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
-                                <input
-                                  type="text"
+                            <input
+                              type="text"
                                   value={content.homepage.featuresSection.title}
                                   onChange={(e) => handleContentChange('homepage.featuresSection.title', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -674,7 +674,7 @@ export default function Admin() {
                               </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
-                                <textarea
+                            <textarea
                                   value={content.homepage.featuresSection.description}
                                   onChange={(e) => handleContentChange('homepage.featuresSection.description', e.target.value)}
                                   rows={3}
@@ -684,14 +684,14 @@ export default function Admin() {
                               </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">CTA Button Text</label>
-                                <input
+                            <input
                                   type="text"
                                   value={content.homepage.featuresSection.ctaText}
                                   onChange={(e) => handleContentChange('homepage.featuresSection.ctaText', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="e.g., View All Our Services"
-                                />
-                              </div>
+                            />
+                          </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">CTA Button Link</label>
                                 <input
@@ -701,7 +701,7 @@ export default function Admin() {
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="e.g., /services"
                                 />
-                              </div>
+                        </div>
                             </div>
                           </div>
                         </div>
@@ -714,7 +714,7 @@ export default function Admin() {
                       
                       {/* Initialize the introduction object if it doesn't exist */}
                       {!content.homepage.introduction && (
-                        <button
+                      <button
                           onClick={() => handleContentChange('homepage.introduction', {
                             title: "Dorset's Most Trusted",
                             subtitle: "Roofing Specialists",
@@ -727,35 +727,35 @@ export default function Admin() {
                           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                         >
                           Initialize Introduction Section
-                        </button>
-                      )}
-                      
+                      </button>
+                )}
+
                       {content.homepage.introduction && (
-                        <div className="space-y-6">
+                  <div className="space-y-6">
                           <div className="bg-white p-4 rounded-lg shadow-sm">
                             <h4 className="font-medium text-gray-700 mb-4">Main Title</h4>
                             <div className="space-y-4">
-                              <div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Main Title</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.introduction.title}
                                   onChange={(e) => handleContentChange('homepage.introduction.title', e.target.value)}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="e.g., Dorset's Most Trusted"
-                                />
-                              </div>
-                              <div>
+                      />
+                    </div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle (Gradient Effect)</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.introduction.subtitle}
                                   onChange={(e) => handleContentChange('homepage.introduction.subtitle', e.target.value)}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="e.g., Roofing Specialists"
-                                />
-                              </div>
-                              <div>
+                      />
+                    </div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                                 <textarea
                                   value={content.homepage.introduction.description}
@@ -767,24 +767,24 @@ export default function Admin() {
                               </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Introduction Image Path</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.introduction.image}
                                   onChange={(e) => handleContentChange('homepage.introduction.image', e.target.value)}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="/images/your-team-image.jpg"
-                                />
+                      />
                               </div>
                             </div>
-                          </div>
-                          
+                    </div>
+
                           <div className="bg-white p-4 rounded-lg shadow-sm">
                             <h4 className="font-medium text-gray-700 mb-4">Statistics</h4>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                              <div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Year Founded</label>
-                                <input
-                                  type="text"
+                        <input
+                          type="text"
                                   value={content.homepage.introduction.yearFounded}
                                   onChange={(e) => handleContentChange('homepage.introduction.yearFounded', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -850,14 +850,14 @@ export default function Admin() {
                               </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
-                                <textarea
+                        <textarea
                                   value={content.homepage.servicesSection.description}
                                   onChange={(e) => handleContentChange('homepage.servicesSection.description', e.target.value)}
-                                  rows={3}
+                          rows={3}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Description text that appears below the section title"
-                                />
-                              </div>
+                        />
+                      </div>
                             </div>
                           </div>
                         </div>
@@ -907,13 +907,13 @@ export default function Admin() {
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mt-2 mb-1">Learn More Text</label>
-                              <input
-                                type="text"
+                            <input
+                              type="text"
                                 value={feature.learnMoreText || 'Learn more'}
                                 onChange={(e) => handleArrayItemChange('homepage.features', index, { ...feature, learnMoreText: e.target.value })}
                                 placeholder="e.g., Learn more"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mt-2 mb-1">Learn More Link</label>
@@ -952,21 +952,21 @@ export default function Admin() {
                           <div className="space-y-3">
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                              <input
-                                type="text"
-                                value={service.title}
-                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, title: e.target.value })}
-                                placeholder="Title"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
+                            <input
+                              type="text"
+                              value={service.title}
+                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, title: e.target.value })}
+                              placeholder="Title"
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                              <textarea
-                                value={service.description}
-                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, description: e.target.value })}
-                                placeholder="Description"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            <textarea
+                              value={service.description}
+                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, description: e.target.value })}
+                              placeholder="Description"
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 rows={3}
                               />
                             </div>
@@ -1023,13 +1023,13 @@ export default function Admin() {
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Button Text</label>
-                              <input
-                                type="text"
+                            <input
+                              type="text"
                                 value={service.buttonText || "Get a Free Quote"}
                                 onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, buttonText: e.target.value })}
                                 placeholder="e.g., Get a Free Quote"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Button Link</label>
@@ -1072,65 +1072,65 @@ export default function Admin() {
                       {content.homepage.servingAreasSection && (
                         <div className="space-y-6">
                           <div className="bg-white p-4 rounded-lg shadow-sm">
-                            <div className="space-y-4">
-                              <div>
+                    <div className="space-y-4">
+                      <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
-                                <input
-                                  type="text"
+                        <input
+                          type="text"
                                   value={content.homepage.servingAreasSection.title}
                                   onChange={(e) => handleContentChange('homepage.servingAreasSection.title', e.target.value)}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="e.g., Serving Crewe & Surrounding Areas"
-                                />
-                              </div>
-                              <div>
+                        />
+                      </div>
+                      <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
                                 <textarea
                                   value={content.homepage.servingAreasSection.description}
                                   onChange={(e) => handleContentChange('homepage.servingAreasSection.description', e.target.value)}
                                   rows={3}
-                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Description text that appears below the section title"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          
+                        />
+                      </div>
+                    </div>
+                      </div>
+                      
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">Locations/Areas We Serve</label>
                             {(content.homepage.servingAreas || []).map((area, index) => (
-                              <div key={index} className="mb-4 p-4 border rounded">
-                                <div className="flex justify-between mb-2">
+                        <div key={index} className="mb-4 p-4 border rounded">
+                          <div className="flex justify-between mb-2">
                                   <h4 className="font-medium">Area {index + 1}</h4>
-                                  <button
+                              <button
                                     onClick={() => handleArrayItemChange('homepage.servingAreas', index, null)}
-                                    className="text-red-600 hover:text-red-800"
-                                  >
-                                    Remove
-                                  </button>
-                                </div>
+                                className="text-red-600 hover:text-red-800"
+                              >
+                                Remove
+                              </button>
+                            </div>
                                 <div className="space-y-3">
-                                  <div>
+                              <div>
                                     <label className="block text-sm font-medium text-gray-700">Area Name</label>
-                                    <input
-                                      type="text"
+                                <input
+                                  type="text"
                                       value={area.name || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, name: e.target.value })}
                                       placeholder="e.g., Crewe, Nantwich, etc."
-                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    />
-                                  </div>
-                                  <div>
-                                    <label className="block text-sm font-medium text-gray-700">Description</label>
-                                    <textarea
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Description</label>
+                                <textarea
                                       value={area.description || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, description: e.target.value })}
                                       placeholder="Description of services in this area"
-                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                      rows={3}
-                                    />
-                                  </div>
-                                  <div>
+                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  rows={3}
+                                />
+                              </div>
+                              <div>
                                     <label className="block text-sm font-medium text-gray-700">Area Image</label>
                                     <AreaImagePicker
                                       value={area.image || ''}
@@ -1140,8 +1140,8 @@ export default function Admin() {
                                     <p className="mt-1 text-xs text-gray-500">
                                       Click the image to select from available options or enter a custom URL
                                     </p>
-                                  </div>
-                                  <div>
+                              </div>
+                              <div>
                                     <label className="block text-sm font-medium text-gray-700">Tags (comma separated)</label>
                                     <input
                                       type="text"
@@ -1174,11 +1174,11 @@ export default function Admin() {
                                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                     />
                                   </div>
-                                </div>
-                              </div>
-                            ))}
-                            <button
-                              onClick={() => {
+                          </div>
+                                  </div>
+                                ))}
+                                <button
+                                  onClick={() => {
                                 const newArea = {
                                   name: 'New Area',
                                   description: 'Description of services in this area',
@@ -1193,10 +1193,10 @@ export default function Admin() {
                               className="mt-2 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
                             >
                               Add Area
-                            </button>
-                          </div>
-                        </div>
-                      )}
+                                </button>
+                              </div>
+                            </div>
+                )}
                     </div>
 
                     <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-8">
@@ -1217,33 +1217,33 @@ export default function Admin() {
                       )}
                       
                       {content.homepage.faqSection && (
-                        <div className="space-y-6">
+                  <div className="space-y-6">
                           <div className="bg-white p-4 rounded-lg shadow-sm">
-                            <div className="space-y-4">
-                              <div>
+                    <div className="space-y-4">
+                      <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
-                                <input
-                                  type="text"
+                        <input
+                          type="text"
                                   value={content.homepage.faqSection.title}
                                   onChange={(e) => handleContentChange('homepage.faqSection.title', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                   placeholder="e.g., Frequently Asked Questions"
-                                />
-                              </div>
-                              <div>
+                        />
+                      </div>
+                      <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
-                                <textarea
+                        <textarea
                                   value={content.homepage.faqSection.description}
                                   onChange={(e) => handleContentChange('homepage.faqSection.description', e.target.value)}
                                   rows={3}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                   placeholder="Description text that appears below the section title"
-                                />
-                              </div>
+                        />
+                      </div>
                             </div>
                           </div>
                           
-                          <div>
+                      <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">FAQ Items</label>
                             {(content.homepage.faqs || []).map((faq, index) => (
                               <div key={index} className="mb-4 p-4 border rounded">
@@ -1259,15 +1259,15 @@ export default function Admin() {
                                 <div className="space-y-3">
                                   <div>
                                     <label className="block text-sm font-medium text-gray-700">Question</label>
-                                    <input
-                                      type="text"
+                        <input
+                          type="text"
                                       value={faq.question || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.faqs', index, { ...faq, question: e.target.value })}
                                       placeholder="e.g., How long does a typical roof installation take?"
                                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
-                                    />
-                                  </div>
-                                  <div>
+                        />
+                      </div>
+                      <div>
                                     <label className="block text-sm font-medium text-gray-700">Answer</label>
                                     <textarea
                                       value={faq.answer || ''}
@@ -1275,8 +1275,8 @@ export default function Admin() {
                                       placeholder="Detailed answer to the question"
                                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                       rows={5}
-                                    />
-                                  </div>
+                        />
+                      </div>
                                 </div>
                               </div>
                             ))}
@@ -1293,9 +1293,9 @@ export default function Admin() {
                             >
                               Add FAQ
                             </button>
-                          </div>
-                        </div>
-                      )}
+                    </div>
+                  </div>
+                )}
                     </div>
 
                     <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-8">
@@ -1339,13 +1339,13 @@ export default function Admin() {
                       )}
                       
                       {content.homepage.gallerySection && (
-                        <div className="space-y-6">
+                  <div className="space-y-6">
                           <div className="bg-white p-4 rounded-lg shadow-sm">
-                            <div className="space-y-4">
-                              <div>
+                      <div className="space-y-4">
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
-                                <input
-                                  type="text"
+                        <input
+                          type="text"
                                   value={content.homepage.gallerySection.title}
                                   onChange={(e) => handleContentChange('homepage.gallerySection.title', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
@@ -1354,14 +1354,14 @@ export default function Admin() {
                               </div>
                               <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
-                                <textarea
+                      <textarea
                                   value={content.homepage.gallerySection.description}
                                   onChange={(e) => handleContentChange('homepage.gallerySection.description', e.target.value)}
-                                  rows={3}
+                        rows={3}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                                   placeholder="Description text that appears below the section title"
-                                />
-                              </div>
+                      />
+                    </div>
                             </div>
                           </div>
                         </div>
@@ -1382,21 +1382,21 @@ export default function Admin() {
                             </button>
                           </div>
                           <div className="space-y-2">
-                            <input
-                              type="text"
+                      <input
+                        type="text"
                               value={testimonial.quote}
                               onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, quote: e.target.value })}
                               placeholder="Testimonial text"
                               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                             />
-                            <input
+                      <input
                               type="text"
                               value={testimonial.author}
                               onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, author: e.target.value })}
                               placeholder="Author"
                               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
+                      />
+                    </div>
                         </div>
                       ))}
                       <button
@@ -1429,66 +1429,66 @@ export default function Admin() {
                         <div className="space-y-6">
                           <div className="bg-white p-4 rounded-lg shadow-sm">
                             <div className="space-y-4">
-                              <div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Badge Text</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.serviceAreasSection.subtitle}
                                   onChange={(e) => handleContentChange('homepage.serviceAreasSection.subtitle', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                                   placeholder="e.g., Roofers in Crewe & Cheshire"
-                                />
-                              </div>
-                              <div>
+                      />
+                    </div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
-                                <input
-                                  type="text"
+                      <input
+                        type="text"
                                   value={content.homepage.serviceAreasSection.title}
                                   onChange={(e) => handleContentChange('homepage.serviceAreasSection.title', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                                   placeholder="e.g., Crewe Roofers Service Areas"
-                                />
-                              </div>
-                              <div>
+                      />
+                    </div>
+                    <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
-                                <textarea
+                      <textarea
                                   value={content.homepage.serviceAreasSection.description}
                                   onChange={(e) => handleContentChange('homepage.serviceAreasSection.description', e.target.value)}
-                                  rows={3}
+                        rows={3}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                                   placeholder="Description text that appears below the section title"
-                                />
-                              </div>
-                            </div>
+                      />
+                    </div>
+                  </div>
                           </div>
-                          
-                          <div>
+
+                    <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">Areas We Service</label>
                             {(content.homepage.serviceAreas || []).map((area, index) => (
-                              <div key={index} className="mb-4 p-4 border rounded">
-                                <div className="flex justify-between mb-2">
+                        <div key={index} className="mb-4 p-4 border rounded">
+                          <div className="flex justify-between mb-2">
                                   <h4 className="font-medium">Area {index + 1}</h4>
-                                  <button
+                            <button
                                     onClick={() => handleArrayItemChange('homepage.serviceAreas', index, null)}
-                                    className="text-red-600 hover:text-red-800"
-                                  >
-                                    Remove
-                                  </button>
-                                </div>
+                              className="text-red-600 hover:text-red-800"
+                            >
+                              Remove
+                            </button>
+                    </div>
                                 <div className="space-y-3">
-                                  <div>
+                    <div>
                                     <label className="block text-sm font-medium text-gray-700">Area Name</label>
-                                    <input
-                                      type="text"
+                      <input
+                              type="text"
                                       value={area.name || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.serviceAreas', index, { ...area, name: e.target.value })}
                                       placeholder="e.g., Crewe, Nantwich, etc."
                                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
-                                    />
-                                  </div>
-                                  <div>
+                      />
+                    </div>
+                    <div>
                                     <label className="block text-sm font-medium text-gray-700">Link (Optional)</label>
-                                    <input
+                      <input
                                       type="text"
                                       value={area.link || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.serviceAreas', index, { ...area, link: e.target.value })}
@@ -1496,11 +1496,11 @@ export default function Admin() {
                                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                                     />
                                     <p className="mt-1 text-xs text-gray-500">Leave blank to default to contact page</p>
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
-                            <button
+                    </div>
+                          </div>
+                        </div>
+                      ))}
+                      <button
                               onClick={() => {
                                 const newArea = {
                                   name: 'New Area',
@@ -1524,7 +1524,7 @@ export default function Admin() {
                               className="mt-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
                             >
                               Add Area
-                            </button>
+                      </button>
                           </div>
                         </div>
                       )}
@@ -1539,50 +1539,50 @@ export default function Admin() {
                       <p className="text-gray-600 mb-6">Set your brand colors that will be used throughout the site. The primary color will be used for buttons, links, and highlights.</p>
                       
                       <div className="space-y-6">
-                        <div>
+                      <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">Primary Color</label>
                           <div className="flex items-center gap-4">
-                            <input
-                              type="color"
+                          <input
+                            type="color"
                               value={content.theme?.primaryColor || '#3b82f6'}
                               onChange={(e) => handleNestedChange('theme.primaryColor', e.target.value)}
                               className="h-10 w-20 rounded border border-gray-300"
-                            />
-                            <input
-                              type="text"
+                          />
+                          <input
+                            type="text"
                               value={content.theme?.primaryColor || '#3b82f6'}
                               onChange={(e) => handleNestedChange('theme.primaryColor', e.target.value)}
                               className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               placeholder="#3b82f6"
                             />
                             <span className="text-sm text-gray-500">Used for buttons, links, and accents</span>
-                          </div>
                         </div>
-                        
-                        <div>
+                      </div>
+
+                      <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">Secondary Color</label>
                           <div className="flex items-center gap-4">
-                            <input
-                              type="color"
+                          <input
+                            type="color"
                               value={content.theme?.secondaryColor || '#1e2756'}
                               onChange={(e) => handleNestedChange('theme.secondaryColor', e.target.value)}
                               className="h-10 w-20 rounded border border-gray-300"
-                            />
-                            <input
-                              type="text"
+                          />
+                          <input
+                            type="text"
                               value={content.theme?.secondaryColor || '#1e2756'}
                               onChange={(e) => handleNestedChange('theme.secondaryColor', e.target.value)}
                               className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               placeholder="#1e2756"
                             />
                             <span className="text-sm text-gray-500">Used for headers, footers, and backgrounds</span>
-                          </div>
+                        </div>
                         </div>
                       </div>
 
                       <div className="mt-8 p-4 bg-white rounded-lg border border-gray-200">
                         <h4 className="font-medium text-gray-700 mb-4">Preview</h4>
-                        <div className="space-y-4">
+                    <div className="space-y-4">
                           <div className="flex flex-wrap gap-4">
                             <div 
                               className="w-32 h-32 rounded-lg flex items-center justify-center text-white font-medium"
@@ -1595,13 +1595,13 @@ export default function Admin() {
                               style={{ backgroundColor: content.theme?.secondaryColor || '#1e2756' }}
                             >
                               Secondary Color
-                            </div>
-                          </div>
-                          
-                          <div>
+                        </div>
+                      </div>
+
+                      <div>
                             <h5 className="font-medium text-gray-600 mb-2">Sample Elements with Your Colors</h5>
                             <div className="space-y-4 p-4 border rounded-lg">
-                              <button 
+                              <button
                                 className="px-4 py-2 rounded text-white"
                                 style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                               >
@@ -1623,8 +1623,8 @@ export default function Admin() {
                                 >
                                   colored link
                                 </a>
-                              </div>
-                              
+                      </div>
+
                               <div 
                                 className="mt-4 p-4 rounded-lg text-white"
                                 style={{ backgroundColor: content.theme?.secondaryColor || '#1e2756' }}
@@ -1647,130 +1647,130 @@ export default function Admin() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                       <h3 className="text-xl font-bold text-gray-700 mb-4">Header Colors</h3>
                       <p className="text-gray-600 mb-6">Customize the colors used in the website header.</p>
                       
                       <div className="space-y-6">
-                        <div>
+                      <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
                           <div className="flex items-center gap-4">
-                            <input
-                              type="color"
+                          <input
+                            type="color"
                               value={content.theme?.header?.backgroundColor || '#1e2756'}
                               onChange={(e) => handleNestedChange('theme.header.backgroundColor', e.target.value)}
                               className="h-10 w-20 rounded border border-gray-300"
-                            />
-                            <input
-                              type="text"
+                          />
+                          <input
+                            type="text"
                               value={content.theme?.header?.backgroundColor || '#1e2756'}
                               onChange={(e) => handleNestedChange('theme.header.backgroundColor', e.target.value)}
                               className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
-                          <div className="flex items-center gap-4">
-                            <input
-                              type="color"
-                              value={content.theme?.header?.textColor || '#ffffff'}
-                              onChange={(e) => handleNestedChange('theme.header.textColor', e.target.value)}
-                              className="h-10 w-20 rounded border border-gray-300"
-                            />
-                            <input
-                              type="text"
-                              value={content.theme?.header?.textColor || '#ffffff'}
-                              onChange={(e) => handleNestedChange('theme.header.textColor', e.target.value)}
-                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Link Color</label>
-                          <div className="flex items-center gap-4">
-                            <input
-                              type="color"
-                              value={content.theme?.header?.linkColor || '#4B5563'}
-                              onChange={(e) => handleNestedChange('theme.header.linkColor', e.target.value)}
-                              className="h-10 w-20 rounded border border-gray-300"
-                            />
-                            <input
-                              type="text"
-                              value={content.theme?.header?.linkColor || '#4B5563'}
-                              onChange={(e) => handleNestedChange('theme.header.linkColor', e.target.value)}
-                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Link Hover Color</label>
-                          <div className="flex items-center gap-4">
-                            <input
-                              type="color"
-                              value={content.theme?.header?.linkHoverColor || '#3b82f6'}
-                              onChange={(e) => handleNestedChange('theme.header.linkHoverColor', e.target.value)}
-                              className="h-10 w-20 rounded border border-gray-300"
-                            />
-                            <input
-                              type="text"
-                              value={content.theme?.header?.linkHoverColor || '#3b82f6'}
-                              onChange={(e) => handleNestedChange('theme.header.linkHoverColor', e.target.value)}
-                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
+                          />
                         </div>
                       </div>
-                    </div>
-                  </div>
+
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
+                          <div className="flex items-center gap-4">
+                          <input
+                            type="color"
+                              value={content.theme?.header?.textColor || '#ffffff'}
+                              onChange={(e) => handleNestedChange('theme.header.textColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                          />
+                          <input
+                            type="text"
+                              value={content.theme?.header?.textColor || '#ffffff'}
+                              onChange={(e) => handleNestedChange('theme.header.textColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Link Color</label>
+                          <div className="flex items-center gap-4">
+                          <input
+                            type="color"
+                              value={content.theme?.header?.linkColor || '#4B5563'}
+                              onChange={(e) => handleNestedChange('theme.header.linkColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                          />
+                          <input
+                            type="text"
+                              value={content.theme?.header?.linkColor || '#4B5563'}
+                              onChange={(e) => handleNestedChange('theme.header.linkColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Link Hover Color</label>
+                          <div className="flex items-center gap-4">
+                          <input
+                            type="color"
+                              value={content.theme?.header?.linkHoverColor || '#3b82f6'}
+                              onChange={(e) => handleNestedChange('theme.header.linkHoverColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                          />
+                          <input
+                            type="text"
+                              value={content.theme?.header?.linkHoverColor || '#3b82f6'}
+                              onChange={(e) => handleNestedChange('theme.header.linkHoverColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+                            </div>
+                          </div>
+                      </div>
                 )}
 
                 {activeTab === 'header' && (
                   <div className="space-y-6">
-                    <div>
+                      <div>
                       <label className="block text-sm font-medium text-gray-700">Business Hours</label>
-                      <input
-                        type="text"
+                          <input
+                          type="text"
                         value={content.header?.businessHours || ''}
                         onChange={(e) => handleNestedChange('header.businessHours', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         placeholder="e.g., Mon-Fri: 8am-6pm"
-                      />
-                    </div>
-                    <div>
+                        />
+                      </div>
+                      <div>
                       <label className="block text-sm font-medium text-gray-700">Insurance Text</label>
-                      <input
-                        type="text"
+                          <input
+                            type="text"
                         value={content.header?.insuranceText || ''}
                         onChange={(e) => handleNestedChange('header.insuranceText', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         placeholder="e.g., Fully Insured"
-                      />
-                    </div>
-                    <div>
+                          />
+                        </div>
+                      <div>
                       <label className="block text-sm font-medium text-gray-700">Experience Text</label>
-                      <input
-                        type="text"
+                          <input
+                          type="text"
                         value={content.header?.experienceText || ''}
                         onChange={(e) => handleNestedChange('header.experienceText', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         placeholder="e.g., 5+ Years Experience"
-                      />
-                    </div>
+                        />
+                      </div>
                     <div className="flex items-center space-x-2">
-                      <input
+                          <input
                         type="checkbox"
                         checked={content.header?.showTopBar !== false}
                         onChange={(e) => handleNestedChange('header.showTopBar', e.target.checked)}
                         className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                       />
                       <label className="text-sm font-medium text-gray-700">Show Top Bar</label>
-                    </div>
-                  </div>
+                        </div>
+                      </div>
                 )}
 
                 {activeTab === 'contact' && (
@@ -1778,75 +1778,75 @@ export default function Admin() {
                     <h2 className="text-xl font-bold text-gray-900 mb-4">Contact Information</h2>
                     
                     <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Address</label>
-                        <textarea
+                              <div>
+                      <label className="block text-sm font-medium text-gray-700">Address</label>
+                      <textarea
                           rows={3}
-                          value={content.contact.address}
-                          onChange={(e) => handleContentChange('contact.address', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        value={content.contact.address}
+                        onChange={(e) => handleContentChange('contact.address', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="Your business address"
-                        />
-                      </div>
+                      />
+                                </div>
                       
-                      <div>
+                    <div>
                         <label className="block text-sm font-medium text-gray-700">Phone Number</label>
-                        <input
-                          type="text"
-                          value={content.contact.phone}
-                          onChange={(e) => handleContentChange('contact.phone', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      <input
+                        type="text"
+                        value={content.contact.phone}
+                        onChange={(e) => handleContentChange('contact.phone', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. 01234 567890"
-                        />
-                      </div>
+                      />
+                              </div>
                       
-                      <div>
+                              <div>
                         <label className="block text-sm font-medium text-gray-700">Email Address</label>
-                        <input
-                          type="email"
-                          value={content.contact.email}
-                          onChange={(e) => handleContentChange('contact.email', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      <input
+                        type="email"
+                        value={content.contact.email}
+                        onChange={(e) => handleContentChange('contact.email', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. info@yourbusiness.com"
-                        />
+                      />
                         <p className="mt-1 text-sm text-gray-500">
                           This email will be displayed on your website. Any form submissions will also be sent to this address in addition to the primary recipient (hello@saunders-simmons.co.uk).
                         </p>
-                      </div>
+                                      </div>
                       
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Business Hours</label>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Business Hours</label>
                         <textarea
                           rows={3}
-                          value={content.contact.hours}
-                          onChange={(e) => handleContentChange('contact.hours', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        value={content.contact.hours}
+                        onChange={(e) => handleContentChange('contact.hours', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. Monday-Friday: 9am-5pm, Saturday: 10am-2pm, Sunday: Closed"
-                        />
-                      </div>
+                      />
+                              </div>
                       
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Form Title</label>
-                        <input
-                          type="text"
-                          value={content.contact.formTitle}
-                          onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              <div>
+                      <label className="block text-sm font-medium text-gray-700">Form Title</label>
+                      <input
+                        type="text"
+                        value={content.contact.formTitle}
+                        onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. Contact Us Today"
-                        />
-                      </div>
+                      />
+                                    </div>
                       
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">Form Description</label>
-                        <textarea
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Form Description</label>
+                      <textarea
                           rows={3}
-                          value={content.contact.formDescription}
-                          onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        value={content.contact.formDescription}
+                        onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="A brief description to appear above the contact form"
-                        />
-                      </div>
-                    </div>
+                      />
+                                </div>
+                              </div>
                     
                     <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
                       <h3 className="text-xl font-bold text-blue-700 mb-4">Email Settings Information</h3>
@@ -1856,7 +1856,7 @@ export default function Admin() {
                             <svg className="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                             </svg>
-                          </div>
+                            </div>
                           <div className="ml-3">
                             <h3 className="text-sm font-medium text-yellow-800">Email Settings Notice</h3>
                             <div className="mt-2 text-sm text-yellow-700">
@@ -1902,11 +1902,11 @@ export default function Admin() {
                       )}
                       
                       {content.contact.formFields && (
-                        <div className="space-y-6">
+                  <div className="space-y-6">
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Name Field</h5>
                             <div className="flex items-center space-x-4 mb-2">
-                              <input
+                      <input
                                 type="checkbox"
                                 checked={content.contact.formFields.name.enabled}
                                 onChange={(e) => handleNestedChange('contact.formFields.name.enabled', e.target.checked)}
@@ -1914,29 +1914,29 @@ export default function Admin() {
                               />
                               <label className="text-sm text-gray-700">Show this field</label>
                               
-                              <input
+                      <input
                                 type="checkbox"
                                 checked={content.contact.formFields.name.required}
                                 onChange={(e) => handleNestedChange('contact.formFields.name.required', e.target.checked)}
                                 className="h-4 w-4 text-blue-600 rounded border-gray-300"
                               />
                               <label className="text-sm text-gray-700">Required</label>
-                            </div>
-                            <div>
+                    </div>
+                      <div>
                               <label className="block text-sm font-medium text-gray-700">Label</label>
-                              <input
-                                type="text"
+                        <input
+                          type="text"
                                 value={content.contact.formFields.name.label}
                                 onChange={(e) => handleNestedChange('contact.formFields.name.label', e.target.value)}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                          </div>
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                    </div>
                           
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Email Field</h5>
                             <div className="flex items-center space-x-4 mb-2">
-                              <input
+                          <input
                                 type="checkbox"
                                 checked={content.contact.formFields.email.enabled}
                                 onChange={(e) => handleNestedChange('contact.formFields.email.enabled', e.target.checked)}
@@ -1944,29 +1944,29 @@ export default function Admin() {
                               />
                               <label className="text-sm text-gray-700">Show this field</label>
                               
-                              <input
+                          <input
                                 type="checkbox"
                                 checked={content.contact.formFields.email.required}
                                 onChange={(e) => handleNestedChange('contact.formFields.email.required', e.target.checked)}
                                 className="h-4 w-4 text-blue-600 rounded border-gray-300"
                               />
                               <label className="text-sm text-gray-700">Required</label>
-                            </div>
-                            <div>
+                        </div>
+                      <div>
                               <label className="block text-sm font-medium text-gray-700">Label</label>
-                              <input
-                                type="text"
+                        <input
+                          type="text"
                                 value={content.contact.formFields.email.label}
                                 onChange={(e) => handleNestedChange('contact.formFields.email.label', e.target.value)}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                          </div>
-                          
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                        </div>
+                      </div>
+
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Phone Field</h5>
                             <div className="flex items-center space-x-4 mb-2">
-                              <input
+                          <input
                                 type="checkbox"
                                 checked={content.contact.formFields.phone.enabled}
                                 onChange={(e) => handleNestedChange('contact.formFields.phone.enabled', e.target.checked)}
@@ -1974,30 +1974,30 @@ export default function Admin() {
                               />
                               <label className="text-sm text-gray-700">Show this field</label>
                               
-                              <input
+                          <input
                                 type="checkbox"
                                 checked={content.contact.formFields.phone.required}
                                 onChange={(e) => handleNestedChange('contact.formFields.phone.required', e.target.checked)}
                                 className="h-4 w-4 text-blue-600 rounded border-gray-300"
                               />
                               <label className="text-sm text-gray-700">Required</label>
-                            </div>
-                            <div>
+                        </div>
+                      <div>
                               <label className="block text-sm font-medium text-gray-700">Label</label>
-                              <input
-                                type="text"
+                        <input
+                          type="text"
                                 value={content.contact.formFields.phone.label}
                                 onChange={(e) => handleNestedChange('contact.formFields.phone.label', e.target.value)}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                          </div>
-                          
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                        </div>
+                      </div>
+
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Service Field</h5>
                             <div className="flex items-center space-x-4 mb-2">
-                              <input
-                                type="checkbox"
+                            <input
+                              type="checkbox"
                                 checked={content.contact.formFields.service.enabled}
                                 onChange={(e) => handleNestedChange('contact.formFields.service.enabled', e.target.checked)}
                                 className="h-4 w-4 text-blue-600 rounded border-gray-300"
@@ -2011,22 +2011,22 @@ export default function Admin() {
                                 className="h-4 w-4 text-blue-600 rounded border-gray-300"
                               />
                               <label className="text-sm text-gray-700">Required</label>
-                            </div>
-                            <div>
+                        </div>
+                      <div>
                               <label className="block text-sm font-medium text-gray-700">Label</label>
-                              <input
-                                type="text"
+                          <input
+                            type="text"
                                 value={content.contact.formFields.service.label}
                                 onChange={(e) => handleNestedChange('contact.formFields.service.label', e.target.value)}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                          </div>
-                          
+                          />
+                      </div>
+                    </div>
+
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Message Field</h5>
                             <div className="flex items-center space-x-4 mb-2">
-                              <input
+                          <input
                                 type="checkbox"
                                 checked={content.contact.formFields.message.enabled}
                                 onChange={(e) => handleNestedChange('contact.formFields.message.enabled', e.target.checked)}
@@ -2034,257 +2034,158 @@ export default function Admin() {
                               />
                               <label className="text-sm text-gray-700">Show this field</label>
                               
-                              <input
+                          <input
                                 type="checkbox"
                                 checked={content.contact.formFields.message.required}
                                 onChange={(e) => handleNestedChange('contact.formFields.message.required', e.target.checked)}
                                 className="h-4 w-4 text-blue-600 rounded border-gray-300"
                               />
                               <label className="text-sm text-gray-700">Required</label>
-                            </div>
-                            <div>
+                        </div>
+                      <div>
                               <label className="block text-sm font-medium text-gray-700">Label</label>
-                              <input
-                                type="text"
+                                <input
+                                  type="text"
                                 value={content.contact.formFields.message.label}
                                 onChange={(e) => handleNestedChange('contact.formFields.message.label', e.target.value)}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
-                            </div>
-                          </div>
-                          
+                                />
+                              </div>
+                      </div>
+
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Submit Button Text</h5>
-                            <div>
-                              <input
-                                type="text"
+                              <div>
+                                <input
+                                  type="text"
                                 value={content.contact.formFields.submitButtonText}
                                 onChange={(e) => handleNestedChange('contact.formFields.submitButtonText', e.target.value)}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="e.g., Send Message"
-                              />
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
                       )}
+                      </div>
                     </div>
-                  </div>
                 )}
 
                 {activeTab === 'about' && (
                   <div className="space-y-8">
                     <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <h3 className="text-xl font-bold text-blue-700 mb-4">About Page Content</h3>
-                      <p className="text-blue-600 mb-6">Edit the content of your About page.</p>
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">About Hero Section</h3>
+                      <p className="text-blue-600 mb-6">Edit the hero section of your About page.</p>
                       
                       <div className="space-y-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Page Title</label>
-                          <input
-                            type="text"
-                            value={content.about.title}
-                            onChange={(e) => handleContentChange('about.title', e.target.value)}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="e.g., About Our Roofing Company"
-                          />
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Page Subtitle</label>
-                          <input
-                            type="text"
-                            value={content.about.subtitle}
-                            onChange={(e) => handleContentChange('about.subtitle', e.target.value)}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="e.g., Your Trusted Local Roofing Specialists Since 2005"
-                          />
-                        </div>
-                        
-                        <div>
+                      <div>
                           <label className="block text-sm font-medium text-gray-700 mb-1">Hero Image</label>
                           <ImagePicker
-                            value={content.about.heroImage}
-                            onChange={(value) => handleContentChange('about.heroImage', value)}
-                            category="about-hero"
+                            value={content.business.hero || ''}
+                            onChange={(value) => handleContentChange('business.hero', value)}
+                            category="hero"
                           />
                           <p className="mt-1 text-xs text-gray-500">Select an image to display at the top of your About page.</p>
                         </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Established Year</label>
+                        <input
+                          type="text"
+                            value={content.business.establishedYear || ''}
+                            onChange={(e) => handleContentChange('business.establishedYear', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="e.g., 2005"
+                        />
+                          <p className="mt-1 text-xs text-gray-500">This will appear in the "Established" badge in the hero section.</p>
                       </div>
-                    </div>
-                    
+
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Business Tagline</label>
+                        <input
+                          type="text"
+                            value={content.business.tagline || ''}
+                            onChange={(e) => handleContentChange('business.tagline', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="e.g., Your trusted local business dedicated to excellent service"
+                        />
+                          <p className="mt-1 text-xs text-gray-500">A short tagline that appears beneath your business name in the hero section.</p>
+                        </div>
+                      </div>
+                      </div>
+
                     <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <h3 className="text-xl font-bold text-blue-700 mb-4">Main Content</h3>
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">History & Mission Section</h3>
                       <div className="space-y-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Main Content Title</label>
-                          <input
-                            type="text"
-                            value={content.about.mainContent?.title || ''}
-                            onChange={(e) => handleNestedChange('about.mainContent.title', e.target.value)}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="e.g., Our Story"
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">About Image</label>
+                          <ImagePicker
+                            value={content.business.about?.image || ''}
+                            onChange={(value) => handleNestedChange('business.about.image', value)}
+                            category="about"
                           />
+                          <p className="mt-1 text-xs text-gray-500">Select an image to display in the History & Mission section.</p>
                         </div>
-                        
+
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Main Description</label>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Business Description</label>
                           <textarea
-                            value={content.about.mainContent?.description || ''}
-                            onChange={(e) => handleNestedChange('about.mainContent.description', e.target.value)}
+                            value={content.business.description || ''}
+                            onChange={(e) => handleContentChange('business.description', e.target.value)}
                             rows={4}
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="General description of your company"
+                            placeholder="General description of your company's history"
                           />
+                          <p className="mt-1 text-xs text-gray-500">A description of your company's history that appears in the main content section.</p>
                         </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">History</label>
-                          <textarea
-                            value={content.about.mainContent?.history || ''}
-                            onChange={(e) => handleNestedChange('about.mainContent.history', e.target.value)}
-                            rows={4}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="The history of your company"
-                          />
-                        </div>
-                        
+
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-1">Mission Statement</label>
                           <textarea
-                            value={content.about.mainContent?.mission || ''}
-                            onChange={(e) => handleNestedChange('about.mainContent.mission', e.target.value)}
+                            value={content.business.mission || ''}
+                            onChange={(e) => handleContentChange('business.mission', e.target.value)}
                             rows={4}
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                             placeholder="Your company's mission statement"
                           />
+                          <p className="mt-1 text-xs text-gray-500">Your company's mission statement that appears in the main content section.</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <h3 className="text-xl font-bold text-blue-700 mb-4">Our Team</h3>
-                      <p className="text-blue-600 mb-6">Add and edit team members that appear on your About page.</p>
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Core Values</h3>
+                      <p className="text-blue-600 mb-6">Add your company's core values that appear in the Core Values section.</p>
                       
-                      {(content.about.team || []).map((member, index) => (
-                        <div key={index} className="mb-6 p-4 border rounded bg-white">
-                          <div className="flex justify-between mb-4">
-                            <h4 className="font-semibold text-lg">{member.name || `Team Member ${index + 1}`}</h4>
-                            <button
-                              onClick={() => handleArrayItemChange('about.team', index, null)}
-                              className="text-red-600 hover:text-red-800"
-                            >
-                              Remove
-                            </button>
-                          </div>
-                          
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                              <input
-                                type="text"
-                                value={member.name || ''}
-                                onChange={(e) => handleArrayItemChange('about.team', index, { ...member, name: e.target.value })}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                placeholder="Full name"
-                              />
-                            </div>
-                            
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Position</label>
-                              <input
-                                type="text"
-                                value={member.position || member.role || ''}
-                                onChange={(e) => handleArrayItemChange('about.team', index, { ...member, position: e.target.value })}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                placeholder="e.g., Managing Director"
-                              />
-                            </div>
-                            
-                            <div className="md:col-span-2">
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
-                              <textarea
-                                value={member.bio || ''}
-                                onChange={(e) => handleArrayItemChange('about.team', index, { ...member, bio: e.target.value })}
-                                rows={3}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                placeholder="Short biography"
-                              />
-                            </div>
-                            
-                            <div className="md:col-span-2">
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Photo</label>
-                              <ImagePicker
-                                value={member.image || ''}
-                                onChange={(value) => handleArrayItemChange('about.team', index, { ...member, image: value })}
-                                category="team"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                      
-                      <button
-                        onClick={() => {
-                          const newMember = {
-                            name: 'New Team Member',
-                            position: 'Job Title',
-                            bio: 'Short biography about this team member.',
-                            image: '/images/placeholders/default.jpg'
-                          };
-                          
-                          // Create a deep copy of the current content
-                          const updatedContent = JSON.parse(JSON.stringify(content));
-                          
-                          // Ensure the team array exists
-                          if (!updatedContent.about.team) {
-                            updatedContent.about.team = [];
-                          }
-                          
-                          // Add the new team member
-                          updatedContent.about.team.push(newMember);
-                          
-                          // Update the state with the new content
-                          setContent(updatedContent);
-                        }}
-                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                      >
-                        Add Team Member
-                      </button>
-                    </div>
-                    
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <h3 className="text-xl font-bold text-blue-700 mb-4">Company Values</h3>
-                      <p className="text-blue-600 mb-6">Add your company's core values.</p>
-                      
-                      {(content.about.values || []).map((value, index) => (
+                      {(content.business.coreValues || []).map((value, index) => (
                         <div key={index} className="mb-4 p-4 border rounded bg-white">
                           <div className="flex justify-between mb-2">
                             <h4 className="font-semibold">{value.title || `Value ${index + 1}`}</h4>
                             <button
-                              onClick={() => handleArrayItemChange('about.values', index, null)}
+                              onClick={() => handleArrayItemChange('business.coreValues', index, null)}
                               className="text-red-600 hover:text-red-800"
                             >
                               Remove
                             </button>
                           </div>
-                          
+
                           <div className="space-y-3">
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                              <input
+                            <input
                                 type="text"
                                 value={value.title || ''}
-                                onChange={(e) => handleArrayItemChange('about.values', index, { ...value, title: e.target.value })}
+                                onChange={(e) => handleArrayItemChange('business.coreValues', index, { ...value, title: e.target.value })}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                placeholder="e.g., Quality, Integrity, etc."
+                                placeholder="e.g., Integrity, Excellence, etc."
                               />
-                            </div>
-                            
+                        </div>
+
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                               <textarea
                                 value={value.description || ''}
-                                onChange={(e) => handleArrayItemChange('about.values', index, { ...value, description: e.target.value })}
+                                onChange={(e) => handleArrayItemChange('business.coreValues', index, { ...value, description: e.target.value })}
                                 rows={3}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Describe this value and why it's important to your company"
@@ -2304,21 +2205,32 @@ export default function Admin() {
                           // Create a deep copy of the current content
                           const updatedContent = JSON.parse(JSON.stringify(content));
                           
-                          // Ensure the values array exists
-                          if (!updatedContent.about.values) {
-                            updatedContent.about.values = [];
+                          // Ensure the coreValues array exists
+                          if (!updatedContent.business.coreValues) {
+                            updatedContent.business.coreValues = [];
                           }
                           
                           // Add the new value
-                          updatedContent.about.values.push(newValue);
+                          updatedContent.business.coreValues.push(newValue);
                           
                           // Update the state with the new content
                           setContent(updatedContent);
                         }}
                         className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
-                        Add Value
+                        Add Core Value
                       </button>
+                    </div>
+
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Gallery Settings</h3>
+                      <p className="text-blue-600 mb-6">The gallery will automatically display images from the client-images folder. Upload images to this folder to have them appear in the gallery.</p>
+                      
+                      <div className="mt-4 p-4 bg-white rounded border border-gray-200">
+                        <p className="text-sm text-gray-700">
+                          <strong>Note:</strong> To add images to the gallery, upload them to the public/images/client-images folder. All images in this folder will automatically be displayed in the gallery section.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
