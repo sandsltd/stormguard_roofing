@@ -4,7 +4,7 @@
     "phone": "07432205615",
     "email": "info@yourroofingcompany.com",
     "address": "123 Main St, Anytown, USA 12345",
-    "logo": "/images/logo.png",
+    "logo": "/images/logo/saunders_simmons_ltd.png",
     "tagline": "Dorsets Premier Roofing Company"
   },
   "homepage": {
@@ -190,5 +190,8 @@
       "backgroundColor": "#ff40ff",
       "linkColor": "#ffffff"
     }
+  },
+  "header": {
+    "showTopBar": true
   }
 }

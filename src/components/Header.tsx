@@ -6,6 +6,11 @@ import { useState, useEffect } from 'react';
 import { BusinessContent } from '@/utils/content';
 import { FaPhone, FaClock, FaShieldAlt, FaStar } from 'react-icons/fa';
 
+interface MenuItem {
+  text: string;
+  link: string;
+}
+
 interface HeaderProps {
   business: BusinessContent;
   theme?: {
@@ -17,11 +22,41 @@ interface HeaderProps {
       iconColor?: string;
     };
   };
+  header?: {
+    businessHours?: string;
+    insuranceText?: string;
+    experienceText?: string;
+    showTopBar?: boolean;
+    menuItems?: MenuItem[];
+    ctaButton?: {
+      text?: string;
+      link?: string;
+      show?: boolean;
+    };
+  };
 }
 
-export default function Header({ business, theme }: HeaderProps) {
+export default function Header({ business, theme, header }: HeaderProps) {
+  console.log('Header component rendered with props:', { business, theme, header });
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const defaultMenuItems: MenuItem[] = [
+    { text: 'Home', link: '/' },
+    { text: 'About', link: '/about' },
+    { text: 'Services', link: '/services' },
+    { text: 'Areas', link: '/areas' },
+    { text: 'Blog', link: '/blog' },
+    { text: 'FAQ', link: '/faq' },
+    { text: 'Contact', link: '/contact' }
+  ];
+
+  const menuItems = header?.menuItems || defaultMenuItems;
+  const showTopBar = header?.showTopBar !== false;
+  const showCTA = header?.ctaButton?.show !== false;
+  const ctaText = header?.ctaButton?.text || 'Get a Free Quote';
+  const ctaLink = header?.ctaButton?.link || '/quote';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,36 +99,38 @@ export default function Header({ business, theme }: HeaderProps) {
   return (
     <div className="fixed w-full top-0 z-50">
       {/* Top Bar */}
-      <div style={topBarStyle} className="hidden md:block">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-10">
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <FaClock style={topBarIconStyle} className="text-sm" />
-                <span className="text-sm">Mon-Fri: 8am-6pm</span>
+      {showTopBar && (
+        <div style={topBarStyle} className="hidden md:block">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-between items-center h-10">
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-2">
+                  <FaClock style={topBarIconStyle} className="text-sm" />
+                  <span className="text-sm">{header?.businessHours || "Mon-Fri: 8am-6pm"}</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <FaShieldAlt style={topBarIconStyle} className="text-sm" />
+                  <span className="text-sm">{header?.insuranceText || "Fully Insured"}</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <FaStar style={topBarIconStyle} className="text-sm" />
+                  <span className="text-sm">{header?.experienceText || "5+ Years Experience"}</span>
+                </div>
               </div>
               <div className="flex items-center space-x-2">
-                <FaShieldAlt style={topBarIconStyle} className="text-sm" />
-                <span className="text-sm">Fully Insured</span>
+                <FaPhone style={topBarIconStyle} className="text-sm" />
+                <a 
+                  href={`tel:${business.phone}`}
+                  className="text-sm hover:opacity-80 transition-opacity"
+                  style={topBarLinkStyle}
+                >
+                  {business.phone}
+                </a>
               </div>
-              <div className="flex items-center space-x-2">
-                <FaStar style={topBarIconStyle} className="text-sm" />
-                <span className="text-sm">5+ Years Experience</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <FaPhone style={topBarIconStyle} className="text-sm" />
-              <a 
-                href={`tel:${business.phone}`}
-                className="text-sm hover:opacity-80 transition-opacity"
-                style={topBarLinkStyle}
-              >
-                {business.phone}
-              </a>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Header */}
       <header style={headerStyle} className="w-full bg-white">
@@ -132,10 +169,10 @@ export default function Header({ business, theme }: HeaderProps) {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <nav className="flex items-center space-x-6">
-                {['Home', 'About', 'Services', 'Areas', 'Blog', 'FAQ', 'Contact'].map((item) => (
+                {menuItems.map((item) => (
                   <Link
-                    key={item}
-                    href={`/${item.toLowerCase()}`}
+                    key={item.text}
+                    href={item.link}
                     className="relative font-medium text-sm tracking-wide py-2"
                     style={linkStyle}
                     onMouseEnter={(e) => {
@@ -145,7 +182,7 @@ export default function Header({ business, theme }: HeaderProps) {
                       e.currentTarget.style.color = theme?.header?.linkColor || '#1e2756';
                     }}
                   >
-                    {item}
+                    {item.text}
                     <span 
                       className="absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100"
                       style={{ backgroundColor: theme?.header?.linkHoverColor || '#3b82f6' }}
@@ -153,13 +190,15 @@ export default function Header({ business, theme }: HeaderProps) {
                   </Link>
                 ))}
               </nav>
-              <Link
-                href="/quote"
-                className="inline-flex items-center px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90"
-                style={{ backgroundColor: theme?.header?.backgroundColor || '#1e2756' }}
-              >
-                Get a Free Quote
-              </Link>
+              {showCTA && (
+                <Link
+                  href={ctaLink}
+                  className="inline-flex items-center px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90"
+                  style={{ backgroundColor: theme?.header?.backgroundColor || '#1e2756' }}
+                >
+                  {ctaText}
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -187,10 +226,10 @@ export default function Header({ business, theme }: HeaderProps) {
         >
           <div className="px-4 py-4 space-y-4 border-t">
             <nav className="flex flex-col space-y-3">
-              {['Home', 'About', 'Services', 'Areas', 'Blog', 'FAQ', 'Contact'].map((item) => (
+              {menuItems.map((item) => (
                 <Link 
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
+                  key={item.text}
+                  href={item.link}
                   className="font-medium text-sm py-2"
                   style={linkStyle}
                   onMouseEnter={(e) => {
@@ -201,7 +240,7 @@ export default function Header({ business, theme }: HeaderProps) {
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item}
+                  {item.text}
                 </Link>
               ))}
             </nav>
@@ -209,7 +248,7 @@ export default function Header({ business, theme }: HeaderProps) {
               <div className="flex flex-col space-y-3">
                 <div className="flex items-center space-x-2">
                   <FaClock style={iconStyle} className="text-sm" />
-                  <span className="text-sm">Mon-Fri: 8am-6pm</span>
+                  <span className="text-sm">{header?.businessHours || "Mon-Fri: 8am-6pm"}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <FaPhone style={iconStyle} className="text-sm" />
@@ -221,13 +260,15 @@ export default function Header({ business, theme }: HeaderProps) {
                     {business.phone}
                   </a>
                 </div>
-                <Link
-                  href="/quote"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90 w-full"
-                  style={{ backgroundColor: theme?.header?.backgroundColor || '#1e2756' }}
-                >
-                  Get a Free Quote
-                </Link>
+                {showCTA && (
+                  <Link
+                    href={ctaLink}
+                    className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90 w-full"
+                    style={{ backgroundColor: theme?.header?.backgroundColor || '#1e2756' }}
+                  >
+                    {ctaText}
+                  </Link>
+                )}
               </div>
             </div>
           </div>

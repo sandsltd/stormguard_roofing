@@ -1,4 +1,4 @@
-import { getContent } from '@/utils/server-content';
+import { getContent } from '@/utils/content';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Geist, Geist_Mono } from "next/font/google";
@@ -27,12 +27,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  console.log('Root layout rendering');
   const content = await getContent();
+  console.log('Content loaded in root layout:', content);
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header business={content.business} theme={content.theme} />
+        <Header 
+          business={content.business} 
+          theme={content.theme}
+          header={content.header}
+        />
         <main>{children}</main>
         <Footer business={content.business} socials={content.socials} theme={content.theme} />
       </body>

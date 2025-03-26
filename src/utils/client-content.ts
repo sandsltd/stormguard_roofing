@@ -1,21 +1,16 @@
+import type { Content } from './content';
+
 /**
  * Fetch content from the API
- * @returns {Promise<Object>} Content data
+ * @returns {Promise<Content | null>} Content data
  */
-export async function fetchContent() {
+export async function fetchContent(): Promise<Content | null> {
   try {
-    const response = await fetch('http://localhost:3000/api/content', {
-      cache: 'no-store', // Disable caching for server components
-      headers: {
-        'Accept': 'application/json',
-      },
-    });
-    
+    const response = await fetch('/api/content');
     if (!response.ok) {
       throw new Error('Failed to fetch content');
     }
-    const result = await response.json();
-    return result.data;
+    return response.json();
   } catch (error) {
     console.error('Error fetching content:', error);
     return null;
@@ -24,16 +19,15 @@ export async function fetchContent() {
 
 /**
  * Save content through the API
- * @param {Object} content - Content data to save
+ * @param {Content} content - Content data to save
  * @returns {Promise<void>}
  */
-export async function saveContent(content) {
+export async function saveContent(content: Content): Promise<void> {
   try {
-    const response = await fetch('http://localhost:3000/api/save', {
+    const response = await fetch('/api/content', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
       },
       body: JSON.stringify(content),
     });
@@ -41,8 +35,6 @@ export async function saveContent(content) {
     if (!response.ok) {
       throw new Error('Failed to save content');
     }
-    
-    return await response.json();
   } catch (error) {
     console.error('Error saving content:', error);
     throw error;

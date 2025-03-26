@@ -199,6 +199,16 @@ export default function Admin() {
                   >
                     Design
                   </button>
+                  <button
+                    onClick={() => setActiveTab('header')}
+                    className={`${
+                      activeTab === 'header'
+                        ? 'border-blue-500 text-blue-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                  >
+                    Header
+                  </button>
                 </nav>
               </div>
 
@@ -1197,6 +1207,206 @@ export default function Admin() {
                               </p>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'header' && (
+                  <div className="space-y-8">
+                    {/* Top Bar Section */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-medium">Top Bar Settings</h3>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Business Hours</label>
+                        <input
+                          type="text"
+                          value={content.header?.businessHours || "Mon-Fri: 8am-6pm"}
+                          onChange={(e) => handleContentChange('header.businessHours', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g., Mon-Fri: 8am-6pm"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Insurance Text</label>
+                        <input
+                          type="text"
+                          value={content.header?.insuranceText || "Fully Insured"}
+                          onChange={(e) => handleContentChange('header.insuranceText', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g., Fully Insured"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Experience Text</label>
+                        <input
+                          type="text"
+                          value={content.header?.experienceText || "5+ Years Experience"}
+                          onChange={(e) => handleContentChange('header.experienceText', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g., 5+ Years Experience"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Show Top Bar</label>
+                        <div className="mt-1">
+                          <label className="inline-flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={content.header?.showTopBar !== false}
+                              onChange={(e) => handleContentChange('header.showTopBar', e.target.checked)}
+                              className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                            <span className="ml-2 text-sm text-gray-600">Display top bar with business information</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Navigation Section */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-medium">Navigation Menu</h3>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Menu Items</label>
+                        {(content.header?.menuItems || [
+                          { text: 'Home', link: '/' },
+                          { text: 'About', link: '/about' },
+                          { text: 'Services', link: '/services' },
+                          { text: 'Areas', link: '/areas' },
+                          { text: 'Blog', link: '/blog' },
+                          { text: 'FAQ', link: '/faq' },
+                          { text: 'Contact', link: '/contact' }
+                        ]).map((item, index) => (
+                          <div key={index} className="flex items-center gap-2 mb-4">
+                            <div className="flex-1 grid grid-cols-2 gap-2">
+                              <div>
+                                <label className="block text-xs text-gray-500 mb-1">Display Text</label>
+                                <input
+                                  type="text"
+                                  value={item.text}
+                                  onChange={(e) => {
+                                    const newItems = [...(content.header?.menuItems || [
+                                      { text: 'Home', link: '/' },
+                                      { text: 'About', link: '/about' },
+                                      { text: 'Services', link: '/services' },
+                                      { text: 'Areas', link: '/areas' },
+                                      { text: 'Blog', link: '/blog' },
+                                      { text: 'FAQ', link: '/faq' },
+                                      { text: 'Contact', link: '/contact' }
+                                    ])];
+                                    newItems[index] = { ...newItems[index], text: e.target.value };
+                                    handleContentChange('header.menuItems', newItems);
+                                  }}
+                                  placeholder="e.g., Home"
+                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-xs text-gray-500 mb-1">Link URL</label>
+                                <input
+                                  type="text"
+                                  value={item.link}
+                                  onChange={(e) => {
+                                    const newItems = [...(content.header?.menuItems || [
+                                      { text: 'Home', link: '/' },
+                                      { text: 'About', link: '/about' },
+                                      { text: 'Services', link: '/services' },
+                                      { text: 'Areas', link: '/areas' },
+                                      { text: 'Blog', link: '/blog' },
+                                      { text: 'FAQ', link: '/faq' },
+                                      { text: 'Contact', link: '/contact' }
+                                    ])];
+                                    newItems[index] = { ...newItems[index], link: e.target.value };
+                                    handleContentChange('header.menuItems', newItems);
+                                  }}
+                                  placeholder="e.g., /home"
+                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => {
+                                const newItems = (content.header?.menuItems || [
+                                  { text: 'Home', link: '/' },
+                                  { text: 'About', link: '/about' },
+                                  { text: 'Services', link: '/services' },
+                                  { text: 'Areas', link: '/areas' },
+                                  { text: 'Blog', link: '/blog' },
+                                  { text: 'FAQ', link: '/faq' },
+                                  { text: 'Contact', link: '/contact' }
+                                ]).filter((_, i) => i !== index);
+                                handleContentChange('header.menuItems', newItems);
+                              }}
+                              className="p-2 text-red-600 hover:text-red-800"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
+                        <button
+                          onClick={() => {
+                            const newItems = [...(content.header?.menuItems || [
+                              { text: 'Home', link: '/' },
+                              { text: 'About', link: '/about' },
+                              { text: 'Services', link: '/services' },
+                              { text: 'Areas', link: '/areas' },
+                              { text: 'Blog', link: '/blog' },
+                              { text: 'FAQ', link: '/faq' },
+                              { text: 'Contact', link: '/contact' }
+                            ]), { text: '', link: '' }];
+                            handleContentChange('header.menuItems', newItems);
+                          }}
+                          className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        >
+                          Add Menu Item
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* CTA Button Section */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-medium">Call-to-Action Button</h3>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Button Text</label>
+                        <input
+                          type="text"
+                          value={content.header?.ctaButton?.text || "Get a Free Quote"}
+                          onChange={(e) => handleContentChange('header.ctaButton.text', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g., Get a Free Quote"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Button Link</label>
+                        <input
+                          type="text"
+                          value={content.header?.ctaButton?.link || "/quote"}
+                          onChange={(e) => handleContentChange('header.ctaButton.link', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g., /quote"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Show CTA Button</label>
+                        <div className="mt-1">
+                          <label className="inline-flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={content.header?.ctaButton?.show !== false}
+                              onChange={(e) => handleContentChange('header.ctaButton.show', e.target.checked)}
+                              className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                            <span className="ml-2 text-sm text-gray-600">Display call-to-action button</span>
+                          </label>
                         </div>
                       </div>
                     </div>
