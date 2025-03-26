@@ -1,56 +1,61 @@
 {
   "business": {
-    "name": "saunders and simmons",
+    "name": "Your Roofing Company",
     "phone": "(555) 123-4567",
     "email": "info@yourroofingcompany.com",
-    "address": "123 Main St, City, State 12345",
+    "address": "123 Main St, Anytown, USA 12345",
     "logo": "/images/logo.png"
   },
   "homepage": {
-    "heroTitle": "Professional Roofing Services",
-    "heroSubtitle": "Quality workmanship you can trust",
-    "heroImage": "/images/hero.jpg",
+    "hero": {
+      "title": "Professional Roofing Services",
+      "subtitle": "Quality Work, Guaranteed Results",
+      "image": "/images/hero.jpg"
+    },
     "features": [
       {
-        "title": "Expert Installation",
-        "description": "Our team of certified professionals ensures perfect installation every time."
+        "title": "Expert Team",
+        "description": "Our certified professionals bring years of experience to every project.",
+        "icon": "shield-check"
       },
       {
         "title": "Quality Materials",
-        "description": "We use only the highest quality materials from trusted manufacturers."
+        "description": "We use only the highest quality materials from trusted manufacturers.",
+        "icon": "star"
       },
       {
-        "title": "Lifetime Warranty",
-        "description": "All our work comes with a comprehensive lifetime warranty."
+        "title": "Warranty",
+        "description": "All our work comes with comprehensive warranty coverage.",
+        "icon": "check-circle"
       }
     ],
     "services": [
       {
         "title": "Residential Roofing",
         "description": "Complete roofing solutions for homes of all sizes.",
-        "image": "/images/residential.jpg"
+        "icon": "home"
       },
       {
         "title": "Commercial Roofing",
-        "description": "Professional roofing services for businesses and commercial properties.",
-        "image": "/images/commercial.jpg"
+        "description": "Specialized roofing systems for commercial buildings.",
+        "icon": "building-office"
       },
       {
         "title": "Roof Repair",
-        "description": "Fast and reliable repair services for all types of roofing issues.",
-        "image": "/images/repair.jpg"
+        "description": "Fast and reliable repair services for all types of roofs.",
+        "icon": "wrench"
       }
     ],
     "testimonials": [
       {
-        "name": "John Smith",
-        "text": "Excellent service from start to finish. Highly recommended!",
-        "rating": 5
+        "quote": "Exceptional service from start to finish. Highly recommended!",
+        "author": "John Smith",
+        "role": "Homeowner"
       },
       {
-        "name": "Sarah Johnson",
-        "text": "Very professional and completed the work on time.",
-        "rating": 5
+        "quote": "Professional team that delivered exactly what they promised.",
+        "author": "Sarah Johnson",
+        "role": "Property Manager"
       }
     ]
   },
@@ -60,27 +65,27 @@
     "heroImage": "/images/about-hero.jpg",
     "mainContent": {
       "title": "Our Story",
-      "description": "With over 20 years of experience in the roofing industry, we've built our reputation on quality workmanship and exceptional customer service.",
-      "history": "Founded in 2000, we've grown from a small family business to one of the region's most trusted roofing contractors. Our commitment to excellence and customer satisfaction has been the cornerstone of our success.",
-      "mission": "Our mission is to provide the highest quality roofing services while ensuring customer satisfaction and safety. We believe in building lasting relationships with our clients through trust, transparency, and superior workmanship."
+      "description": "With over 20 years of experience, we've built our reputation on quality work and customer satisfaction.",
+      "history": "Founded in 2000, we've grown from a small family business to a leading roofing contractor in the region.",
+      "mission": "Our mission is to provide exceptional roofing services while maintaining the highest standards of safety and quality."
     },
     "team": [
       {
         "name": "John Doe",
-        "role": "Owner & Founder",
-        "bio": "With 25 years of experience in the roofing industry.",
+        "role": "Owner",
+        "bio": "20+ years of roofing experience",
         "image": "/images/team/john.jpg"
       },
       {
         "name": "Jane Smith",
         "role": "Project Manager",
-        "bio": "Expert in managing large-scale roofing projects.",
+        "bio": "Expert in commercial roofing",
         "image": "/images/team/jane.jpg"
       },
       {
         "name": "Mike Johnson",
         "role": "Lead Installer",
-        "bio": "Certified roofing professional with 15 years of experience.",
+        "bio": "Specialized in residential roofing",
         "image": "/images/team/mike.jpg"
       }
     ],
@@ -91,7 +96,7 @@
       },
       {
         "title": "Integrity",
-        "description": "We conduct business with honesty and transparency."
+        "description": "Honest communication and transparent pricing are our hallmarks."
       },
       {
         "title": "Safety",
@@ -99,48 +104,70 @@
       }
     ]
   },
-  "services": [
-    {
-      "title": "Residential Roofing",
-      "description": "Complete roofing solutions for homes of all sizes.",
-      "image": "/images/residential.jpg",
-      "features": [
-        "New roof installation",
-        "Roof replacement",
-        "Leak repair",
-        "Maintenance services"
-      ]
+  "services": {
+    "hero": {
+      "title": "Our Services",
+      "subtitle": "Professional Roofing Solutions for Every Need"
     },
-    {
-      "title": "Commercial Roofing",
-      "description": "Professional roofing services for businesses and commercial properties.",
-      "image": "/images/commercial.jpg",
-      "features": [
-        "Flat roof systems",
-        "Industrial roofing",
-        "Maintenance programs",
-        "Emergency repairs"
-      ]
-    },
-    {
-      "title": "Roof Repair",
-      "description": "Fast and reliable repair services for all types of roofing issues.",
-      "image": "/images/repair.jpg",
-      "features": [
-        "Leak detection",
-        "Storm damage repair",
-        "Emergency services",
-        "Preventive maintenance"
-      ]
+    "services": [
+      {
+        "title": "Residential Roofing",
+        "description": "Complete roofing solutions for homes of all sizes. We handle everything from new installations to repairs and maintenance.",
+        "image": "/images/services/residential.jpg",
+        "features": [
+          "New roof installation",
+          "Roof replacement",
+          "Leak repair",
+          "Maintenance services",
+          "Gutter installation"
+        ]
+      },
+      {
+        "title": "Commercial Roofing",
+        "description": "Specialized roofing systems designed for commercial buildings. We understand the unique challenges of commercial roofing.",
+        "image": "/images/services/commercial.jpg",
+        "features": [
+          "Flat roof systems",
+          "Membrane roofing",
+          "Industrial roofing",
+          "Maintenance programs",
+          "Emergency repairs"
+        ]
+      },
+      {
+        "title": "Roof Repair",
+        "description": "Fast and reliable repair services for all types of roofs. We diagnose and fix issues quickly to prevent further damage.",
+        "image": "/images/services/repair.jpg",
+        "features": [
+          "Leak detection",
+          "Storm damage repair",
+          "Emergency services",
+          "Preventive maintenance",
+          "Warranty repairs"
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Ready to Start Your Roofing Project?",
+      "description": "Contact us today for a free consultation and estimate. Our team of experts is ready to help you with all your roofing needs.",
+      "buttonText": "Contact Us Now",
+      "buttonLink": "/contact"
     }
-  ],
+  },
   "contact": {
-    "address": "123 Main St, City, State 12345",
+    "title": "Contact Us",
+    "subtitle": "Get in Touch with Our Team",
+    "address": "123 Main St, Anytown, USA 12345",
     "phone": "(555) 123-4567",
     "email": "info@yourroofingcompany.com",
     "hours": "Mon-Fri: 8:00 AM - 6:00 PM",
-    "formTitle": "Get in Touch",
-    "formDescription": "Fill out the form below and we'll get back to you shortly."
+    "form": {
+      "nameLabel": "Your Name",
+      "emailLabel": "Email Address",
+      "phoneLabel": "Phone Number",
+      "messageLabel": "Message",
+      "submitButton": "Send Message"
+    }
   },
   "socials": {
     "facebook": "https://facebook.com/yourroofingcompany",

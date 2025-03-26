@@ -1,7 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import Link from 'next/link';
 import { getContent } from '@/utils/server-content';
 
 // Static site generation with revalidation
@@ -19,8 +16,8 @@ export default async function Services() {
         </div>
         <div className="relative z-10 h-full flex items-center justify-center text-white text-center px-4">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-            <p className="text-xl md:text-2xl">Professional Roofing Solutions for Every Need</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.services.hero.title}</h1>
+            <p className="text-xl md:text-2xl">{content.services.hero.subtitle}</p>
           </div>
         </div>
       </div>
@@ -29,7 +26,7 @@ export default async function Services() {
       <div className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 gap-16">
-            {content.services.map((service, index) => (
+            {content.services.services.map((service, index) => (
               <div 
                 key={index} 
                 className={`flex flex-col ${
@@ -87,15 +84,15 @@ export default async function Services() {
       {/* CTA Section */}
       <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Roofing Project?</h2>
+          <h2 className="text-3xl font-bold mb-4">{content.services.cta.title}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Contact us today for a free consultation and estimate. Our team of experts is ready to help you with all your roofing needs.
+            {content.services.cta.description}
           </p>
           <a
-            href="/contact"
+            href={content.services.cta.buttonLink}
             className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            Contact Us Now
+            {content.services.cta.buttonText}
           </a>
         </div>
       </div>

@@ -7,23 +7,26 @@ export interface Content {
     logo: string;
   };
   homepage: {
-    heroTitle: string;
-    heroSubtitle: string;
-    heroImage: string;
-    features: Array<{
+    hero: {
       title: string;
-      description: string;
-    }>;
-    services: Array<{
-      title: string;
-      description: string;
+      subtitle: string;
       image: string;
-    }>;
-    testimonials: Array<{
-      name: string;
-      text: string;
-      rating: number;
-    }>;
+    };
+    features: {
+      title: string;
+      description: string;
+      icon: string;
+    }[];
+    services: {
+      title: string;
+      description: string;
+      icon: string;
+    }[];
+    testimonials: {
+      quote: string;
+      author: string;
+      role: string;
+    }[];
   };
   about: {
     title: string;
@@ -35,30 +38,49 @@ export interface Content {
       history: string;
       mission: string;
     };
-    team: Array<{
+    team: {
       name: string;
       role: string;
       bio: string;
       image: string;
-    }>;
-    values: Array<{
+    }[];
+    values: {
       title: string;
       description: string;
-    }>;
+    }[];
   };
-  services: Array<{
-    title: string;
-    description: string;
-    image: string;
-    features: string[];
-  }>;
+  services: {
+    hero: {
+      title: string;
+      subtitle: string;
+    };
+    services: {
+      title: string;
+      description: string;
+      image: string;
+      features: string[];
+    }[];
+    cta: {
+      title: string;
+      description: string;
+      buttonText: string;
+      buttonLink: string;
+    };
+  };
   contact: {
+    title: string;
+    subtitle: string;
     address: string;
     phone: string;
     email: string;
     hours: string;
-    formTitle: string;
-    formDescription: string;
+    form: {
+      nameLabel: string;
+      emailLabel: string;
+      phoneLabel: string;
+      messageLabel: string;
+      submitButton: string;
+    };
   };
   socials: {
     facebook: string;
