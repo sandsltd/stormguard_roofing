@@ -1931,8 +1931,8 @@ export default function Admin() {
                           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         />
                       </div>
-                    </div>
-                          
+                      </div>
+
                           <div className="bg-white p-4 rounded-lg border">
                             <h5 className="font-medium text-gray-700 mb-3">Email Field</h5>
                             <div className="flex items-center space-x-4 mb-2">
