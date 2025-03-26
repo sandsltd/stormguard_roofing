@@ -88,4 +88,12 @@ export interface Content {
     instagram: string;
     linkedin: string;
   };
+  theme: {
+    header: {
+      backgroundColor: string;
+      textColor: string;
+      linkColor: string;
+      linkHoverColor: string;
+    };
+  };
 } 

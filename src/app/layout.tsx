@@ -32,9 +32,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header business={content.business} socials={content.socials} />
+        <Header business={content.business} theme={content.theme} />
         <main>{children}</main>
-        <Footer business={content.business} socials={content.socials} />
+        <Footer business={content.business} socials={content.socials} theme={content.theme} />
       </body>
     </html>
   );

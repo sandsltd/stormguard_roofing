@@ -57,7 +57,9 @@
         "author": "Sarah Johnson",
         "role": "Property Manager"
       }
-    ]
+    ],
+    "heroTitle": "Profesional Roofing Solutions In Yeovil",
+    "heroSubtitle": "Trusted roofers near you"
   },
   "about": {
     "title": "About Us",
@@ -174,5 +176,18 @@
     "twitter": "https://twitter.com/yourroofingcompany",
     "instagram": "https://instagram.com/yourroofingcompany",
     "linkedin": "https://linkedin.com/company/yourroofingcompany"
+  },
+  "theme": {
+    "header": {
+      "backgroundColor": "#000000",
+      "textColor": "#ffffff",
+      "linkColor": "#ffffff",
+      "iconColor": "#ff2600",
+      "linkHoverColor": "#f5ec00"
+    },
+    "footer": {
+      "backgroundColor": "#ff40ff",
+      "linkColor": "#ffffff"
+    }
   }
 }

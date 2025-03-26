@@ -2,25 +2,52 @@
 
 import Link from 'next/link';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { BusinessContent } from '@/utils/content';
 
 interface FooterProps {
-  business: {
-    name: string;
-    phone: string;
-    email: string;
-    address: string;
-  };
+  business: BusinessContent;
   socials: {
     facebook: string;
     twitter: string;
     instagram: string;
     linkedin: string;
   };
+  theme?: {
+    footer?: {
+      backgroundColor?: string;
+      textColor?: string;
+      linkColor?: string;
+      linkHoverColor?: string;
+      iconColor?: string;
+      borderColor?: string;
+    };
+  };
 }
 
-export default function Footer({ business, socials }: FooterProps) {
+export default function Footer({ business, socials, theme }: FooterProps) {
+  const footerStyle = {
+    backgroundColor: theme?.footer?.backgroundColor || '#1F2937',
+    color: theme?.footer?.textColor || '#ffffff',
+  };
+
+  const linkStyle = {
+    color: theme?.footer?.linkColor || '#60A5FA',
+  };
+
+  const linkHoverStyle = {
+    color: theme?.footer?.linkHoverColor || '#93C5FD',
+  };
+
+  const iconStyle = {
+    color: theme?.footer?.iconColor || '#60A5FA',
+  };
+
+  const borderStyle = {
+    borderColor: theme?.footer?.borderColor || '#374151',
+  };
+
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer style={footerStyle}>
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Info */}
@@ -37,26 +64,23 @@ export default function Footer({ business, socials }: FooterProps) {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/" className="hover:text-blue-400">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-blue-400">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-blue-400">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-blue-400">
-                  Contact
-                </Link>
-              </li>
+              {['Home', 'About', 'Services', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href={`/${item.toLowerCase()}`}
+                    className="transition-colors duration-200"
+                    style={linkStyle}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = theme?.footer?.linkHoverColor || '#93C5FD';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = theme?.footer?.linkColor || '#60A5FA';
+                    }}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -69,7 +93,14 @@ export default function Footer({ business, socials }: FooterProps) {
                   href={socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400"
+                  className="transition-colors duration-200"
+                  style={iconStyle}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.linkHoverColor || '#93C5FD';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
+                  }}
                 >
                   <FaFacebook size={24} />
                 </a>
@@ -79,7 +110,14 @@ export default function Footer({ business, socials }: FooterProps) {
                   href={socials.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400"
+                  className="transition-colors duration-200"
+                  style={iconStyle}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.linkHoverColor || '#93C5FD';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
+                  }}
                 >
                   <FaTwitter size={24} />
                 </a>
@@ -89,7 +127,14 @@ export default function Footer({ business, socials }: FooterProps) {
                   href={socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400"
+                  className="transition-colors duration-200"
+                  style={iconStyle}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.linkHoverColor || '#93C5FD';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
+                  }}
                 >
                   <FaInstagram size={24} />
                 </a>
@@ -99,7 +144,14 @@ export default function Footer({ business, socials }: FooterProps) {
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400"
+                  className="transition-colors duration-200"
+                  style={iconStyle}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.linkHoverColor || '#93C5FD';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
+                  }}
                 >
                   <FaLinkedin size={24} />
                 </a>
@@ -109,8 +161,8 @@ export default function Footer({ business, socials }: FooterProps) {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p>&copy; {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+        <div className="mt-8 pt-8 border-t" style={borderStyle}>
+          <p className="text-center">&copy; {new Date().getFullYear()} {business.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -31,9 +31,15 @@ export default function Admin() {
       const parts = path.split('.');
       const newContent = { ...prev };
       let current: any = newContent;
+      
+      // Create nested objects if they don't exist
       for (let i = 0; i < parts.length - 1; i++) {
+        if (!current[parts[i]]) {
+          current[parts[i]] = {};
+        }
         current = current[parts[i]];
       }
+      
       current[parts[parts.length - 1]] = value;
       return newContent;
     });
@@ -181,6 +187,16 @@ export default function Admin() {
                   } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
                 >
                   Social Media
+                </button>
+                <button
+                  onClick={() => setActiveTab('design')}
+                  className={`${
+                    activeTab === 'design'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  Design
                 </button>
               </nav>
             </div>
@@ -837,6 +853,341 @@ export default function Admin() {
                       onChange={(e) => handleContentChange('socials.linkedin', e.target.value)}
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'design' && (
+                <div className="space-y-8">
+                  {/* Header Design Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-medium">Header Design</h3>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Background Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.header?.backgroundColor || '#ffffff'}
+                          onChange={(e) => handleContentChange('theme.header.backgroundColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.header?.backgroundColor || '#ffffff'}
+                          onChange={(e) => handleContentChange('theme.header.backgroundColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#ffffff"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Text Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.header?.textColor || '#000000'}
+                          onChange={(e) => handleContentChange('theme.header.textColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.header?.textColor || '#000000'}
+                          onChange={(e) => handleContentChange('theme.header.textColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#000000"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Link Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.header?.linkColor || '#4B5563'}
+                          onChange={(e) => handleContentChange('theme.header.linkColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.header?.linkColor || '#4B5563'}
+                          onChange={(e) => handleContentChange('theme.header.linkColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#4B5563"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Link Hover Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.header?.linkHoverColor || '#1F2937'}
+                          onChange={(e) => handleContentChange('theme.header.linkHoverColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.header?.linkHoverColor || '#1F2937'}
+                          onChange={(e) => handleContentChange('theme.header.linkHoverColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#1F2937"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Icon Color</label>
+                      <input
+                        type="color"
+                        value={content.theme?.header?.iconColor || '#4B5563'}
+                        onChange={(e) => handleContentChange('theme.header.iconColor', e.target.value)}
+                        className="mt-1 block w-full h-10 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                      <h4 className="text-sm font-medium text-gray-700 mb-2">Preview</h4>
+                      <div 
+                        className="border rounded-lg overflow-hidden"
+                        style={{
+                          backgroundColor: content.theme?.header?.backgroundColor || '#ffffff'
+                        }}
+                      >
+                        <div className="p-4">
+                          <div className="flex items-center justify-between">
+                            <div 
+                              className="font-medium"
+                              style={{
+                                color: content.theme?.header?.textColor || '#000000'
+                              }}
+                            >
+                              Logo
+                            </div>
+                            <div className="flex gap-4">
+                              {['Home', 'About', 'Services', 'Contact'].map((item) => (
+                                <div
+                                  key={item}
+                                  className="cursor-pointer transition-colors duration-200"
+                                  style={{
+                                    color: content.theme?.header?.linkColor || '#4B5563'
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    e.currentTarget.style.color = content.theme?.header?.linkHoverColor || '#1F2937';
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    e.currentTarget.style.color = content.theme?.header?.linkColor || '#4B5563';
+                                  }}
+                                >
+                                  {item}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Footer Design Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-medium">Footer Design</h3>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Background Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.footer?.backgroundColor || '#1F2937'}
+                          onChange={(e) => handleContentChange('theme.footer.backgroundColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.footer?.backgroundColor || '#1F2937'}
+                          onChange={(e) => handleContentChange('theme.footer.backgroundColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#1F2937"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Text Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.footer?.textColor || '#ffffff'}
+                          onChange={(e) => handleContentChange('theme.footer.textColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.footer?.textColor || '#ffffff'}
+                          onChange={(e) => handleContentChange('theme.footer.textColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#ffffff"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Link Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.footer?.linkColor || '#60A5FA'}
+                          onChange={(e) => handleContentChange('theme.footer.linkColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.footer?.linkColor || '#60A5FA'}
+                          onChange={(e) => handleContentChange('theme.footer.linkColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#60A5FA"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Link Hover Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.footer?.linkHoverColor || '#93C5FD'}
+                          onChange={(e) => handleContentChange('theme.footer.linkHoverColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.footer?.linkHoverColor || '#93C5FD'}
+                          onChange={(e) => handleContentChange('theme.footer.linkHoverColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#93C5FD"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Icon Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.footer?.iconColor || '#60A5FA'}
+                          onChange={(e) => handleContentChange('theme.footer.iconColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.footer?.iconColor || '#60A5FA'}
+                          onChange={(e) => handleContentChange('theme.footer.iconColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#60A5FA"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Border Color</label>
+                      <div className="mt-1 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={content.theme?.footer?.borderColor || '#374151'}
+                          onChange={(e) => handleContentChange('theme.footer.borderColor', e.target.value)}
+                          className="h-10 w-20"
+                        />
+                        <input
+                          type="text"
+                          value={content.theme?.footer?.borderColor || '#374151'}
+                          onChange={(e) => handleContentChange('theme.footer.borderColor', e.target.value)}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="#374151"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                      <h4 className="text-sm font-medium text-gray-700 mb-2">Preview</h4>
+                      <div 
+                        className="border rounded-lg overflow-hidden"
+                        style={{
+                          backgroundColor: content.theme?.footer?.backgroundColor || '#1F2937'
+                        }}
+                      >
+                        <div className="p-4">
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div>
+                              <h3 className="text-lg font-semibold mb-4" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
+                                Contact Us
+                              </h3>
+                              <div className="space-y-2" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
+                                <p>123 Main St</p>
+                                <p>Phone: (555) 123-4567</p>
+                                <p>Email: info@example.com</p>
+                              </div>
+                            </div>
+                            <div>
+                              <h3 className="text-lg font-semibold mb-4" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
+                                Quick Links
+                              </h3>
+                              <ul className="space-y-2">
+                                {['Home', 'About', 'Services', 'Contact'].map((item) => (
+                                  <li key={item}>
+                                    <div
+                                      className="cursor-pointer transition-colors duration-200"
+                                      style={{
+                                        color: content.theme?.footer?.linkColor || '#60A5FA'
+                                      }}
+                                      onMouseEnter={(e) => {
+                                        e.currentTarget.style.color = content.theme?.footer?.linkHoverColor || '#93C5FD';
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.color = content.theme?.footer?.linkColor || '#60A5FA';
+                                      }}
+                                    >
+                                      {item}
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <h3 className="text-lg font-semibold mb-4" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
+                                Connect With Us
+                              </h3>
+                              <div className="flex space-x-4">
+                                {['Facebook', 'Twitter', 'Instagram', 'LinkedIn'].map((social) => (
+                                  <div
+                                    key={social}
+                                    className="cursor-pointer transition-colors duration-200"
+                                    style={{
+                                      color: content.theme?.footer?.iconColor || '#60A5FA'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.style.color = content.theme?.footer?.linkHoverColor || '#93C5FD';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.style.color = content.theme?.footer?.iconColor || '#60A5FA';
+                                    }}
+                                  >
+                                    {social}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-8 pt-8 border-t" style={{ borderColor: content.theme?.footer?.borderColor || '#374151' }}>
+                            <p className="text-center" style={{ color: content.theme?.footer?.textColor || '#ffffff' }}>
+                              © 2024 Example Company. All rights reserved.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
