@@ -3,6 +3,55 @@
 import { useState, useEffect } from 'react';
 import { fetchContent, saveContent } from '@/utils/client-content.ts';
 import type { Content } from '@/types/content';
+import { 
+  FaHome, FaTools, FaSearch, FaCalendarAlt, FaCloudRain, 
+  FaExclamationCircle, FaBuilding, FaSync, FaShieldAlt, 
+  FaPhone, FaLeaf, FaWrench, FaSnowflake, FaBolt, 
+  FaWind, FaHardHat, FaRuler, FaStar, FaDollarSign,
+  FaChartLine, FaClock
+} from 'react-icons/fa';
+import { MdApartment, MdRoofing, MdHouse, MdConstruction, MdWaterDrop } from 'react-icons/md';
+import { GiHouse, GiWindow, GiCementShoes } from 'react-icons/gi';
+import { HiOutlineOfficeBuilding } from 'react-icons/hi';
+import { BsHouseDoor } from 'react-icons/bs';
+
+// Component to render icons for preview
+const IconPreview = ({ iconName }: { iconName: string }) => {
+  switch (iconName) {
+    case 'home': return <FaHome className="inline-block text-blue-600 text-lg" />;
+    case 'tools': return <FaTools className="inline-block text-blue-600 text-lg" />;
+    case 'search': return <FaSearch className="inline-block text-blue-600 text-lg" />;
+    case 'calendar': return <FaCalendarAlt className="inline-block text-blue-600 text-lg" />;
+    case 'rain': return <FaCloudRain className="inline-block text-blue-600 text-lg" />;
+    case 'alert': return <FaExclamationCircle className="inline-block text-blue-600 text-lg" />;
+    case 'office': return <MdApartment className="inline-block text-blue-600 text-lg" />;
+    case 'refresh': return <FaSync className="inline-block text-blue-600 text-lg" />;
+    case 'building': return <FaBuilding className="inline-block text-blue-600 text-lg" />;
+    case 'shield': return <FaShieldAlt className="inline-block text-blue-600 text-lg" />;
+    case 'phone': return <FaPhone className="inline-block text-blue-600 text-lg" />;
+    case 'leaf': return <FaLeaf className="inline-block text-blue-600 text-lg" />;
+    case 'wrench': return <FaWrench className="inline-block text-blue-600 text-lg" />;
+    case 'snow': return <FaSnowflake className="inline-block text-blue-600 text-lg" />;
+    case 'lightning': return <FaBolt className="inline-block text-blue-600 text-lg" />;
+    case 'wind': return <FaWind className="inline-block text-blue-600 text-lg" />;
+    case 'hardhat': return <FaHardHat className="inline-block text-blue-600 text-lg" />;
+    case 'ruler': return <FaRuler className="inline-block text-blue-600 text-lg" />;
+    case 'star': return <FaStar className="inline-block text-blue-600 text-lg" />;
+    case 'dollar': return <FaDollarSign className="inline-block text-blue-600 text-lg" />;
+    case 'chart': return <FaChartLine className="inline-block text-blue-600 text-lg" />;
+    case 'clock': return <FaClock className="inline-block text-blue-600 text-lg" />;
+    case 'roofing': return <MdRoofing className="inline-block text-blue-600 text-lg" />;
+    case 'house': return <MdHouse className="inline-block text-blue-600 text-lg" />;
+    case 'construction': return <MdConstruction className="inline-block text-blue-600 text-lg" />;
+    case 'waterdrop': return <MdWaterDrop className="inline-block text-blue-600 text-lg" />;
+    case 'housealt': return <GiHouse className="inline-block text-blue-600 text-lg" />;
+    case 'window': return <GiWindow className="inline-block text-blue-600 text-lg" />;
+    case 'cement': return <GiCementShoes className="inline-block text-blue-600 text-lg" />;
+    case 'officealt': return <HiOutlineOfficeBuilding className="inline-block text-blue-600 text-lg" />;
+    case 'houseoutline': return <BsHouseDoor className="inline-block text-blue-600 text-lg" />;
+    default: return <FaHome className="inline-block text-blue-600 text-lg" />;
+  }
+};
 
 export default function Admin() {
   const [content, setContent] = useState<Content | null>(null);
@@ -797,18 +846,48 @@ export default function Admin() {
                                 onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, icon: e.target.value })}
                                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               >
-                                <option value="home">Home/Residential</option>
-                                <option value="tools">Tools/Repairs</option>
-                                <option value="search">Search/Inspections</option>
-                                <option value="calendar">Calendar/Maintenance</option>
-                                <option value="rain">Rain/Gutters</option>
-                                <option value="alert">Alert/Emergency</option>
-                                <option value="office">Office/Commercial</option>
-                                <option value="refresh">Refresh/Replacement</option>
-                                <option value="building">Building</option>
+                                <optgroup label="Roofing & Construction">
+                                  <option value="roofing"><IconPreview iconName="roofing" /> Roofing</option>
+                                  <option value="home"><IconPreview iconName="home" /> House</option>
+                                  <option value="house"><IconPreview iconName="house" /> Modern House</option>
+                                  <option value="housealt"><IconPreview iconName="housealt" /> House Alternative</option>
+                                  <option value="houseoutline"><IconPreview iconName="houseoutline" /> House Outline</option>
+                                  <option value="office"><IconPreview iconName="office" /> Office Building</option>
+                                  <option value="officealt"><IconPreview iconName="officealt" /> Office Alternative</option>
+                                  <option value="building"><IconPreview iconName="building" /> Building</option>
+                                  <option value="window"><IconPreview iconName="window" /> Window</option>
+                                </optgroup>
+                                <optgroup label="Services & Repairs">
+                                  <option value="tools"><IconPreview iconName="tools" /> Tools</option>
+                                  <option value="wrench"><IconPreview iconName="wrench" /> Wrench</option>
+                                  <option value="construction"><IconPreview iconName="construction" /> Construction</option>
+                                  <option value="hardhat"><IconPreview iconName="hardhat" /> Hard Hat</option>
+                                  <option value="ruler"><IconPreview iconName="ruler" /> Measuring</option>
+                                  <option value="search"><IconPreview iconName="search" /> Inspection</option>
+                                  <option value="refresh"><IconPreview iconName="refresh" /> Replacement</option>
+                                  <option value="cement"><IconPreview iconName="cement" /> Cement</option>
+                                </optgroup>
+                                <optgroup label="Weather & Environmental">
+                                  <option value="rain"><IconPreview iconName="rain" /> Rain</option>
+                                  <option value="waterdrop"><IconPreview iconName="waterdrop" /> Water Drop</option>
+                                  <option value="snow"><IconPreview iconName="snow" /> Snow</option>
+                                  <option value="lightning"><IconPreview iconName="lightning" /> Lightning</option>
+                                  <option value="wind"><IconPreview iconName="wind" /> Wind</option>
+                                  <option value="leaf"><IconPreview iconName="leaf" /> Eco-Friendly</option>
+                                </optgroup>
+                                <optgroup label="Business & Scheduling">
+                                  <option value="calendar"><IconPreview iconName="calendar" /> Calendar</option>
+                                  <option value="clock"><IconPreview iconName="clock" /> Clock</option>
+                                  <option value="phone"><IconPreview iconName="phone" /> Phone</option>
+                                  <option value="dollar"><IconPreview iconName="dollar" /> Price</option>
+                                  <option value="chart"><IconPreview iconName="chart" /> Performance</option>
+                                  <option value="shield"><IconPreview iconName="shield" /> Protection</option>
+                                  <option value="alert"><IconPreview iconName="alert" /> Alert</option>
+                                  <option value="star"><IconPreview iconName="star" /> Quality</option>
+                                </optgroup>
                               </select>
                               <div className="mt-2 flex items-center text-sm text-gray-500">
-                                <span>Icons from Font Awesome and Material Design libraries</span>
+                                <span className="flex items-center">Selected icon: <span className="mx-2"><IconPreview iconName={service.icon || 'home'} /></span> {service.icon || 'home'}</span>
                               </div>
                             </div>
                             <div>

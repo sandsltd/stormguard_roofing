@@ -1,7 +1,16 @@
 import React from 'react';
 import { Content } from '@/types/content';
-import { FaHome, FaTools, FaSearch, FaCalendarAlt, FaCloudRain, FaExclamationCircle, FaBuilding, FaSync } from 'react-icons/fa';
-import { MdApartment } from 'react-icons/md';
+import { 
+  FaHome, FaTools, FaSearch, FaCalendarAlt, FaCloudRain, 
+  FaExclamationCircle, FaBuilding, FaSync, FaShieldAlt, 
+  FaPhone, FaLeaf, FaWrench, FaSnowflake, FaBolt, 
+  FaWind, FaHardHat, FaRuler, FaStar, FaDollarSign,
+  FaChartLine, FaClock
+} from 'react-icons/fa';
+import { MdApartment, MdRoofing, MdHouse, MdConstruction, MdWaterDrop } from 'react-icons/md';
+import { GiHouse, GiWindow, GiCementShoes } from 'react-icons/gi';
+import { HiOutlineOfficeBuilding } from 'react-icons/hi';
+import { BsHouseDoor } from 'react-icons/bs';
 
 interface ServicesSectionProps {
   content: Content;
@@ -16,25 +25,69 @@ export default function ServicesSection({ content }: ServicesSectionProps) {
 
   const getIconComponent = (iconName: string) => {
     switch (iconName) {
-      case 'home':
+      case 'home': 
         return <FaHome className="w-12 h-12" />;
-      case 'tools':
+      case 'tools': 
         return <FaTools className="w-12 h-12" />;
-      case 'search':
+      case 'search': 
         return <FaSearch className="w-12 h-12" />;
-      case 'calendar':
+      case 'calendar': 
         return <FaCalendarAlt className="w-12 h-12" />;
-      case 'rain':
+      case 'rain': 
         return <FaCloudRain className="w-12 h-12" />;
-      case 'alert':
+      case 'alert': 
         return <FaExclamationCircle className="w-12 h-12" />;
-      case 'office':
+      case 'office': 
         return <MdApartment className="w-12 h-12" />;
-      case 'refresh':
+      case 'refresh': 
         return <FaSync className="w-12 h-12" />;
-      case 'building':
+      case 'building': 
         return <FaBuilding className="w-12 h-12" />;
-      default:
+      case 'shield': 
+        return <FaShieldAlt className="w-12 h-12" />;
+      case 'phone': 
+        return <FaPhone className="w-12 h-12" />;
+      case 'leaf': 
+        return <FaLeaf className="w-12 h-12" />;
+      case 'wrench': 
+        return <FaWrench className="w-12 h-12" />;
+      case 'snow': 
+        return <FaSnowflake className="w-12 h-12" />;
+      case 'lightning': 
+        return <FaBolt className="w-12 h-12" />;
+      case 'wind': 
+        return <FaWind className="w-12 h-12" />;
+      case 'hardhat': 
+        return <FaHardHat className="w-12 h-12" />;
+      case 'ruler': 
+        return <FaRuler className="w-12 h-12" />;
+      case 'star': 
+        return <FaStar className="w-12 h-12" />;
+      case 'dollar': 
+        return <FaDollarSign className="w-12 h-12" />;
+      case 'chart': 
+        return <FaChartLine className="w-12 h-12" />;
+      case 'clock': 
+        return <FaClock className="w-12 h-12" />;
+      case 'roofing': 
+        return <MdRoofing className="w-12 h-12" />;
+      case 'house': 
+        return <MdHouse className="w-12 h-12" />;
+      case 'construction': 
+        return <MdConstruction className="w-12 h-12" />;
+      case 'waterdrop': 
+        return <MdWaterDrop className="w-12 h-12" />;
+      case 'housealt':
+        return <GiHouse className="w-12 h-12" />;
+      case 'window': 
+        return <GiWindow className="w-12 h-12" />;
+      case 'cement': 
+        return <GiCementShoes className="w-12 h-12" />;
+      case 'officealt': 
+        return <HiOutlineOfficeBuilding className="w-12 h-12" />;
+      case 'houseoutline': 
+        return <BsHouseDoor className="w-12 h-12" />;
+      default: 
         return <FaHome className="w-12 h-12" />;
     }
   };
