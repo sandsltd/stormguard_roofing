@@ -1,10 +1,11 @@
 {
   "business": {
-    "name": "Your Roofing Company",
-    "phone": "(555) 123-4567",
+    "name": "Saunders Simmons Roofing",
+    "phone": "07432205615",
     "email": "info@yourroofingcompany.com",
     "address": "123 Main St, Anytown, USA 12345",
-    "logo": "/images/logo.png"
+    "logo": "/images/logo.png",
+    "tagline": "Dorsets Premier Roofing Company"
   },
   "homepage": {
     "hero": {
@@ -179,7 +180,7 @@
   },
   "theme": {
     "header": {
-      "backgroundColor": "#000000",
+      "backgroundColor": "#919191",
       "textColor": "#000000",
       "linkColor": "#000000",
       "iconColor": "#ff2600",

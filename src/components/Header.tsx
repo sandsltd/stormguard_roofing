@@ -118,12 +118,14 @@ export default function Header({ business, theme }: HeaderProps) {
                 >
                   {business.name}
                 </span>
-                <span 
-                  className="text-sm text-gray-600"
-                  style={{ color: theme?.header?.linkColor || '#4B5563' }}
-                >
-                  Cheshire's Premier Roofing Specialists
-                </span>
+                {business.tagline && (
+                  <span 
+                    className="text-sm text-gray-600"
+                    style={{ color: theme?.header?.linkColor || '#4B5563' }}
+                  >
+                    {business.tagline}
+                  </span>
+                )}
               </div>
             </Link>
 
