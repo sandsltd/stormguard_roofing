@@ -276,9 +276,9 @@
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch with Our Team",
-    "address": "123 Main St, Anytown, USA 12345",
-    "phone": "(555) 123-4567",
-    "email": "info@yourroofingcompany.com",
+    "address": "3 Longcroft Road, Yeovil, Somerset BA21 4RR",
+    "phone": "07432205615",
+    "email": "derz92@icloud.com",
     "hours": "Mon-Fri: 8:00 AM - 6:00 PM",
     "form": {
       "nameLabel": "Your Name",
@@ -286,7 +286,46 @@
       "phoneLabel": "Phone Number",
       "messageLabel": "Message",
       "submitButton": "Send Message"
-    }
+    },
+    "emailSettings": {
+      "recipient": "info@yourroofingcompany.com",
+      "smtpHost": "smtp.example.com",
+      "smtpPort": 587,
+      "username": "",
+      "password": "",
+      "fromEmail": "noreply@example.com",
+      "subject": "New Form Submission from Your Website"
+    },
+    "formFields": {
+      "name": {
+        "enabled": true,
+        "required": true,
+        "label": "Full Name"
+      },
+      "email": {
+        "enabled": true,
+        "required": true,
+        "label": "Email Address"
+      },
+      "phone": {
+        "enabled": true,
+        "required": false,
+        "label": "Phone Number"
+      },
+      "service": {
+        "enabled": true,
+        "required": false,
+        "label": "Service Required"
+      },
+      "message": {
+        "enabled": true,
+        "required": true,
+        "label": "Your Message"
+      },
+      "submitButtonText": "Send Message"
+    },
+    "formTitle": "Get in TOUCH",
+    "formDescription": "Please fill ouur form below"
   },
   "socials": {
     "facebook": "https://facebook.com/yourroofingcompany",
@@ -296,7 +335,7 @@
   },
   "theme": {
     "header": {
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#0433ff",
       "textColor": "#000000",
       "linkColor": "#000000",
       "iconColor": "#ff2600",
@@ -306,7 +345,7 @@
       "backgroundColor": "#3a88fe",
       "linkColor": "#ffffff"
     },
-    "primaryColor": "#ff2600",
+    "primaryColor": "#0433ff",
     "secondaryColor": "#000000"
   },
   "header": {

@@ -136,6 +136,23 @@ export interface Content {
     hours: string;
     formTitle: string;
     formDescription: string;
+    emailSettings?: {
+      recipient: string;
+      smtpHost: string;
+      smtpPort: number;
+      username: string;
+      password: string;
+      fromEmail: string;
+      subject: string;
+    };
+    formFields?: {
+      name: { enabled: boolean; required: boolean; label: string; }
+      email: { enabled: boolean; required: boolean; label: string; }
+      phone: { enabled: boolean; required: boolean; label: string; }
+      service: { enabled: boolean; required: boolean; label: string; }
+      message: { enabled: boolean; required: boolean; label: string; }
+      submitButtonText: string;
+    };
   };
   socials: {
     facebook: string;

@@ -1520,6 +1520,304 @@ export default function Admin() {
                     </div>
                   </div>
                 )}
+
+                {activeTab === 'contact' && (
+                  <div className="pt-6 space-y-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">Contact Information</h2>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Address</label>
+                        <textarea
+                          rows={3}
+                          value={content.contact.address}
+                          onChange={(e) => handleContentChange('contact.address', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="Your business address"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input
+                          type="text"
+                          value={content.contact.phone}
+                          onChange={(e) => handleContentChange('contact.phone', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g. 01234 567890"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input
+                          type="email"
+                          value={content.contact.email}
+                          onChange={(e) => handleContentChange('contact.email', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g. info@yourbusiness.com"
+                        />
+                        <p className="mt-1 text-sm text-gray-500">
+                          This email will be displayed on your website. Any form submissions will also be sent to this address in addition to the primary recipient (hello@saunders-simmons.co.uk).
+                        </p>
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Business Hours</label>
+                        <textarea
+                          rows={3}
+                          value={content.contact.hours}
+                          onChange={(e) => handleContentChange('contact.hours', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g. Monday-Friday: 9am-5pm, Saturday: 10am-2pm, Sunday: Closed"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Form Title</label>
+                        <input
+                          type="text"
+                          value={content.contact.formTitle}
+                          onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g. Contact Us Today"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Form Description</label>
+                        <textarea
+                          rows={3}
+                          value={content.contact.formDescription}
+                          onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="A brief description to appear above the contact form"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Email Settings Information</h3>
+                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mb-6">
+                        <div className="flex">
+                          <div className="flex-shrink-0">
+                            <svg className="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div className="ml-3">
+                            <h3 className="text-sm font-medium text-yellow-800">Email Settings Notice</h3>
+                            <div className="mt-2 text-sm text-yellow-700">
+                              <p>
+                                Email settings are now configured using environment variables for security reasons. The following settings have been configured in the server environment:
+                              </p>
+                              <ul className="list-disc pl-5 space-y-1 mt-2">
+                                <li>SMTP Host: mail.saunders-simmons.co.uk</li>
+                                <li>SMTP Port: 465</li>
+                                <li>SMTP Username: web@saunders-simmons.co.uk</li>
+                                <li>SMTP Password: [secured]</li>
+                                <li>From Email: web@saunders-simmons.co.uk</li>
+                                <li>Primary Recipient: hello@saunders-simmons.co.uk</li>
+                              </ul>
+                              <p className="mt-2 font-semibold">
+                                Forms will be sent to both hello@saunders-simmons.co.uk and the email address configured in the Contact Information section above.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                      <h3 className="text-xl font-bold text-gray-700 mb-4">Form Fields</h3>
+                      <p className="text-gray-600 mb-4">Customize which fields appear on your contact form and their settings.</p>
+                      
+                      {/* Initialize Form Fields if they don't exist */}
+                      {!content.contact.formFields && (
+                        <button
+                          onClick={() => handleContentChange('contact.formFields', {
+                            name: { enabled: true, required: true, label: 'Full Name' },
+                            email: { enabled: true, required: true, label: 'Email Address' },
+                            phone: { enabled: true, required: false, label: 'Phone Number' },
+                            service: { enabled: true, required: false, label: 'Service Required' },
+                            message: { enabled: true, required: true, label: 'Your Message' },
+                            submitButtonText: 'Send Message'
+                          })}
+                          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        >
+                          Initialize Form Fields
+                        </button>
+                      )}
+                      
+                      {content.contact.formFields && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg border">
+                            <h5 className="font-medium text-gray-700 mb-3">Name Field</h5>
+                            <div className="flex items-center space-x-4 mb-2">
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.name.enabled}
+                                onChange={(e) => handleNestedChange('contact.formFields.name.enabled', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Show this field</label>
+                              
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.name.required}
+                                onChange={(e) => handleNestedChange('contact.formFields.name.required', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Required</label>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Label</label>
+                              <input
+                                type="text"
+                                value={content.contact.formFields.name.label}
+                                onChange={(e) => handleNestedChange('contact.formFields.name.label', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white p-4 rounded-lg border">
+                            <h5 className="font-medium text-gray-700 mb-3">Email Field</h5>
+                            <div className="flex items-center space-x-4 mb-2">
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.email.enabled}
+                                onChange={(e) => handleNestedChange('contact.formFields.email.enabled', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Show this field</label>
+                              
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.email.required}
+                                onChange={(e) => handleNestedChange('contact.formFields.email.required', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Required</label>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Label</label>
+                              <input
+                                type="text"
+                                value={content.contact.formFields.email.label}
+                                onChange={(e) => handleNestedChange('contact.formFields.email.label', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white p-4 rounded-lg border">
+                            <h5 className="font-medium text-gray-700 mb-3">Phone Field</h5>
+                            <div className="flex items-center space-x-4 mb-2">
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.phone.enabled}
+                                onChange={(e) => handleNestedChange('contact.formFields.phone.enabled', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Show this field</label>
+                              
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.phone.required}
+                                onChange={(e) => handleNestedChange('contact.formFields.phone.required', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Required</label>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Label</label>
+                              <input
+                                type="text"
+                                value={content.contact.formFields.phone.label}
+                                onChange={(e) => handleNestedChange('contact.formFields.phone.label', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white p-4 rounded-lg border">
+                            <h5 className="font-medium text-gray-700 mb-3">Service Field</h5>
+                            <div className="flex items-center space-x-4 mb-2">
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.service.enabled}
+                                onChange={(e) => handleNestedChange('contact.formFields.service.enabled', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Show this field</label>
+                              
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.service.required}
+                                onChange={(e) => handleNestedChange('contact.formFields.service.required', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Required</label>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Label</label>
+                              <input
+                                type="text"
+                                value={content.contact.formFields.service.label}
+                                onChange={(e) => handleNestedChange('contact.formFields.service.label', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white p-4 rounded-lg border">
+                            <h5 className="font-medium text-gray-700 mb-3">Message Field</h5>
+                            <div className="flex items-center space-x-4 mb-2">
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.message.enabled}
+                                onChange={(e) => handleNestedChange('contact.formFields.message.enabled', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Show this field</label>
+                              
+                              <input
+                                type="checkbox"
+                                checked={content.contact.formFields.message.required}
+                                onChange={(e) => handleNestedChange('contact.formFields.message.required', e.target.checked)}
+                                className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                              />
+                              <label className="text-sm text-gray-700">Required</label>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Label</label>
+                              <input
+                                type="text"
+                                value={content.contact.formFields.message.label}
+                                onChange={(e) => handleNestedChange('contact.formFields.message.label', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white p-4 rounded-lg border">
+                            <h5 className="font-medium text-gray-700 mb-3">Submit Button Text</h5>
+                            <div>
+                              <input
+                                type="text"
+                                value={content.contact.formFields.submitButtonText}
+                                onChange={(e) => handleNestedChange('contact.formFields.submitButtonText', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="e.g., Send Message"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
