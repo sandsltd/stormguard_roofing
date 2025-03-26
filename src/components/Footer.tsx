@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { BusinessContent } from '@/utils/content';
 
@@ -49,10 +50,27 @@ export default function Footer({ business, socials, theme }: FooterProps) {
   return (
     <footer style={footerStyle}>
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Logo and Business Info */}
+          <div className="col-span-1">
+            <Link href="/" className="flex items-center space-x-3 mb-6">
+              {business.logo && (
+                <div className="relative w-16 h-16 overflow-hidden">
+                  <Image 
+                    src={business.logo} 
+                    alt={business.name} 
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              )}
+              <div className="flex flex-col">
+                <span className="text-xl font-bold">{business.name}</span>
+                {business.tagline && (
+                  <span className="text-sm opacity-80">{business.tagline}</span>
+                )}
+              </div>
+            </Link>
             <div className="space-y-2">
               <p>{business.address}</p>
               <p>Phone: {business.phone}</p>
@@ -84,6 +102,30 @@ export default function Footer({ business, socials, theme }: FooterProps) {
             </ul>
           </div>
 
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Our Services</h3>
+            <ul className="space-y-2">
+              {['Residential', 'Commercial', 'Emergency', 'Maintenance'].map((service) => (
+                <li key={service}>
+                  <Link 
+                    href={`/services#${service.toLowerCase()}`}
+                    className="transition-colors duration-200"
+                    style={linkStyle}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = theme?.footer?.linkHoverColor || '#93C5FD';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = theme?.footer?.linkColor || '#60A5FA';
+                    }}
+                  >
+                    {service}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Social Media */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
@@ -102,7 +144,7 @@ export default function Footer({ business, socials, theme }: FooterProps) {
                     e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
                   }}
                 >
-                  <FaFacebook size={24} />
+                  <FaFacebook className="w-6 h-6" />
                 </a>
               )}
               {socials.twitter && (
@@ -119,7 +161,7 @@ export default function Footer({ business, socials, theme }: FooterProps) {
                     e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
                   }}
                 >
-                  <FaTwitter size={24} />
+                  <FaTwitter className="w-6 h-6" />
                 </a>
               )}
               {socials.instagram && (
@@ -136,7 +178,7 @@ export default function Footer({ business, socials, theme }: FooterProps) {
                     e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
                   }}
                 >
-                  <FaInstagram size={24} />
+                  <FaInstagram className="w-6 h-6" />
                 </a>
               )}
               {socials.linkedin && (
@@ -153,7 +195,7 @@ export default function Footer({ business, socials, theme }: FooterProps) {
                     e.currentTarget.style.color = theme?.footer?.iconColor || '#60A5FA';
                   }}
                 >
-                  <FaLinkedin size={24} />
+                  <FaLinkedin className="w-6 h-6" />
                 </a>
               )}
             </div>
@@ -161,8 +203,10 @@ export default function Footer({ business, socials, theme }: FooterProps) {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t" style={borderStyle}>
-          <p className="text-center">&copy; {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t" style={borderStyle}>
+          <p className="text-center text-sm">
+            © {new Date().getFullYear()} {business.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
