@@ -58,27 +58,139 @@
     }
   },
   "homepage": {
-    "heroTitle": "Welcome to Your Business",
-    "heroSubtitle": "Professional Services You Can Trust",
-    "heroImage": "/images/hero.jpg",
+    "premiumHero": {
+      "backgroundImage": "/images/roofers/roofer_fixing_tile_on_roof.png",
+      "title": {
+        "line1": "Expert",
+        "line2": "Roofing Services",
+        "line3": "In Dorchester"
+      },
+      "subtitle": "Professional roofing solutions with superior craftsmanship and unmatched customer service. We've got you covered.",
+      "ctaPrimary": {
+        "text": "Get a Free Quote",
+        "link": "/contact"
+      },
+      "ctaSecondary": {
+        "text": "Our Services",
+        "link": "/services"
+      },
+      "featureBadges": ["Licensed & Insured", "10+ Years Experience", "Free Inspections", "Emergency Service"]
+    },
+    "introduction": {
+      "title": "Dorset's Most Trusted",
+      "subtitle": "Roofing Specialists",
+      "description": "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service. From simple repairs to complete roof replacements, our team delivers superior results that stand the test of time.",
+      "image": "/images/roofers/team_of_roofers.jpg",
+      "yearFounded": "2010",
+      "projectsCompleted": "500+",
+      "satisfaction": "98%"
+    },
+    "featuresSection": {
+      "title": "Why Choose Us",
+      "description": "We combine expertise, quality materials, and exceptional service to deliver outstanding results for every project.",
+      "ctaText": "View All Our Services",
+      "ctaLink": "/services"
+    },
+    "servicesSection": {
+      "title": "Comprehensive Roofing Solutions",
+      "description": "From installation and repairs to maintenance and emergency services, our expert roofers provide a full range of professional roofing solutions for residential and commercial properties."
+    },
     "features": [
       {
-        "title": "Quality Service",
-        "description": "We provide top-notch service to all our customers."
+        "title": "Expert Team",
+        "description": "Our certified professionals bring years of experience to every project, ensuring top-quality workmanship and attention to detail.",
+        "icon": "team",
+        "learnMoreLink": "/services/roofing",
+        "learnMoreText": "Learn more"
+      },
+      {
+        "title": "Quality Materials",
+        "description": "We use only the highest quality materials from trusted manufacturers, providing durability and peace of mind for all our clients.",
+        "icon": "materials",
+        "learnMoreLink": "/about",
+        "learnMoreText": "Learn more"
+      },
+      {
+        "title": "Warranty",
+        "description": "All our work comes with comprehensive warranty coverage, reflecting our confidence in the quality of our craftsmanship.",
+        "icon": "warranty",
+        "learnMoreLink": "/contact",
+        "learnMoreText": "Learn more"
       }
     ],
     "services": [
       {
-        "title": "Service 1",
-        "description": "Description of service 1",
-        "image": "/images/service1.jpg"
+        "title": "Roof Installation",
+        "description": "Professional installation of new roofs by expert roofers using premium materials and craftsmanship.",
+        "icon": "home",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Roof Repairs",
+        "description": "Quick and reliable repairs for leaks, damaged shingles, and other roofing issues by local roofers.",
+        "icon": "tools",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Roof Inspections",
+        "description": "Comprehensive roof inspections by experienced roofers to identify issues before they become major problems.",
+        "icon": "search",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Roof Maintenance",
+        "description": "Regular maintenance services by local roofers to extend the life of your roof and prevent costly repairs.",
+        "icon": "calendar",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Gutter Services",
+        "description": "Expert installation and repair of gutters and downspouts to protect your home from water damage.",
+        "icon": "waves",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Emergency Roofers",
+        "description": "24/7 emergency services for roofs damaged by storms, wind, or fallen debris.",
+        "icon": "alert",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Commercial Roofers",
+        "description": "Specialised roofing solutions for commercial buildings and businesses by experienced roofers.",
+        "icon": "building",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Roof Replacement",
+        "description": "Complete roof replacement services from trusted roofers with a wide selection of materials and styles.",
+        "icon": "refresh",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       }
     ],
     "testimonials": [
       {
-        "name": "John Doe",
-        "text": "Great service!",
-        "rating": 5
+        "author": "John Smith",
+        "role": "Homeowner in Dorchester",
+        "quote": "Absolutely thrilled with the roof replacement! The team was professional, punctual, and left our property spotless. The quality of work is exceptional and they completed the job ahead of schedule."
+      },
+      {
+        "author": "Sarah Johnson",
+        "role": "Business Owner",
+        "quote": "We've used their services for our commercial building twice now. Their attention to detail and commitment to quality is unmatched. Highly recommend for any commercial roofing needs."
+      },
+      {
+        "author": "David Wilson",
+        "role": "Property Manager",
+        "quote": "Managing multiple properties means I need reliable contractors. This team has never let me down - responsive, reasonably priced, and they stand behind their work with excellent warranties."
       }
     ]
   },

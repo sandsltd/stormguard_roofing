@@ -275,32 +275,413 @@ export default function Admin() {
 
                 {activeTab === 'homepage' && (
                   <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Hero Title</label>
-                      <input
-                        type="text"
-                        value={content.homepage.heroTitle}
-                        onChange={(e) => handleContentChange('homepage.heroTitle', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
+                    <div className="border-t pt-6">
+                      <h3 className="text-lg font-medium text-gray-700 mb-4">Content Sections</h3>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Hero Subtitle</label>
-                      <input
-                        type="text"
-                        value={content.homepage.heroSubtitle}
-                        onChange={(e) => handleContentChange('homepage.heroSubtitle', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
+
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Premium Hero Section</h3>
+                      <p className="text-blue-600 mb-6">Edit the content for the new premium hero section that appears on your homepage.</p>
+                      
+                      {/* Initialize the premium hero object if it doesn't exist */}
+                      {!content.homepage.premiumHero && (
+                        <button
+                          onClick={() => handleContentChange('homepage.premiumHero', {
+                            backgroundImage: '/images/roofers/roofer_fixing_tile_on_roof.png',
+                            title: {
+                              line1: 'Expert',
+                              line2: 'Roofing Services',
+                              line3: 'In Dorchester'
+                            },
+                            subtitle: 'Professional roofing solutions with superior craftsmanship and unmatched customer service. We\'ve got you covered.',
+                            ctaPrimary: {
+                              text: 'Get a Free Quote',
+                              link: '/contact'
+                            },
+                            ctaSecondary: {
+                              text: 'Our Services',
+                              link: '/services'
+                            },
+                            featureBadges: ['Licensed & Insured', '10+ Years Experience', 'Free Inspections', 'Emergency Service']
+                          })}
+                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        >
+                          Initialize Premium Hero
+                        </button>
+                      )}
+                      
+                      {content.homepage.premiumHero && (
+                        <div className="space-y-6">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Background Image Path</label>
+                            <input
+                              type="text"
+                              value={content.homepage.premiumHero.backgroundImage}
+                              onChange={(e) => handleContentChange('homepage.premiumHero.backgroundImage', e.target.value)}
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-medium text-gray-700 mb-4">Heading (Three Lines)</h4>
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Line 1</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.premiumHero.title.line1}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.title.line1', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Line 2 (Gradient Effect)</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.premiumHero.title.line2}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.title.line2', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Line 3</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.premiumHero.title.line3}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.title.line3', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Subtitle</label>
+                            <textarea
+                              value={content.homepage.premiumHero.subtitle}
+                              onChange={(e) => handleContentChange('homepage.premiumHero.subtitle', e.target.value)}
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              rows={3}
+                            />
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <h4 className="font-medium text-gray-700 mb-4">Primary Button (Blue)</h4>
+                              <div className="space-y-4">
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700">Button Text</label>
+                                  <input
+                                    type="text"
+                                    value={content.homepage.premiumHero.ctaPrimary.text}
+                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.text', e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700">Button Link</label>
+                                  <input
+                                    type="text"
+                                    value={content.homepage.premiumHero.ctaPrimary.link}
+                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.link', e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <h4 className="font-medium text-gray-700 mb-4">Secondary Button (Transparent)</h4>
+                              <div className="space-y-4">
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700">Button Text</label>
+                                  <input
+                                    type="text"
+                                    value={content.homepage.premiumHero.ctaSecondary.text}
+                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.text', e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700">Button Link</label>
+                                  <input
+                                    type="text"
+                                    value={content.homepage.premiumHero.ctaSecondary.link}
+                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.link', e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Feature Badges</label>
+                            <div className="space-y-2">
+                              {content.homepage.premiumHero.featureBadges.map((badge, index) => (
+                                <div key={index} className="flex items-center space-x-2">
+                                  <input
+                                    type="text"
+                                    value={badge}
+                                    onChange={(e) => {
+                                      const newBadges = [...content.homepage.premiumHero.featureBadges];
+                                      newBadges[index] = e.target.value;
+                                      handleContentChange('homepage.premiumHero.featureBadges', newBadges);
+                                    }}
+                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  />
+                                  <button
+                                    onClick={() => {
+                                      const newBadges = [...content.homepage.premiumHero.featureBadges];
+                                      newBadges.splice(index, 1);
+                                      handleContentChange('homepage.premiumHero.featureBadges', newBadges);
+                                    }}
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                    </svg>
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() => {
+                                  const newBadges = [...content.homepage.premiumHero.featureBadges, ''];
+                                  handleContentChange('homepage.premiumHero.featureBadges', newBadges);
+                                }}
+                                className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                              >
+                                Add Feature Badge
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Hero Image Path</label>
-                      <input
-                        type="text"
-                        value={content.homepage.heroImage}
-                        onChange={(e) => handleContentChange('homepage.heroImage', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
+
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Features Section</h3>
+                      <p className="text-blue-600 mb-6">Edit the "Why Choose Us" section heading and description.</p>
+                      
+                      {/* Initialize the features section object if it doesn't exist */}
+                      {!content.homepage.featuresSection && (
+                        <button
+                          onClick={() => handleContentChange('homepage.featuresSection', {
+                            title: "Why Choose Us",
+                            description: "We combine expertise, quality materials, and exceptional service to deliver outstanding results for every project.",
+                            ctaText: "View All Our Services",
+                            ctaLink: "/services"
+                          })}
+                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        >
+                          Initialize Features Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.featuresSection && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.featuresSection.title}
+                                  onChange={(e) => handleContentChange('homepage.featuresSection.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Why Choose Us"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
+                                <textarea
+                                  value={content.homepage.featuresSection.description}
+                                  onChange={(e) => handleContentChange('homepage.featuresSection.description', e.target.value)}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="Description text that appears below the section title"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">CTA Button Text</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.featuresSection.ctaText}
+                                  onChange={(e) => handleContentChange('homepage.featuresSection.ctaText', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., View All Our Services"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">CTA Button Link</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.featuresSection.ctaLink}
+                                  onChange={(e) => handleContentChange('homepage.featuresSection.ctaLink', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., /services"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Introduction Section</h3>
+                      <p className="text-blue-600 mb-6">Edit the content for the introduction section that appears below the hero on your homepage.</p>
+                      
+                      {/* Initialize the introduction object if it doesn't exist */}
+                      {!content.homepage.introduction && (
+                        <button
+                          onClick={() => handleContentChange('homepage.introduction', {
+                            title: "Dorset's Most Trusted",
+                            subtitle: "Roofing Specialists",
+                            description: "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service. From simple repairs to complete roof replacements, our team delivers superior results that stand the test of time.",
+                            image: "/images/roofers/team_of_roofers.jpg",
+                            yearFounded: "2010",
+                            projectsCompleted: "500+",
+                            satisfaction: "98%"
+                          })}
+                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        >
+                          Initialize Introduction Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.introduction && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 className="font-medium text-gray-700 mb-4">Main Title</h4>
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Main Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.introduction.title}
+                                  onChange={(e) => handleContentChange('homepage.introduction.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Dorset's Most Trusted"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle (Gradient Effect)</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.introduction.subtitle}
+                                  onChange={(e) => handleContentChange('homepage.introduction.subtitle', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Roofing Specialists"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                                <textarea
+                                  value={content.homepage.introduction.description}
+                                  onChange={(e) => handleContentChange('homepage.introduction.description', e.target.value)}
+                                  rows={4}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="Detailed description about your company"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Introduction Image Path</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.introduction.image}
+                                  onChange={(e) => handleContentChange('homepage.introduction.image', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="/images/your-team-image.jpg"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 className="font-medium text-gray-700 mb-4">Statistics</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Year Founded</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.introduction.yearFounded}
+                                  onChange={(e) => handleContentChange('homepage.introduction.yearFounded', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., 2010"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Projects Completed</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.introduction.projectsCompleted}
+                                  onChange={(e) => handleContentChange('homepage.introduction.projectsCompleted', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., 500+"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Customer Satisfaction</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.introduction.satisfaction}
+                                  onChange={(e) => handleContentChange('homepage.introduction.satisfaction', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., 98%"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Services Section</h3>
+                      <p className="text-blue-600 mb-6">Edit the section title and description for the services section.</p>
+                      
+                      {/* Initialize the services section object if it doesn't exist */}
+                      {!content.homepage.servicesSection && (
+                        <button
+                          onClick={() => handleContentChange('homepage.servicesSection', {
+                            title: "Our Services",
+                            description: "Professional roofing solutions for residential and commercial properties in Dorchester and surrounding areas."
+                          })}
+                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        >
+                          Initialize Services Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.servicesSection && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.servicesSection.title}
+                                  onChange={(e) => handleContentChange('homepage.servicesSection.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Our Services"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
+                                <textarea
+                                  value={content.homepage.servicesSection.description}
+                                  onChange={(e) => handleContentChange('homepage.servicesSection.description', e.target.value)}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="Description text that appears below the section title"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <div>
@@ -331,11 +712,44 @@ export default function Admin() {
                               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               rows={2}
                             />
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mt-2 mb-1">Icon Type</label>
+                              <select
+                                value={feature.icon || ''}
+                                onChange={(e) => handleArrayItemChange('homepage.features', index, { ...feature, icon: e.target.value })}
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              >
+                                <option value="">Select an icon</option>
+                                <option value="team">Team Icon</option>
+                                <option value="materials">Materials Icon</option>
+                                <option value="warranty">Warranty/Shield Icon</option>
+                              </select>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mt-2 mb-1">Learn More Text</label>
+                              <input
+                                type="text"
+                                value={feature.learnMoreText || 'Learn more'}
+                                onChange={(e) => handleArrayItemChange('homepage.features', index, { ...feature, learnMoreText: e.target.value })}
+                                placeholder="e.g., Learn more"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mt-2 mb-1">Learn More Link</label>
+                              <input
+                                type="text"
+                                value={feature.learnMoreLink || '#'}
+                                onChange={(e) => handleArrayItemChange('homepage.features', index, { ...feature, learnMoreLink: e.target.value })}
+                                placeholder="e.g., /services/roofing"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
                           </div>
                         </div>
                       ))}
                       <button
-                        onClick={() => handleArrayItemChange('homepage.features', content.homepage.features.length, { title: '', description: '' })}
+                        onClick={() => handleArrayItemChange('homepage.features', content.homepage.features.length, { title: '', description: '', icon: '', learnMoreText: '', learnMoreLink: '#' })}
                         className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         Add Feature
@@ -355,33 +769,66 @@ export default function Admin() {
                               Remove
                             </button>
                           </div>
-                          <div className="space-y-2">
-                            <input
-                              type="text"
-                              value={service.title}
-                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, title: e.target.value })}
-                              placeholder="Title"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                            <textarea
-                              value={service.description}
-                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, description: e.target.value })}
-                              placeholder="Description"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              rows={2}
-                            />
-                            <input
-                              type="text"
-                              value={service.image}
-                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, image: e.target.value })}
-                              placeholder="Image Path"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
+                          <div className="space-y-3">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                              <input
+                                type="text"
+                                value={service.title}
+                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, title: e.target.value })}
+                                placeholder="Title"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                              <textarea
+                                value={service.description}
+                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, description: e.target.value })}
+                                placeholder="Description"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                rows={3}
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
+                              <select
+                                value={service.icon || ''}
+                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, icon: e.target.value })}
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              >
+                                <option value="">Select an icon</option>
+                                <option value="home">Home/Roof Icon</option>
+                                <option value="building">Building/Flat Roof Icon</option>
+                                <option value="tools">Tools/Repair Icon</option>
+                                <option value="waves">Waves/Cleaning Icon</option>
+                              </select>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Button Text</label>
+                              <input
+                                type="text"
+                                value={service.buttonText || "Get a Free Quote"}
+                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, buttonText: e.target.value })}
+                                placeholder="e.g., Get a Free Quote"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Button Link</label>
+                              <input
+                                type="text"
+                                value={service.buttonLink || "/contact"}
+                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, buttonLink: e.target.value })}
+                                placeholder="e.g., /contact"
+                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
                           </div>
                         </div>
                       ))}
                       <button
-                        onClick={() => handleArrayItemChange('homepage.services', content.homepage.services.length, { title: '', description: '', image: '' })}
+                        onClick={() => handleArrayItemChange('homepage.services', content.homepage.services.length, { title: '', description: '', icon: '', buttonText: 'Get a Free Quote', buttonLink: '/contact' })}
                         className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         Add Service

@@ -8,6 +8,26 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ content }: HeroSectionProps) {
+  // Initialize premiumHero with default values if it doesn't exist in content
+  const premiumHero = content.homepage.premiumHero || {
+    backgroundImage: '/images/roofers/roofer_fixing_tile_on_roof.png',
+    title: {
+      line1: 'Expert',
+      line2: 'Roofing Services',
+      line3: 'In Dorchester'
+    },
+    subtitle: 'Professional roofing solutions with superior craftsmanship and unmatched customer service. We\'ve got you covered.',
+    ctaPrimary: {
+      text: 'Get a Free Quote',
+      link: '/contact'
+    },
+    ctaSecondary: {
+      text: 'Our Services',
+      link: '/services'
+    },
+    featureBadges: ['Licensed & Insured', '10+ Years Experience', 'Free Inspections', 'Emergency Service']
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -15,7 +35,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
         {/* Main Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/roofers/roofer_fixing_tile_on_roof.png"
+            src={premiumHero.backgroundImage}
             alt="Professional Roofer"
             fill
             className="object-cover object-center"
@@ -46,18 +66,17 @@ export default function HeroSection({ content }: HeroSectionProps) {
               
               {/* Main Heading with Gradient Text */}
               <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight animate-fade-in-up animation-delay-300">
-                <span className="block">Expert</span>
+                <span className="block">{premiumHero.title.line1}</span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-300">
-                  Roofing Services
+                  {premiumHero.title.line2}
                 </span>
-                <span className="block">In Dorchester</span>
+                <span className="block">{premiumHero.title.line3}</span>
               </h1>
               
               {/* Subtitle with Line Animation */}
               <div className="group relative inline-block mb-8 animate-fade-in-up animation-delay-600">
                 <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-2xl">
-                  Professional roofing solutions with superior craftsmanship 
-                  and unmatched customer service. We've got you covered.
+                  {premiumHero.subtitle}
                 </p>
                 <span className="block w-0 group-hover:w-full h-0.5 bg-blue-500 transition-all duration-700 ease-out"></span>
               </div>
@@ -65,11 +84,11 @@ export default function HeroSection({ content }: HeroSectionProps) {
               {/* CTA Buttons with Glass Effect */}
               <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-900">
                 <a
-                  href="/contact"
+                  href={premiumHero.ctaPrimary.link}
                   className="relative overflow-hidden inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-xl hover:shadow-blue-600/30 group"
                 >
                   <span className="relative z-10 flex items-center">
-                    Get a Free Quote
+                    {premiumHero.ctaPrimary.text}
                     <svg className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -78,16 +97,16 @@ export default function HeroSection({ content }: HeroSectionProps) {
                   <div className="absolute right-0 w-12 h-full bg-white/10 transform skew-x-12 translate-x-0 transition-transform group-hover:translate-x-40 ease-out duration-700" />
                 </a>
                 <a
-                  href="/services"
+                  href={premiumHero.ctaSecondary.link}
                   className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-all duration-300"
                 >
-                  Our Services
+                  {premiumHero.ctaSecondary.text}
                 </a>
               </div>
               
               {/* Key Features Pills */}
               <div className="mt-12 flex flex-wrap gap-3 animate-fade-in-up animation-delay-1200">
-                {["Licensed & Insured", "10+ Years Experience", "Free Inspections", "Emergency Service"].map((item, index) => (
+                {premiumHero.featureBadges.map((item, index) => (
                   <div key={index} className="flex items-center bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
                     <svg className="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>

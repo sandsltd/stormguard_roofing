@@ -45,17 +45,56 @@ export interface Content {
     };
   };
   homepage: {
-    heroTitle: string;
-    heroSubtitle: string;
-    heroImage: string;
+    premiumHero: {
+      backgroundImage: string;
+      title: {
+        line1: string;
+        line2: string;
+        line3: string;
+      };
+      subtitle: string;
+      ctaPrimary: {
+        text: string;
+        link: string;
+      };
+      ctaSecondary: {
+        text: string;
+        link: string;
+      };
+      featureBadges: string[];
+    };
+    introduction?: {
+      title: string;
+      subtitle: string;
+      description: string;
+      image: string;
+      yearFounded: string;
+      projectsCompleted: string;
+      satisfaction: string;
+    };
+    featuresSection?: {
+      title: string;
+      description: string;
+      ctaText?: string;
+      ctaLink?: string;
+    };
+    servicesSection?: {
+      title: string;
+      description: string;
+    };
     features: Array<{
       title: string;
       description: string;
+      icon?: string;
+      learnMoreLink?: string;
+      learnMoreText?: string;
     }>;
     services: Array<{
       title: string;
       description: string;
-      image: string;
+      icon?: string;
+      buttonText?: string;
+      buttonLink?: string;
     }>;
     testimonials: Array<{
       name: string;
@@ -92,8 +131,9 @@ export interface Content {
     services: Array<{
       title: string;
       description: string;
-      image: string;
-      features: string[];
+      icon?: string;
+      buttonText?: string;
+      buttonLink?: string;
     }>;
     cta: {
       title: string;
@@ -196,20 +236,73 @@ function getDefaultContent(): Content {
       }
     },
     homepage: {
-      heroTitle: 'Welcome to Your Business',
-      heroSubtitle: 'Professional Services You Can Trust',
-      heroImage: '/images/hero.jpg',
+      premiumHero: {
+        backgroundImage: '/images/hero.jpg',
+        title: {
+          line1: 'Welcome',
+          line2: 'to',
+          line3: 'Your Business'
+        },
+        subtitle: 'Professional Services You Can Trust',
+        ctaPrimary: {
+          text: 'Get a Free Quote',
+          link: '/quote'
+        },
+        ctaSecondary: {
+          text: 'Learn More',
+          link: '/about'
+        },
+        featureBadges: ['Quality', 'Reliable', 'Professional']
+      },
+      introduction: {
+        title: 'Introduction Title',
+        subtitle: 'Introduction Subtitle',
+        description: 'Introduction description',
+        image: '/images/introduction.jpg',
+        yearFounded: '2024',
+        projectsCompleted: '100+',
+        satisfaction: '95%'
+      },
+      featuresSection: {
+        title: 'Features Section Title',
+        description: 'Features section description',
+        ctaText: 'Learn More',
+        ctaLink: '/about'
+      },
+      servicesSection: {
+        title: 'Services Section Title',
+        description: 'Services section description'
+      },
       features: [
         {
-          title: 'Quality Service',
-          description: 'We provide top-notch service to all our customers.'
+          title: 'Expert Team',
+          description: 'Our certified professionals bring years of experience to every project, ensuring top-quality workmanship and attention to detail.',
+          icon: '/images/expert-team.png',
+          learnMoreLink: '/about',
+          learnMoreText: 'Learn More'
+        },
+        {
+          title: 'Quality Materials',
+          description: 'We use only the highest quality materials from trusted manufacturers, providing durability and peace of mind for all our clients.',
+          icon: '/images/quality-materials.png',
+          learnMoreLink: '/about',
+          learnMoreText: 'Learn More'
+        },
+        {
+          title: 'Warranty',
+          description: 'All our work comes with comprehensive warranty coverage, reflecting our confidence in the quality of our craftsmanship.',
+          icon: '/images/warranty.png',
+          learnMoreLink: '/about',
+          learnMoreText: 'Learn More'
         }
       ],
       services: [
         {
           title: 'Service 1',
           description: 'Description of service 1',
-          image: '/images/service1.jpg'
+          icon: '/images/service1.jpg',
+          buttonText: 'Learn More',
+          buttonLink: '/about'
         }
       ],
       testimonials: [
@@ -254,8 +347,9 @@ function getDefaultContent(): Content {
         {
           title: 'Service 1',
           description: 'Description of service 1',
-          image: '/images/service1.jpg',
-          features: ['Feature 1', 'Feature 2']
+          icon: '/images/service1.jpg',
+          buttonText: 'Learn More',
+          buttonLink: '/about'
         }
       ],
       cta: {

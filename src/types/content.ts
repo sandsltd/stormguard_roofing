@@ -5,6 +5,7 @@ export interface Content {
     email: string;
     address: string;
     logo: string;
+    tagline?: string;
   };
   homepage: {
     hero: {
@@ -12,21 +13,62 @@ export interface Content {
       subtitle: string;
       image: string;
     };
+    introduction?: {
+      title: string;
+      subtitle: string;
+      description: string;
+      image: string;
+      yearFounded: string;
+      projectsCompleted: string;
+      satisfaction: string;
+    };
+    featuresSection?: {
+      title: string;
+      description: string;
+      ctaText?: string;
+      ctaLink?: string;
+    };
+    servicesSection?: {
+      title: string;
+      description: string;
+    };
     features: {
       title: string;
       description: string;
-      icon: string;
+      icon?: string;
+      learnMoreLink?: string;
+      learnMoreText?: string;
     }[];
     services: {
       title: string;
       description: string;
-      icon: string;
+      icon?: string;
+      buttonText?: string;
+      buttonLink?: string;
     }[];
     testimonials: {
       quote: string;
       author: string;
       role: string;
     }[];
+    premiumHero: {
+      backgroundImage: string;
+      title: {
+        line1: string;
+        line2: string;
+        line3: string;
+      };
+      subtitle: string;
+      ctaPrimary: {
+        text: string;
+        link: string;
+      };
+      ctaSecondary: {
+        text: string;
+        link: string;
+      };
+      featureBadges: string[];
+    };
   };
   about: {
     title: string;
@@ -57,8 +99,9 @@ export interface Content {
     services: {
       title: string;
       description: string;
-      image: string;
-      features: string[];
+      icon?: string;
+      buttonText?: string;
+      buttonLink?: string;
     }[];
     cta: {
       title: string;
