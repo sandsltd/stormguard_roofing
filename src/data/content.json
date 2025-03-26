@@ -58,7 +58,7 @@
         "role": "Property Manager"
       }
     ],
-    "heroTitle": "Profesional Roofing Solutions In Yeovil",
+    "heroTitle": "Profesional Roofing Solutions In Dorchester",
     "heroSubtitle": "Trusted roofers near you"
   },
   "about": {
@@ -180,8 +180,8 @@
   "theme": {
     "header": {
       "backgroundColor": "#000000",
-      "textColor": "#ffffff",
-      "linkColor": "#ffffff",
+      "textColor": "#000000",
+      "linkColor": "#000000",
       "iconColor": "#ff2600",
       "linkHoverColor": "#f5ec00"
     },
