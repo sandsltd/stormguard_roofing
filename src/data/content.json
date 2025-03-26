@@ -3,7 +3,7 @@
     "name": "Saunders and Smalls 123",
     "tagline": "Your child's safety is our number one priority",
     "description": "Based in Yeovil, Somerset, we specialise in extended rear-facing car seats, Swedish Plus-tested models, and a curated range of car seat accessories for babies, toddlers, and children. Every product we stock is one we trust enough to use with our own children.",
-    "logo": "/images/logo.png",
+    "logo": "/images/logo/saunders_simmons_ltd.png",
     "phone": "07432205615",
     "email": "nick@nick.com",
     "address": "Yeovil, Somerset, UK"
@@ -14,7 +14,7 @@
       "subtitle": "Protect Your Home with Quality Roofing",
       "buttonText": "Free Estimate",
       "buttonUrl": "/contact",
-      "image": "/images/hero.jpg"
+      "image": "/images/roofers/roofer_fixing_tile_on_roof.png"
     },
     "features": [
       {
