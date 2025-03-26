@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { fetchContent, saveContent } from '@/utils/client-content.ts';
-import Link from 'next/link';
+import type { Content } from '@/types/content';
 
 export default function Admin() {
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState<Content | null>(null);
   const [activeTab, setActiveTab] = useState('business');
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState('');
@@ -25,39 +25,46 @@ export default function Admin() {
     loadContent();
   }, []);
 
-  const handleContentChange = (section, field, value) => {
-    setContent(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [field]: value
+  const handleContentChange = (path: string, value: any) => {
+    setContent(prev => {
+      if (!prev) return prev;
+      const parts = path.split('.');
+      const newContent = { ...prev };
+      let current: any = newContent;
+      for (let i = 0; i < parts.length - 1; i++) {
+        current = current[parts[i]];
       }
-    }));
+      current[parts[parts.length - 1]] = value;
+      return newContent;
+    });
   };
 
-  const handleNestedChange = (section, parent, field, value) => {
-    setContent(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [parent]: {
-          ...prev[section][parent],
-          [field]: value
-        }
-      }
-    }));
+  const handleNestedChange = (path: string, value: any) => {
+    handleContentChange(path, value);
   };
 
-  const handleArrayItemChange = (section, index, field, value) => {
-    setContent(prev => ({
-      ...prev,
-      [section]: prev[section].map((item, i) => 
-        i === index ? { ...item, [field]: value } : item
-      )
-    }));
+  const handleArrayItemChange = (path: string, index: number, value: any) => {
+    setContent(prev => {
+      if (!prev) return prev;
+      const parts = path.split('.');
+      const newContent = { ...prev };
+      let current: any = newContent;
+      for (let i = 0; i < parts.length - 1; i++) {
+        current = current[parts[i]];
+      }
+      const array = current[parts[parts.length - 1]];
+      if (value === null) {
+        array.splice(index, 1);
+      } else {
+        array[index] = value;
+      }
+      return newContent;
+    });
   };
 
   const handleSave = async () => {
+    if (!content) return;
+    
     setIsSaving(true);
     setSaveStatus('Saving...');
     
@@ -83,421 +90,660 @@ export default function Admin() {
     );
   }
 
-  const renderBusinessTab = () => (
-    <div className="space-y-6">
-      <h2 className="text-xl font-semibold mb-4">Business Information</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Business Name
-          </label>
-          <input
-            type="text"
-            value={content.business.name}
-            onChange={(e) => handleContentChange('business', 'name', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Tagline
-          </label>
-          <input
-            type="text"
-            value={content.business.tagline}
-            onChange={(e) => handleContentChange('business', 'tagline', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Description
-          </label>
-          <textarea
-            value={content.business.description}
-            onChange={(e) => handleContentChange('business', 'description', e.target.value)}
-            rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Logo Path
-          </label>
-          <input
-            type="text"
-            value={content.business.logo}
-            onChange={(e) => handleContentChange('business', 'logo', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Phone
-          </label>
-          <input
-            type="text"
-            value={content.business.phone}
-            onChange={(e) => handleContentChange('business', 'phone', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            value={content.business.email}
-            onChange={(e) => handleContentChange('business', 'email', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Address
-          </label>
-          <input
-            type="text"
-            value={content.business.address}
-            onChange={(e) => handleContentChange('business', 'address', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderHomepageTab = () => (
-    <div className="space-y-8">
-      <section>
-        <h2 className="text-xl font-semibold mb-4">Hero Section</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-6 rounded-lg">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Title
-            </label>
-            <input
-              type="text"
-              value={content.homepage.hero.title}
-              onChange={(e) => handleNestedChange('homepage', 'hero', 'title', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Subtitle
-            </label>
-            <input
-              type="text"
-              value={content.homepage.hero.subtitle}
-              onChange={(e) => handleNestedChange('homepage', 'hero', 'subtitle', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Button Text
-            </label>
-            <input
-              type="text"
-              value={content.homepage.hero.buttonText}
-              onChange={(e) => handleNestedChange('homepage', 'hero', 'buttonText', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Button URL
-            </label>
-            <input
-              type="text"
-              value={content.homepage.hero.buttonUrl}
-              onChange={(e) => handleNestedChange('homepage', 'hero', 'buttonUrl', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Hero Image Path
-            </label>
-            <input
-              type="text"
-              value={content.homepage.hero.image}
-              onChange={(e) => handleNestedChange('homepage', 'hero', 'image', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </section>
-      
-      <section>
-        <h2 className="text-xl font-semibold mb-4">Features</h2>
-        {content.homepage.features.map((feature, index) => (
-          <div key={index} className="mb-6 bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-medium mb-4">Feature {index + 1}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  value={feature.title}
-                  onChange={(e) => handleArrayItemChange('homepage.features', index, 'title', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Icon (home, building, tools)
-                </label>
-                <input
-                  type="text"
-                  value={feature.icon}
-                  onChange={(e) => handleArrayItemChange('homepage.features', index, 'icon', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Description
-                </label>
-                <textarea
-                  value={feature.description}
-                  onChange={(e) => handleArrayItemChange('homepage.features', index, 'description', e.target.value)}
-                  rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-      
-      <section>
-        <h2 className="text-xl font-semibold mb-4">Testimonials</h2>
-        {content.homepage.testimonials.map((testimonial, index) => (
-          <div key={index} className="mb-6 bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-medium mb-4">Testimonial {index + 1}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  value={testimonial.name}
-                  onChange={(e) => handleArrayItemChange('homepage.testimonials', index, 'name', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Position
-                </label>
-                <input
-                  type="text"
-                  value={testimonial.position}
-                  onChange={(e) => handleArrayItemChange('homepage.testimonials', index, 'position', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Comment
-                </label>
-                <textarea
-                  value={testimonial.comment}
-                  onChange={(e) => handleArrayItemChange('homepage.testimonials', index, 'comment', e.target.value)}
-                  rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                ></textarea>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Image Path
-                </label>
-                <input
-                  type="text"
-                  value={testimonial.image}
-                  onChange={(e) => handleArrayItemChange('homepage.testimonials', index, 'image', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Rating (1-5)
-                </label>
-                <input
-                  type="number"
-                  min="1"
-                  max="5"
-                  value={testimonial.rating}
-                  onChange={(e) => handleArrayItemChange('homepage.testimonials', index, 'rating', parseInt(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Admin Header */}
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={() => setIsPreviewMode(!isPreviewMode)}
-              className="text-blue-600 hover:text-blue-800"
-            >
-              {isPreviewMode ? 'Exit Preview' : 'Preview Site'}
-            </button>
-            <Link href="/" className="text-gray-600 hover:text-gray-800">
-              Back to Site
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      {/* Preview iframe */}
-      {isPreviewMode && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-6xl h-[90vh] flex flex-col">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h2 className="text-xl font-semibold">Site Preview</h2>
+      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+            <div className="flex gap-4">
               <button
-                onClick={() => setIsPreviewMode(false)}
-                className="text-gray-500 hover:text-gray-700"
+                onClick={() => setIsPreviewMode(!isPreviewMode)}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
               >
-                Close
+                {isPreviewMode ? 'Exit Preview' : 'Preview Site'}
+              </button>
+              <button
+                onClick={handleSave}
+                disabled={isSaving}
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+              >
+                {isSaving ? 'Saving...' : 'Save Changes'}
               </button>
             </div>
-            <div className="flex-grow p-4">
-              <iframe
-                src="/"
-                className="w-full h-full border"
-                title="Website Preview"
-              ></iframe>
+          </div>
+
+          {saveStatus && (
+            <div className={`mb-4 p-4 rounded ${saveStatus.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {saveStatus}
+            </div>
+          )}
+
+          <div className="bg-white shadow rounded-lg">
+            <div className="border-b border-gray-200">
+              <nav className="flex -mb-px">
+                <button
+                  onClick={() => setActiveTab('business')}
+                  className={`${
+                    activeTab === 'business'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  Business Info
+                </button>
+                <button
+                  onClick={() => setActiveTab('homepage')}
+                  className={`${
+                    activeTab === 'homepage'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  Homepage
+                </button>
+                <button
+                  onClick={() => setActiveTab('about')}
+                  className={`${
+                    activeTab === 'about'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => setActiveTab('services')}
+                  className={`${
+                    activeTab === 'services'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  Services
+                </button>
+                <button
+                  onClick={() => setActiveTab('contact')}
+                  className={`${
+                    activeTab === 'contact'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  Contact
+                </button>
+                <button
+                  onClick={() => setActiveTab('socials')}
+                  className={`${
+                    activeTab === 'socials'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                >
+                  Social Media
+                </button>
+              </nav>
+            </div>
+
+            <div className="p-6">
+              {activeTab === 'business' && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Business Name</label>
+                    <input
+                      type="text"
+                      value={content.business.name}
+                      onChange={(e) => handleContentChange('business.name', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Phone</label>
+                    <input
+                      type="text"
+                      value={content.business.phone}
+                      onChange={(e) => handleContentChange('business.phone', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                    <input
+                      type="email"
+                      value={content.business.email}
+                      onChange={(e) => handleContentChange('business.email', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Address</label>
+                    <textarea
+                      value={content.business.address}
+                      onChange={(e) => handleContentChange('business.address', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      rows={3}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Logo Path</label>
+                    <input
+                      type="text"
+                      value={content.business.logo}
+                      onChange={(e) => handleContentChange('business.logo', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'homepage' && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Hero Title</label>
+                    <input
+                      type="text"
+                      value={content.homepage.heroTitle}
+                      onChange={(e) => handleContentChange('homepage.heroTitle', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Hero Subtitle</label>
+                    <input
+                      type="text"
+                      value={content.homepage.heroSubtitle}
+                      onChange={(e) => handleContentChange('homepage.heroSubtitle', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Hero Image Path</label>
+                    <input
+                      type="text"
+                      value={content.homepage.heroImage}
+                      onChange={(e) => handleContentChange('homepage.heroImage', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Features</label>
+                    {content.homepage.features.map((feature, index) => (
+                      <div key={index} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between mb-2">
+                          <h4 className="font-medium">Feature {index + 1}</h4>
+                          <button
+                            onClick={() => handleArrayItemChange('homepage.features', index, null)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={feature.title}
+                            onChange={(e) => handleArrayItemChange('homepage.features', index, { ...feature, title: e.target.value })}
+                            placeholder="Title"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <textarea
+                            value={feature.description}
+                            onChange={(e) => handleArrayItemChange('homepage.features', index, { ...feature, description: e.target.value })}
+                            placeholder="Description"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={2}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => handleArrayItemChange('homepage.features', content.homepage.features.length, { title: '', description: '' })}
+                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Add Feature
+                    </button>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Services</label>
+                    {content.homepage.services.map((service, index) => (
+                      <div key={index} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between mb-2">
+                          <h4 className="font-medium">Service {index + 1}</h4>
+                          <button
+                            onClick={() => handleArrayItemChange('homepage.services', index, null)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={service.title}
+                            onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, title: e.target.value })}
+                            placeholder="Title"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <textarea
+                            value={service.description}
+                            onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, description: e.target.value })}
+                            placeholder="Description"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={2}
+                          />
+                          <input
+                            type="text"
+                            value={service.image}
+                            onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, image: e.target.value })}
+                            placeholder="Image Path"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => handleArrayItemChange('homepage.services', content.homepage.services.length, { title: '', description: '', image: '' })}
+                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Add Service
+                    </button>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Testimonials</label>
+                    {content.homepage.testimonials.map((testimonial, index) => (
+                      <div key={index} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between mb-2">
+                          <h4 className="font-medium">Testimonial {index + 1}</h4>
+                          <button
+                            onClick={() => handleArrayItemChange('homepage.testimonials', index, null)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={testimonial.name}
+                            onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, name: e.target.value })}
+                            placeholder="Name"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <textarea
+                            value={testimonial.text}
+                            onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, text: e.target.value })}
+                            placeholder="Testimonial Text"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={2}
+                          />
+                          <input
+                            type="number"
+                            value={testimonial.rating}
+                            onChange={(e) => handleArrayItemChange('homepage.testimonials', index, { ...testimonial, rating: parseInt(e.target.value) })}
+                            placeholder="Rating (1-5)"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { name: '', text: '', rating: 5 })}
+                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Add Testimonial
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'about' && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Title</label>
+                    <input
+                      type="text"
+                      value={content.about.title}
+                      onChange={(e) => handleContentChange('about.title', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Subtitle</label>
+                    <input
+                      type="text"
+                      value={content.about.subtitle}
+                      onChange={(e) => handleContentChange('about.subtitle', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Hero Image Path</label>
+                    <input
+                      type="text"
+                      value={content.about.heroImage}
+                      onChange={(e) => handleContentChange('about.heroImage', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Main Content</label>
+                    <div className="space-y-4">
+                      <input
+                        type="text"
+                        value={content.about.mainContent.title}
+                        onChange={(e) => handleContentChange('about.mainContent.title', e.target.value)}
+                        placeholder="Title"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                      <textarea
+                        value={content.about.mainContent.description}
+                        onChange={(e) => handleContentChange('about.mainContent.description', e.target.value)}
+                        placeholder="Description"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        rows={3}
+                      />
+                      <textarea
+                        value={content.about.mainContent.history}
+                        onChange={(e) => handleContentChange('about.mainContent.history', e.target.value)}
+                        placeholder="History"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        rows={3}
+                      />
+                      <textarea
+                        value={content.about.mainContent.mission}
+                        onChange={(e) => handleContentChange('about.mainContent.mission', e.target.value)}
+                        placeholder="Mission"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        rows={3}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Team Members</label>
+                    {content.about.team.map((member, index) => (
+                      <div key={index} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between mb-2">
+                          <h4 className="font-medium">Team Member {index + 1}</h4>
+                          <button
+                            onClick={() => handleArrayItemChange('about.team', index, null)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={member.name}
+                            onChange={(e) => handleArrayItemChange('about.team', index, { ...member, name: e.target.value })}
+                            placeholder="Name"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <input
+                            type="text"
+                            value={member.role}
+                            onChange={(e) => handleArrayItemChange('about.team', index, { ...member, role: e.target.value })}
+                            placeholder="Role"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <textarea
+                            value={member.bio}
+                            onChange={(e) => handleArrayItemChange('about.team', index, { ...member, bio: e.target.value })}
+                            placeholder="Bio"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={2}
+                          />
+                          <input
+                            type="text"
+                            value={member.image}
+                            onChange={(e) => handleArrayItemChange('about.team', index, { ...member, image: e.target.value })}
+                            placeholder="Image Path"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => handleArrayItemChange('about.team', content.about.team.length, { name: '', role: '', bio: '', image: '' })}
+                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Add Team Member
+                    </button>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Values</label>
+                    {content.about.values.map((value, index) => (
+                      <div key={index} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between mb-2">
+                          <h4 className="font-medium">Value {index + 1}</h4>
+                          <button
+                            onClick={() => handleArrayItemChange('about.values', index, null)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={value.title}
+                            onChange={(e) => handleArrayItemChange('about.values', index, { ...value, title: e.target.value })}
+                            placeholder="Title"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <textarea
+                            value={value.description}
+                            onChange={(e) => handleArrayItemChange('about.values', index, { ...value, description: e.target.value })}
+                            placeholder="Description"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={2}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => handleArrayItemChange('about.values', content.about.values.length, { title: '', description: '' })}
+                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Add Value
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'services' && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Services</label>
+                    {content.services.map((service, index) => (
+                      <div key={index} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between mb-2">
+                          <h4 className="font-medium">Service {index + 1}</h4>
+                          <button
+                            onClick={() => handleArrayItemChange('services', index, null)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={service.title}
+                            onChange={(e) => handleArrayItemChange('services', index, { ...service, title: e.target.value })}
+                            placeholder="Title"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <textarea
+                            value={service.description}
+                            onChange={(e) => handleArrayItemChange('services', index, { ...service, description: e.target.value })}
+                            placeholder="Description"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={2}
+                          />
+                          <input
+                            type="text"
+                            value={service.image}
+                            onChange={(e) => handleArrayItemChange('services', index, { ...service, image: e.target.value })}
+                            placeholder="Image Path"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
+                            {service.features.map((feature, featureIndex) => (
+                              <div key={featureIndex} className="flex gap-2 mb-2">
+                                <input
+                                  type="text"
+                                  value={feature}
+                                  onChange={(e) => {
+                                    const newFeatures = [...service.features];
+                                    newFeatures[featureIndex] = e.target.value;
+                                    handleArrayItemChange('services', index, { ...service, features: newFeatures });
+                                  }}
+                                  placeholder="Feature"
+                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                                <button
+                                  onClick={() => {
+                                    const newFeatures = service.features.filter((_, i) => i !== featureIndex);
+                                    handleArrayItemChange('services', index, { ...service, features: newFeatures });
+                                  }}
+                                  className="px-2 py-1 text-red-600 hover:text-red-800"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            ))}
+                            <button
+                              onClick={() => {
+                                const newFeatures = [...service.features, ''];
+                                handleArrayItemChange('services', index, { ...service, features: newFeatures });
+                              }}
+                              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                            >
+                              Add Feature
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => handleArrayItemChange('services', content.services.length, { title: '', description: '', image: '', features: [] })}
+                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Add Service
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'contact' && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Address</label>
+                    <textarea
+                      value={content.contact.address}
+                      onChange={(e) => handleContentChange('contact.address', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      rows={3}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Phone</label>
+                    <input
+                      type="text"
+                      value={content.contact.phone}
+                      onChange={(e) => handleContentChange('contact.phone', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                    <input
+                      type="email"
+                      value={content.contact.email}
+                      onChange={(e) => handleContentChange('contact.email', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Business Hours</label>
+                    <input
+                      type="text"
+                      value={content.contact.hours}
+                      onChange={(e) => handleContentChange('contact.hours', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Form Title</label>
+                    <input
+                      type="text"
+                      value={content.contact.formTitle}
+                      onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Form Description</label>
+                    <textarea
+                      value={content.contact.formDescription}
+                      onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      rows={3}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'socials' && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Facebook URL</label>
+                    <input
+                      type="url"
+                      value={content.socials.facebook}
+                      onChange={(e) => handleContentChange('socials.facebook', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Twitter URL</label>
+                    <input
+                      type="url"
+                      value={content.socials.twitter}
+                      onChange={(e) => handleContentChange('socials.twitter', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Instagram URL</label>
+                    <input
+                      type="url"
+                      value={content.socials.instagram}
+                      onChange={(e) => handleContentChange('socials.instagram', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">LinkedIn URL</label>
+                    <input
+                      type="url"
+                      value={content.socials.linkedin}
+                      onChange={(e) => handleContentChange('socials.linkedin', e.target.value)}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      )}
-
-      <div className="container mx-auto px-4 py-8">
-        {/* Tabs */}
-        <div className="mb-8 border-b border-gray-200">
-          <nav className="flex space-x-8">
-            <button
-              onClick={() => setActiveTab('business')}
-              className={`pb-4 px-1 ${
-                activeTab === 'business'
-                  ? 'border-b-2 border-blue-500 text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Business Info
-            </button>
-            <button
-              onClick={() => setActiveTab('homepage')}
-              className={`pb-4 px-1 ${
-                activeTab === 'homepage'
-                  ? 'border-b-2 border-blue-500 text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Homepage
-            </button>
-            <button
-              onClick={() => setActiveTab('about')}
-              className={`pb-4 px-1 ${
-                activeTab === 'about'
-                  ? 'border-b-2 border-blue-500 text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              About
-            </button>
-            <button
-              onClick={() => setActiveTab('services')}
-              className={`pb-4 px-1 ${
-                activeTab === 'services'
-                  ? 'border-b-2 border-blue-500 text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Services
-            </button>
-            <button
-              onClick={() => setActiveTab('contact')}
-              className={`pb-4 px-1 ${
-                activeTab === 'contact'
-                  ? 'border-b-2 border-blue-500 text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Contact
-            </button>
-            <button
-              onClick={() => setActiveTab('socials')}
-              className={`pb-4 px-1 ${
-                activeTab === 'socials'
-                  ? 'border-b-2 border-blue-500 text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Social Media
-            </button>
-          </nav>
-        </div>
-
-        {/* Content Form */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          {activeTab === 'business' && renderBusinessTab()}
-          {activeTab === 'homepage' && renderHomepageTab()}
-          {/* Add other tab content renderers here */}
-        </div>
-
-        {/* Save Button */}
-        <div className="flex items-center justify-end space-x-4">
-          {saveStatus && (
-            <span className={`text-sm ${saveStatus.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>
-              {saveStatus}
-            </span>
-          )}
-          <button
-            onClick={handleSave}
-            disabled={isSaving}
-            className={`px-6 py-2 rounded-md font-medium ${
-              isSaving
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 text-white'
-            }`}
-          >
-            {isSaving ? 'Saving...' : 'Save Changes'}
-          </button>
         </div>
       </div>
     </div>

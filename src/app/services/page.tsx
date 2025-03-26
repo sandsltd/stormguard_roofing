@@ -2,115 +2,103 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import Layout from '@/components/Layout';
-import { getContent } from '@/utils/content';
+import { getContent } from '@/utils/server-content';
 
 // Static site generation with revalidation
 export const revalidate = 3600; // Revalidate every hour
 
-export default function Services() {
-  const content = getContent();
-  const { business, services, socials } = content;
+export default async function Services() {
+  const content = await getContent();
 
   return (
-    <Layout business={business} socials={socials}>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gray-800 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-6">Our Roofing Services</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            We offer comprehensive roofing solutions for both residential and commercial properties.
-            Our experienced team ensures quality workmanship and exceptional results.
-          </p>
+      <div className="relative h-[40vh] bg-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-800">
+          <div className="absolute inset-0 bg-opacity-50" />
         </div>
-      </section>
+        <div className="relative z-10 h-full flex items-center justify-center text-white text-center px-4">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+            <p className="text-xl md:text-2xl">Professional Roofing Solutions for Every Need</p>
+          </div>
+        </div>
+      </div>
 
-      {/* Services List */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Services Section */}
+      <div className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 gap-16">
-            {services.map((service, index) => (
+            {content.services.map((service, index) => (
               <div 
-                key={service.id}
+                key={index} 
                 className={`flex flex-col ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } gap-8 items-center`}
+                } gap-8 md:gap-12`}
               >
-                <div className="w-full md:w-1/2">
-                  <div className="relative h-64 md:h-80 w-full rounded-lg overflow-hidden">
-                    <Image 
-                      src={service.image} 
-                      alt={service.title} 
+                <div className="flex-1">
+                  <div className="relative h-64 md:h-full rounded-lg overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
                       fill
                       className="object-cover"
                     />
                   </div>
                 </div>
-                <div className="w-full md:w-1/2">
-                  <h2 className="text-3xl font-bold mb-4 text-gray-800">{service.title}</h2>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-800">What We Offer:</h3>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-gray-700">
-                        <svg className="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                <div className="flex-1 flex flex-col justify-center">
+                  <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start">
+                        <svg
+                          className="h-6 w-6 text-green-500 mr-2 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
-                        {feature}
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-8">
+                    <a
+                      href="/contact"
+                      className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                    >
+                      Get a Quote
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Process</h2>
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="flex-1 bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-              <h3 className="text-xl font-semibold mb-2">Consultation</h3>
-              <p className="text-gray-600">We assess your needs and provide expert advice on the best solutions for your roof.</p>
-            </div>
-            <div className="flex-1 bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-              <h3 className="text-xl font-semibold mb-2">Proposal</h3>
-              <p className="text-gray-600">We provide a detailed proposal with transparent pricing and timeline.</p>
-            </div>
-            <div className="flex-1 bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-              <h3 className="text-xl font-semibold mb-2">Installation</h3>
-              <p className="text-gray-600">Our skilled team completes the work with minimal disruption to your property.</p>
-            </div>
-            <div className="flex-1 bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
-              <h3 className="text-xl font-semibold mb-2">Follow-up</h3>
-              <p className="text-gray-600">We ensure your complete satisfaction and provide warranty information.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Need a Roofing Solution?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Contact us today for a free consultation and estimate
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Roofing Project?</h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Contact us today for a free consultation and estimate. Our team of experts is ready to help you with all your roofing needs.
           </p>
-          <Link
+          <a
             href="/contact"
-            className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-medium transition-colors"
+            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            Get a Free Estimate
-          </Link>
+            Contact Us Now
+          </a>
         </div>
-      </section>
-    </Layout>
+      </div>
+    </div>
   );
 } 
