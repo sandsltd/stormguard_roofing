@@ -32,6 +32,26 @@ export interface Content {
       title: string;
       description: string;
     };
+    servingAreasSection?: {
+      title: string;
+      description: string;
+    };
+    faqSection?: {
+      title: string;
+      description: string;
+    };
+    servingAreas?: {
+      name: string;
+      description: string;
+      image: string;
+      tags: string[];
+      ctaText: string;
+      ctaLink: string;
+    }[];
+    faqs?: {
+      question: string;
+      answer: string;
+    }[];
     features: {
       title: string;
       description: string;

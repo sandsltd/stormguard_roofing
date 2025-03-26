@@ -1070,6 +1070,105 @@ export default function Admin() {
                       )}
                     </div>
 
+                    <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-8">
+                      <h3 className="text-xl font-bold text-amber-700 mb-4">FAQ Section</h3>
+                      <p className="text-amber-600 mb-6">Edit the section title, description, and FAQ items for the FAQ section.</p>
+                      
+                      {/* Initialize the FAQ section object if it doesn't exist */}
+                      {!content.homepage.faqSection && (
+                        <button
+                          onClick={() => handleContentChange('homepage.faqSection', {
+                            title: "Frequently Asked Questions",
+                            description: "Find answers to common questions about our roofing services and solutions."
+                          })}
+                          className="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700"
+                        >
+                          Initialize FAQ Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.faqSection && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.faqSection.title}
+                                  onChange={(e) => handleContentChange('homepage.faqSection.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                  placeholder="e.g., Frequently Asked Questions"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
+                                <textarea
+                                  value={content.homepage.faqSection.description}
+                                  onChange={(e) => handleContentChange('homepage.faqSection.description', e.target.value)}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                  placeholder="Description text that appears below the section title"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">FAQ Items</label>
+                            {(content.homepage.faqs || []).map((faq, index) => (
+                              <div key={index} className="mb-4 p-4 border rounded">
+                                <div className="flex justify-between mb-2">
+                                  <h4 className="font-medium">FAQ {index + 1}</h4>
+                                  <button
+                                    onClick={() => handleArrayItemChange('homepage.faqs', index, null)}
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                                <div className="space-y-3">
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Question</label>
+                                    <input
+                                      type="text"
+                                      value={faq.question || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.faqs', index, { ...faq, question: e.target.value })}
+                                      placeholder="e.g., How long does a typical roof installation take?"
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Answer</label>
+                                    <textarea
+                                      value={faq.answer || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.faqs', index, { ...faq, answer: e.target.value })}
+                                      placeholder="Detailed answer to the question"
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                      rows={5}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                            <button
+                              onClick={() => {
+                                const newFaq = {
+                                  question: 'New Question',
+                                  answer: 'Detailed answer to the question'
+                                };
+                                const faqs = content.homepage.faqs || [];
+                                handleArrayItemChange('homepage.faqs', faqs.length, newFaq);
+                              }}
+                              className="mt-2 px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700"
+                            >
+                              Add FAQ
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Testimonials</label>
                       {content.homepage.testimonials.map((testimonial, index) => (

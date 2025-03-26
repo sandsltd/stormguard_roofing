@@ -6,6 +6,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection';
 import IntroductionSection from '@/components/home/IntroductionSection';
 import ContactSection from '@/components/home/ContactSection';
 import ServingAreasSectionWrapper from '@/components/home/ServingAreasSectionWrapper';
+import FAQSectionWrapper from '@/components/home/FAQSectionWrapper';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -32,6 +33,9 @@ export default async function Home() {
 
       {/* Serving Areas Section */}
       <ServingAreasSectionWrapper content={content} />
+
+      {/* FAQ Section */}
+      <FAQSectionWrapper content={content} />
 
       {/* Testimonials Section */}
       <TestimonialsSection content={content} />
