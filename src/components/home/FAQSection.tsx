@@ -17,6 +17,9 @@ export default function FAQSection({ content }: FAQSectionProps) {
   // Track which FAQ items are expanded
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
 
+  // Use primary color from theme or default to indigo
+  const primaryColor = content.theme?.primaryColor || '#4f46e5';
+  
   // Initialize faqSection with default values if it doesn't exist
   const faqSection = content.homepage.faqSection || {
     title: "Frequently Asked Questions",
@@ -60,6 +63,12 @@ export default function FAQSection({ content }: FAQSectionProps) {
     });
   };
 
+  // Custom focus ring style using the theme color
+  const focusRingStyle = {
+    '--ring-color': `${primaryColor}50`,
+    '--ring-offset-color': primaryColor
+  } as React.CSSProperties;
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,13 +84,14 @@ export default function FAQSection({ content }: FAQSectionProps) {
               className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-200"
             >
               <button
-                className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
                 onClick={() => toggleItem(index)}
                 aria-expanded={expandedItems.includes(index)}
                 aria-controls={`faq-answer-${index}`}
+                style={focusRingStyle}
               >
                 <span className="text-lg font-medium text-gray-900">{faq.question}</span>
-                <span className="text-indigo-600 ml-4">
+                <span style={{ color: primaryColor }} className="ml-4">
                   {expandedItems.includes(index) ? (
                     <FaChevronUp className="h-5 w-5" />
                   ) : (

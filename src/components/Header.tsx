@@ -14,6 +14,8 @@ interface MenuItem {
 interface HeaderProps {
   business: BusinessContent;
   theme?: {
+    primaryColor?: string;
+    secondaryColor?: string;
     header?: {
       backgroundColor?: string;
       textColor?: string;
@@ -192,7 +194,7 @@ export default function Header({ business, theme, header }: HeaderProps) {
                 <Link
                   href={ctaLink}
                   className="inline-flex items-center px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90"
-                  style={{ backgroundColor: theme?.header?.backgroundColor || '#1e2756' }}
+                  style={{ backgroundColor: theme?.primaryColor || theme?.header?.backgroundColor || '#1e2756' }}
                 >
                   {ctaText}
                 </Link>
@@ -262,7 +264,7 @@ export default function Header({ business, theme, header }: HeaderProps) {
                   <Link
                     href={ctaLink}
                     className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90 w-full"
-                    style={{ backgroundColor: theme?.header?.backgroundColor || '#1e2756' }}
+                    style={{ backgroundColor: theme?.primaryColor || theme?.header?.backgroundColor || '#1e2756' }}
                   >
                     {ctaText}
                   </Link>

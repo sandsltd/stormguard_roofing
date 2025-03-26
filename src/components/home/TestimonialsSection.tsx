@@ -6,18 +6,30 @@ interface TestimonialsSectionProps {
 }
 
 export default function TestimonialsSection({ content }: TestimonialsSectionProps) {
+  // Use primary color from theme or default to blue
+  const primaryColor = content.theme?.primaryColor || '#3b82f6';
+  const primaryColorLight = `${primaryColor}15`; // 15% opacity version for backgrounds
+  
   return (
     <section className="py-20 bg-gray-50 overflow-hidden relative">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-64 h-64 bg-blue-100 rounded-full opacity-30 transform -translate-x-1/2"></div>
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-blue-100 rounded-full opacity-30"></div>
+        <div className="absolute top-1/4 right-0 w-64 h-64 rounded-full opacity-30 transform -translate-x-1/2" 
+          style={{ backgroundColor: primaryColorLight }}></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full opacity-30"
+          style={{ backgroundColor: primaryColorLight }}></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+            <span style={{ 
+              backgroundImage: `linear-gradient(to right, ${primaryColor}, ${primaryColor}aa)`, 
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}>
               What Our Clients Say
             </span>
           </h2>
@@ -33,7 +45,7 @@ export default function TestimonialsSection({ content }: TestimonialsSectionProp
               className="bg-white p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl flex flex-col h-[24rem]"
             >
               <div className="flex-1 flex flex-col">
-                <svg className="w-10 h-10 text-blue-400 mb-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 mb-4 flex-shrink-0" style={{ color: primaryColor }} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
                 <div className="quote-container flex-1 mb-6">
@@ -41,7 +53,7 @@ export default function TestimonialsSection({ content }: TestimonialsSectionProp
                     "{testimonial.quote}"
                   </p>
                 </div>
-                <div className="flex text-yellow-400 mb-4 mt-auto">
+                <div className="flex mb-4 mt-auto" style={{ color: '#FBBF24' }}>
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
@@ -55,7 +67,8 @@ export default function TestimonialsSection({ content }: TestimonialsSectionProp
                 </div>
               </div>
               <div className="flex items-center border-t pt-6 mt-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  style={{ backgroundColor: primaryColorLight, color: primaryColor }}>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
@@ -72,7 +85,8 @@ export default function TestimonialsSection({ content }: TestimonialsSectionProp
         <div className="mt-16 text-center">
           <a 
             href="/contact" 
-            className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white rounded-lg transition-colors hover:opacity-90"
+            style={{ backgroundColor: primaryColor }}
           >
             Get Your Free Quote
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

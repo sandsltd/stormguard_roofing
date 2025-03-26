@@ -1279,6 +1279,247 @@ export default function Admin() {
                     </div>
                   </div>
                 )}
+
+                {activeTab === 'design' && (
+                  <div className="space-y-8">
+                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-8">
+                      <h3 className="text-xl font-bold text-gray-700 mb-4">Brand Colors</h3>
+                      <p className="text-gray-600 mb-6">Set your brand colors that will be used throughout the site. The primary color will be used for buttons, links, and highlights.</p>
+                      
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Primary Color</label>
+                          <div className="flex items-center gap-4">
+                            <input
+                              type="color"
+                              value={content.theme?.primaryColor || '#3b82f6'}
+                              onChange={(e) => handleNestedChange('theme.primaryColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                            />
+                            <input
+                              type="text"
+                              value={content.theme?.primaryColor || '#3b82f6'}
+                              onChange={(e) => handleNestedChange('theme.primaryColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              placeholder="#3b82f6"
+                            />
+                            <span className="text-sm text-gray-500">Used for buttons, links, and accents</span>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Secondary Color</label>
+                          <div className="flex items-center gap-4">
+                            <input
+                              type="color"
+                              value={content.theme?.secondaryColor || '#1e2756'}
+                              onChange={(e) => handleNestedChange('theme.secondaryColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                            />
+                            <input
+                              type="text"
+                              value={content.theme?.secondaryColor || '#1e2756'}
+                              onChange={(e) => handleNestedChange('theme.secondaryColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              placeholder="#1e2756"
+                            />
+                            <span className="text-sm text-gray-500">Used for headers, footers, and backgrounds</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-8 p-4 bg-white rounded-lg border border-gray-200">
+                        <h4 className="font-medium text-gray-700 mb-4">Preview</h4>
+                        <div className="space-y-4">
+                          <div className="flex flex-wrap gap-4">
+                            <div 
+                              className="w-32 h-32 rounded-lg flex items-center justify-center text-white font-medium"
+                              style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
+                            >
+                              Primary Color
+                            </div>
+                            <div 
+                              className="w-32 h-32 rounded-lg flex items-center justify-center text-white font-medium"
+                              style={{ backgroundColor: content.theme?.secondaryColor || '#1e2756' }}
+                            >
+                              Secondary Color
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h5 className="font-medium text-gray-600 mb-2">Sample Elements with Your Colors</h5>
+                            <div className="space-y-4 p-4 border rounded-lg">
+                              <button 
+                                className="px-4 py-2 rounded text-white"
+                                style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
+                              >
+                                Primary Button
+                              </button>
+                              <button 
+                                className="px-4 py-2 rounded text-white ml-4"
+                                style={{ backgroundColor: content.theme?.secondaryColor || '#1e2756' }}
+                              >
+                                Secondary Button
+                              </button>
+                              
+                              <div className="flex items-center space-x-2 mt-4">
+                                <span>Text with </span>
+                                <a 
+                                  href="#" 
+                                  className="underline"
+                                  style={{ color: content.theme?.primaryColor || '#3b82f6' }}
+                                >
+                                  colored link
+                                </a>
+                              </div>
+                              
+                              <div 
+                                className="mt-4 p-4 rounded-lg text-white"
+                                style={{ backgroundColor: content.theme?.secondaryColor || '#1e2756' }}
+                              >
+                                <h3 className="text-lg font-medium">Header Background</h3>
+                                <p>This shows how your secondary color looks as a background.</p>
+                              </div>
+                              
+                              <div className="mt-4 p-4 rounded-lg border">
+                                <h3 
+                                  className="text-lg font-medium"
+                                  style={{ color: content.theme?.primaryColor || '#3b82f6' }}
+                                >
+                                  Heading with Primary Color
+                                </h3>
+                                <p>Regular text remains in a neutral color for readability.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                      <h3 className="text-xl font-bold text-gray-700 mb-4">Header Colors</h3>
+                      <p className="text-gray-600 mb-6">Customize the colors used in the website header.</p>
+                      
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                          <div className="flex items-center gap-4">
+                            <input
+                              type="color"
+                              value={content.theme?.header?.backgroundColor || '#1e2756'}
+                              onChange={(e) => handleNestedChange('theme.header.backgroundColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                            />
+                            <input
+                              type="text"
+                              value={content.theme?.header?.backgroundColor || '#1e2756'}
+                              onChange={(e) => handleNestedChange('theme.header.backgroundColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
+                          <div className="flex items-center gap-4">
+                            <input
+                              type="color"
+                              value={content.theme?.header?.textColor || '#ffffff'}
+                              onChange={(e) => handleNestedChange('theme.header.textColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                            />
+                            <input
+                              type="text"
+                              value={content.theme?.header?.textColor || '#ffffff'}
+                              onChange={(e) => handleNestedChange('theme.header.textColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Link Color</label>
+                          <div className="flex items-center gap-4">
+                            <input
+                              type="color"
+                              value={content.theme?.header?.linkColor || '#4B5563'}
+                              onChange={(e) => handleNestedChange('theme.header.linkColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                            />
+                            <input
+                              type="text"
+                              value={content.theme?.header?.linkColor || '#4B5563'}
+                              onChange={(e) => handleNestedChange('theme.header.linkColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Link Hover Color</label>
+                          <div className="flex items-center gap-4">
+                            <input
+                              type="color"
+                              value={content.theme?.header?.linkHoverColor || '#3b82f6'}
+                              onChange={(e) => handleNestedChange('theme.header.linkHoverColor', e.target.value)}
+                              className="h-10 w-20 rounded border border-gray-300"
+                            />
+                            <input
+                              type="text"
+                              value={content.theme?.header?.linkHoverColor || '#3b82f6'}
+                              onChange={(e) => handleNestedChange('theme.header.linkHoverColor', e.target.value)}
+                              className="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'header' && (
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Business Hours</label>
+                      <input
+                        type="text"
+                        value={content.header?.businessHours || ''}
+                        onChange={(e) => handleNestedChange('header.businessHours', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="e.g., Mon-Fri: 8am-6pm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Insurance Text</label>
+                      <input
+                        type="text"
+                        value={content.header?.insuranceText || ''}
+                        onChange={(e) => handleNestedChange('header.insuranceText', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="e.g., Fully Insured"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Experience Text</label>
+                      <input
+                        type="text"
+                        value={content.header?.experienceText || ''}
+                        onChange={(e) => handleNestedChange('header.experienceText', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="e.g., 5+ Years Experience"
+                      />
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        checked={content.header?.showTopBar !== false}
+                        onChange={(e) => handleNestedChange('header.showTopBar', e.target.checked)}
+                        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <label className="text-sm font-medium text-gray-700">Show Top Bar</label>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

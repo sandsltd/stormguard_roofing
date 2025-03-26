@@ -17,6 +17,10 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
     description: "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Crewe and Cheshire. We understand the unique weather patterns and building requirements of the local area."
   };
 
+  // Use primary color from theme or default to indigo
+  const primaryColor = content.theme?.primaryColor || '#4f46e5';
+  const primaryColorLight = `${primaryColor}15`; // 15% opacity for backgrounds
+  
   // Default areas if none exist
   const defaultAreas = [
     {
@@ -64,15 +68,19 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Badge */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 bg-indigo-100 rounded-full text-indigo-800 text-sm font-medium">
+          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium"
+            style={{ 
+              backgroundColor: primaryColorLight,
+              color: primaryColor
+            }}>
             Roofers in Crewe & Cheshire
           </div>
         </div>
         
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-indigo-900">{servingAreasSection.title}</h2>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto mb-8"></div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">{servingAreasSection.title}</h2>
+          <div className="w-20 h-1 mx-auto mb-8" style={{ backgroundColor: primaryColor }}></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             {servingAreasSection.description}
           </p>
@@ -84,7 +92,8 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
             <div key={index} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
               {/* Area Image */}
               <div className="relative h-60 overflow-hidden">
-                <div className="absolute inset-0 bg-indigo-900/20 z-10"></div>
+                <div className="absolute inset-0 z-10" 
+                  style={{ backgroundColor: `${primaryColor}20` }}></div>
                 <div className="relative w-full h-full">
                   <SafeImage 
                     src={area.image} 
@@ -96,7 +105,8 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
                 </div>
                 {/* Location Badge */}
                 <div className="absolute top-4 left-4 z-20">
-                  <div className="bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold">
+                  <div className="text-white px-4 py-2 rounded-lg font-semibold"
+                    style={{ backgroundColor: primaryColor }}>
                     {area.name}
                   </div>
                 </div>
@@ -123,7 +133,10 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
                 {/* CTA Button */}
                 <a 
                   href={area.ctaLink || "/contact"} 
-                  className="inline-flex items-center text-indigo-700 font-semibold group-hover:text-indigo-500 transition-colors"
+                  className="inline-flex items-center font-semibold transition-colors"
+                  style={{ 
+                    color: primaryColor
+                  }}
                 >
                   {area.ctaText || "Request a Free Quote"} 
                   <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />

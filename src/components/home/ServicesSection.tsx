@@ -20,114 +20,85 @@ export default function ServicesSection({ content }: ServicesSectionProps) {
   // Initialize servicesSection with default values if it doesn't exist
   const servicesSection = content.homepage.servicesSection || {
     title: "Our Services",
-    description: "Professional roofing solutions for residential and commercial properties in Dorchester and surrounding areas."
+    description: "Professional roofing solutions for residential and commercial properties."
   };
 
-  const getIconComponent = (iconName: string) => {
+  // Use primary color from theme or default to blue
+  const primaryColor = content.theme?.primaryColor || '#3b82f6';
+  const secondaryColor = content.theme?.secondaryColor || '#1e2756';
+  
+  const getIconComponent = (iconName?: string) => {
     switch (iconName) {
-      case 'home': 
-        return <FaHome className="w-12 h-12" />;
-      case 'tools': 
-        return <FaTools className="w-12 h-12" />;
-      case 'search': 
-        return <FaSearch className="w-12 h-12" />;
-      case 'calendar': 
-        return <FaCalendarAlt className="w-12 h-12" />;
-      case 'rain': 
-        return <FaCloudRain className="w-12 h-12" />;
-      case 'alert': 
-        return <FaExclamationCircle className="w-12 h-12" />;
-      case 'office': 
-        return <MdApartment className="w-12 h-12" />;
-      case 'refresh': 
-        return <FaSync className="w-12 h-12" />;
-      case 'building': 
-        return <FaBuilding className="w-12 h-12" />;
-      case 'shield': 
-        return <FaShieldAlt className="w-12 h-12" />;
-      case 'phone': 
-        return <FaPhone className="w-12 h-12" />;
-      case 'leaf': 
-        return <FaLeaf className="w-12 h-12" />;
-      case 'wrench': 
-        return <FaWrench className="w-12 h-12" />;
-      case 'snow': 
-        return <FaSnowflake className="w-12 h-12" />;
-      case 'lightning': 
-        return <FaBolt className="w-12 h-12" />;
-      case 'wind': 
-        return <FaWind className="w-12 h-12" />;
-      case 'hardhat': 
-        return <FaHardHat className="w-12 h-12" />;
-      case 'ruler': 
-        return <FaRuler className="w-12 h-12" />;
-      case 'star': 
-        return <FaStar className="w-12 h-12" />;
-      case 'dollar': 
-        return <FaDollarSign className="w-12 h-12" />;
-      case 'chart': 
-        return <FaChartLine className="w-12 h-12" />;
-      case 'clock': 
-        return <FaClock className="w-12 h-12" />;
-      case 'roofing': 
-        return <MdRoofing className="w-12 h-12" />;
-      case 'house': 
-        return <MdHouse className="w-12 h-12" />;
-      case 'construction': 
-        return <MdConstruction className="w-12 h-12" />;
-      case 'waterdrop': 
-        return <MdWaterDrop className="w-12 h-12" />;
-      case 'housealt':
-        return <GiHouse className="w-12 h-12" />;
-      case 'window': 
-        return <GiWindow className="w-12 h-12" />;
-      case 'cement': 
-        return <GiCementShoes className="w-12 h-12" />;
-      case 'officealt': 
-        return <HiOutlineOfficeBuilding className="w-12 h-12" />;
-      case 'houseoutline': 
-        return <BsHouseDoor className="w-12 h-12" />;
-      default: 
-        return <FaHome className="w-12 h-12" />;
+      case 'home': return <FaHome size={20} />;
+      case 'tools': return <FaTools size={20} />;
+      case 'search': return <FaSearch size={20} />;
+      case 'calendar': return <FaCalendarAlt size={20} />;
+      case 'rain': return <FaCloudRain size={20} />;
+      case 'alert': return <FaExclamationCircle size={20} />;
+      case 'office': return <MdApartment size={20} />;
+      case 'refresh': return <FaSync size={20} />;
+      case 'building': return <FaBuilding size={20} />;
+      case 'shield': return <FaShieldAlt size={20} />;
+      case 'phone': return <FaPhone size={20} />;
+      case 'leaf': return <FaLeaf size={20} />;
+      case 'wrench': return <FaWrench size={20} />;
+      case 'snow': return <FaSnowflake size={20} />;
+      case 'lightning': return <FaBolt size={20} />;
+      case 'wind': return <FaWind size={20} />;
+      case 'hardhat': return <FaHardHat size={20} />;
+      case 'ruler': return <FaRuler size={20} />;
+      case 'star': return <FaStar size={20} />;
+      case 'dollar': return <FaDollarSign size={20} />;
+      case 'chart': return <FaChartLine size={20} />;
+      case 'clock': return <FaClock size={20} />;
+      case 'roofing': return <MdRoofing size={20} />;
+      case 'house': return <MdHouse size={20} />;
+      case 'construction': return <MdConstruction size={20} />;
+      case 'waterdrop': return <MdWaterDrop size={20} />;
+      case 'housealt': return <GiHouse size={20} />;
+      case 'window': return <GiWindow size={20} />;
+      case 'cement': return <GiCementShoes size={20} />;
+      case 'officealt': return <HiOutlineOfficeBuilding size={20} />;
+      case 'houseoutline': return <BsHouseDoor size={20} />;
+      default: return <FaHome size={20} />;
     }
   };
-
+  
   return (
-    <section className="py-20 bg-cream">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-              {servicesSection.title}
-            </span>
-          </h2>
+          <h2 className="text-4xl font-bold mb-4">{servicesSection.title}</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {servicesSection.description}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content.homepage.services.map((service, index) => (
-            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-              <div className="bg-cream p-8 flex justify-center">
-                <div className="w-16 h-16 flex items-center justify-center text-blue-600">
-                  {getIconComponent(service.icon)}
-                </div>
-              </div>
+            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div 
+                className="h-3" 
+                style={{ backgroundColor: primaryColor }}
+              ></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-center">{service.title}</h3>
-                <p className="text-gray-600 mb-6">
-                  {service.description}
-                </p>
-                <div className="text-center">
+                <div className="flex items-center mb-4">
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                    style={{ backgroundColor: `${primaryColor}15`, color: primaryColor }}
+                  >
+                    {getIconComponent(service.icon)}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800">{service.title}</h3>
+                </div>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <div className="pt-2 mt-auto">
                   <a 
                     href={service.buttonLink || "/contact"} 
-                    className="inline-flex items-center justify-center px-5 py-3 bg-amber-400 hover:bg-amber-500 text-gray-900 font-medium rounded-full transition-colors"
+                    className="inline-block px-5 py-2 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:opacity-90"
+                    style={{ backgroundColor: primaryColor }}
                   >
-                    {service.buttonText || "Get a Free Quote"}
-                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                    {service.buttonText || "Learn More"}
                   </a>
                 </div>
               </div>

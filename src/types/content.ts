@@ -44,8 +44,8 @@ export interface Content {
       description: string;
       image: string;
       tags: string[];
-      ctaText: string;
-      ctaLink: string;
+      ctaText?: string;
+      ctaLink?: string;
     }[];
     faqs?: {
       question: string;
@@ -144,11 +144,39 @@ export interface Content {
     linkedin: string;
   };
   theme: {
-    header: {
+    primaryColor?: string;
+    secondaryColor?: string;
+    header?: {
       backgroundColor: string;
       textColor: string;
       linkColor: string;
       linkHoverColor: string;
+    };
+    buttons?: {
+      primaryBackground?: string;
+      primaryText?: string;
+      secondaryBackground?: string;
+      secondaryText?: string;
+    };
+    sections?: {
+      altBackground?: string;
+      cardBackground?: string;
+      borderColor?: string;
+    };
+  };
+  header?: {
+    businessHours?: string;
+    insuranceText?: string;
+    experienceText?: string;
+    showTopBar?: boolean;
+    menuItems?: Array<{
+      text: string;
+      link: string;
+    }>;
+    ctaButton?: {
+      text?: string;
+      link?: string;
+      show?: boolean;
     };
   };
 } 

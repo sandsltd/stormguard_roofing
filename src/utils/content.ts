@@ -13,6 +13,8 @@ export interface BusinessContent {
 export interface Content {
   business: BusinessContent;
   theme?: {
+    primaryColor?: string; // Primary brand color
+    secondaryColor?: string; // Secondary brand color
     header?: {
       backgroundColor?: string;
       textColor?: string;
@@ -26,6 +28,17 @@ export interface Content {
       linkColor?: string;
       linkHoverColor?: string;
       iconColor?: string;
+      borderColor?: string;
+    };
+    buttons?: {
+      primaryBackground?: string;
+      primaryText?: string;
+      secondaryBackground?: string;
+      secondaryText?: string;
+    };
+    sections?: {
+      altBackground?: string;
+      cardBackground?: string;
       borderColor?: string;
     };
   };
@@ -211,6 +224,8 @@ function getDefaultContent(): Content {
       logo: '/images/logo.png'
     },
     theme: {
+      primaryColor: '#3b82f6',
+      secondaryColor: '#1e2756',
       header: {
         backgroundColor: '#1e2756',
         textColor: '#ffffff',
@@ -225,6 +240,17 @@ function getDefaultContent(): Content {
         linkHoverColor: '#93C5FD',
         iconColor: '#60A5FA',
         borderColor: '#374151'
+      },
+      buttons: {
+        primaryBackground: '#3b82f6',
+        primaryText: '#ffffff',
+        secondaryBackground: '#ffffff',
+        secondaryText: '#1e2756'
+      },
+      sections: {
+        altBackground: '#f3f4f6',
+        cardBackground: '#ffffff',
+        borderColor: '#e5e7eb'
       }
     },
     header: {

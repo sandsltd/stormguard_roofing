@@ -70,8 +70,10 @@ export default function HeroSection({ content }: HeroSectionProps) {
           <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
           
           {/* Animated Highlights */}
-          <div className="absolute -top-[30%] -left-[10%] w-3/4 h-3/4 bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow" />
-          <div className="absolute -bottom-[30%] -right-[10%] w-3/4 h-3/4 bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow animation-delay-2000" />
+          <div className="absolute -top-[30%] -left-[10%] w-3/4 h-3/4 rounded-full blur-3xl animate-pulse-slow" 
+            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}10` }} />
+          <div className="absolute -bottom-[30%] -right-[10%] w-3/4 h-3/4 rounded-full blur-3xl animate-pulse-slow animation-delay-2000" 
+            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}10` }} />
         </div>
         
         {/* Content Container */}
@@ -79,56 +81,65 @@ export default function HeroSection({ content }: HeroSectionProps) {
           <div className="max-w-7xl mx-auto w-full">
             <div className="max-w-3xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-blue-600/20 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-blue-600/30 animate-fade-in-up">
-                <span className="w-2.5 h-2.5 bg-blue-600 rounded-full animate-pulse"></span>
+              <div className="inline-flex items-center gap-2 backdrop-blur-md px-4 py-2 rounded-full mb-6 animate-fade-in-up"
+                style={{ 
+                  backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}20`,
+                  borderColor: `${content.theme?.primaryColor || '#3b82f6'}30`,
+                  borderWidth: '1px'
+                }}>
+                <span className="w-2.5 h-2.5 rounded-full animate-pulse"
+                  style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}></span>
                 <span className="text-white font-medium text-sm uppercase tracking-wider">{content.business.tagline}</span>
               </div>
               
-              {/* Main Heading with Gradient Text */}
-              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight animate-fade-in-up animation-delay-300">
-                <span className="block">{premiumHero.title.line1}</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-300">
-                  {premiumHero.title.line2}
-                </span>
-                <span className="block">{premiumHero.title.line3}</span>
-              </h1>
-              
-              {/* Subtitle with Line Animation */}
-              <div className="group relative inline-block mb-8 animate-fade-in-up animation-delay-600">
-                <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-2xl">
-                  {premiumHero.subtitle}
-                </p>
-                <span className="block w-0 group-hover:w-full h-0.5 bg-blue-500 transition-all duration-700 ease-out"></span>
-              </div>
-              
-              {/* CTA Buttons with Glass Effect */}
-              <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-900">
-                <a
-                  href={premiumHero.ctaPrimary.link}
-                  className="relative overflow-hidden inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-xl hover:shadow-blue-600/30 group"
-                >
-                  <span className="relative z-10 flex items-center">
-                    {premiumHero.ctaPrimary.text}
-                    <svg className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                  <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-600 to-blue-700 transform group-hover:scale-102 transition-all duration-500 ease-out" />
-                  <div className="absolute right-0 w-12 h-full bg-white/10 transform skew-x-12 translate-x-0 transition-transform group-hover:translate-x-40 ease-out duration-700" />
-                </a>
-                <a
-                  href={premiumHero.ctaSecondary.link}
-                  className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-all duration-300"
-                >
-                  {premiumHero.ctaSecondary.text}
-                </a>
+              {/* Text container with semi-transparent background */}
+              <div className="p-6 rounded-lg bg-black/40 backdrop-blur-sm">
+                {/* Main Heading with Gradient Text */}
+                <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                  <span className="block">{premiumHero.title.line1}</span>
+                  <span className="text-white">{premiumHero.title.line2}</span>
+                  <span className="block">{premiumHero.title.line3}</span>
+                </h1>
+                
+                {/* Subtitle with Line Animation */}
+                <div className="group relative inline-block mb-8 animate-fade-in-up animation-delay-600">
+                  <p className="text-xl md:text-2xl text-white leading-relaxed max-w-2xl" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                    {premiumHero.subtitle}
+                  </p>
+                  <span className="block w-0 group-hover:w-full h-0.5 bg-white transition-all duration-700 ease-out"></span>
+                </div>
+                
+                {/* CTA Buttons with Glass Effect */}
+                <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-900">
+                  <a
+                    href={premiumHero.ctaPrimary.link}
+                    className="relative overflow-hidden inline-flex items-center text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-xl group"
+                    style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6', boxShadow: `0 10px 15px -3px ${content.theme?.primaryColor || '#3b82f6'}30` }}
+                  >
+                    <span className="relative z-10 flex items-center">
+                      {premiumHero.ctaPrimary.text}
+                      <svg className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                    <div className="absolute inset-0 h-full w-full transform group-hover:scale-102 transition-all duration-500 ease-out" 
+                      style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }} />
+                    <div className="absolute right-0 w-12 h-full bg-white/10 transform skew-x-12 translate-x-0 transition-transform group-hover:translate-x-40 ease-out duration-700" />
+                  </a>
+                  <a
+                    href={premiumHero.ctaSecondary.link}
+                    className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                  >
+                    {premiumHero.ctaSecondary.text}
+                  </a>
+                </div>
               </div>
               
               {/* Key Features Pills */}
               <div className="mt-12 flex flex-wrap gap-3 animate-fade-in-up animation-delay-1200">
                 {premiumHero.featureBadges.map((item, index) => (
                   <div key={index} className="flex items-center bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-                    <svg className="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
                     <span className="text-sm text-white">{item}</span>
