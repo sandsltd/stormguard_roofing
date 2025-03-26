@@ -41,6 +41,8 @@ interface HeaderProps {
 export default function Header({ business, theme, header }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState('up');
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const defaultMenuItems: MenuItem[] = [
     { text: 'Home', link: '/' },
@@ -60,15 +62,28 @@ export default function Header({ business, theme, header }: HeaderProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      // Determine scroll direction
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection('down');
+      } else {
+        setScrollDirection('up');
+      }
+      
+      setLastScrollY(currentScrollY);
+      setIsScrolled(currentScrollY > 20);
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const topBarStyle = {
     backgroundColor: theme?.header?.backgroundColor || '#1e2756',
     color: theme?.header?.textColor || '#ffffff',
+    transform: scrollDirection === 'down' && isScrolled ? 'translateY(-100%)' : 'translateY(0)',
+    transition: 'all 0.3s ease-in-out',
   };
 
   const headerStyle = {
@@ -76,6 +91,7 @@ export default function Header({ business, theme, header }: HeaderProps) {
     borderBottom: '1px solid #e5e7eb',
     boxShadow: isScrolled ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
     transition: 'all 0.3s ease-in-out',
+    top: scrollDirection === 'down' && isScrolled && showTopBar ? '0' : (showTopBar ? '40px' : '0'),
   };
 
   const linkStyle = {
@@ -100,7 +116,7 @@ export default function Header({ business, theme, header }: HeaderProps) {
     <div className="fixed w-full top-0 z-50">
       {/* Top Bar */}
       {showTopBar && (
-        <div style={topBarStyle} className="hidden md:block">
+        <div style={topBarStyle} className="hidden md:block h-10 overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center h-10">
               <div className="flex items-center space-x-6">
@@ -133,7 +149,7 @@ export default function Header({ business, theme, header }: HeaderProps) {
       )}
 
       {/* Main Header */}
-      <header style={headerStyle} className="w-full bg-white">
+      <header style={headerStyle} className="w-full bg-white absolute transition-all duration-300">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-24">
             {/* Logo and Business Name */}

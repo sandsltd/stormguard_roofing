@@ -30,7 +30,7 @@ export default async function RootLayout({
   const content = await getContent();
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header 
           business={content.business} 

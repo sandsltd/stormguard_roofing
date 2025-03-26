@@ -135,11 +135,10 @@ export default async function AboutPage() {
               }
             ]).map((value: ValueItem, index: number) => (
               <div key={index} className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-6"
-                     style={{ backgroundColor: `${content.theme?.primaryColor}15` || '#1e3a8a15' }}>
-                  {index === 0 && <FaHandshake className="text-2xl" style={{ color: content.theme?.primaryColor || '#1e3a8a' }} />}
-                  {index === 1 && <FaStar className="text-2xl" style={{ color: content.theme?.primaryColor || '#1e3a8a' }} />}
-                  {index === 2 && <FaLeaf className="text-2xl" style={{ color: content.theme?.primaryColor || '#1e3a8a' }} />}
+                <div className="mb-6 text-2xl" style={{ color: content.theme?.primaryColor || '#1e3a8a' }}>
+                  {index === 0 && <FaHandshake />}
+                  {index === 1 && <FaStar />}
+                  {index === 2 && <FaLeaf />}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-700">
@@ -153,12 +152,6 @@ export default async function AboutPage() {
 
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-50 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-opacity-10 rounded-full transform -translate-y-1/2 translate-x-1/2"
-             style={{ backgroundColor: `${content.theme?.primaryColor || '#1e3a8a'}15` }}></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-opacity-10 rounded-full transform translate-y-1/4 -translate-x-1/4"
-             style={{ backgroundColor: `${content.theme?.primaryColor || '#1e3a8a'}10` }}></div>
-             
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
@@ -188,9 +181,8 @@ export default async function AboutPage() {
                   </blockquote>
                 </div>
                 <div className="mt-auto pt-6 border-t border-gray-100 flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 text-gray-400"
-                       style={{ backgroundColor: `${content.theme?.primaryColor || '#1e3a8a'}15` }}>
-                    <span className="text-xl">👤</span>
+                  <div className="mr-4 text-gray-400 text-xl">
+                    👤
                   </div>
                   <div>
                     <p className="font-bold text-gray-900">{testimonial.author}</p>
@@ -203,14 +195,11 @@ export default async function AboutPage() {
         </div>
       </section>
       
+      {/* Gallery Section - Moved above contact form */}
+      <AboutGalleryWrapper content={content} />
+      
       {/* Contact Form Section */}
       <section className="py-16 bg-white relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-40 right-10 w-64 h-64 bg-opacity-5 rounded-full"
-             style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}></div>
-        <div className="absolute bottom-20 left-0 w-40 h-40 bg-opacity-5 rounded-full"
-             style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}></div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
@@ -232,7 +221,7 @@ export default async function AboutPage() {
           {/* Contact info cards below the form */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 text-white"
+              <div className="text-white p-3 mr-4"
                    style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -245,37 +234,35 @@ export default async function AboutPage() {
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 text-white"
+              <div className="text-white p-3 mr-4"
+                   style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" />
+                  <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
+                <p className="text-gray-600">{business.businessHours || "Mon-Fri: 8am-6pm"}</p>
+              </div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
+              <div className="text-white p-3 mr-4"
                    style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
+                <h3 className="font-semibold text-gray-900 mb-1">Contact</h3>
                 <p className="text-gray-600">{business.phone}</p>
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 text-white"
-                   style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
                 <p className="text-gray-600">{business.email}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      
-      {/* Gallery Section */}
-      <AboutGalleryWrapper content={content as any} />
     </main>
   );
 } 

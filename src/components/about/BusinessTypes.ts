@@ -10,6 +10,7 @@ export interface ExtendedBusinessContent extends BusinessContent {
   description?: string;
   mission?: string;
   hero?: string;
+  businessHours?: string;
   about?: {
     image?: string;
   };
