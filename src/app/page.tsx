@@ -1,6 +1,7 @@
 import { getContent } from '@/utils/server-content';
 import Image from 'next/image';
 import Link from 'next/link';
+import HeroSection from '@/components/home/HeroSection';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -13,31 +14,8 @@ export default async function Home() {
 
   return (
     <>
-      {/* Hero Section */}
-      <div className="relative h-screen">
-        <div className="absolute inset-0">
-          <Image
-            src={content.homepage.heroImage}
-            alt="Roofing Services"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
-        </div>
-        <div className="relative z-10 h-full flex items-center justify-center text-white text-center px-4">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">{content.homepage.heroTitle}</h1>
-            <p className="text-xl md:text-2xl mb-8">{content.homepage.heroSubtitle}</p>
-            <a
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Get a Free Quote
-            </a>
-          </div>
-        </div>
-      </div>
+      {/* Hero Section - Using Client Component */}
+      <HeroSection content={content} />
 
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
