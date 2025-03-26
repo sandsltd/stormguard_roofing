@@ -558,87 +558,185 @@ export default function Admin() {
               )}
 
               {activeTab === 'services' && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Services</label>
-                    {content.services.map((service, index) => (
-                      <div key={index} className="mb-4 p-4 border rounded">
-                        <div className="flex justify-between mb-2">
-                          <h4 className="font-medium">Service {index + 1}</h4>
-                          <button
-                            onClick={() => handleArrayItemChange('services', index, null)}
-                            className="text-red-600 hover:text-red-800"
-                          >
-                            Remove
-                          </button>
-                        </div>
-                        <div className="space-y-2">
-                          <input
-                            type="text"
-                            value={service.title}
-                            onChange={(e) => handleArrayItemChange('services', index, { ...service, title: e.target.value })}
-                            placeholder="Title"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          />
-                          <textarea
-                            value={service.description}
-                            onChange={(e) => handleArrayItemChange('services', index, { ...service, description: e.target.value })}
-                            placeholder="Description"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            rows={2}
-                          />
-                          <input
-                            type="text"
-                            value={service.image}
-                            onChange={(e) => handleArrayItemChange('services', index, { ...service, image: e.target.value })}
-                            placeholder="Image Path"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          />
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
-                            {service.features.map((feature, featureIndex) => (
-                              <div key={featureIndex} className="flex gap-2 mb-2">
-                                <input
-                                  type="text"
-                                  value={feature}
-                                  onChange={(e) => {
-                                    const newFeatures = [...service.features];
-                                    newFeatures[featureIndex] = e.target.value;
-                                    handleArrayItemChange('services', index, { ...service, features: newFeatures });
-                                  }}
-                                  placeholder="Feature"
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                />
-                                <button
-                                  onClick={() => {
-                                    const newFeatures = service.features.filter((_, i) => i !== featureIndex);
-                                    handleArrayItemChange('services', index, { ...service, features: newFeatures });
-                                  }}
-                                  className="px-2 py-1 text-red-600 hover:text-red-800"
-                                >
-                                  Remove
-                                </button>
-                              </div>
-                            ))}
+                <div className="space-y-8">
+                  {/* Hero Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-medium">Hero Section</h3>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Title</label>
+                      <input
+                        type="text"
+                        value={content.services.hero.title}
+                        onChange={(e) => handleContentChange('services.hero.title', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Subtitle</label>
+                      <input
+                        type="text"
+                        value={content.services.hero.subtitle}
+                        onChange={(e) => handleContentChange('services.hero.subtitle', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Services List */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-medium">Services</h3>
+                      <button
+                        onClick={() => handleArrayItemChange('services.services', content.services.services.length, {
+                          title: '',
+                          description: '',
+                          image: '',
+                          features: []
+                        })}
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                      >
+                        Add Service
+                      </button>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {content.services.services.map((service, index) => (
+                        <div key={index} className="p-4 border rounded-lg">
+                          <div className="flex justify-between items-center mb-4">
+                            <h4 className="text-md font-medium">Service {index + 1}</h4>
                             <button
-                              onClick={() => {
-                                const newFeatures = [...service.features, ''];
-                                handleArrayItemChange('services', index, { ...service, features: newFeatures });
-                              }}
-                              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                              onClick={() => handleArrayItemChange('services.services', index, null)}
+                              className="text-red-600 hover:text-red-800"
                             >
-                              Add Feature
+                              Remove
                             </button>
                           </div>
+                          <div className="space-y-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Title</label>
+                              <input
+                                type="text"
+                                value={service.title}
+                                onChange={(e) => handleArrayItemChange('services.services', index, {
+                                  ...service,
+                                  title: e.target.value
+                                })}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Description</label>
+                              <textarea
+                                value={service.description}
+                                onChange={(e) => handleArrayItemChange('services.services', index, {
+                                  ...service,
+                                  description: e.target.value
+                                })}
+                                rows={3}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Image Path</label>
+                              <input
+                                type="text"
+                                value={service.image}
+                                onChange={(e) => handleArrayItemChange('services.services', index, {
+                                  ...service,
+                                  image: e.target.value
+                                })}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">Features</label>
+                              {service.features.map((feature, featureIndex) => (
+                                <div key={featureIndex} className="flex gap-2 mb-2">
+                                  <input
+                                    type="text"
+                                    value={feature}
+                                    onChange={(e) => {
+                                      const newFeatures = [...service.features];
+                                      newFeatures[featureIndex] = e.target.value;
+                                      handleArrayItemChange('services.services', index, {
+                                        ...service,
+                                        features: newFeatures
+                                      });
+                                    }}
+                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  />
+                                  <button
+                                    onClick={() => {
+                                      const newFeatures = service.features.filter((_, i) => i !== featureIndex);
+                                      handleArrayItemChange('services.services', index, {
+                                        ...service,
+                                        features: newFeatures
+                                      });
+                                    }}
+                                    className="px-2 text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() => {
+                                  const newFeatures = [...service.features, ''];
+                                  handleArrayItemChange('services.services', index, {
+                                    ...service,
+                                    features: newFeatures
+                                  });
+                                }}
+                                className="mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
+                              >
+                                Add Feature
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                    <button
-                      onClick={() => handleArrayItemChange('services', content.services.length, { title: '', description: '', image: '', features: [] })}
-                      className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                    >
-                      Add Service
-                    </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-medium">Call to Action</h3>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Title</label>
+                      <input
+                        type="text"
+                        value={content.services.cta.title}
+                        onChange={(e) => handleContentChange('services.cta.title', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Description</label>
+                      <textarea
+                        value={content.services.cta.description}
+                        onChange={(e) => handleContentChange('services.cta.description', e.target.value)}
+                        rows={2}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Button Text</label>
+                      <input
+                        type="text"
+                        value={content.services.cta.buttonText}
+                        onChange={(e) => handleContentChange('services.cta.buttonText', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Button Link</label>
+                      <input
+                        type="text"
+                        value={content.services.cta.buttonLink}
+                        onChange={(e) => handleContentChange('services.cta.buttonLink', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
                   </div>
                 </div>
               )}
