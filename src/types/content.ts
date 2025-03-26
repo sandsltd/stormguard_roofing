@@ -39,6 +39,15 @@ export interface Content {
       title: string;
       description: string;
     };
+    serviceAreasSection?: {
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    serviceAreas?: {
+      name: string;
+      link?: string;
+    }[];
     servingAreas?: {
       name: string;
       description: string;

@@ -6,6 +6,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection';
 import IntroductionSection from '@/components/home/IntroductionSection';
 import ContactSection from '@/components/home/ContactSection';
 import ServingAreasSectionWrapper from '@/components/home/ServingAreasSectionWrapper';
+import ServiceAreasSectionWrapper from '@/components/home/ServiceAreasSectionWrapper';
 import FAQSectionWrapper from '@/components/home/FAQSectionWrapper';
 import GallerySectionWrapper from '@/components/home/GallerySectionWrapper';
 
@@ -34,6 +35,9 @@ export default async function Home() {
 
       {/* Serving Areas Section */}
       <ServingAreasSectionWrapper content={content} />
+
+      {/* Service Areas Section - New Simple Grid */}
+      <ServiceAreasSectionWrapper content={content} />
 
       {/* FAQ Section */}
       <FAQSectionWrapper content={content} />

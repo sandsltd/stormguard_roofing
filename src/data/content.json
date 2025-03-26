@@ -176,6 +176,21 @@
         "ctaText": "Contact Us for a Quote",
         "ctaLink": "/contact"
       }
+    ],
+    "serviceAreasSection": {
+      "title": "{Location} Roofers Service Areas",
+      "subtitle": "Roofers in {Location}",
+      "description": "{Location} Roofers proudly serves homeowners and businesses throughout Crewe and Cheshire. Our expert local roofers provide top-quality roofing services across these areas."
+    },
+    "serviceAreas": [
+      {
+        "name": "Dorchester",
+        "link": "/contact"
+      },
+      {
+        "name": "Weymouth",
+        "link": "/contact"
+      }
     ]
   },
   "about": {

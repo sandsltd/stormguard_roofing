@@ -1277,6 +1277,129 @@ export default function Admin() {
                         Add Testimonial
                       </button>
                     </div>
+
+                    <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-8">
+                      <h3 className="text-xl font-bold text-purple-700 mb-4">Service Areas Section</h3>
+                      <p className="text-purple-600 mb-6">Configure the simple service areas grid displayed on the homepage.</p>
+                      
+                      {/* Initialize the service areas section object if it doesn't exist */}
+                      {!content.homepage.serviceAreasSection && (
+                        <button
+                          onClick={() => handleContentChange('homepage.serviceAreasSection', {
+                            title: "Crewe Roofers Service Areas",
+                            subtitle: "Roofers in Crewe & Cheshire",
+                            description: "Crewe Roofers proudly serves homeowners and businesses throughout Crewe and Cheshire. Our expert local roofers provide top-quality roofing services across these areas."
+                          })}
+                          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                        >
+                          Initialize Service Areas Section
+                        </button>
+                      )}
+                      
+                      {content.homepage.serviceAreasSection && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Badge Text</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.serviceAreasSection.subtitle}
+                                  onChange={(e) => handleContentChange('homepage.serviceAreasSection.subtitle', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                  placeholder="e.g., Roofers in Crewe & Cheshire"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.serviceAreasSection.title}
+                                  onChange={(e) => handleContentChange('homepage.serviceAreasSection.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                  placeholder="e.g., Crewe Roofers Service Areas"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Description</label>
+                                <textarea
+                                  value={content.homepage.serviceAreasSection.description}
+                                  onChange={(e) => handleContentChange('homepage.serviceAreasSection.description', e.target.value)}
+                                  rows={3}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                  placeholder="Description text that appears below the section title"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Areas We Service</label>
+                            {(content.homepage.serviceAreas || []).map((area, index) => (
+                              <div key={index} className="mb-4 p-4 border rounded">
+                                <div className="flex justify-between mb-2">
+                                  <h4 className="font-medium">Area {index + 1}</h4>
+                                  <button
+                                    onClick={() => handleArrayItemChange('homepage.serviceAreas', index, null)}
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                                <div className="space-y-3">
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Area Name</label>
+                                    <input
+                                      type="text"
+                                      value={area.name || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.serviceAreas', index, { ...area, name: e.target.value })}
+                                      placeholder="e.g., Crewe, Nantwich, etc."
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700">Link (Optional)</label>
+                                    <input
+                                      type="text"
+                                      value={area.link || ''}
+                                      onChange={(e) => handleArrayItemChange('homepage.serviceAreas', index, { ...area, link: e.target.value })}
+                                      placeholder="e.g., /contact"
+                                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                                    />
+                                    <p className="mt-1 text-xs text-gray-500">Leave blank to default to contact page</p>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                            <button
+                              onClick={() => {
+                                const newArea = {
+                                  name: 'New Area',
+                                  link: '/contact'
+                                };
+                                
+                                // Create a deep copy of the current content
+                                const updatedContent = JSON.parse(JSON.stringify(content));
+                                
+                                // Ensure the serviceAreas array exists
+                                if (!updatedContent.homepage.serviceAreas) {
+                                  updatedContent.homepage.serviceAreas = [];
+                                }
+                                
+                                // Add the new area
+                                updatedContent.homepage.serviceAreas.push(newArea);
+                                
+                                // Update the state with the new content
+                                setContent(updatedContent);
+                              }}
+                              className="mt-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                            >
+                              Add Area
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
 
