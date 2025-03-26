@@ -8,8 +8,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ content }: HeroSectionProps) {
-  // Initialize premiumHero with default values if it doesn't exist in content
-  const premiumHero = content.homepage.premiumHero || {
+  // Make sure we have default values for all nested properties to avoid "Cannot read properties of undefined" errors
+  const defaultPremiumHero = {
     backgroundImage: '/images/roofers/roofer_fixing_tile_on_roof.png',
     title: {
       line1: 'Expert',
@@ -26,6 +26,26 @@ export default function HeroSection({ content }: HeroSectionProps) {
       link: '/services'
     },
     featureBadges: ['Licensed & Insured', '10+ Years Experience', 'Free Inspections', 'Emergency Service']
+  };
+
+  // Use optional chaining and nullish coalescing to safely access nested properties
+  const premiumHero = {
+    backgroundImage: content.homepage.premiumHero?.backgroundImage || defaultPremiumHero.backgroundImage,
+    title: {
+      line1: content.homepage.premiumHero?.title?.line1 || defaultPremiumHero.title.line1,
+      line2: content.homepage.premiumHero?.title?.line2 || defaultPremiumHero.title.line2,
+      line3: content.homepage.premiumHero?.title?.line3 || defaultPremiumHero.title.line3,
+    },
+    subtitle: content.homepage.premiumHero?.subtitle || defaultPremiumHero.subtitle,
+    ctaPrimary: {
+      text: content.homepage.premiumHero?.ctaPrimary?.text || defaultPremiumHero.ctaPrimary.text,
+      link: content.homepage.premiumHero?.ctaPrimary?.link || defaultPremiumHero.ctaPrimary.link,
+    },
+    ctaSecondary: {
+      text: content.homepage.premiumHero?.ctaSecondary?.text || defaultPremiumHero.ctaSecondary.text,
+      link: content.homepage.premiumHero?.ctaSecondary?.link || defaultPremiumHero.ctaSecondary.link,
+    },
+    featureBadges: content.homepage.premiumHero?.featureBadges || defaultPremiumHero.featureBadges,
   };
 
   return (

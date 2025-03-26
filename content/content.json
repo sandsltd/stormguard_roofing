@@ -74,7 +74,12 @@
         "text": "Our Services",
         "link": "/services"
       },
-      "featureBadges": ["Licensed & Insured", "10+ Years Experience", "Free Inspections", "Emergency Service"]
+      "featureBadges": [
+        "Licensed & Insured",
+        "10+ Years Experience",
+        "Free Inspections",
+        "Emergency Service"
+      ]
     },
     "introduction": {
       "title": "Dorset's Most Trusted",
@@ -180,7 +185,10 @@
       {
         "author": "John Smith",
         "role": "Homeowner in Dorchester",
-        "quote": "Absolutely thrilled with the roof replacement! The team was professional, punctual, and left our property spotless. The quality of work is exceptional and they completed the job ahead of schedule."
+        "quote": "Absolutely thrilled with the roof replacement! The team was professional, punctual, and left our property spotless. The quality of work is exceptional and they completed the job ahead of schedule.",
+        "name": "Nick",
+        "text": "Great Service!",
+        "rating": 5
       },
       {
         "author": "Sarah Johnson",

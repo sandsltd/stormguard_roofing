@@ -797,12 +797,19 @@ export default function Admin() {
                                 onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, icon: e.target.value })}
                                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               >
-                                <option value="">Select an icon</option>
-                                <option value="home">Home/Roof Icon</option>
-                                <option value="building">Building/Flat Roof Icon</option>
-                                <option value="tools">Tools/Repair Icon</option>
-                                <option value="waves">Waves/Cleaning Icon</option>
+                                <option value="home">Home/Residential</option>
+                                <option value="tools">Tools/Repairs</option>
+                                <option value="search">Search/Inspections</option>
+                                <option value="calendar">Calendar/Maintenance</option>
+                                <option value="rain">Rain/Gutters</option>
+                                <option value="alert">Alert/Emergency</option>
+                                <option value="office">Office/Commercial</option>
+                                <option value="refresh">Refresh/Replacement</option>
+                                <option value="building">Building</option>
                               </select>
+                              <div className="mt-2 flex items-center text-sm text-gray-500">
+                                <span>Icons from Font Awesome and Material Design libraries</span>
+                              </div>
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Button Text</label>

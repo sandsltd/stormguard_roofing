@@ -32,19 +32,60 @@
     ],
     "services": [
       {
-        "title": "Residential Roofing",
-        "description": "Complete roofing solutions for homes of all sizes.",
-        "icon": "home"
+        "title": "Roof Installation",
+        "description": "Professional installation of new roofs by expert roofers using premium materials and craftsmanship.",
+        "icon": "home",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "title": "Commercial Roofing",
-        "description": "Specialized roofing systems for commercial buildings.",
-        "icon": "building-office"
+        "title": "Roof Repairs",
+        "description": "Quick and reliable repairs for leaks, damaged shingles, and other roofing issues by local roofers.",
+        "icon": "tools",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "title": "Roof Repair",
-        "description": "Fast and reliable repair services for all types of roofs.",
-        "icon": "wrench"
+        "title": "Roof Inspections",
+        "description": "Comprehensive roof inspections by experienced roofers to identify issues before they become major problems.",
+        "icon": "search",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Roof Maintenance",
+        "description": "Regular maintenance services by local roofers to extend the life of your roof and prevent costly repairs.",
+        "icon": "calendar",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Gutter Services",
+        "description": "Expert installation and repair of gutters and downspouts to protect your home from water damage.",
+        "icon": "rain",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Emergency Roofers",
+        "description": "24/7 emergency services for roofs damaged by storms, wind, or fallen debris.",
+        "icon": "alert",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Commercial Roofers",
+        "description": "Specialised roofing solutions for commercial buildings and businesses by experienced roofers.",
+        "icon": "office",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      },
+      {
+        "title": "Roof Replacement",
+        "description": "Complete roof replacement services from trusted roofers with a wide selection of materials and styles.",
+        "icon": "refresh",
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       }
     ],
     "testimonials": [
@@ -60,7 +101,16 @@
       }
     ],
     "heroTitle": "Profesional Roofing Solutions In Dorchester",
-    "heroSubtitle": "Trusted roofers near you"
+    "heroSubtitle": "Trusted roofers near you",
+    "premiumHero": {
+      "title": "Professional Roofing Services",
+      "subtitle": "Quality Work, Guaranteed Results",
+      "image": "/images/hero.jpg"
+    },
+    "servicesSection": {
+      "title": "Comprehensive Roofing Solutions",
+      "description": "From installation and repairs to maintenance and emergency services, our expert roofers provide a full range of professional roofing solutions for residential and commercial properties."
+    }
   },
   "about": {
     "title": "About Us",
