@@ -51,7 +51,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative min-h-screen overflow-hidden pt-4">
+      <div className="relative min-h-screen overflow-hidden pt-32 md:pt-36">
         {/* Main Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -75,7 +75,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
         </div>
         
         {/* Content Container */}
-        <div className="relative z-10 h-screen flex items-center px-6 md:px-12">
+        <div className="relative z-10 h-screen flex items-center px-6 md:px-12 pt-0 -mt-16">
           <div className="max-w-7xl mx-auto w-full">
             <div className="max-w-3xl">
               {/* Badge */}
@@ -140,7 +140,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
         </div>
         
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <div className="absolute bottom-20 right-32 md:right-48 z-10 animate-bounce">
           <div className="flex flex-col items-center">
             <span className="text-white text-sm mb-2">Scroll Down</span>
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
