@@ -964,101 +964,103 @@ export default function Admin() {
                             <input
                               type="text"
                               value={service.title}
-                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, title: e.target.value })}
+                              onChange={(e) => {
+                                const newServices = [...content.homepage.services];
+                                newServices[index] = { ...service, title: e.target.value };
+                                handleNestedChange('homepage.services', newServices);
+                              }}
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               placeholder="Title"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                             />
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                             <textarea
                               value={service.description}
-                              onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, description: e.target.value })}
+                              onChange={(e) => {
+                                const newServices = [...content.homepage.services];
+                                newServices[index] = { ...service, description: e.target.value };
+                                handleNestedChange('homepage.services', newServices);
+                              }}
+                              rows={4}
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                               placeholder="Description"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                rows={3}
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
-                              <select
-                                value={service.icon || ''}
-                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, icon: e.target.value })}
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              >
-                                <optgroup label="Roofing & Construction">
-                                  <option value="roofing"><IconPreview iconName="roofing" /> Roofing</option>
-                                  <option value="home"><IconPreview iconName="home" /> House</option>
-                                  <option value="house"><IconPreview iconName="house" /> Modern House</option>
-                                  <option value="housealt"><IconPreview iconName="housealt" /> House Alternative</option>
-                                  <option value="houseoutline"><IconPreview iconName="houseoutline" /> House Outline</option>
-                                  <option value="office"><IconPreview iconName="office" /> Office Building</option>
-                                  <option value="officealt"><IconPreview iconName="officealt" /> Office Alternative</option>
-                                  <option value="building"><IconPreview iconName="building" /> Building</option>
-                                  <option value="window"><IconPreview iconName="window" /> Window</option>
-                                </optgroup>
-                                <optgroup label="Services & Repairs">
-                                  <option value="tools"><IconPreview iconName="tools" /> Tools</option>
-                                  <option value="wrench"><IconPreview iconName="wrench" /> Wrench</option>
-                                  <option value="construction"><IconPreview iconName="construction" /> Construction</option>
-                                  <option value="hardhat"><IconPreview iconName="hardhat" /> Hard Hat</option>
-                                  <option value="ruler"><IconPreview iconName="ruler" /> Measuring</option>
-                                  <option value="search"><IconPreview iconName="search" /> Inspection</option>
-                                  <option value="refresh"><IconPreview iconName="refresh" /> Replacement</option>
-                                  <option value="cement"><IconPreview iconName="cement" /> Cement</option>
-                                </optgroup>
-                                <optgroup label="Weather & Environmental">
-                                  <option value="rain"><IconPreview iconName="rain" /> Rain</option>
-                                  <option value="waterdrop"><IconPreview iconName="waterdrop" /> Water Drop</option>
-                                  <option value="snow"><IconPreview iconName="snow" /> Snow</option>
-                                  <option value="lightning"><IconPreview iconName="lightning" /> Lightning</option>
-                                  <option value="wind"><IconPreview iconName="wind" /> Wind</option>
-                                  <option value="leaf"><IconPreview iconName="leaf" /> Eco-Friendly</option>
-                                </optgroup>
-                                <optgroup label="Business & Scheduling">
-                                  <option value="calendar"><IconPreview iconName="calendar" /> Calendar</option>
-                                  <option value="clock"><IconPreview iconName="clock" /> Clock</option>
-                                  <option value="phone"><IconPreview iconName="phone" /> Phone</option>
-                                  <option value="dollar"><IconPreview iconName="dollar" /> Price</option>
-                                  <option value="chart"><IconPreview iconName="chart" /> Performance</option>
-                                  <option value="shield"><IconPreview iconName="shield" /> Protection</option>
-                                  <option value="alert"><IconPreview iconName="alert" /> Alert</option>
-                                  <option value="star"><IconPreview iconName="star" /> Quality</option>
-                                </optgroup>
-                              </select>
-                              <div className="mt-2 flex items-center text-sm text-gray-500">
-                                <span className="flex items-center">Selected icon: <span className="mx-2"><IconPreview iconName={service.icon || 'home'} /></span> {service.icon || 'home'}</span>
-                              </div>
-                            </div>
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Button Text</label>
-                            <input
-                              type="text"
-                                value={service.buttonText || "Get a Free Quote"}
-                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, buttonText: e.target.value })}
-                                placeholder="e.g., Get a Free Quote"
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                             />
                             </div>
+                            
                             <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Button Link</label>
-                              <input
-                                type="text"
-                                value={service.buttonLink || "/contact"}
-                                onChange={(e) => handleArrayItemChange('homepage.services', index, { ...service, buttonLink: e.target.value })}
-                                placeholder="e.g., /contact"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              />
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
+                              <div className="mt-1">
+                                <ImagePicker
+                                  value={service.image}
+                                  onChange={(value) => {
+                                    const newServices = [...content.homepage.services];
+                                    newServices[index] = { ...service, image: value };
+                                    handleNestedChange('homepage.services', newServices);
+                                  }}
+                                  category="roofers"
+                                />
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
+                              {service.features.map((feature, featureIndex) => (
+                                <div key={featureIndex} className="flex items-center gap-2 mb-2">
+                                  <input
+                                    type="text"
+                                    value={feature}
+                                    onChange={(e) => {
+                                      const newServices = [...content.homepage.services];
+                                      const newFeatures = [...service.features];
+                                      newFeatures[featureIndex] = e.target.value;
+                                      newServices[index] = { ...service, features: newFeatures };
+                                      handleNestedChange('homepage.services', newServices);
+                                    }}
+                                    className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    placeholder="Feature description"
+                                  />
+                                  <button
+                                    onClick={() => {
+                                      const newServices = [...content.homepage.services];
+                                      const newFeatures = service.features.filter((_, i) => i !== featureIndex);
+                                      newServices[index] = { ...service, features: newFeatures };
+                                      handleNestedChange('homepage.services', newServices);
+                                    }}
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() => {
+                                  const newServices = [...content.homepage.services];
+                                  const newFeatures = [...service.features, ''];
+                                  newServices[index] = { ...service, features: newFeatures };
+                                  handleNestedChange('homepage.services', newServices);
+                                }}
+                                className="mt-2 text-sm text-blue-600 hover:text-blue-800"
+                              >
+                                + Add Feature
+                              </button>
                             </div>
                           </div>
                         </div>
                       ))}
                       <button
-                        onClick={() => handleArrayItemChange('homepage.services', content.homepage.services.length, { title: '', description: '', icon: '', buttonText: 'Get a Free Quote', buttonLink: '/contact' })}
-                        className="mt-2 px-4 py-2 text-white rounded hover:opacity-90"
-                        style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
+                        onClick={() => {
+                          const newServices = [...content.homepage.services, {
+                            title: 'New Service',
+                            description: 'Enter service description here',
+                            image: '/images/roofers/roofer_fixing_tile_on_roof.png',
+                            features: ['Feature 1', 'Feature 2', 'Feature 3']
+                          }];
+                          handleNestedChange('homepage.services', newServices);
+                        }}
+                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
-                        Add Service
+                        Add New Service
                       </button>
                     </div>
 
@@ -1896,75 +1898,119 @@ export default function Admin() {
                     <h2 className="text-xl font-bold text-gray-900 mb-4">Contact Information</h2>
                     
                     <div className="space-y-4">
-                              <div>
-                      <label className="block text-sm font-medium text-gray-700">Address</label>
-                      <textarea
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Hero Background Image</label>
+                        <input
+                          type="text"
+                          value={content.contact.heroImage || '/images/roofers/team_of_roofers.jpg'}
+                          onChange={(e) => handleContentChange('contact.heroImage', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="e.g. /images/roofers/team_of_roofers.jpg"
+                        />
+                        <p className="mt-1 text-sm text-gray-500">
+                          Enter the path to your hero background image. Available images are in the /images/roofers/ directory.
+                        </p>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Google Maps Embed URL</label>
+                        <input
+                          type="text"
+                          value={content.contact.mapUrl || ''}
+                          onChange={(e) => {
+                            // Extract just the URL from the iframe if the full iframe code is pasted
+                            const url = e.target.value.match(/src="([^"]+)"/)?.[1] || e.target.value;
+                            handleContentChange('contact.mapUrl', url);
+                          }}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="Paste the Google Maps embed URL here"
+                        />
+                        <div className="mt-2 space-y-2">
+                          <p className="text-sm text-gray-500">
+                            To get your map URL:
+                          </p>
+                          <ol className="text-sm text-gray-500 list-decimal list-inside space-y-1">
+                            <li>Go to Google Maps</li>
+                            <li>Search for your business location</li>
+                            <li>Click "Share"</li>
+                            <li>Select "Embed a map"</li>
+                            <li>Copy the URL from the iframe code (it starts with https://www.google.com/maps/embed?)</li>
+                          </ol>
+                          <p className="text-sm text-gray-500 mt-2">
+                            You can paste either just the URL or the entire iframe code - we'll extract the URL automatically.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Address</label>
+                        <textarea
                           rows={3}
-                        value={content.contact.address}
-                        onChange={(e) => handleContentChange('contact.address', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          value={content.contact.address}
+                          onChange={(e) => handleContentChange('contact.address', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="Your business address"
-                      />
-                                </div>
+                        />
+                      </div>
                       
-                    <div>
+                      <div>
                         <label className="block text-sm font-medium text-gray-700">Phone Number</label>
-                      <input
-                        type="text"
-                        value={content.contact.phone}
-                        onChange={(e) => handleContentChange('contact.phone', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        <input
+                          type="text"
+                          value={content.contact.phone}
+                          onChange={(e) => handleContentChange('contact.phone', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. 01234 567890"
-                      />
-                              </div>
+                        />
+                      </div>
                       
-                              <div>
+                      <div>
                         <label className="block text-sm font-medium text-gray-700">Email Address</label>
-                      <input
-                        type="email"
-                        value={content.contact.email}
-                        onChange={(e) => handleContentChange('contact.email', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        <input
+                          type="email"
+                          value={content.contact.email}
+                          onChange={(e) => handleContentChange('contact.email', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. info@yourbusiness.com"
-                      />
+                        />
                         <p className="mt-1 text-sm text-gray-500">
                           This email will be displayed on your website. Any form submissions will also be sent to this address in addition to the primary recipient (hello@saunders-simmons.co.uk).
                         </p>
-                                      </div>
+                      </div>
                       
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Business Hours</label>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Business Hours</label>
                         <textarea
                           rows={3}
-                        value={content.contact.hours}
-                        onChange={(e) => handleContentChange('contact.hours', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          value={content.contact.hours}
+                          onChange={(e) => handleContentChange('contact.hours', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. Monday-Friday: 9am-5pm, Saturday: 10am-2pm, Sunday: Closed"
-                      />
-                              </div>
+                        />
+                      </div>
                       
-                              <div>
-                      <label className="block text-sm font-medium text-gray-700">Form Title</label>
-                      <input
-                        type="text"
-                        value={content.contact.formTitle}
-                        onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Form Title</label>
+                        <input
+                          type="text"
+                          value={content.contact.formTitle}
+                          onChange={(e) => handleContentChange('contact.formTitle', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="e.g. Contact Us Today"
-                      />
-                                    </div>
+                        />
+                      </div>
                       
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Form Description</label>
-                      <textarea
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Form Description</label>
+                        <textarea
                           rows={3}
-                        value={content.contact.formDescription}
-                        onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          value={content.contact.formDescription}
+                          onChange={(e) => handleContentChange('contact.formDescription', e.target.value)}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                           placeholder="A brief description to appear above the contact form"
-                      />
-                                </div>
-                              </div>
+                        />
+                      </div>
+                    </div>
                     
                     <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
                       <h3 className="text-xl font-bold text-blue-700 mb-4">Email Settings Information</h3>
@@ -2627,6 +2673,90 @@ export default function Admin() {
                       >
                         Add New Service
                       </button>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'socials' && (
+                  <div className="pt-6 space-y-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">Social Media Links</h2>
+                    <p className="text-sm text-gray-500 mb-6">
+                      Add your social media profile URLs below. Leave empty to hide the social media link from your website.
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Facebook</label>
+                        <div className="mt-1 flex rounded-md shadow-sm">
+                          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                            URL
+                          </span>
+                          <input
+                            type="url"
+                            value={content.socials.facebook || ''}
+                            onChange={(e) => handleContentChange('socials.facebook', e.target.value)}
+                            className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="https://facebook.com/your-page"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Twitter</label>
+                        <div className="mt-1 flex rounded-md shadow-sm">
+                          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                            URL
+                          </span>
+                          <input
+                            type="url"
+                            value={content.socials.twitter || ''}
+                            onChange={(e) => handleContentChange('socials.twitter', e.target.value)}
+                            className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="https://twitter.com/your-handle"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Instagram</label>
+                        <div className="mt-1 flex rounded-md shadow-sm">
+                          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                            URL
+                          </span>
+                          <input
+                            type="url"
+                            value={content.socials.instagram || ''}
+                            onChange={(e) => handleContentChange('socials.instagram', e.target.value)}
+                            className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="https://instagram.com/your-profile"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">LinkedIn</label>
+                        <div className="mt-1 flex rounded-md shadow-sm">
+                          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                            URL
+                          </span>
+                          <input
+                            type="url"
+                            value={content.socials.linkedin || ''}
+                            onChange={(e) => handleContentChange('socials.linkedin', e.target.value)}
+                            className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="https://linkedin.com/company/your-company"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                      <h3 className="text-sm font-medium text-gray-700 mb-2">Tips:</h3>
+                      <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
+                        <li>Enter the full URL including https://</li>
+                        <li>Leave fields empty to hide those social media links from your website</li>
+                        <li>Make sure to test your links after saving</li>
+                      </ul>
                     </div>
                   </div>
                 )}

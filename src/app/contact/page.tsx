@@ -73,9 +73,15 @@ export default function Contact() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-32 overflow-hidden mt-24">
+      <section className="relative text-white py-32 overflow-hidden mt-24">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `url("${content.contact.heroImage || '/images/roofers/team_of_roofers.jpg'}")`
+          }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:60px_60px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -83,11 +89,11 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-              Get in Touch
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
+              {content.contact.formTitle || 'Get in Touch'}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
-              Have a question or need a quote? We're here to help. Contact us today and we'll get back to you as soon as possible.
+            <p className="text-xl md:text-2xl text-gray-100 leading-relaxed">
+              {content.contact.formDescription || 'Have a question or need a quote? We\'re here to help. Contact us today and we\'ll get back to you as soon as possible.'}
             </p>
           </motion.div>
         </div>
@@ -212,7 +218,8 @@ export default function Contact() {
                 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="w-full text-white px-8 py-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:opacity-90"
+                  style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                 >
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -234,93 +241,120 @@ export default function Contact() {
               <div className="space-y-10">
                 <div className="group">
                   <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center group-hover:text-blue-600 transition-colors">
-                    <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     Address
                   </h3>
-                  <p className="text-gray-600 text-lg">{business.address}</p>
+                  <p className="text-gray-600 text-lg">{contact.address}</p>
                 </div>
                 
                 <div className="group">
                   <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center group-hover:text-blue-600 transition-colors">
-                    <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     Phone
                   </h3>
                   <p className="text-gray-600 text-lg">
-                    <a href={`tel:${business.phone}`} className="hover:text-blue-600 transition-colors">
-                      {business.phone}
+                    <a href={`tel:${contact.phone}`} className="hover:text-blue-600 transition-colors">
+                      {contact.phone}
                     </a>
                   </p>
                 </div>
                 
                 <div className="group">
                   <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center group-hover:text-blue-600 transition-colors">
-                    <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     Email
                   </h3>
                   <p className="text-gray-600 text-lg">
-                    <a href={`mailto:${business.email}`} className="hover:text-blue-600 transition-colors">
-                      {business.email}
+                    <a href={`mailto:${contact.email}`} className="hover:text-blue-600 transition-colors">
+                      {contact.email}
                     </a>
                   </p>
                 </div>
                 
                 <div className="group">
                   <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center group-hover:text-blue-600 transition-colors">
-                    <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     Business Hours
                   </h3>
-                  <ul className="text-gray-600 text-lg space-y-3">
-                    <li className="flex justify-between items-center">
-                      <span className="font-medium">Monday - Friday</span>
-                      <span className="text-gray-500">8:00 AM - 5:00 PM</span>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span className="font-medium">Saturday</span>
-                      <span className="text-gray-500">9:00 AM - 2:00 PM</span>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span className="font-medium">Sunday</span>
-                      <span className="text-gray-500">Closed</span>
-                    </li>
-                  </ul>
+                  <p className="text-gray-600 text-lg whitespace-pre-line">{contact.hours}</p>
                 </div>
                 
-                <div className="group">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center group-hover:text-blue-600 transition-colors">
-                    <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                    </svg>
-                    Connect With Us
-                  </h3>
-                  <div className="flex space-x-6">
-                    {Object.entries(socials).map(([platform, url]) => (
-                      <a
-                        key={platform}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-blue-600 transition-colors text-lg font-medium hover:scale-110 transform duration-200"
-                        aria-label={platform}
-                      >
-                        {platform}
-                      </a>
-                    ))}
+                {/* Only show social media section if there are any URLs */}
+                {Object.values(socials).some(url => url && url.trim() !== '') && (
+                  <div className="group">
+                    <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center group-hover:text-blue-600 transition-colors">
+                      <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                      Connect With Us
+                    </h3>
+                    <div className="flex space-x-6">
+                      {Object.entries(socials)
+                        .filter(([_, url]) => url && url.trim() !== '')
+                        .map(([platform, url]) => {
+                          const displayName = platform.charAt(0).toUpperCase() + platform.slice(1);
+                          return (
+                            <a
+                              key={platform}
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-600 hover:text-blue-600 transition-colors text-lg font-medium hover:scale-110 transform duration-200"
+                              style={{ 
+                                '--tw-text-opacity': 1, 
+                                '--tw-hover-text-opacity': 1,
+                                color: 'var(--tw-text-gray-600)',
+                                '&:hover': {
+                                  color: content.theme?.primaryColor || '#3b82f6'
+                                }
+                              } as React.CSSProperties}
+                            >
+                              {displayName}
+                            </a>
+                          );
+                        })}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Google Maps Section */}
+      {content.contact.mapUrl && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl overflow-hidden shadow-xl border border-gray-100"
+            >
+              <iframe
+                src={content.contact.mapUrl}
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps"
+              ></iframe>
+            </motion.div>
+          </div>
+        </section>
+      )}
     </>
   );
 } 

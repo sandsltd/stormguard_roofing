@@ -156,6 +156,8 @@ export interface Content {
     hours: string;
     formTitle: string;
     formDescription: string;
+    heroImage?: string;
+    mapUrl?: string;
     emailSettings?: {
       recipient: string;
       smtpHost: string;
