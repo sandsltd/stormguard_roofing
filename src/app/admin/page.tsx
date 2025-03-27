@@ -120,7 +120,7 @@ export default function Admin() {
   };
 
   const handleSave = async () => {
-    if (!content) return;
+    if (!content) return Promise.reject('No content to save');
     
     setIsSaving(true);
     setSaveStatus('Saving...');
@@ -128,12 +128,15 @@ export default function Admin() {
     try {
       await saveContent(content);
       setSaveStatus('Changes saved successfully!');
+      setIsSaving(false);
+      setTimeout(() => setSaveStatus(''), 3000);
+      return Promise.resolve();
     } catch (error) {
       console.error('Error saving content:', error);
       setSaveStatus('Error saving changes');
-    } finally {
       setIsSaving(false);
       setTimeout(() => setSaveStatus(''), 3000);
+      return Promise.reject(error);
     }
   };
 
@@ -2234,10 +2237,299 @@ export default function Admin() {
                     </div>
                   </div>
                 )}
+
+                {activeTab === 'services' && (
+                  <div className="space-y-6 pt-6">
+                    {/* Hero Section Configuration */}
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Services Hero Section</h3>
+                      <p className="text-blue-600 mb-6">Configure the hero section that appears at the top of your services page.</p>
+                      
+                      {/* Initialize the services hero if it doesn't exist */}
+                      {!content.services.hero || !content.services.hero.backgroundImage ? (
+                        <button
+                          onClick={() => handleNestedChange('services.hero', {
+                            title: "Our Services",
+                            subtitle: "Professional Roofing Solutions for Every Need",
+                            subtitle2: "Solutions",
+                            backgroundImage: "/images/roofers/roofer_installing_roofing_tiles.png",
+                            badge: "EXPERT SOLUTIONS",
+                            ctaPrimary: {
+                              text: "Get a Quote",
+                              link: "/contact"
+                            },
+                            ctaSecondary: {
+                              text: "View All Services",
+                              link: "#services"
+                            }
+                          })}
+                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        >
+                          Initialize Services Hero
+                        </button>
+                      ) : (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Badge Text</label>
+                                <input
+                                  type="text"
+                                  value={content.services.hero.badge || "EXPERT SOLUTIONS"}
+                                  onChange={(e) => handleNestedChange('services.hero.badge', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., EXPERT SOLUTIONS"
+                                />
+                                <p className="mt-1 text-xs text-gray-500">The text displayed in the badge at the top of the hero section.</p>
+                              </div>
+
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Hero Title</label>
+                                <input
+                                  type="text"
+                                  value={content.services.hero.title}
+                                  onChange={(e) => handleNestedChange('services.hero.title', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Our Services"
+                                />
+                                <p className="mt-1 text-xs text-gray-500">The main heading displayed in the hero section (white text).</p>
+                              </div>
+
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Hero Subtitle (Colored)</label>
+                                <input
+                                  type="text"
+                                  value={content.services.hero.subtitle2 || "Solutions"}
+                                  onChange={(e) => handleNestedChange('services.hero.subtitle2', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Solutions"
+                                />
+                                <p className="mt-1 text-xs text-gray-500">The second line of the heading (in the primary color).</p>
+                              </div>
+                              
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Hero Description</label>
+                                <textarea
+                                  value={content.services.hero.subtitle}
+                                  onChange={(e) => handleNestedChange('services.hero.subtitle', e.target.value)}
+                                  rows={2}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="Description text that appears in the hero"
+                                />
+                              </div>
+
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Background Image</label>
+                                <div className="mt-1">
+                                  <ImagePicker
+                                    value={content.services.hero.backgroundImage}
+                                    onChange={(value) => handleNestedChange('services.hero.backgroundImage', value)}
+                                    category="roofers"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="pt-4 border-t">
+                                <h4 className="text-sm font-medium text-gray-700 mb-4">Call to Action Buttons</h4>
+                                
+                                <div className="space-y-4">
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Primary Button Text</label>
+                                    <input
+                                      type="text"
+                                      value={content.services.hero.ctaPrimary?.text || "Get a Quote"}
+                                      onChange={(e) => handleNestedChange('services.hero.ctaPrimary.text', e.target.value)}
+                                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      placeholder="e.g., Get a Quote"
+                                    />
+                                  </div>
+                                  
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Primary Button Link</label>
+                                    <input
+                                      type="text"
+                                      value={content.services.hero.ctaPrimary?.link || "/contact"}
+                                      onChange={(e) => handleNestedChange('services.hero.ctaPrimary.link', e.target.value)}
+                                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      placeholder="e.g., /contact"
+                                    />
+                                  </div>
+
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Secondary Button Text</label>
+                                    <input
+                                      type="text"
+                                      value={content.services.hero.ctaSecondary?.text || "View All Services"}
+                                      onChange={(e) => handleNestedChange('services.hero.ctaSecondary.text', e.target.value)}
+                                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      placeholder="e.g., View All Services"
+                                    />
+                                  </div>
+                                  
+                                  <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Secondary Button Link</label>
+                                    <input
+                                      type="text"
+                                      value={content.services.hero.ctaSecondary?.link || "#services"}
+                                      onChange={(e) => handleNestedChange('services.hero.ctaSecondary.link', e.target.value)}
+                                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      placeholder="e.g., #services"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">Services List</h2>
+                    
+                    <div className="p-4 mb-6 bg-blue-50 rounded-lg border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-700 mb-4">Services List</h3>
+                      <p className="text-blue-600 mb-6">Edit individual services below. Each service can be customized with its own title, description, image, and features.</p>
+                      
+                      {content.services.services.map((service, index) => (
+                        <div key={index} className="mb-8 p-6 bg-white rounded-lg shadow">
+                          <div className="flex justify-between items-center mb-4">
+                            <h4 className="text-lg font-medium">Service {index + 1}</h4>
+                            <button
+                              onClick={() => {
+                                const newServices = [...content.services.services];
+                                newServices.splice(index, 1);
+                                handleNestedChange('services.services', newServices);
+                              }}
+                              className="text-red-600 hover:text-red-800"
+                            >
+                              Remove Service
+                            </button>
+                          </div>
+                          
+                          <div className="space-y-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                              <input
+                                type="text"
+                                value={service.title}
+                                onChange={(e) => {
+                                  const newServices = [...content.services.services];
+                                  newServices[index] = { ...service, title: e.target.value };
+                                  handleNestedChange('services.services', newServices);
+                                }}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="Service title"
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                              <textarea
+                                value={service.description}
+                                onChange={(e) => {
+                                  const newServices = [...content.services.services];
+                                  newServices[index] = { ...service, description: e.target.value };
+                                  handleNestedChange('services.services', newServices);
+                                }}
+                                rows={4}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="Service description"
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
+                              <div className="mt-1">
+                                <ImagePicker
+                                  value={service.image}
+                                  onChange={(value) => {
+                                    const newServices = [...content.services.services];
+                                    newServices[index] = { ...service, image: value };
+                                    handleNestedChange('services.services', newServices);
+                                  }}
+                                  category="roofers"
+                                />
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
+                              {service.features.map((feature, featureIndex) => (
+                                <div key={featureIndex} className="flex items-center gap-2 mb-2">
+                                  <input
+                                    type="text"
+                                    value={feature}
+                                    onChange={(e) => {
+                                      const newServices = [...content.services.services];
+                                      const newFeatures = [...service.features];
+                                      newFeatures[featureIndex] = e.target.value;
+                                      newServices[index] = { ...service, features: newFeatures };
+                                      handleNestedChange('services.services', newServices);
+                                    }}
+                                    className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    placeholder="Feature description"
+                                  />
+                                  <button
+                                    onClick={() => {
+                                      const newServices = [...content.services.services];
+                                      const newFeatures = service.features.filter((_, i) => i !== featureIndex);
+                                      newServices[index] = { ...service, features: newFeatures };
+                                      handleNestedChange('services.services', newServices);
+                                    }}
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() => {
+                                  const newServices = [...content.services.services];
+                                  const newFeatures = [...service.features, ''];
+                                  newServices[index] = { ...service, features: newFeatures };
+                                  handleNestedChange('services.services', newServices);
+                                }}
+                                className="mt-2 text-sm text-blue-600 hover:text-blue-800"
+                              >
+                                + Add Feature
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      
+                      <button
+                        onClick={() => {
+                          const newServices = [...content.services.services, {
+                            title: 'New Service',
+                            description: 'Enter service description here',
+                            image: '/images/roofers/roofer_fixing_tile_on_roof.png',
+                            features: ['Feature 1', 'Feature 2', 'Feature 3']
+                          }];
+                          handleNestedChange('services.services', newServices);
+                        }}
+                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                      >
+                        Add New Service
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Save Button */}
+      <div className="fixed bottom-8 right-8">
+        <button
+          onClick={handleSave}
+          disabled={isSaving}
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+        >
+          {isSaving ? 'Saving...' : 'Save Changes'}
+        </button>
       </div>
     </div>
   );

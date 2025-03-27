@@ -123,6 +123,17 @@ export interface Content {
     hero: {
       title: string;
       subtitle: string;
+      subtitle2?: string;
+      backgroundImage?: string;
+      badge?: string;
+      ctaPrimary?: {
+        text: string;
+        link: string;
+      };
+      ctaSecondary?: {
+        text: string;
+        link: string;
+      };
     };
     services: {
       title: string;

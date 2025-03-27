@@ -152,6 +152,17 @@ export interface Content {
     hero: {
       title: string;
       subtitle: string;
+      subtitle2: string;
+      backgroundImage: string;
+      badge: string;
+      ctaPrimary: {
+        text: string;
+        link: string;
+      };
+      ctaSecondary: {
+        text: string;
+        link: string;
+      };
     };
     services: Array<{
       title: string;
@@ -393,7 +404,18 @@ function getDefaultContent(): Content {
     services: {
       hero: {
         title: 'Our Services',
-        subtitle: 'What we offer'
+        subtitle: 'Professional Roofing Solutions for Every Need',
+        subtitle2: 'Solutions',
+        backgroundImage: '/images/roofers/roofer_installing_roofing_tiles.png',
+        badge: 'EXPERT SOLUTIONS',
+        ctaPrimary: {
+          text: 'Get a Quote',
+          link: '/contact'
+        },
+        ctaSecondary: {
+          text: 'View All Services',
+          link: '#services'
+        }
       },
       services: [
         {

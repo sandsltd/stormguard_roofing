@@ -80,59 +80,99 @@
     "services": [
       {
         "title": "Roof Installation",
-        "description": "Professional installation of new roofs by expert roofers using premium materials and craftsmanship.",
-        "icon": "home",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "description": "Professional installation of new roofs by our team of certified experts. We use only premium materials and follow industry-best practices to ensure your new roof is durable, energy-efficient, and aesthetically pleasing. Our installations include comprehensive waterproofing and proper ventilation solutions tailored to your specific property requirements.",
+        "image": "/images/roofers/roofer_installing_new_roof.png",
+        "features": [
+          "Certified installation technicians",
+          "Premium materials with manufacturer warranties",
+          "Energy-efficient solutions",
+          "Proper ventilation and insulation",
+          "Clean site management and thorough cleanup"
+        ]
       },
       {
         "title": "Roof Repairs",
-        "description": "Quick and reliable repairs for leaks, damaged shingles, and other roofing issues by local roofers.",
-        "icon": "tools",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "description": "Swift and reliable repair services for all types of roofing issues. Our experienced technicians quickly identify and fix leaks, damaged shingles, flashing problems, and structural concerns before they escalate into major problems. We provide transparent assessments and lasting solutions that extend the life of your existing roof while maintaining its integrity and appearance.",
+        "image": "/images/roofers/roofer_repairing_roof.png",
+        "features": [
+          "Emergency repair services available",
+          "Comprehensive leak detection",
+          "Shingle replacement and restoration",
+          "Flashing and vent repair",
+          "Storm damage remediation"
+        ]
       },
       {
         "title": "Roof Inspections",
-        "description": "Comprehensive roof inspections by experienced roofers to identify issues before they become major problems.",
-        "icon": "search",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "description": "Thorough roof inspections by our experienced professionals help identify potential issues before they become costly problems. Our detailed assessment evaluates structural integrity, material condition, drainage systems, and signs of water damage. We provide comprehensive reports with photographic evidence and clear recommendations to maintain your roof's optimal performance.",
+        "image": "/images/roofers/roofer_on_roof.png",
+        "features": [
+          "Detailed roof condition reports",
+          "Moisture and leak detection",
+          "Structural integrity assessment",
+          "Drainage system evaluation",
+          "Maintenance recommendations"
+        ]
       },
       {
         "title": "Roof Maintenance",
-        "description": "Regular maintenance services by local roofers to extend the life of your roof and prevent costly repairs.",
-        "icon": "calendar",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "description": "Proactive maintenance programs designed to maximize your roof's lifespan and performance. Our scheduled maintenance services include debris removal, gutter cleaning, moss treatment, minor repairs, and weatherproofing. Regular maintenance prevents unexpected issues, extends roof longevity, and ensures your warranty remains valid while protecting your investment.",
+        "image": "/images/roofers/roofer_removing_damaged_tiles.png",
+        "features": [
+          "Seasonal inspection and cleaning",
+          "Gutter and downspout maintenance",
+          "Moss and algae prevention treatments",
+          "Minor repair identification and resolution",
+          "Weatherproofing and sealant application"
+        ]
       },
       {
         "title": "Gutter Services",
-        "description": "Expert installation and repair of gutters and downspouts to protect your home from water damage.",
-        "icon": "rain",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "description": "Expert installation, repair, and maintenance of guttering systems essential for protecting your property from water damage. Our specialists properly size, slope, and secure gutters and downspouts to efficiently channel water away from your foundation. We offer seamless gutter options, gutter guards, and complete rainwater management solutions customized for your specific property needs.",
+        "image": "/images/roofers/roofer_installing_felt_tiles.png",
+        "features": [
+          "Seamless gutter installation",
+          "Gutter repair and realignment",
+          "Downspout optimization",
+          "Gutter guard installation",
+          "Complete rainwater management systems"
+        ]
       },
       {
-        "title": "Emergency Roofers",
-        "description": "24/7 emergency services for roofs damaged by storms, wind, or fallen debris.",
-        "icon": "alert",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "title": "Emergency Roofing",
+        "description": "24/7 emergency response services for unexpected roof damage caused by storms, fallen debris, or sudden failures. Our rapid response team quickly secures your property to prevent further damage, provides temporary solutions where needed, and develops plans for permanent repairs. We work directly with insurance companies to streamline the claims process during these stressful situations.",
+        "image": "/images/roofers/roofer_repairing_tiles.png",
+        "features": [
+          "24/7 rapid response team",
+          "Temporary weatherproofing",
+          "Storm damage assessment",
+          "Insurance claim assistance",
+          "Priority scheduling for permanent repairs"
+        ]
       },
       {
-        "title": "Commercial Roofers",
-        "description": "Specialised roofing solutions for commercial buildings and businesses by experienced roofers.",
-        "icon": "office",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "title": "Commercial Roofing",
+        "description": "Specialized roofing solutions for commercial buildings focusing on durability, energy efficiency, and minimal business disruption. Our commercial services include flat roof systems, metal roofing, TPO/EPDM membranes, and preventative maintenance programs. We understand the unique requirements of commercial properties and provide tailored solutions that protect your business investments.",
+        "image": "/images/roofers/roofer_installing_roofing_tiles.png",
+        "features": [
+          "Flat roof and membrane systems",
+          "Metal and industrial roofing solutions",
+          "Energy-efficient cool roof options",
+          "Scheduled maintenance programs",
+          "Building code and regulation compliance"
+        ]
       },
       {
         "title": "Roof Replacement",
-        "description": "Complete roof replacement services from trusted roofers with a wide selection of materials and styles.",
-        "icon": "refresh",
-        "buttonText": "Get a Free Quote",
-        "buttonLink": "/contact"
+        "description": "Complete roof replacement services with a wide selection of high-quality materials to enhance your property's protection, efficiency, and curb appeal. Our methodical process includes detailed assessment, careful removal of old materials, structural repairs, and precise installation of your chosen roofing system. We handle all permitting requirements and ensure proper disposal of old materials.",
+        "image": "/images/roofers/roofer_fixing_tile_on_roof.png",
+        "features": [
+          "Wide selection of premium materials",
+          "Architectural and designer shingle options",
+          "Complete removal and structural repair",
+          "Enhanced insulation and ventilation",
+          "Extended manufacturer warranties"
+        ]
       }
     ],
     "testimonials": [
@@ -281,44 +321,106 @@
   },
   "services": {
     "hero": {
-      "title": "Our Services",
-      "subtitle": "Professional Roofing Solutions for Every Need"
+      "title": "Our Professional",
+      "subtitle": "Comprehensive solutions tailored to meet your needs with quality and reliability!!",
+      "subtitle2": "Solutions",
+      "backgroundImage": "/images/roofers/roofer_installing_roofing_tiles.png"
     },
     "services": [
       {
-        "title": "Residential Roofing",
-        "description": "Complete roofing solutions for homes of all sizes. We handle everything from new installations to repairs and maintenance.",
-        "image": "/images/services/residential.jpg",
+        "title": "Roof Installation",
+        "description": "Professional installation of new roofs by our team of certified experts. We use only premium materials and follow industry-best practices to ensure your new roof is durable, energy-efficient, and aesthetically pleasing. Our installations include comprehensive waterproofing and proper ventilation solutions tailored to your specific property requirements.",
+        "image": "/images/roofers/roofer_installing_new_roof.png",
         "features": [
-          "New roof installation",
-          "Roof replacement",
-          "Leak repair",
-          "Maintenance services",
-          "Gutter installation"
+          "Certified installation technicians",
+          "Premium materials with manufacturer warranties",
+          "Energy-efficient solutions",
+          "Proper ventilation and insulation",
+          "Clean site management and thorough cleanup"
+        ]
+      },
+      {
+        "title": "Roof Repairs",
+        "description": "Swift and reliable repair services for all types of roofing issues. Our experienced technicians quickly identify and fix leaks, damaged shingles, flashing problems, and structural concerns before they escalate into major problems. We provide transparent assessments and lasting solutions that extend the life of your existing roof while maintaining its integrity and appearance.",
+        "image": "/images/roofers/roofer_repairing_roof.png",
+        "features": [
+          "Emergency repair services available",
+          "Comprehensive leak detection",
+          "Shingle replacement and restoration",
+          "Flashing and vent repair",
+          "Storm damage remediation"
+        ]
+      },
+      {
+        "title": "Roof Inspections",
+        "description": "Thorough roof inspections by our experienced professionals help identify potential issues before they become costly problems. Our detailed assessment evaluates structural integrity, material condition, drainage systems, and signs of water damage. We provide comprehensive reports with photographic evidence and clear recommendations to maintain your roof's optimal performance.",
+        "image": "/images/roofers/roofer_on_roof.png",
+        "features": [
+          "Detailed roof condition reports",
+          "Moisture and leak detection",
+          "Structural integrity assessment",
+          "Drainage system evaluation",
+          "Maintenance recommendations"
+        ]
+      },
+      {
+        "title": "Roof Maintenance",
+        "description": "Proactive maintenance programs designed to maximize your roof's lifespan and performance. Our scheduled maintenance services include debris removal, gutter cleaning, moss treatment, minor repairs, and weatherproofing. Regular maintenance prevents unexpected issues, extends roof longevity, and ensures your warranty remains valid while protecting your investment.",
+        "image": "/images/roofers/roofer_removing_damaged_tiles.png",
+        "features": [
+          "Seasonal inspection and cleaning",
+          "Gutter and downspout maintenance",
+          "Moss and algae prevention treatments",
+          "Minor repair identification and resolution",
+          "Weatherproofing and sealant application"
+        ]
+      },
+      {
+        "title": "Gutter Services",
+        "description": "Expert installation, repair, and maintenance of guttering systems essential for protecting your property from water damage. Our specialists properly size, slope, and secure gutters and downspouts to efficiently channel water away from your foundation. We offer seamless gutter options, gutter guards, and complete rainwater management solutions customized for your specific property needs.",
+        "image": "/images/roofers/roofer_installing_felt_tiles.png",
+        "features": [
+          "Seamless gutter installation",
+          "Gutter repair and realignment",
+          "Downspout optimization",
+          "Gutter guard installation",
+          "Complete rainwater management systems"
+        ]
+      },
+      {
+        "title": "Emergency Roofing",
+        "description": "24/7 emergency response services for unexpected roof damage caused by storms, fallen debris, or sudden failures. Our rapid response team quickly secures your property to prevent further damage, provides temporary solutions where needed, and develops plans for permanent repairs. We work directly with insurance companies to streamline the claims process during these stressful situations.",
+        "image": "/images/roofers/roofer_repairing_tiles.png",
+        "features": [
+          "24/7 rapid response team",
+          "Temporary weatherproofing",
+          "Storm damage assessment",
+          "Insurance claim assistance",
+          "Priority scheduling for permanent repairs"
         ]
       },
       {
         "title": "Commercial Roofing",
-        "description": "Specialized roofing systems designed for commercial buildings. We understand the unique challenges of commercial roofing.",
-        "image": "/images/services/commercial.jpg",
+        "description": "Specialized roofing solutions for commercial buildings focusing on durability, energy efficiency, and minimal business disruption. Our commercial services include flat roof systems, metal roofing, TPO/EPDM membranes, and preventative maintenance programs. We understand the unique requirements of commercial properties and provide tailored solutions that protect your business investments.",
+        "image": "/images/roofers/roofer_installing_roofing_tiles.png",
         "features": [
-          "Flat roof systems",
-          "Membrane roofing",
-          "Industrial roofing",
-          "Maintenance programs",
-          "Emergency repairs"
+          "Flat roof and membrane systems",
+          "Metal and industrial roofing solutions",
+          "Energy-efficient cool roof options",
+          "Scheduled maintenance programs",
+          "Building code and regulation compliance"
         ]
       },
       {
-        "title": "Roof Repair",
-        "description": "Fast and reliable repair services for all types of roofs. We diagnose and fix issues quickly to prevent further damage.",
-        "image": "/images/services/repair.jpg",
+        "title": "Roof Replacement",
+        "description": "Complete roof replacement services with a wide selection of high-quality materials to enhance your property's protection, efficiency, and curb appeal. Our methodical process includes detailed assessment, careful removal of old materials, structural repairs, and precise installation of your chosen roofing system. We handle all permitting requirements and ensure proper disposal of old materials.",
+        "image": "/images/roofers/roofer_fixing_tile_on_roof.png",
         "features": [
-          "Leak detection",
-          "Storm damage repair",
-          "Emergency services",
-          "Preventive maintenance",
-          "Warranty repairs"
+          "Wide selection of premium materials",
+          "Architectural and designer shingle options",
+          "Complete removal and structural repair",
+          "Enhanced insulation and ventilation",
+          "Extended manufacturer warranties"
         ]
       }
     ],
@@ -391,7 +493,7 @@
   },
   "theme": {
     "header": {
-      "backgroundColor": "#0433ff",
+      "backgroundColor": "#ff2600",
       "textColor": "#ffffff",
       "linkColor": "#000000",
       "iconColor": "#ff2600",
@@ -401,7 +503,7 @@
       "backgroundColor": "#3a88fe",
       "linkColor": "#ffffff"
     },
-    "primaryColor": "#0433ff",
+    "primaryColor": "#e32400",
     "secondaryColor": "#000000"
   },
   "header": {
