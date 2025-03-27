@@ -975,75 +975,32 @@ export default function Admin() {
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                            <textarea
-                              value={service.description}
-                              onChange={(e) => {
-                                const newServices = [...content.homepage.services];
-                                newServices[index] = { ...service, description: e.target.value };
-                                handleNestedChange('homepage.services', newServices);
-                              }}
-                              rows={4}
-                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              placeholder="Description"
-                            />
-                            </div>
-                            
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
-                              <div className="mt-1">
-                                <ImagePicker
-                                  value={service.image}
-                                  onChange={(value) => {
-                                    const newServices = [...content.homepage.services];
-                                    newServices[index] = { ...service, image: value };
-                                    handleNestedChange('homepage.services', newServices);
-                                  }}
-                                  category="roofers"
-                                />
-                              </div>
-                            </div>
-                            
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
-                              {service.features.map((feature, featureIndex) => (
-                                <div key={featureIndex} className="flex items-center gap-2 mb-2">
-                                  <input
-                                    type="text"
-                                    value={feature}
-                                    onChange={(e) => {
-                                      const newServices = [...content.homepage.services];
-                                      const newFeatures = [...service.features];
-                                      newFeatures[featureIndex] = e.target.value;
-                                      newServices[index] = { ...service, features: newFeatures };
-                                      handleNestedChange('homepage.services', newServices);
-                                    }}
-                                    className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    placeholder="Feature description"
-                                  />
-                                  <button
-                                    onClick={() => {
-                                      const newServices = [...content.homepage.services];
-                                      const newFeatures = service.features.filter((_, i) => i !== featureIndex);
-                                      newServices[index] = { ...service, features: newFeatures };
-                                      handleNestedChange('homepage.services', newServices);
-                                    }}
-                                    className="text-red-600 hover:text-red-800"
-                                  >
-                                    Remove
-                                  </button>
-                                </div>
-                              ))}
-                              <button
-                                onClick={() => {
+                              <textarea
+                                value={service.description}
+                                onChange={(e) => {
                                   const newServices = [...content.homepage.services];
-                                  const newFeatures = [...service.features, ''];
-                                  newServices[index] = { ...service, features: newFeatures };
+                                  newServices[index] = { ...service, description: e.target.value };
                                   handleNestedChange('homepage.services', newServices);
                                 }}
-                                className="mt-2 text-sm text-blue-600 hover:text-blue-800"
-                              >
-                                + Add Feature
-                              </button>
+                                rows={4}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="Description"
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Link</label>
+                              <input
+                                type="text"
+                                value={service.buttonLink || '/contact'}
+                                onChange={(e) => {
+                                  const newServices = [...content.homepage.services];
+                                  newServices[index] = { ...service, buttonLink: e.target.value };
+                                  handleNestedChange('homepage.services', newServices);
+                                }}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="/contact or #contact-form"
+                              />
                             </div>
                           </div>
                         </div>
@@ -1053,8 +1010,7 @@ export default function Admin() {
                           const newServices = [...content.homepage.services, {
                             title: 'New Service',
                             description: 'Enter service description here',
-                            image: '/images/roofers/roofer_fixing_tile_on_roof.png',
-                            features: ['Feature 1', 'Feature 2', 'Feature 3']
+                            buttonLink: '/contact'
                           }];
                           handleNestedChange('homepage.services', newServices);
                         }}
@@ -2599,61 +2555,18 @@ export default function Admin() {
                             </div>
                             
                             <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
-                              <div className="mt-1">
-                                <ImagePicker
-                                  value={service.image}
-                                  onChange={(value) => {
-                                    const newServices = [...content.services.services];
-                                    newServices[index] = { ...service, image: value };
-                                    handleNestedChange('services.services', newServices);
-                                  }}
-                                  category="roofers"
-                                />
-                              </div>
-                            </div>
-                            
-                            <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
-                              {service.features.map((feature, featureIndex) => (
-                                <div key={featureIndex} className="flex items-center gap-2 mb-2">
-                                  <input
-                                    type="text"
-                                    value={feature}
-                                    onChange={(e) => {
-                                      const newServices = [...content.services.services];
-                                      const newFeatures = [...service.features];
-                                      newFeatures[featureIndex] = e.target.value;
-                                      newServices[index] = { ...service, features: newFeatures };
-                                      handleNestedChange('services.services', newServices);
-                                    }}
-                                    className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    placeholder="Feature description"
-                                  />
-                                  <button
-                                    onClick={() => {
-                                      const newServices = [...content.services.services];
-                                      const newFeatures = service.features.filter((_, i) => i !== featureIndex);
-                                      newServices[index] = { ...service, features: newFeatures };
-                                      handleNestedChange('services.services', newServices);
-                                    }}
-                                    className="text-red-600 hover:text-red-800"
-                                  >
-                                    Remove
-                                  </button>
-                                </div>
-                              ))}
-                              <button
-                                onClick={() => {
+                              <label className="block text-sm font-medium text-gray-700 mb-1">Link</label>
+                              <input
+                                type="text"
+                                value={service.buttonLink || '/contact'}
+                                onChange={(e) => {
                                   const newServices = [...content.services.services];
-                                  const newFeatures = [...service.features, ''];
-                                  newServices[index] = { ...service, features: newFeatures };
+                                  newServices[index] = { ...service, link: e.target.value, buttonLink: e.target.value };
                                   handleNestedChange('services.services', newServices);
                                 }}
-                                className="mt-2 text-sm text-blue-600 hover:text-blue-800"
-                              >
-                                + Add Feature
-                              </button>
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                placeholder="/contact or #contact-form"
+                              />
                             </div>
                           </div>
                         </div>
@@ -2664,8 +2577,8 @@ export default function Admin() {
                           const newServices = [...content.services.services, {
                             title: 'New Service',
                             description: 'Enter service description here',
-                            image: '/images/roofers/roofer_fixing_tile_on_roof.png',
-                            features: ['Feature 1', 'Feature 2', 'Feature 3']
+                            link: '/contact',
+                            buttonLink: '/contact'
                           }];
                           handleNestedChange('services.services', newServices);
                         }}

@@ -3,7 +3,7 @@
     "name": "Saunders & Simmons Roofing",
     "phone": "07432205615",
     "email": "info@saunders-simmons.co.uk",
-    "address": "123 Main St, Dorchester, Dorset DT1 1AA",
+    "address": "3 Longcroft Road, Yeovil BA21 4RR",
     "logo": "/images/logo/saunders_simmons_ltd.png",
     "tagline": "Dorset's Premier Roofing Company",
     "establishedYear": "2005",
@@ -80,7 +80,7 @@
     "services": [
       {
         "title": "Roof Installation",
-        "description": "Professional installation of new roofs by our team of certified experts. We use only premium materials and follow industry-best practices to ensure your new roof is durable, energy-efficient, and aesthetically pleasing. Our installations include comprehensive waterproofing and proper ventilation solutions tailored to your specific property requirements.",
+        "description": "Professional installation of new roofs by our team of certified experts. ",
         "image": "/images/roofers/roofer_installing_new_roof.png",
         "features": [
           "Certified installation technicians",
@@ -92,7 +92,7 @@
       },
       {
         "title": "Roof Repairs",
-        "description": "Swift and reliable repair services for all types of roofing issues. Our experienced technicians quickly identify and fix leaks, damaged shingles, flashing problems, and structural concerns before they escalate into major problems. We provide transparent assessments and lasting solutions that extend the life of your existing roof while maintaining its integrity and appearance.",
+        "description": "Swift and reliable repair services for all types of roofing issues.",
         "image": "/images/roofers/roofer_repairing_roof.png",
         "features": [
           "Emergency repair services available",
@@ -104,7 +104,7 @@
       },
       {
         "title": "Roof Inspections",
-        "description": "Thorough roof inspections by our experienced professionals help identify potential issues before they become costly problems. Our detailed assessment evaluates structural integrity, material condition, drainage systems, and signs of water damage. We provide comprehensive reports with photographic evidence and clear recommendations to maintain your roof's optimal performance.",
+        "description": "Thorough roof inspections by our experienced professionals.",
         "image": "/images/roofers/roofer_on_roof.png",
         "features": [
           "Detailed roof condition reports",
@@ -160,18 +160,6 @@
           "Energy-efficient cool roof options",
           "Scheduled maintenance programs",
           "Building code and regulation compliance"
-        ]
-      },
-      {
-        "title": "Roof Replacement",
-        "description": "Complete roof replacement services with a wide selection of high-quality materials to enhance your property's protection, efficiency, and curb appeal. Our methodical process includes detailed assessment, careful removal of old materials, structural repairs, and precise installation of your chosen roofing system. We handle all permitting requirements and ensure proper disposal of old materials.",
-        "image": "/images/roofers/roofer_fixing_tile_on_roof.png",
-        "features": [
-          "Wide selection of premium materials",
-          "Architectural and designer shingle options",
-          "Complete removal and structural repair",
-          "Enhanced insulation and ventilation",
-          "Extended manufacturer warranties"
         ]
       }
     ],
@@ -341,7 +329,7 @@
         ]
       },
       {
-        "title": "Roof Repairs",
+        "title": "Roof Repa",
         "description": "Swift and reliable repair services for all types of roofing issues. Our experienced technicians quickly identify and fix leaks, damaged shingles, flashing problems, and structural concerns before they escalate into major problems. We provide transparent assessments and lasting solutions that extend the life of your existing roof while maintaining its integrity and appearance.",
         "image": "/images/roofers/roofer_repairing_roof.png",
         "features": [
@@ -366,7 +354,7 @@
       },
       {
         "title": "Roof Maintenance",
-        "description": "Proactive maintenance programs designed to maximize your roof's lifespan and performance. Our scheduled maintenance services include debris removal, gutter cleaning, moss treatment, minor repairs, and weatherproofing. Regular maintenance prevents unexpected issues, extends roof longevity, and ensures your warranty remains valid while protecting your investment.",
+        "description": "Proactive maintenance programs designed to maximize your roof's lifespan and performance. Our scheduled maintenance services include debris removal, gutter cleaning, moss treatment, minor repairs, and weatherproofing.",
         "image": "/images/roofers/roofer_removing_damaged_tiles.png",
         "features": [
           "Seasonal inspection and cleaning",
@@ -486,7 +474,7 @@
     "formTitle": "Get In Touch With Our Team",
     "formDescription": "Request a free quote or discuss your roofing needs with our expert team serving Crewe and surrounding areas.",
     "heroImage": "images/roofers/roofer_installing_roofing_tiles.png",
-    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d294425.676908346!2d-3.1188917000000003!3d54.79401785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x221e80944781ba41%3A0x7d7c84cdefcb1f5a!2sNLG%20Contractors!5e0!3m2!1sen!2suk!4v1742996151841!5m2!1sen!2suk"
+    "mapUrl": ""
   },
   "socials": {
     "facebook": "",
@@ -496,7 +484,7 @@
   },
   "theme": {
     "header": {
-      "backgroundColor": "#ff2600",
+      "backgroundColor": "#000000",
       "textColor": "#ffffff",
       "linkColor": "#000000",
       "iconColor": "#ff2600",
@@ -506,7 +494,7 @@
       "backgroundColor": "#3a88fe",
       "linkColor": "#ffffff"
     },
-    "primaryColor": "#ff6a00",
+    "primaryColor": "#4d22b3",
     "secondaryColor": "#000000"
   },
   "header": {
