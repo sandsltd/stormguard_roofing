@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Roofing Business Template",
-  description: "Professional roofing services for residential and commercial properties",
+  title: "Professional Roofing and home improvement services",
+  description: "Professional roofing and home improvement services for residential and commercial properties",
 };
 
 export const revalidate = 3600; // Revalidate every hour
