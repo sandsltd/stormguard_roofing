@@ -6,11 +6,7 @@ import AboutGalleryWrapper from '@/components/about/AboutGalleryWrapper';
 import { ExtendedBusinessContent, ValueItem } from '@/components/about/BusinessTypes';
 import ContactSection from '@/components/home/ContactSection';
 import AboutHeroAnimations from '@/components/about/AboutHeroAnimations';
-
-export const metadata = {
-  title: 'About Us',
-  description: 'Learn more about our company, our history, values and team',
-};
+import SeoHead from '@/components/SeoHead';
 
 export default async function AboutPage() {
   const content = await getContent();
@@ -18,6 +14,12 @@ export default async function AboutPage() {
 
   return (
     <main className="relative min-h-screen">
+      {/* SEO Head */}
+      <SeoHead 
+        content={content} 
+        pageKey="about"
+      />
+
       {/* Hero Section with Background Image */}
       <div className="relative h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden pt-56 md:pt-64 pb-36">
         <div className="absolute inset-0">

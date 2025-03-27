@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react';
 import { fetchContent } from '@/utils/client-content';
 import type { Content } from '@/utils/content';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the SeoHead component with no SSR since this is a client component
+const SeoHead = dynamic(() => import('@/components/SeoHead'), { ssr: false });
 
 // This needs to be a client component for the form to work,
 // but we can still fetch the content on the server
@@ -72,6 +76,9 @@ export default function Contact() {
 
   return (
     <>
+      {/* SEO Head - Client-side only */}
+      {content && <SeoHead content={content} pageKey="contact" />}
+
       {/* Hero Section */}
       <section className="relative text-white py-32 overflow-hidden mt-24">
         <div 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { fetchContent, saveContent } from '@/utils/client-content';
-import type { Content } from '@/types/content';
+import type { Content } from '@/utils/content';
 import { 
   FaHome, FaTools, FaSearch, FaCalendarAlt, FaCloudRain, 
   FaExclamationCircle, FaBuilding, FaSync, FaShieldAlt, 
@@ -264,6 +264,16 @@ export default function Admin() {
                   >
                     Header
                   </button>
+                  <button
+                    onClick={() => setActiveTab('seo')}
+                    className={`${
+                      activeTab === 'seo'
+                        ? 'border-blue-500 text-blue-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                  >
+                    SEO
+                  </button>
                 </nav>
               </div>
 
@@ -459,191 +469,214 @@ export default function Admin() {
                 )}
 
                 {activeTab === 'homepage' && (
-                  <div className="space-y-6">
-                    <div className="border-t pt-6">
-                      <h3 className="text-lg font-medium text-gray-700 mb-4">Content Sections</h3>
+                  <div className="space-y-10">
+                    {/* SEO Settings for Homepage */}
+                    <div className="space-y-6 border-b border-gray-200 pb-6">
+                      <h3 className="text-lg font-medium text-gray-900">SEO Settings for Homepage</h3>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Page Title
+                          </label>
+                          <input
+                            type="text"
+                            value={(content.seo?.pages?.home?.title) || ''}
+                            onChange={(e) => handleContentChange('seo.pages.home.title', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Enter page title for SEO"
+                          />
+                          <p className="mt-1 text-xs text-gray-500">
+                            This will appear in search engine results and browser tabs.
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Meta Description
+                          </label>
+                          <textarea
+                            value={(content.seo?.pages?.home?.description) || ''}
+                            onChange={(e) => handleContentChange('seo.pages.home.description', e.target.value)}
+                            rows={3}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Enter meta description for SEO (150-160 characters ideal)"
+                          />
+                          <p className="mt-1 text-xs text-gray-500">
+                            Brief description that appears in search results. Aim for 150-160 characters.
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Keywords
+                          </label>
+                          <input
+                            type="text"
+                            value={(content.seo?.pages?.home?.keywords) || ''}
+                            onChange={(e) => handleContentChange('seo.pages.home.keywords', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="keyword1, keyword2, keyword3"
+                          />
+                          <p className="mt-1 text-xs text-gray-500">
+                            Comma-separated keywords related to this page.
+                          </p>
+                        </div>
+                      </div>
                     </div>
+                    
+                    {/* Premium Hero Section */}
+                    <div className="space-y-6">
+                      <h3 className="text-lg font-medium text-gray-900">Hero Section</h3>
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Background Image Path</label>
+                          <input
+                            type="text"
+                            value={content.homepage.premiumHero?.backgroundImage || ''}
+                            onChange={(e) => handleContentChange('homepage.premiumHero.backgroundImage', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+                        
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <h4 className="font-medium text-gray-700 mb-4">Heading (Three Lines)</h4>
+                          <div className="space-y-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Line 1</label>
+                              <input
+                                type="text"
+                                value={content.homepage.premiumHero?.title.line1 || ''}
+                                onChange={(e) => handleContentChange('homepage.premiumHero.title.line1', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Line 2 (Gradient Effect)</label>
+                              <input
+                                type="text"
+                                value={content.homepage.premiumHero?.title.line2 || ''}
+                                onChange={(e) => handleContentChange('homepage.premiumHero.title.line2', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700">Line 3</label>
+                              <input
+                                type="text"
+                                value={content.homepage.premiumHero?.title.line3 || ''}
+                                onChange={(e) => handleContentChange('homepage.premiumHero.title.line3', e.target.value)}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">
-                      <h3 className="text-xl font-bold text-blue-700 mb-4">Premium Hero Section</h3>
-                      <p className="text-blue-600 mb-6">Edit the content for the new premium hero section that appears on your homepage.</p>
-                      
-                      {/* Initialize the premium hero object if it doesn't exist */}
-                      {!content.homepage.premiumHero && (
-                        <button
-                          onClick={() => handleContentChange('homepage.premiumHero', {
-                            backgroundImage: '/images/roofers/roofer_fixing_tile_on_roof.png',
-                            title: {
-                              line1: 'Expert',
-                              line2: 'Roofing Services',
-                              line3: 'In Dorchester'
-                            },
-                            subtitle: 'Professional roofing solutions with superior craftsmanship and unmatched customer service. We\'ve got you covered.',
-                            ctaPrimary: {
-                              text: 'Get a Free Quote',
-                              link: '/contact'
-                            },
-                            ctaSecondary: {
-                              text: 'Our Services',
-                              link: '/services'
-                            },
-                            featureBadges: ['Licensed & Insured', '10+ Years Experience', 'Free Inspections', 'Emergency Service']
-                          })}
-                          className="text-white px-4 py-2 rounded hover:opacity-90"
-                          style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
-                        >
-                          Initialize Premium Hero
-                        </button>
-                      )}
-                      
-                      {content.homepage.premiumHero && (
-                  <div className="space-y-6">
-                    <div>
-                            <label className="block text-sm font-medium text-gray-700">Background Image Path</label>
-                      <input
-                        type="text"
-                              value={content.homepage.premiumHero.backgroundImage}
-                              onChange={(e) => handleContentChange('homepage.premiumHero.backgroundImage', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                          
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700">Subtitle</label>
+                          <textarea
+                            value={content.homepage.premiumHero?.subtitle || ''}
+                            onChange={(e) => handleContentChange('homepage.premiumHero.subtitle', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            rows={3}
+                          />
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="bg-gray-50 p-4 rounded-lg">
-                            <h4 className="font-medium text-gray-700 mb-4">Heading (Three Lines)</h4>
+                            <h4 className="font-medium text-gray-700 mb-4">Primary Button (Blue)</h4>
                             <div className="space-y-4">
-                    <div>
-                                <label className="block text-sm font-medium text-gray-700">Line 1</label>
-                      <input
-                        type="text"
-                                  value={content.homepage.premiumHero.title.line1}
-                                  onChange={(e) => handleContentChange('homepage.premiumHero.title.line1', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div>
-                                <label className="block text-sm font-medium text-gray-700">Line 2 (Gradient Effect)</label>
-                      <input
-                        type="text"
-                                  value={content.homepage.premiumHero.title.line2}
-                                  onChange={(e) => handleContentChange('homepage.premiumHero.title.line2', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                              </div>
                               <div>
-                                <label className="block text-sm font-medium text-gray-700">Line 3</label>
+                                <label className="block text-sm font-medium text-gray-700">Button Text</label>
                                 <input
                                   type="text"
-                                  value={content.homepage.premiumHero.title.line3}
-                                  onChange={(e) => handleContentChange('homepage.premiumHero.title.line3', e.target.value)}
+                                  value={content.homepage.premiumHero?.ctaPrimary?.text || ''}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.text', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Get a Free Quote"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Button Link</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.premiumHero?.ctaPrimary?.link || ''}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.link', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., /contact"
                                 />
                               </div>
                             </div>
-                    </div>
+                          </div>
 
-                    <div>
-                            <label className="block text-sm font-medium text-gray-700">Subtitle</label>
-                            <textarea
-                              value={content.homepage.premiumHero.subtitle}
-                              onChange={(e) => handleContentChange('homepage.premiumHero.subtitle', e.target.value)}
-                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                              rows={3}
-                            />
-                          </div>
-                          
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-gray-50 p-4 rounded-lg">
-                              <h4 className="font-medium text-gray-700 mb-4">Primary Button (Blue)</h4>
-                              <div className="space-y-4">
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700">Button Text</label>
-                            <input
-                              type="text"
-                                    value={content.homepage.premiumHero.ctaPrimary.text}
-                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.text', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  />
-                                </div>
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700">Button Link</label>
-                                  <input
-                                    type="text"
-                                    value={content.homepage.premiumHero.ctaPrimary.link}
-                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaPrimary.link', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-                    </div>
-
-                            <div className="bg-gray-50 p-4 rounded-lg">
-                              <h4 className="font-medium text-gray-700 mb-4">Secondary Button (Transparent)</h4>
-                              <div className="space-y-4">
-                    <div>
-                                  <label className="block text-sm font-medium text-gray-700">Button Text</label>
-                                  <input
-                                    type="text"
-                                    value={content.homepage.premiumHero.ctaSecondary.text}
-                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.text', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  />
-                          </div>
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700">Button Link</label>
-                            <input
-                              type="text"
-                                    value={content.homepage.premiumHero.ctaSecondary.link}
-                                    onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.link', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  />
-                                </div>
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-medium text-gray-700 mb-4">Secondary Button (Transparent)</h4>
+                            <div className="space-y-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Button Text</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.premiumHero?.ctaSecondary?.text || ''}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.text', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., Our Services"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700">Button Link</label>
+                                <input
+                                  type="text"
+                                  value={content.homepage.premiumHero?.ctaSecondary?.link || ''}
+                                  onChange={(e) => handleContentChange('homepage.premiumHero.ctaSecondary.link', e.target.value)}
+                                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="e.g., /services"
+                                />
                               </div>
                             </div>
                           </div>
-                          
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Feature Badges</label>
-                            <div className="space-y-2">
-                              {content.homepage.premiumHero.featureBadges.map((badge, index) => (
-                                <div key={index} className="flex items-center space-x-2">
-                            <input
-                              type="text"
-                                    value={badge}
-                                    onChange={(e) => {
-                                      const newBadges = [...content.homepage.premiumHero.featureBadges];
-                                      newBadges[index] = e.target.value;
-                                      handleContentChange('homepage.premiumHero.featureBadges', newBadges);
-                                    }}
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                            />
-                                  <button
-                                    onClick={() => {
-                                      const newBadges = [...content.homepage.premiumHero.featureBadges];
-                                      newBadges.splice(index, 1);
-                                      handleContentChange('homepage.premiumHero.featureBadges', newBadges);
-                                    }}
-                                    className="text-red-600 hover:text-red-800"
-                                  >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                    </svg>
-                                  </button>
                         </div>
-                      ))}
-                      <button
-                                onClick={() => {
-                                  const newBadges = [...content.homepage.premiumHero.featureBadges, ''];
-                                  handleContentChange('homepage.premiumHero.featureBadges', newBadges);
-                                }}
-                        className="mt-2 px-4 py-2 text-white rounded hover:opacity-90"
-                        style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
-                      >
-                                Add Feature Badge
-                      </button>
-                            </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Feature Badges</label>
+                          <div className="space-y-2">
+                            {content.homepage.premiumHero?.featureBadges?.map((badge, index) => (
+                              <div key={index} className="flex items-center space-x-2">
+                                <input
+                                  type="text"
+                                  value={badge}
+                                  onChange={(e) => {
+                                    const newBadges = [...content.homepage.premiumHero.featureBadges];
+                                    newBadges[index] = e.target.value;
+                                    handleContentChange('homepage.premiumHero.featureBadges', newBadges);
+                                  }}
+                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                                <button
+                                  onClick={() => {
+                                    const newBadges = [...content.homepage.premiumHero.featureBadges];
+                                    newBadges.splice(index, 1);
+                                    handleContentChange('homepage.premiumHero.featureBadges', newBadges);
+                                  }}
+                                  className="text-red-600 hover:text-red-800"
+                                >
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                  </svg>
+                                </button>
+                              </div>
+                            ))}
+                            <button
+                              onClick={() => {
+                                const newBadges = [...content.homepage.premiumHero.featureBadges, ''];
+                                handleContentChange('homepage.premiumHero.featureBadges', newBadges);
+                              }}
+                              className="mt-2 px-4 py-2 text-white rounded hover:opacity-90"
+                              style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
+                            >
+                              Add Feature Badge
+                            </button>
                           </div>
                         </div>
-                      )}
+                      </div>
                     </div>
 
                     <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-8">

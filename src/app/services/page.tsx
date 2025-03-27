@@ -3,20 +3,28 @@ import { getContent } from '@/utils/server-content';
 import { FaTools } from 'react-icons/fa';
 import ServiceHeroAnimations from '@/components/services/ServiceHeroAnimations';
 import ContactSection from '@/components/home/ContactSection';
+import SeoHead from '@/components/SeoHead';
 
 // Static site generation with revalidation
 export const revalidate = 3600; // Revalidate every hour
 
-export const metadata = {
-  title: 'Our Services',
-  description: 'Explore our comprehensive range of services designed to meet your needs',
-};
+// Remove static metadata as we're now using dynamic SEO settings
+// export const metadata = {
+//   title: 'Our Services',
+//   description: 'Explore our comprehensive range of services designed to meet your needs',
+// };
 
 export default async function Services() {
   const content = await getContent();
 
   return (
     <div className="min-h-screen">
+      {/* SEO Head */}
+      <SeoHead 
+        content={content} 
+        pageKey="services"
+      />
+
       {/* Hero Section with Background Image */}
       <div className="relative h-[75vh] md:h-[85vh] overflow-hidden pt-56 md:pt-64 pb-36">
         <div className="absolute inset-0">

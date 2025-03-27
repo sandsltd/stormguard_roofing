@@ -10,6 +10,7 @@ import ServiceAreasSectionWrapper from '@/components/home/ServiceAreasSectionWra
 import FAQSectionWrapper from '@/components/home/FAQSectionWrapper';
 import GallerySectionWrapper from '@/components/home/GallerySectionWrapper';
 import ServicesGrid from '@/components/ServicesGrid';
+import SeoHead from '@/components/SeoHead';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -22,6 +23,12 @@ export default async function Home() {
 
   return (
     <>
+      {/* SEO Head */}
+      <SeoHead 
+        content={content} 
+        pageKey="home"
+      />
+
       {/* Hero Section - Using Client Component */}
       <HeroSection content={content} />
 

@@ -8,6 +8,17 @@ export interface BusinessContent {
   email: string;
   address: string;
   logo: string;
+  establishedYear?: string;
+  description?: string;
+  mission?: string;
+  hero?: string;
+  about?: {
+    image?: string;
+  };
+  coreValues?: Array<{
+    title: string;
+    description: string;
+  }>;
 }
 
 export interface Content {
@@ -99,6 +110,27 @@ export interface Content {
       title: string;
       description: string;
     };
+    serviceAreasSection?: {
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    serviceAreas?: {
+      name: string;
+      link?: string;
+    }[];
+    faqSection?: {
+      title: string;
+      description: string;
+    };
+    faqs?: {
+      question: string;
+      answer: string;
+    }[];
+    gallerySection?: {
+      title: string;
+      description: string;
+    };
     servingAreas?: Array<{
       name: string;
       description: string;
@@ -185,12 +217,66 @@ export interface Content {
     hours: string;
     formTitle: string;
     formDescription: string;
+    heroImage?: string;
+    mapUrl?: string;
+    formFields?: {
+      name: { enabled: boolean; required: boolean; label: string; }
+      email: { enabled: boolean; required: boolean; label: string; }
+      phone: { enabled: boolean; required: boolean; label: string; }
+      service: { enabled: boolean; required: boolean; label: string; }
+      message: { enabled: boolean; required: boolean; label: string; }
+      submitButtonText: string;
+    };
+    emailSettings?: {
+      recipient: string;
+      smtpHost: string;
+      smtpPort: number;
+      username: string;
+      password: string;
+      fromEmail: string;
+      subject: string;
+    };
   };
   socials: {
     facebook: string;
     twitter: string;
     instagram: string;
     linkedin: string;
+  };
+  seo?: {
+    global: {
+      siteTitle: string;
+      siteDescription: string;
+      siteTitleTemplate?: string;
+      defaultOgImage?: string;
+      keywords?: string;
+    };
+    pages: {
+      home?: {
+        title: string;
+        description: string;
+        ogImage?: string;
+        keywords?: string;
+      };
+      about?: {
+        title: string;
+        description: string;
+        ogImage?: string;
+        keywords?: string;
+      };
+      services?: {
+        title: string;
+        description: string;
+        ogImage?: string;
+        keywords?: string;
+      };
+      contact?: {
+        title: string;
+        description: string;
+        ogImage?: string;
+        keywords?: string;
+      };
+    };
   };
 }
 
@@ -326,6 +412,35 @@ function getDefaultContent(): Content {
         title: 'Serving Areas Section Title',
         description: 'Serving areas section description'
       },
+      serviceAreasSection: {
+        title: 'Service Areas Section Title',
+        subtitle: 'Service Areas Subtitle',
+        description: 'Service areas section description'
+      },
+      serviceAreas: [
+        {
+          name: 'Area 1',
+          link: '/areas'
+        }
+      ],
+      faqSection: {
+        title: 'FAQ Section Title',
+        description: 'FAQ section description'
+      },
+      faqs: [
+        {
+          question: 'Question 1',
+          answer: 'Answer 1'
+        },
+        {
+          question: 'Question 2',
+          answer: 'Answer 2'
+        }
+      ],
+      gallerySection: {
+        title: 'Gallery Section Title',
+        description: 'Gallery section description'
+      },
       servingAreas: [
         {
           name: 'Area 1',
@@ -439,13 +554,61 @@ function getDefaultContent(): Content {
       email: 'info@yourbusiness.com',
       hours: 'Mon-Fri: 9am-5pm',
       formTitle: 'Contact Us',
-      formDescription: 'Send us a message'
+      formDescription: 'Send us a message',
+      heroImage: '/images/contact-hero.jpg',
+      mapUrl: 'https://maps.google.com',
+      formFields: {
+        name: { enabled: true, required: true, label: 'Name' },
+        email: { enabled: true, required: true, label: 'Email' },
+        phone: { enabled: true, required: true, label: 'Phone' },
+        service: { enabled: true, required: true, label: 'Service' },
+        message: { enabled: true, required: true, label: 'Message' },
+        submitButtonText: 'Send'
+      },
+      emailSettings: {
+        recipient: 'info@yourbusiness.com',
+        smtpHost: 'smtp.gmail.com',
+        smtpPort: 587,
+        username: 'yourbusiness@gmail.com',
+        password: 'yourbusinesspassword',
+        fromEmail: 'no-reply@yourbusiness.com',
+        subject: 'New Contact Form Submission'
+      }
     },
     socials: {
       facebook: 'https://facebook.com',
       twitter: 'https://twitter.com',
       instagram: 'https://instagram.com',
       linkedin: 'https://linkedin.com'
+    },
+    seo: {
+      global: {
+        siteTitle: 'Your Business',
+        siteDescription: 'Professional services for all your roofing needs',
+        keywords: 'roofing, roofing services, professional roofing, quality roofing'
+      },
+      pages: {
+        home: {
+          title: 'Home',
+          description: 'Welcome to Your Business',
+          keywords: 'roofing, roofing services, professional roofing, quality roofing'
+        },
+        about: {
+          title: 'About Us',
+          description: 'Learn more about our company',
+          keywords: 'about, company, professional roofing'
+        },
+        services: {
+          title: 'Services',
+          description: 'Professional roofing services',
+          keywords: 'roofing, roofing services, professional roofing'
+        },
+        contact: {
+          title: 'Contact Us',
+          description: 'Get in touch with Your Business',
+          keywords: 'contact, roofing, professional roofing'
+        }
+      }
     }
   };
 } 
