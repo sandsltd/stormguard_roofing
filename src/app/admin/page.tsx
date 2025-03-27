@@ -160,7 +160,8 @@ export default function Admin() {
               <div className="flex gap-4">
                 <button
                   onClick={() => setIsPreviewMode(!isPreviewMode)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-4 py-2 text-white rounded hover:opacity-90"
+                  style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                 >
                   {isPreviewMode ? 'Exit Preview' : 'Preview Site'}
                 </button>
@@ -447,7 +448,8 @@ export default function Admin() {
                             coreValues.push({ title: "New Value", description: "Description of this value" });
                             handleContentChange('business.coreValues', coreValues);
                           }}
-                          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mt-2"
+                          className="px-4 py-2 text-white rounded hover:opacity-90 mt-2"
+                          style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                         >
                           Add Value
                         </button>
@@ -487,7 +489,8 @@ export default function Admin() {
                             },
                             featureBadges: ['Licensed & Insured', '10+ Years Experience', 'Free Inspections', 'Emergency Service']
                           })}
-                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                          className="text-white px-4 py-2 rounded hover:opacity-90"
+                          style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                         >
                           Initialize Premium Hero
                         </button>
@@ -632,7 +635,8 @@ export default function Admin() {
                                   const newBadges = [...content.homepage.premiumHero.featureBadges, ''];
                                   handleContentChange('homepage.premiumHero.featureBadges', newBadges);
                                 }}
-                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        className="mt-2 px-4 py-2 text-white rounded hover:opacity-90"
+                        style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                       >
                                 Add Feature Badge
                       </button>
@@ -655,7 +659,8 @@ export default function Admin() {
                             ctaText: "View All Our Services",
                             ctaLink: "/services"
                           })}
-                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                          className="text-white px-4 py-2 rounded hover:opacity-90"
+                          style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                         >
                           Initialize Features Section
                             </button>
@@ -831,7 +836,8 @@ export default function Admin() {
                             title: "Our Services",
                             description: "Professional roofing solutions for residential and commercial properties in Dorchester and surrounding areas."
                           })}
-                          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                          className="text-white px-4 py-2 rounded hover:opacity-90"
+                          style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                         >
                           Initialize Services Section
                         </button>
@@ -1049,7 +1055,8 @@ export default function Admin() {
                       ))}
                       <button
                         onClick={() => handleArrayItemChange('homepage.services', content.homepage.services.length, { title: '', description: '', icon: '', buttonText: 'Get a Free Quote', buttonLink: '/contact' })}
-                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        className="mt-2 px-4 py-2 text-white rounded hover:opacity-90"
+                        style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                       >
                         Add Service
                       </button>
@@ -1404,7 +1411,8 @@ export default function Admin() {
                       ))}
                       <button
                         onClick={() => handleArrayItemChange('homepage.testimonials', content.homepage.testimonials.length, { quote: '', author: '', role: '' })}
-                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        className="mt-2 px-4 py-2 text-white rounded hover:opacity-90"
+                        style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                       >
                         Add Testimonial
                       </button>
@@ -1733,47 +1741,154 @@ export default function Admin() {
                 )}
 
                 {activeTab === 'header' && (
-                  <div className="space-y-6">
-                      <div>
-                      <label className="block text-sm font-medium text-gray-700">Business Hours</label>
-                          <input
-                          type="text"
-                        value={content.header?.businessHours || ''}
-                        onChange={(e) => handleNestedChange('header.businessHours', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="e.g., Mon-Fri: 8am-6pm"
-                        />
-                      </div>
-                      <div>
-                      <label className="block text-sm font-medium text-gray-700">Insurance Text</label>
+                  <div className="pt-6 space-y-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">Header Settings</h2>
+                    
+                    {/* Top Bar Settings */}
+                    <div className="bg-white rounded-lg shadow p-6">
+                      <h3 className="font-medium text-lg mb-4">Top Bar Settings</h3>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Business Hours
+                          </label>
                           <input
                             type="text"
-                        value={content.header?.insuranceText || ''}
-                        onChange={(e) => handleNestedChange('header.insuranceText', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="e.g., Fully Insured"
+                            value={content.header?.businessHours || ''}
+                            onChange={(e) => handleNestedChange('header.businessHours', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Mon-Fri: 8am-6pm"
                           />
                         </div>
-                      <div>
-                      <label className="block text-sm font-medium text-gray-700">Experience Text</label>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Insurance Text
+                          </label>
                           <input
-                          type="text"
-                        value={content.header?.experienceText || ''}
-                        onChange={(e) => handleNestedChange('header.experienceText', e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="e.g., 5+ Years Experience"
-                        />
-                      </div>
-                    <div className="flex items-center space-x-2">
+                            type="text"
+                            value={content.header?.insuranceText || ''}
+                            onChange={(e) => handleNestedChange('header.insuranceText', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Fully Insured"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Experience Text
+                          </label>
                           <input
-                        type="checkbox"
-                        checked={content.header?.showTopBar !== false}
-                        onChange={(e) => handleNestedChange('header.showTopBar', e.target.checked)}
-                        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                      />
-                      <label className="text-sm font-medium text-gray-700">Show Top Bar</label>
+                            type="text"
+                            value={content.header?.experienceText || ''}
+                            onChange={(e) => handleNestedChange('header.experienceText', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="5+ Years Experience"
+                          />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="checkbox"
+                            checked={content.header?.showTopBar !== false}
+                            onChange={(e) => handleNestedChange('header.showTopBar', e.target.checked)}
+                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                          />
+                          <label className="text-sm font-medium text-gray-700">Show Top Bar</label>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Navigation Menu */}
+                    <div className="bg-white rounded-lg shadow p-6">
+                      <h3 className="font-medium text-lg mb-4">Navigation Menu</h3>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Menu Items
+                          </label>
+                          <div className="space-y-4">
+                            {content.header?.menuItems?.map((item, index) => (
+                              <div key={index} className="flex items-center space-x-4">
+                                <input
+                                  type="text"
+                                  value={item.text}
+                                  onChange={(e) => handleArrayItemChange('header.menuItems', index, { ...item, text: e.target.value })}
+                                  className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="Menu Item Text"
+                                />
+                                <input
+                                  type="text"
+                                  value={item.link}
+                                  onChange={(e) => handleArrayItemChange('header.menuItems', index, { ...item, link: e.target.value })}
+                                  className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder="/link"
+                                />
+                                <button
+                                  onClick={() => {
+                                    const newMenuItems = [...(content.header?.menuItems || [])];
+                                    newMenuItems.splice(index, 1);
+                                    handleNestedChange('header.menuItems', newMenuItems);
+                                  }}
+                                  className="p-2 text-red-600 hover:text-red-800"
+                                >
+                                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                  </svg>
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                          <button
+                            onClick={() => {
+                              const newMenuItems = [...(content.header?.menuItems || []), { text: '', link: '' }];
+                              handleNestedChange('header.menuItems', newMenuItems);
+                            }}
+                            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                          >
+                            Add Menu Item
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTA Button Settings */}
+                    <div className="bg-white rounded-lg shadow p-6">
+                      <h3 className="font-medium text-lg mb-4">CTA Button Settings</h3>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Button Text
+                          </label>
+                          <input
+                            type="text"
+                            value={content.header?.ctaButton?.text || ''}
+                            onChange={(e) => handleNestedChange('header.ctaButton.text', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Get a Free Quote"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Button Link
+                          </label>
+                          <input
+                            type="text"
+                            value={content.header?.ctaButton?.link || ''}
+                            onChange={(e) => handleNestedChange('header.ctaButton.link', e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="/quote"
+                          />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="checkbox"
+                            checked={content.header?.ctaButton?.show !== false}
+                            onChange={(e) => handleNestedChange('header.ctaButton.show', e.target.checked)}
+                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                          />
+                          <label className="text-sm font-medium text-gray-700">Show CTA Button</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 )}
 
                 {activeTab === 'contact' && (

@@ -48,8 +48,8 @@
       },
       {
         "name": "David Wilson",
-        "position": "Lead Roofing Specialist",
-        "bio": "David brings over 15 years of hands-on experience to every project, specializing in complex installations and challenging repairs.",
+        "position": "Lead Roofer",
+        "bio": "David brings over 15 years of hands-on experience to every project, ensuring the highest quality workmanship.",
         "image": "/images/placeholders/david.jpg"
       }
     ]
@@ -503,10 +503,36 @@
       "backgroundColor": "#3a88fe",
       "linkColor": "#ffffff"
     },
-    "primaryColor": "#e32400",
+    "primaryColor": "#ff2600",
     "secondaryColor": "#000000"
   },
   "header": {
-    "showTopBar": true
+    "businessHours": "Mon-Sun: 8am-1pm",
+    "insuranceText": "Fully Insured 123",
+    "experienceText": "5+ Years Experience",
+    "showTopBar": true,
+    "menuItems": [
+      {
+        "text": "Home",
+        "link": "/"
+      },
+      {
+        "text": "About",
+        "link": "/about"
+      },
+      {
+        "text": "Services",
+        "link": "/services"
+      },
+      {
+        "text": "Contact",
+        "link": "/contact"
+      }
+    ],
+    "ctaButton": {
+      "text": "Get a Free Quote",
+      "link": "/quote",
+      "show": true
+    }
   }
 }

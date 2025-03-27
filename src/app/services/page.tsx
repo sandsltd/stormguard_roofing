@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getContent } from '@/utils/server-content';
 import { FaTools } from 'react-icons/fa';
 import ServiceHeroAnimations from '@/components/services/ServiceHeroAnimations';
+import ContactSection from '@/components/home/ContactSection';
 
 // Static site generation with revalidation
 export const revalidate = 3600; // Revalidate every hour
@@ -145,7 +146,8 @@ export default async function Services() {
                   <div className="mt-8">
                     <a
                       href="/contact"
-                      className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                      className="inline-block text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all duration-200"
+                      style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
                     >
                       Get a Quote
                     </a>
@@ -166,12 +168,16 @@ export default async function Services() {
           </p>
           <a
             href={content.services.cta.buttonLink}
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            className="inline-block text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-all duration-200"
+            style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}
           >
             {content.services.cta.buttonText}
           </a>
         </div>
       </div>
+
+      {/* Contact Form Section */}
+      <ContactSection content={content} />
     </div>
   );
 } 
