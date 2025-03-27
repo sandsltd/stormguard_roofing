@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { BusinessContent } from '@/utils/content';
+import { Content } from '@/utils/content';
 import { FaPhone, FaClock, FaShieldAlt, FaStar } from 'react-icons/fa';
 
 interface MenuItem {
@@ -12,33 +12,11 @@ interface MenuItem {
 }
 
 interface HeaderProps {
-  business: BusinessContent;
-  theme?: {
-    primaryColor?: string;
-    secondaryColor?: string;
-    header?: {
-      backgroundColor?: string;
-      textColor?: string;
-      linkColor?: string;
-      linkHoverColor?: string;
-      iconColor?: string;
-    };
-  };
-  header?: {
-    businessHours?: string;
-    insuranceText?: string;
-    experienceText?: string;
-    showTopBar?: boolean;
-    menuItems?: MenuItem[];
-    ctaButton?: {
-      text?: string;
-      link?: string;
-      show?: boolean;
-    };
-  };
+  content: Content;
 }
 
-export default function Header({ business, theme, header }: HeaderProps) {
+export default function Header({ content }: HeaderProps) {
+  const { business, theme, header } = content;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('up');

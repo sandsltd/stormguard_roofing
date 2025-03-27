@@ -32,13 +32,11 @@ export default async function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header 
-          business={content.business} 
-          theme={content.theme}
-          header={content.header}
-        />
-        <main>{children}</main>
-        <Footer business={content.business} socials={content.socials} theme={content.theme} />
+        <div className="flex flex-col min-h-screen">
+          <Header content={content} />
+          <main>{children}</main>
+          <Footer content={content} theme={content.theme} />
+        </div>
       </body>
     </html>
   );
