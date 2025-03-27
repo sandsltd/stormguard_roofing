@@ -24,6 +24,12 @@ export async function fetchContent(): Promise<Content> {
  */
 export async function saveContent(content: Content): Promise<void> {
   try {
+    // Make sure user is authenticated
+    const isAuthenticated = sessionStorage.getItem('adminAuthenticated') === 'true';
+    if (!isAuthenticated) {
+      throw new Error('You must be authenticated to save content');
+    }
+    
     const response = await fetch('/api/content', {
       method: 'POST',
       headers: {

@@ -1,4 +1,4 @@
-import { Content } from '@/types/content';
+import { Content } from '@/utils/content';
 import ServiceAreasSection from './ServiceAreasSection';
 
 interface ServiceAreasSectionWrapperProps {

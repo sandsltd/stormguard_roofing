@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Content } from '@/types/content';
+import { Content } from '@/utils/content';
 
 interface ContactSectionProps {
   content: Content;

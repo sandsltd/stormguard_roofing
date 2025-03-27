@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content } from '@/types/content';
+import { Content } from '@/utils/content';
 import { 
   FaHome, FaTools, FaSearch, FaCalendarAlt, FaCloudRain, 
   FaExclamationCircle, FaBuilding, FaSync, FaShieldAlt, 

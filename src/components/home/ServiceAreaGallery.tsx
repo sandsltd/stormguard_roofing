@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Content } from '@/types/content';
+import { Content } from '@/utils/content';
 import { FaSearch, FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 

@@ -12,8 +12,6 @@ const nextConfig = {
     // Placeholder fallback
     dangerouslyAllowSVG: true,
   },
-  // Enable SWC minification
-  swcMinify: true,
   // Handle static image imports more efficiently
   experimental: {
     optimizeCss: true, 

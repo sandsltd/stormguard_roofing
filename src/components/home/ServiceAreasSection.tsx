@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Content } from '@/types/content';
+import { Content } from '@/utils/content';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import Link from 'next/link';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content } from '@/types/content';
+import { Content } from '@/utils/content';
 import Image from 'next/image';
 
 interface IntroductionSectionProps {

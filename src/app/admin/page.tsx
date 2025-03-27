@@ -55,14 +55,84 @@ const IconPreview = ({ iconName }: { iconName: string }) => {
   }
 };
 
+// Password protection component
+const LoginScreen = ({ onLogin }: { onLogin: () => void }) => {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  
+  // Get the password from environment variables
+  // Using NEXT_PUBLIC_ prefix allows it to be accessible in the browser
+  const correctPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === correctPassword) {
+      // Store authentication in session storage
+      sessionStorage.setItem('adminAuthenticated', 'true');
+      onLogin();
+    } else {
+      setError('Incorrect password. Please try again.');
+    }
+  };
+  
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Admin Login</h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Enter your password to access the admin panel
+          </p>
+        </div>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="password" className="sr-only">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+          
+          {error && (
+            <div className="text-red-500 text-sm">{error}</div>
+          )}
+          
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
 export default function Admin() {
   const [content, setContent] = useState<Content | null>(null);
   const [activeTab, setActiveTab] = useState('business');
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState('');
   const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
+    // Check if user is already authenticated in this session
+    const authenticated = sessionStorage.getItem('adminAuthenticated') === 'true';
+    setIsAuthenticated(authenticated);
+    
     const loadContent = async () => {
       try {
         const data = await fetchContent();
@@ -73,7 +143,10 @@ export default function Admin() {
         console.error('Error loading content:', error);
       }
     };
-    loadContent();
+    
+    if (authenticated) {
+      loadContent();
+    }
   }, []);
 
   const handleContentChange = (path: string, value: any) => {
@@ -140,6 +213,10 @@ export default function Admin() {
     }
   };
 
+  if (!isAuthenticated) {
+    return <LoginScreen onLogin={() => setIsAuthenticated(true)} />;
+  }
+
   if (!content) {
     return (
       <div className="min-h-screen bg-gray-100 p-8">
@@ -173,6 +250,15 @@ export default function Admin() {
                   {isSaving ? 'Saving...' : 'Save Changes'}
                 </button>
               </div>
+              <button
+                onClick={() => {
+                  sessionStorage.removeItem('adminAuthenticated');
+                  setIsAuthenticated(false);
+                }}
+                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+              >
+                Logout
+              </button>
             </div>
 
             {saveStatus && (
@@ -2594,7 +2680,7 @@ export default function Admin() {
                                 value={service.buttonLink || '/contact'}
                                 onChange={(e) => {
                                   const newServices = [...content.services.services];
-                                  newServices[index] = { ...service, link: e.target.value, buttonLink: e.target.value };
+                                  newServices[index] = { ...service, buttonLink: e.target.value };
                                   handleNestedChange('services.services', newServices);
                                 }}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
