@@ -80,15 +80,15 @@ export default function Contact() {
       {content && <SeoHead content={content} pageKey="contact" />}
 
       {/* Hero Section */}
-      <section className="relative text-white py-32 overflow-hidden mt-24">
+      <section className="relative text-white py-20 sm:py-24 md:py-32 overflow-hidden mt-16 sm:mt-20 md:mt-24">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: `url("${content.contact.heroImage || '/images/roofers/team_of_roofers.jpg'}")`
+            backgroundImage: `url("${content.contact.heroImage || '/images/roofers/team_of_roofers.jpg'}")` 
           }}
         />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:60px_60px]" />
+        <div className="absolute inset-0 bg-black/70 sm:bg-black/60" />
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px] sm:bg-[size:60px_60px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -96,10 +96,10 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
               {content.contact.formTitle || 'Get in Touch'}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed">
               {content.contact.formDescription || 'Have a question or need a quote? We\'re here to help. Contact us today and we\'ll get back to you as soon as possible.'}
             </p>
           </motion.div>

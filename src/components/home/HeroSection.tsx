@@ -51,7 +51,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative min-h-screen overflow-hidden pt-32 md:pt-36">
+      <div className="relative min-h-[100dvh] overflow-hidden pt-24 sm:pt-28 md:pt-32">
         {/* Main Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -61,10 +61,11 @@ export default function HeroSection({ content }: HeroSectionProps) {
             className="object-cover object-center"
             priority
             quality={90}
+            sizes="100vw"
           />
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent md:from-black/70 md:via-black/50 md:to-transparent" />
           
           {/* Pattern Overlay for Texture */}
           <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
@@ -77,48 +78,48 @@ export default function HeroSection({ content }: HeroSectionProps) {
         </div>
         
         {/* Content Container */}
-        <div className="relative z-10 h-screen flex items-center px-6 md:px-12 pt-0 -mt-16">
+        <div className="relative z-10 min-h-[calc(100vh-6rem)] flex items-center px-4 sm:px-6 md:px-12 pt-0 -mt-0 sm:-mt-8 md:-mt-16">
           <div className="max-w-7xl mx-auto w-full">
             <div className="max-w-3xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 backdrop-blur-md px-4 py-2 rounded-full mb-6 animate-fade-in-up"
+              <div className="inline-flex items-center gap-2 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 animate-fade-in-up"
                 style={{ 
                   backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}20`,
                   borderColor: `${content.theme?.primaryColor || '#3b82f6'}30`,
                   borderWidth: '1px'
                 }}>
-                <span className="w-2.5 h-2.5 rounded-full animate-pulse"
+                <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full animate-pulse"
                   style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}></span>
-                <span className="text-white font-medium text-sm uppercase tracking-wider">{content.business.tagline}</span>
+                <span className="text-white font-medium text-xs sm:text-sm uppercase tracking-wider">{content.business.tagline}</span>
               </div>
               
               {/* Text container with semi-transparent background */}
-              <div className="p-6 rounded-lg bg-black/40 backdrop-blur-sm">
+              <div className="p-4 sm:p-6 rounded-lg bg-black/40 backdrop-blur-sm">
                 {/* Main Heading with Gradient Text */}
-                <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 sm:mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                   <span className="block">{premiumHero.title.line1}</span>
                   <span className="text-white">{premiumHero.title.line2}</span>
                   <span className="block">{premiumHero.title.line3}</span>
                 </h1>
                 
                 {/* Subtitle with Line Animation */}
-                <div className="group relative inline-block mb-8 animate-fade-in-up animation-delay-600">
-                  <p className="text-xl md:text-2xl text-white leading-relaxed max-w-2xl" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                <div className="group relative inline-block mb-6 sm:mb-8 animate-fade-in-up animation-delay-600">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-2xl" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
                     {premiumHero.subtitle}
                   </p>
                   <span className="block w-0 group-hover:w-full h-0.5 bg-white transition-all duration-700 ease-out"></span>
                 </div>
                 
                 {/* CTA Buttons with Glass Effect */}
-                <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-900">
+                <div className="flex flex-wrap gap-3 sm:gap-4 animate-fade-in-up animation-delay-900">
                   <a
                     href={premiumHero.ctaPrimary.link}
-                    className="relative overflow-hidden inline-flex items-center text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-xl group"
+                    className="relative overflow-hidden inline-flex items-center text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-xl group w-full sm:w-auto justify-center sm:justify-start"
                     style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6', boxShadow: `0 10px 15px -3px ${content.theme?.primaryColor || '#3b82f6'}30` }}
                   >
                     <span className="relative z-10 flex items-center">
                       {premiumHero.ctaPrimary.text}
-                      <svg className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </span>
@@ -128,7 +129,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
                   </a>
                   <a
                     href={premiumHero.ctaSecondary.link}
-                    className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                    className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:bg-white/20 transition-all duration-300 w-full sm:w-auto justify-center"
                   >
                     {premiumHero.ctaSecondary.text}
                   </a>
@@ -136,13 +137,13 @@ export default function HeroSection({ content }: HeroSectionProps) {
               </div>
               
               {/* Key Features Pills */}
-              <div className="mt-12 flex flex-wrap gap-3 animate-fade-in-up animation-delay-1200">
+              <div className="mt-6 sm:mt-8 md:mt-12 flex flex-wrap gap-2 sm:gap-3 animate-fade-in-up animation-delay-1200">
                 {premiumHero.featureBadges.map((item, index) => (
-                  <div key={index} className="flex items-center bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
+                  <div key={index} className="flex items-center bg-white/5 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 text-xs sm:text-sm">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" fill="currentColor" viewBox="0 0 20 20" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
-                    <span className="text-sm text-white">{item}</span>
+                    <span className="text-white">{item}</span>
                   </div>
                 ))}
               </div>
@@ -151,10 +152,10 @@ export default function HeroSection({ content }: HeroSectionProps) {
         </div>
         
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-20 right-32 md:right-48 z-10 animate-bounce">
+        <div className="absolute bottom-12 sm:bottom-16 md:bottom-20 right-4 sm:right-16 md:right-32 lg:right-48 z-10 animate-bounce hidden sm:flex">
           <div className="flex flex-col items-center">
-            <span className="text-white text-sm mb-2">Scroll Down</span>
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span className="text-white text-xs sm:text-sm mb-2">Scroll Down</span>
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </div>

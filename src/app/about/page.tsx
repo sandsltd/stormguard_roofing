@@ -21,7 +21,7 @@ export default async function AboutPage() {
       />
 
       {/* Hero Section with Background Image */}
-      <div className="relative h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden pt-56 md:pt-64 pb-36">
+      <div className="relative h-[70vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden pt-28 sm:pt-44 md:pt-56 lg:pt-64 pb-16 sm:pb-24 md:pb-36">
         <div className="absolute inset-0">
           <Image 
             src={business.hero || "/images/hero-placeholder.jpg"} 
@@ -30,9 +30,10 @@ export default async function AboutPage() {
             className="object-cover object-center"
             priority
             quality={90}
+            sizes="100vw"
           />
           {/* Gradient Overlay - Stronger gradient for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/70 md:from-black/90 md:via-black/60 md:to-black/70"></div>
           
           {/* Pattern Overlay with different opacity */}
           <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10"></div>
@@ -45,45 +46,45 @@ export default async function AboutPage() {
         </div>
         
         {/* Content Container - Clean layout with no background container */}
-        <div className="relative z-10 h-full flex items-center justify-center px-6 md:px-12">
+        <div className="relative z-10 h-full flex items-center justify-center px-4 sm:px-6 md:px-12">
           <div className="max-w-7xl mx-auto w-full">
             <div className="max-w-3xl mx-auto text-center">
               {/* Badge - Clean style with border accent */}
-              <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 animate-fade-in-up border-b-2"
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 mb-6 sm:mb-8 animate-fade-in-up border-b-2"
                   style={{ borderColor: content.theme?.primaryColor || '#3b82f6' }}>
-                  <span className="text-white font-medium text-sm tracking-wider">ESTABLISHED {business.establishedYear || '2000'}</span>
+                  <span className="text-white font-medium text-xs sm:text-sm tracking-wider">ESTABLISHED {business.establishedYear || '2000'}</span>
               </div>
               
               {/* Main Heading - No background container */}
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
                 <span className="text-white">About</span>
                 <span className="block mt-2" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>{business.name}</span>
               </h1>
               
               {/* Subtitle with divider line */}
-              <div className="mb-10 animate-fade-in-up animation-delay-600">
-                <p className="text-xl md:text-2xl text-white leading-relaxed mx-auto" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
+              <div className="mb-6 sm:mb-8 md:mb-10 animate-fade-in-up animation-delay-600">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed mx-auto" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
                   {business.tagline || 'Your trusted local business dedicated to excellent service and exceptional quality'}
                 </p>
-                <div className="w-20 h-1 mx-auto mt-6" style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}></div>
+                <div className="w-16 md:w-20 h-1 mx-auto mt-4 sm:mt-6" style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}></div>
               </div>
               
               {/* CTA Buttons - Clean styling */}
-              <div className="flex flex-wrap gap-4 justify-center animate-fade-in-up animation-delay-900">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up animation-delay-900">
                 <a
                   href="#contact"
-                  className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-md text-lg font-medium transition-all duration-300"
+                  className="bg-white text-gray-900 hover:bg-gray-100 px-6 sm:px-8 py-3 rounded-md text-sm sm:text-base md:text-lg font-medium transition-all duration-300 flex items-center justify-center"
                 >
                   <span className="flex items-center">
                     Get a Quote
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </span>
                 </a>
                 <a
                   href="#history"
-                  className="text-white border-2 border-white hover:bg-white/10 px-8 py-3 rounded-md text-lg font-medium transition-all duration-300"
+                  className="text-white border-2 border-white hover:bg-white/10 px-6 sm:px-8 py-3 rounded-md text-sm sm:text-base md:text-lg font-medium transition-all duration-300 flex items-center justify-center"
                 >
                   Our History
                 </a>
