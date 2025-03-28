@@ -372,7 +372,25 @@ export default function Admin() {
                         type="text"
                         value={content.business.name}
                         onChange={(e) => handleContentChange('business.name', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Location</label>
+                      <input
+                        type="text"
+                        value={content.business.location}
+                        onChange={(e) => handleContentChange('business.location', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Phone</label>
+                      <input
+                        type="text"
+                        value={content.business.phone}
+                        onChange={(e) => handleContentChange('business.phone', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
                     <div>
@@ -435,15 +453,6 @@ export default function Admin() {
                         category="about"
                       />
                       <p className="mt-1 text-xs text-gray-500">Image displayed in the About section.</p>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Phone</label>
-                      <input
-                        type="text"
-                        value={content.business.phone}
-                        onChange={(e) => handleContentChange('business.phone', e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Email</label>
@@ -1147,8 +1156,8 @@ export default function Admin() {
                       {!content.homepage.servingAreasSection && (
                         <button
                           onClick={() => handleContentChange('homepage.servingAreasSection', {
-                            title: "Serving Crewe & Surrounding Areas",
-                            description: "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Crewe and Cheshire. We understand the unique weather patterns and building requirements of the local area."
+                            title: `Serving ${content.business.location} & Surrounding Areas`,
+                            description: `Our roofing solutions are tailored to the specific climate challenges and architectural styles of ${content.business.location} and Cheshire. We understand the unique weather patterns and building requirements of the local area.`
                           })}
                           className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
                         >

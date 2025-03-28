@@ -73,16 +73,15 @@ export default function ServiceAreasSection({ content }: ServiceAreasSectionProp
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-6">
-          <p className="text-gray-600 italic mb-8">
-            Don't see your Cheshire area listed? Our Crewe roofers may still be able to help!
+        <div className="text-center mt-12">
+          <p className="text-lg text-gray-700 mb-6">
+            Don&apos;t see your Cheshire area listed? Our {content.business.location} roofers may still be able to help!
           </p>
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-medium transition-opacity hover:opacity-90"
-            style={{ backgroundColor: primaryColor }}
+          <Link
+            href="/contact"
+            className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
           >
-            Contact Crewe Roofers →
+            Contact {content.business.location} Roofers →
           </Link>
         </div>
       </div>

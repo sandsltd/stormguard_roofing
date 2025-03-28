@@ -3,20 +3,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { Content } from '@/utils/content';
-import { FaArrowRight } from 'react-icons/fa';
-import SafeImage from '@/components/ui/SafeImage';
 
 interface ServingAreasSectionProps {
   content: Content;
 }
 
 export default function ServingAreasSection({ content }: ServingAreasSectionProps) {
-  // Initialize servingAreasSection with default values if it doesn't exist
-  const servingAreasSection = content.homepage.servingAreasSection || {
-    title: "Serving Crewe & Surrounding Areas",
-    description: "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Crewe and Cheshire. We understand the unique weather patterns and building requirements of the local area."
-  };
-
   // Use primary color from theme or default to indigo
   const primaryColor = content.theme?.primaryColor || '#4f46e5';
   const primaryColorLight = `${primaryColor}15`; // 15% opacity for backgrounds
@@ -73,74 +65,46 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
               backgroundColor: primaryColorLight,
               color: primaryColor
             }}>
-            Roofers in Crewe & Cheshire
+            Roofers in {content.business.location} & Cheshire
           </div>
         </div>
         
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">{servingAreasSection.title}</h2>
-          <div className="w-20 h-1 mx-auto mb-8" style={{ backgroundColor: primaryColor }}></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {servingAreasSection.description}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Serving {content.business.location} & Surrounding Areas
+          </h2>
+          <p className="text-xl text-gray-600">
+            Our roofing solutions are tailored to the specific climate challenges and architectural styles of {content.business.location} and Cheshire. We understand the unique weather patterns and building requirements of the local area.
           </p>
         </div>
         
         {/* Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {areasWithValidImages.map((area, index) => (
-            <div key={index} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-              {/* Area Image */}
-              <div className="relative h-60 overflow-hidden">
-                <div className="absolute inset-0 z-10" 
-                  style={{ backgroundColor: `${primaryColor}20` }}></div>
-                <div className="relative w-full h-full">
-                  <SafeImage 
-                    src={area.image} 
-                    alt={`Roofer in ${area.name}`} 
-                    fill 
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    fallbackSrc="/images/areas/residential1.jpg"
-                  />
-                </div>
-                {/* Location Badge */}
-                <div className="absolute top-4 left-4 z-20">
-                  <div className="text-white px-4 py-2 rounded-lg font-semibold"
-                    style={{ backgroundColor: primaryColor }}>
-                    {area.name}
+            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src={area.image}
+                  alt={area.name}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl font-bold text-white">{area.name}</h3>
+                  <p className="text-white/90 mt-2">{area.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {area.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-2 py-1 bg-white/20 text-white text-sm rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </div>
-              
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Roofers in {area.name}
-                </h3>
-                <p className="text-gray-600 mb-4 line-clamp-4">
-                  {area.description}
-                </p>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {area.tags && area.tags.map((tag, i) => (
-                    <span key={i} className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                {/* CTA Button */}
-                <a 
-                  href={area.ctaLink || "/contact"} 
-                  className="inline-flex items-center font-semibold transition-colors"
-                  style={{ 
-                    color: primaryColor
-                  }}
-                >
-                  {area.ctaText || "Request a Free Quote"} 
-                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
             </div>
           ))}

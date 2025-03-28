@@ -7,6 +7,7 @@ export interface BusinessContent {
   phone: string;
   email: string;
   address: string;
+  location: string; // Primary location for the business
   logo: string;
   establishedYear?: string;
   description?: string;
@@ -318,6 +319,7 @@ function getDefaultContent(): Content {
       phone: '07956 530018',
       email: 'info@yourbusiness.com',
       address: '123 Business Street, City, Country',
+      location: 'Crewe', // Default location
       logo: '/images/logo.png'
     },
     theme: {

@@ -64,8 +64,8 @@ export default function HeroSection({ content }: HeroSectionProps) {
             sizes="100vw"
           />
           
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent md:from-black/70 md:via-black/50 md:to-transparent" />
+          {/* Gradient Overlay - Stronger gradient for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 md:from-black/70 md:via-black/50 md:to-black/30" />
           
           {/* Pattern Overlay for Texture */}
           <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
@@ -93,47 +93,44 @@ export default function HeroSection({ content }: HeroSectionProps) {
                 <span className="text-white font-medium text-xs sm:text-sm uppercase tracking-wider">{content.business.tagline}</span>
               </div>
               
-              {/* Text container with semi-transparent background */}
-              <div className="p-4 sm:p-6 rounded-lg bg-black/40 backdrop-blur-sm">
-                {/* Main Heading with Gradient Text */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 sm:mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-                  <span className="block">{premiumHero.title.line1}</span>
-                  <span className="text-white">{premiumHero.title.line2}</span>
-                  <span className="block">{premiumHero.title.line3}</span>
-                </h1>
-                
-                {/* Subtitle with Line Animation */}
-                <div className="group relative inline-block mb-6 sm:mb-8 animate-fade-in-up animation-delay-600">
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-2xl" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
-                    {premiumHero.subtitle}
-                  </p>
-                  <span className="block w-0 group-hover:w-full h-0.5 bg-white transition-all duration-700 ease-out"></span>
-                </div>
-                
-                {/* CTA Buttons with Glass Effect */}
-                <div className="flex flex-wrap gap-3 sm:gap-4 animate-fade-in-up animation-delay-900">
-                  <a
-                    href={premiumHero.ctaPrimary.link}
-                    className="relative overflow-hidden inline-flex items-center text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-xl group w-full sm:w-auto justify-center sm:justify-start"
-                    style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6', boxShadow: `0 10px 15px -3px ${content.theme?.primaryColor || '#3b82f6'}30` }}
-                  >
-                    <span className="relative z-10 flex items-center">
-                      {premiumHero.ctaPrimary.text}
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </span>
-                    <div className="absolute inset-0 h-full w-full transform group-hover:scale-102 transition-all duration-500 ease-out" 
-                      style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }} />
-                    <div className="absolute right-0 w-12 h-full bg-white/10 transform skew-x-12 translate-x-0 transition-transform group-hover:translate-x-40 ease-out duration-700" />
-                  </a>
-                  <a
-                    href={premiumHero.ctaSecondary.link}
-                    className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:bg-white/20 transition-all duration-300 w-full sm:w-auto justify-center"
-                  >
-                    {premiumHero.ctaSecondary.text}
-                  </a>
-                </div>
+              {/* Main Heading with Gradient Text */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                <span className="block">{premiumHero.title.line1}</span>
+                <span className="text-white">{premiumHero.title.line2}</span>
+                <span className="block">{premiumHero.title.line3}</span>
+              </h1>
+              
+              {/* Subtitle with Line Animation */}
+              <div className="group relative inline-block mb-6 sm:mb-8 animate-fade-in-up animation-delay-600">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-2xl" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                  {premiumHero.subtitle}
+                </p>
+                <span className="block w-0 group-hover:w-full h-0.5 bg-white transition-all duration-700 ease-out"></span>
+              </div>
+              
+              {/* CTA Buttons with Glass Effect */}
+              <div className="flex flex-wrap gap-3 sm:gap-4 animate-fade-in-up animation-delay-900">
+                <a
+                  href={premiumHero.ctaPrimary.link}
+                  className="relative overflow-hidden inline-flex items-center text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-xl group w-full sm:w-auto justify-center sm:justify-start"
+                  style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6', boxShadow: `0 10px 15px -3px ${content.theme?.primaryColor || '#3b82f6'}30` }}
+                >
+                  <span className="relative z-10 flex items-center">
+                    {premiumHero.ctaPrimary.text}
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 h-full w-full transform group-hover:scale-102 transition-all duration-500 ease-out" 
+                    style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }} />
+                  <div className="absolute right-0 w-12 h-full bg-white/10 transform skew-x-12 translate-x-0 transition-transform group-hover:translate-x-40 ease-out duration-700" />
+                </a>
+                <a
+                  href={premiumHero.ctaSecondary.link}
+                  className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:bg-white/20 transition-all duration-300 w-full sm:w-auto justify-center"
+                >
+                  {premiumHero.ctaSecondary.text}
+                </a>
               </div>
               
               {/* Key Features Pills */}
