@@ -251,6 +251,7 @@ export interface Content {
       siteTitleTemplate?: string;
       defaultOgImage?: string;
       keywords?: string;
+      googleAnalyticsId?: string;
     };
     pages: {
       home?: {
@@ -587,7 +588,8 @@ function getDefaultContent(): Content {
       global: {
         siteTitle: 'Your Business',
         siteDescription: 'Professional services for all your roofing needs',
-        keywords: 'roofing, roofing services, professional roofing, quality roofing'
+        keywords: 'roofing, roofing services, professional roofing, quality roofing',
+        googleAnalyticsId: ''
       },
       pages: {
         home: {

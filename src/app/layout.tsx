@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { Geist, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import './globals.css';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en" data-theme="light">
+      <head>
+        <GoogleAnalytics content={content} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="flex flex-col min-h-screen">
           <Header content={content} />

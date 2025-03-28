@@ -2801,6 +2801,50 @@ export default function Admin() {
                     </div>
                   </div>
                 )}
+
+                {activeTab === 'seo' && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Site Title</label>
+                      <input
+                        type="text"
+                        value={content.seo?.global?.siteTitle || ''}
+                        onChange={(e) => handleContentChange('seo.global.siteTitle', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Site Description</label>
+                      <textarea
+                        value={content.seo?.global?.siteDescription || ''}
+                        onChange={(e) => handleContentChange('seo.global.siteDescription', e.target.value)}
+                        rows={3}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Google Analytics ID</label>
+                      <input
+                        type="text"
+                        value={content.seo?.global?.googleAnalyticsId || ''}
+                        onChange={(e) => handleContentChange('seo.global.googleAnalyticsId', e.target.value)}
+                        placeholder="G-XXXXXXXXXX or UA-XXXXXXXXX-X"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                      <p className="mt-1 text-xs text-gray-500">Enter your Google Analytics 4 Measurement ID (G-XXXXXXXXXX) or Universal Analytics ID (UA-XXXXXXXXX-X)</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Keywords</label>
+                      <input
+                        type="text"
+                        value={content.seo?.global?.keywords || ''}
+                        onChange={(e) => handleContentChange('seo.global.keywords', e.target.value)}
+                        placeholder="comma-separated keywords"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
