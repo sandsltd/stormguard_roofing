@@ -252,6 +252,10 @@ export interface Content {
       defaultOgImage?: string;
       keywords?: string;
       googleAnalyticsId?: string;
+      favicon?: {
+        enabled: boolean;
+        instructions?: string;
+      };
     };
     pages: {
       home?: {
@@ -589,7 +593,11 @@ function getDefaultContent(): Content {
         siteTitle: 'Your Business',
         siteDescription: 'Professional services for all your roofing needs',
         keywords: 'roofing, roofing services, professional roofing, quality roofing',
-        googleAnalyticsId: ''
+        googleAnalyticsId: '',
+        favicon: {
+          enabled: true,
+          instructions: 'To update your favicon, replace the files in the /public/images/favicon folder with your own favicon files. The folder should contain: favicon.ico, favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png, android-chrome-192x192.png, android-chrome-512x512.png, and site.webmanifest.'
+        }
       },
       pages: {
         home: {

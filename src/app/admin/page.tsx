@@ -2843,6 +2843,86 @@ export default function Admin() {
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
+
+                    {/* Favicon Section */}
+                    <div className="mt-8">
+                      <h3 className="text-lg font-medium text-gray-900 mb-4">Favicon Settings</h3>
+                      <div className="bg-gray-50 p-4 rounded-lg">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h4 className="text-sm font-medium text-gray-900">Favicon Management</h4>
+                            <p className="text-sm text-gray-500">Manage your site's favicon and app icons</p>
+                          </div>
+                          <div className="flex items-center">
+                            <label className="relative inline-flex items-center cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={content.seo?.global?.favicon?.enabled ?? true}
+                                onChange={(e) => handleContentChange('seo.global.favicon.enabled', e.target.checked)}
+                                className="sr-only peer"
+                              />
+                              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                            </label>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-4">
+                          <h5 className="text-sm font-medium text-gray-900 mb-2">Current Favicon Files</h5>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">favicon.ico</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">favicon-16x16.png</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">favicon-32x32.png</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">apple-touch-icon.png</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">android-chrome-192x192.png</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">android-chrome-512x512.png</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500">site.webmanifest</span>
+                              <span className="text-green-500">✓</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-6">
+                          <h5 className="text-sm font-medium text-gray-900 mb-2">How to Update Your Favicon</h5>
+                          <div className="bg-white p-4 rounded-md border border-gray-200">
+                            <ol className="list-decimal list-inside space-y-2 text-sm text-gray-600">
+                              <li>Prepare your favicon files in the following sizes:
+                                <ul className="list-disc list-inside ml-4 mt-1">
+                                  <li>favicon.ico (16x16, 32x32)</li>
+                                  <li>favicon-16x16.png</li>
+                                  <li>favicon-32x32.png</li>
+                                  <li>apple-touch-icon.png (180x180)</li>
+                                  <li>android-chrome-192x192.png</li>
+                                  <li>android-chrome-512x512.png</li>
+                                </ul>
+                              </li>
+                              <li>Navigate to the <code className="bg-gray-100 px-1 py-0.5 rounded">/public/images/favicon</code> folder in your project</li>
+                              <li>Replace all existing files with your new favicon files</li>
+                              <li>Make sure to keep the same filenames</li>
+                              <li>Update the <code className="bg-gray-100 px-1 py-0.5 rounded">site.webmanifest</code> file with your site details</li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
