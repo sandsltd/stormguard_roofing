@@ -1,30 +1,30 @@
 {
   "business": {
-    "name": "Saunders & Simmons Roofing",
-    "phone": "07432205615",
-    "email": "info@saunders-simmons.co.uk",
-    "address": "3 Longcroft Road, Yeovil BA21 4RR",
+    "name": "Stormguard Roofing",
+    "phone": "07765197450",
+    "email": "tysonclee@gmail.com",
+    "address": "Grest Wyrley, Walsall",
     "logo": "/images/logo/saunders_simmons_ltd.png",
-    "tagline": "Dorset's Premier Roofing Company",
-    "establishedYear": "2005",
-    "description": "At Saunders & Simmons Roofing, we have been serving Dorset and the surrounding areas since 2005. Our commitment to quality craftsmanship, attention to detail, and exceptional customer service has made us the trusted choice for all roofing needs in the region.",
-    "mission": "Our mission at Saunders & Simmons Roofing is to provide superior roofing solutions with uncompromising quality, integrity, and professionalism, ensuring that every client receives personalized attention and complete satisfaction.",
+    "tagline": "Reliable Roofing, Built on 18 Years of Experience",
+    "establishedYear": "2007",
+    "description": "Based in Great Wyrley and covering a 20-mile radius including Telford, Dudley, Tamworth, and Stoke-on-Trent, we bring over 18 years of experience to every job. From full roof replacements and emergency repairs to specialised installations like rubber, felt, slate, and fibreglass roofing, we’ve got every angle covered. Whether it’s a dormer window, chimney repair, or a full warm roof construction – we deliver professional results, high standards, and complete peace of mind.",
+    "mission": "Our mission is to provide high-quality, long-lasting roofing solutions with honesty, professionalism, and care – protecting homes and businesses across the West Midlands, one roof at a time.",
     "hero": "/images/roofers/roofer_fixing_tile_on_roof.png",
     "about": {
       "image": "/images/roofers/roofer_team.jpg"
     },
     "coreValues": [
       {
-        "title": "Integrity",
-        "description": "We conduct our business with honesty, transparency, and ethical standards that earn your trust."
+        "title": "Trust",
+        "description": "We’ve built our reputation over 18 years by being honest, dependable, and delivering what we promise."
       },
       {
-        "title": "Excellence",
-        "description": "We strive for excellence in every aspect of our work, from customer service to the quality of our products."
+        "title": "Quality Workmanship",
+        "description": "Every job is done with care, precision, and attention to detail – no shortcuts, ever."
       },
       {
-        "title": "Sustainability",
-        "description": "We are committed to sustainable practices that minimize our environmental impact and benefit our community."
+        "title": "Customer Commitment ",
+        "description": "From the first call to the final clean-up, we treat every property like it’s our own and every customer like a neighbour.\n"
       }
     ],
     "team": [
@@ -62,18 +62,18 @@
     },
     "features": [
       {
-        "title": "Expert Team",
-        "description": "Our certified professionals bring years of experience to every project.",
+        "title": "All Roofing Types Covered",
+        "description": "From flat roofs and pitched roofs to slate, felt, and rubber installations – we’ve got the skills and experience to handle it all.\n\n",
         "icon": "shield-check"
       },
       {
-        "title": "Quality Materials",
-        "description": "We use only the highest quality materials from trusted manufacturers.",
+        "title": "Emergency Roofing Service",
+        "description": "When the unexpected happens, we’re ready. Fast response times and reliable fixes when you need them most.",
         "icon": "star"
       },
       {
-        "title": "Warranty",
-        "description": "All our work comes with comprehensive warranty coverage.",
+        "title": "18 Years of Experience",
+        "description": "A proven track record built on nearly two decades of hands-on roofing across the West Midlands.",
         "icon": "check-circle"
       }
     ],
@@ -176,7 +176,7 @@
         "role": "Property Manager"
       },
       {
-        "author": "Happy Man",
+        "author": "Clive Jones",
         "role": "Happyland, Cornwall",
         "quote": "Great service, very happy!"
       }
@@ -186,11 +186,11 @@
     "premiumHero": {
       "backgroundImage": "/images/roofers/roofer_fixing_tile_on_roof.png",
       "title": {
-        "line1": "Expert",
-        "line2": "Roofing Services",
-        "line3": "In Dorchester"
+        "line1": "Roofing",
+        "line2": "Reliability",
+        "line3": "Results"
       },
-      "subtitle": "Professional roofing solutions with superior craftsmanship and unmatched customer service. We've got you covered.",
+      "subtitle": "Expert roofing services built on 18 years of trust, quality, and local pride.",
       "ctaPrimary": {
         "text": "Get a Free Quote",
         "link": "/contact"
@@ -201,7 +201,7 @@
       },
       "featureBadges": [
         "Licensed & Insured",
-        "10+ Years Experience",
+        "18+ Years Experience",
         "Free Inspections",
         "Emergency Service"
       ]
@@ -211,25 +211,25 @@
       "description": "From installation and repairs to maintenance and emergency services, our expert roofers provide a full range of professional roofing solutions for residential and commercial properties."
     },
     "servingAreasSection": {
-      "title": "Serving Crewe & Surrounding Areas",
-      "description": "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Crewe and Cheshire. We understand the unique weather patterns and building requirements of the local area."
+      "title": "Serving Walsall & Surrounding Areas",
+      "description": "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Walsall and surrounding area. We understand the unique weather patterns and building requirements of the local area."
     },
     "servingAreas": [
       {
         "name": "Crewe",
-        "description": "As Crewe's trusted roofing contractor, we understand the unique challenges that Cheshire weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Crewe's diverse architectural styles.",
+        "description": "As Walsall's trusted roofing contractor, we understand the unique challenges that the local weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Walsall's diverse architectural styles.",
         "image": "/images/areas/crewe.jpg",
         "tags": [
           "Weather Resistant",
-          "Local Crewe Roofers",
+          "Local Walsall Roofers",
           "Energy Efficient"
         ],
         "ctaText": "Request a Free Quote",
         "ctaLink": "/contact"
       },
       {
-        "name": "Nantwich",
-        "description": "Nantwich homeowners trust our Crewe roofers for traditional and modern roofing solutions. Our specialised materials and installation techniques help protect your home from the varied weather conditions of Cheshire.",
+        "name": "West Bromwich ",
+        "description": "Nantwich homeowners trust our West Bromwich  roofers for traditional and modern roofing solutions. Our specialised materials and installation techniques help protect your home from the varied weather conditions of West Bromwich.",
         "image": "/images/areas/nantwich.jpg",
         "tags": [
           "Traditional Style Compatible",
@@ -240,11 +240,11 @@
         "ctaLink": "/contact"
       },
       {
-        "name": "Sandbach",
-        "description": "Serving Sandbach with expert roofing solutions from our base in Crewe. Our team of experienced roofers specialises in both traditional and contemporary roofing styles, ensuring your property is well-protected against Cheshire's weather.",
+        "name": "Dudley",
+        "description": "Serving Dudley with expert roofing solutions from our base in Walsall. Our team of experienced roofers specialises in both traditional and contemporary roofing styles, ensuring your property is well-protected against the local weather.",
         "image": "/images/areas/sandbach.jpg",
         "tags": [
-          "Experienced Crewe Roofers",
+          "Experienced Dudley Roofers",
           "Mixed Style Solutions",
           "Comprehensive Protection"
         ],
@@ -253,20 +253,82 @@
       }
     ],
     "serviceAreasSection": {
-      "title": "{Location} Roofers Service Areas",
-      "subtitle": "Roofers in {Location}",
-      "description": "{Location} Roofers proudly serves homeowners and businesses throughout Crewe and Cheshire. Our expert local roofers provide top-quality roofing services across these areas."
+      "title": "Walsall Roofers Service Areas",
+      "subtitle": "Roofers in Walsall",
+      "description": "Walsall Roofers proudly serves homeowners and businesses throughout Walsall and the surrounding areas. Our expert local roofers provide top-quality roofing services across these areas."
     },
     "serviceAreas": [
       {
-        "name": "Dorchester",
+        "name": "Sutton Coldfield ",
         "link": "/contact"
       },
       {
-        "name": "Weymouth",
+        "name": "West Bromwich",
+        "link": "/contact"
+      },
+      {
+        "name": "Solihull",
+        "link": "/contact"
+      },
+      {
+        "name": "Dudley",
+        "link": "/contact"
+      },
+      {
+        "name": "Halesowen",
+        "link": "/contact"
+      },
+      {
+        "name": "Stourbridge",
+        "link": "/contact"
+      },
+      {
+        "name": "Smethwick",
+        "link": "/contact"
+      },
+      {
+        "name": "Tamworth",
+        "link": "/contact"
+      },
+      {
+        "name": "Cannock",
+        "link": "/contact"
+      },
+      {
+        "name": "Lichfield",
+        "link": "/contact"
+      },
+      {
+        "name": "Burntwood",
+        "link": "/contact"
+      },
+      {
+        "name": "Great Wyrley",
+        "link": "/contact"
+      },
+      {
+        "name": "Cheslyn Hay",
+        "link": "/contact"
+      },
+      {
+        "name": "Telford",
+        "link": "/contact"
+      },
+      {
+        "name": "Tamworth",
+        "link": "/contact"
+      },
+      {
+        "name": "Stoke-on-Trent",
         "link": "/contact"
       }
-    ]
+    ],
+    "featuresSection": {
+      "title": "Why Choose Us",
+      "description": "With over 18 years in the trade, we’ve built a reputation for reliable service, quality workmanship, and honest advice. From minor repairs to full roof replacements, we handle every job with care and attention to detail. We cover all aspects of roofing – including flat roofs, slate and tiled roofing, chimney work, skylights, and emergency callouts.",
+      "ctaText": "View All Our Services",
+      "ctaLink": "/services"
+    }
   },
   "about": {
     "title": "About Us",
@@ -423,9 +485,9 @@
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch with Our Team",
-    "address": "3 Longcroft Road, Yeovil, Somerset BA21 4RR",
-    "phone": "07432205615",
-    "email": "derz92@icloud.com",
+    "address": "Walsall, West Midlands",
+    "phone": "07765197450",
+    "email": "tysonclee@gmail.com",
     "hours": "Mon-Fri: 8:00 AM - 6:00 PM",
     "form": {
       "nameLabel": "Your Name",
@@ -472,7 +534,7 @@
       "submitButtonText": "Send Message"
     },
     "formTitle": "Get In Touch With Our Team",
-    "formDescription": "Request a free quote or discuss your roofing needs with our expert team serving Crewe and surrounding areas.",
+    "formDescription": "Request a free quote or discuss your roofing needs with our expert team serving Walsall and surrounding areas.",
     "heroImage": "images/roofers/roofer_installing_roofing_tiles.png",
     "mapUrl": ""
   },
@@ -494,13 +556,13 @@
       "backgroundColor": "#3a88fe",
       "linkColor": "#ffffff"
     },
-    "primaryColor": "#4d22b3",
+    "primaryColor": "#000000",
     "secondaryColor": "#000000"
   },
   "header": {
-    "businessHours": "Mon-Sun: 8am-1pm",
-    "insuranceText": "Fully Insured 123",
-    "experienceText": "5+ Years Experience",
+    "businessHours": "Mon-Fri 9am-6pm",
+    "insuranceText": "Fully Insured",
+    "experienceText": "18+ Years Experience",
     "showTopBar": true,
     "menuItems": [
       {
