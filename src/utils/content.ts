@@ -290,17 +290,32 @@ const contentPath = path.join(process.cwd(), 'src/data/content.json');
 
 export async function getContent(): Promise<Content> {
   try {
+    // During build time or server-side rendering
     const fileContents = await fs.promises.readFile(contentPath, 'utf8');
     const content = JSON.parse(fileContents);
     
     // Ensure logo path has a leading slash
-    if (content.business.logo && !content.business.logo.startsWith('/')) {
+    if (content.business?.logo && !content.business.logo.startsWith('/')) {
       content.business.logo = '/' + content.business.logo;
     }
     
     return content;
   } catch (error) {
-    return getDefaultContent();
+    console.warn('Could not read content file, using default content:', error);
+    const defaultContent = getDefaultContent();
+    
+    // Try to write the default content to the file
+    try {
+      const dir = path.dirname(contentPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      await fs.promises.writeFile(contentPath, JSON.stringify(defaultContent, null, 2));
+    } catch (writeError) {
+      console.warn('Could not write default content file:', writeError);
+    }
+    
+    return defaultContent;
   }
 }
 

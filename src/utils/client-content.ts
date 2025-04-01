@@ -6,11 +6,24 @@ import type { Content } from './content';
  */
 export async function fetchContent(): Promise<Content> {
   try {
-    const response = await fetch('/api/content');
+    const response = await fetch('/api/content', {
+      // Add cache control headers
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    });
+    
     if (!response.ok) {
-      throw new Error('Failed to fetch content');
+      throw new Error(`Failed to fetch content: ${response.status} ${response.statusText}`);
     }
-    return response.json();
+    
+    const data = await response.json();
+    if (!data || typeof data !== 'object') {
+      throw new Error('Invalid content data received');
+    }
+    
+    return data;
   } catch (error) {
     console.error('Error fetching content:', error);
     throw error;
