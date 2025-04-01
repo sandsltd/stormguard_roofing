@@ -1,0 +1,85 @@
+{
+  "business": {
+    "name": "StormGuard Roofing",
+    "tagline": "Protecting Your Home, Rain or Shine",
+    "description": "Professional roofing services in the Greater Toronto Area. We specialize in residential and commercial roofing, offering quality workmanship and exceptional customer service.",
+    "keywords": ["roofing", "roof repair", "roof installation", "GTA roofing", "Toronto roofing"],
+    "phone": "647-555-0123",
+    "email": "info@stormguardroofing.ca",
+    "address": {
+      "street": "123 Roofing Lane",
+      "city": "Toronto",
+      "state": "ON",
+      "zip": "M5V 2T6"
+    },
+    "location": "Greater Toronto Area",
+    "logo": "/images/logo.png",
+    "hero": "/images/hero.jpg",
+    "establishedYear": "2010",
+    "mission": "To provide top-quality roofing solutions that protect homes and businesses while delivering exceptional customer service.",
+    "about": {
+      "image": "/images/about.jpg",
+      "content": "StormGuard Roofing has been serving the Greater Toronto Area since 2010. Our team of experienced professionals is dedicated to providing the highest quality roofing services to our customers."
+    },
+    "hours": {
+      "Monday": "8:00 AM - 6:00 PM",
+      "Tuesday": "8:00 AM - 6:00 PM",
+      "Wednesday": "8:00 AM - 6:00 PM",
+      "Thursday": "8:00 AM - 6:00 PM",
+      "Friday": "8:00 AM - 6:00 PM",
+      "Saturday": "9:00 AM - 4:00 PM",
+      "Sunday": "Closed"
+    },
+    "social": {
+      "facebook": "https://facebook.com/stormguardroofing",
+      "twitter": "https://twitter.com/stormguardroof",
+      "instagram": "https://instagram.com/stormguardroofing",
+      "linkedin": "https://linkedin.com/company/stormguardroofing"
+    }
+  },
+  "seo": {
+    "global": {
+      "siteTitle": "StormGuard Roofing",
+      "siteDescription": "Professional roofing services in the Greater Toronto Area",
+      "siteTitleTemplate": "%s | StormGuard Roofing",
+      "defaultOgImage": "/images/og-image.jpg",
+      "keywords": ["roofing", "roof repair", "roof installation", "GTA roofing", "Toronto roofing"],
+      "googleAnalyticsId": "G-XXXXXXXXXX",
+      "ogType": "website",
+      "favicon": {
+        "ico": "/favicon.ico",
+        "png": "/favicon.png"
+      }
+    },
+    "pages": {
+      "home": {
+        "title": "Professional Roofing Services in Toronto",
+        "description": "StormGuard Roofing provides professional roofing services in the Greater Toronto Area. Expert roof repairs, installations, and maintenance.",
+        "keywords": ["toronto roofing", "roof repair toronto", "roofing company", "residential roofing"],
+        "ogImage": "/images/home-og.jpg",
+        "ogType": "website"
+      },
+      "about": {
+        "title": "About StormGuard Roofing",
+        "description": "Learn about StormGuard Roofing's history, mission, and commitment to quality roofing services in the Greater Toronto Area.",
+        "keywords": ["about stormguard", "roofing company history", "toronto roofers"],
+        "ogImage": "/images/about-og.jpg",
+        "ogType": "article"
+      },
+      "services": {
+        "title": "Our Roofing Services",
+        "description": "Comprehensive roofing services including repairs, installations, and maintenance for residential and commercial properties.",
+        "keywords": ["roofing services", "roof repair", "roof installation", "roof maintenance"],
+        "ogImage": "/images/services-og.jpg",
+        "ogType": "article"
+      },
+      "contact": {
+        "title": "Contact StormGuard Roofing",
+        "description": "Get in touch with StormGuard Roofing for professional roofing services in the Greater Toronto Area.",
+        "keywords": ["contact roofing company", "roofing quote", "toronto roofing contact"],
+        "ogImage": "/images/contact-og.jpg",
+        "ogType": "website"
+      }
+    }
+  }
+} 
