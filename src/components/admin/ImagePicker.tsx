@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
@@ -8,14 +10,18 @@ interface ImagePickerProps {
   location?: string;
 }
 
-export default function ImagePicker({ value, onChange, category, location }: ImagePickerProps) {
+interface LocationImages {
+  [key: string]: string[];
+}
+
+export default function ImagePicker({ value, onChange, category, location }: ImagePickerProps): React.ReactElement {
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showPicker, setShowPicker] = useState(false);
 
   // Default images for different locations
-  const defaultLocationImages = {
+  const defaultLocationImages: LocationImages = {
     'Walsall': [
       '/images/areas/options/Walsall-residential.jpg',
       '/images/areas/options/Walsall-commercial.jpg',
@@ -46,12 +52,11 @@ export default function ImagePicker({ value, onChange, category, location }: Ima
         // For now, we'll use the default images
         // In a real implementation, you could fetch this from the server
         const locationKey = location?.toLowerCase() || 'default';
-        const availableImages = defaultLocationImages[locationKey as keyof typeof defaultLocationImages] 
-          || defaultLocationImages.default;
+        const availableImages = defaultLocationImages[locationKey] || defaultLocationImages.default;
         
         setImages(availableImages);
         setLoading(false);
-      } catch (err) {
+      } catch {
         setError('Failed to load images');
         setLoading(false);
       }

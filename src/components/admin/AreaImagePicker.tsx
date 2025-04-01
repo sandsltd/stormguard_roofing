@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 
@@ -38,9 +40,9 @@ const DEFAULT_IMAGES = [
     src: '/images/areas/commercial2.jpg',
     alt: 'Modern office buildings'
   }
-];
+] as const;
 
-export default function AreaImagePicker({ value, onChange, areaName }: AreaImagePickerProps) {
+export default function AreaImagePicker({ value, onChange, areaName }: AreaImagePickerProps): React.ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const [customUrl, setCustomUrl] = useState(value);
 

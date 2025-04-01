@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchContent, saveContent } from '@/utils/client-content';
 import type { Content } from '@/utils/content';
 import { 
@@ -17,46 +17,8 @@ import { BsHouseDoor } from 'react-icons/bs';
 import ImagePicker from '@/components/admin/ImagePicker';
 import AreaImagePicker from '@/components/admin/AreaImagePicker';
 
-// Component to render icons for preview
-const IconPreview = ({ iconName }: { iconName: string }) => {
-  switch (iconName) {
-    case 'home': return <FaHome className="inline-block text-blue-600 text-lg" />;
-    case 'tools': return <FaTools className="inline-block text-blue-600 text-lg" />;
-    case 'search': return <FaSearch className="inline-block text-blue-600 text-lg" />;
-    case 'calendar': return <FaCalendarAlt className="inline-block text-blue-600 text-lg" />;
-    case 'rain': return <FaCloudRain className="inline-block text-blue-600 text-lg" />;
-    case 'alert': return <FaExclamationCircle className="inline-block text-blue-600 text-lg" />;
-    case 'office': return <MdApartment className="inline-block text-blue-600 text-lg" />;
-    case 'refresh': return <FaSync className="inline-block text-blue-600 text-lg" />;
-    case 'building': return <FaBuilding className="inline-block text-blue-600 text-lg" />;
-    case 'shield': return <FaShieldAlt className="inline-block text-blue-600 text-lg" />;
-    case 'phone': return <FaPhone className="inline-block text-blue-600 text-lg" />;
-    case 'leaf': return <FaLeaf className="inline-block text-blue-600 text-lg" />;
-    case 'wrench': return <FaWrench className="inline-block text-blue-600 text-lg" />;
-    case 'snow': return <FaSnowflake className="inline-block text-blue-600 text-lg" />;
-    case 'lightning': return <FaBolt className="inline-block text-blue-600 text-lg" />;
-    case 'wind': return <FaWind className="inline-block text-blue-600 text-lg" />;
-    case 'hardhat': return <FaHardHat className="inline-block text-blue-600 text-lg" />;
-    case 'ruler': return <FaRuler className="inline-block text-blue-600 text-lg" />;
-    case 'star': return <FaStar className="inline-block text-blue-600 text-lg" />;
-    case 'dollar': return <FaDollarSign className="inline-block text-blue-600 text-lg" />;
-    case 'chart': return <FaChartLine className="inline-block text-blue-600 text-lg" />;
-    case 'clock': return <FaClock className="inline-block text-blue-600 text-lg" />;
-    case 'roofing': return <MdRoofing className="inline-block text-blue-600 text-lg" />;
-    case 'house': return <MdHouse className="inline-block text-blue-600 text-lg" />;
-    case 'construction': return <MdConstruction className="inline-block text-blue-600 text-lg" />;
-    case 'waterdrop': return <MdWaterDrop className="inline-block text-blue-600 text-lg" />;
-    case 'housealt': return <GiHouse className="inline-block text-blue-600 text-lg" />;
-    case 'window': return <GiWindow className="inline-block text-blue-600 text-lg" />;
-    case 'cement': return <GiCementShoes className="inline-block text-blue-600 text-lg" />;
-    case 'officealt': return <HiOutlineOfficeBuilding className="inline-block text-blue-600 text-lg" />;
-    case 'houseoutline': return <BsHouseDoor className="inline-block text-blue-600 text-lg" />;
-    default: return <FaHome className="inline-block text-blue-600 text-lg" />;
-  }
-};
-
 // Password protection component
-const LoginScreen = ({ onLogin }: { onLogin: () => void }) => {
+const LoginScreen = ({ onLogin }: { onLogin: () => void }): React.ReactElement => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   
@@ -64,7 +26,7 @@ const LoginScreen = ({ onLogin }: { onLogin: () => void }) => {
   // Using NEXT_PUBLIC_ prefix allows it to be accessible in the browser
   const correctPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     if (password === correctPassword) {
       // Store authentication in session storage
@@ -120,7 +82,77 @@ const LoginScreen = ({ onLogin }: { onLogin: () => void }) => {
   );
 };
 
-export default function Admin() {
+// Component to render icons for preview
+const IconPreview = ({ iconName }: { iconName: string }): React.ReactElement => {
+  switch (iconName) {
+    case 'FaHome':
+      return <FaHome className="w-6 h-6" />;
+    case 'FaTools':
+      return <FaTools className="w-6 h-6" />;
+    case 'FaSearch':
+      return <FaSearch className="w-6 h-6" />;
+    case 'FaCalendarAlt':
+      return <FaCalendarAlt className="w-6 h-6" />;
+    case 'FaCloudRain':
+      return <FaCloudRain className="w-6 h-6" />;
+    case 'FaExclamationCircle':
+      return <FaExclamationCircle className="w-6 h-6" />;
+    case 'FaBuilding':
+      return <FaBuilding className="w-6 h-6" />;
+    case 'FaSync':
+      return <FaSync className="w-6 h-6" />;
+    case 'FaShieldAlt':
+      return <FaShieldAlt className="w-6 h-6" />;
+    case 'FaPhone':
+      return <FaPhone className="w-6 h-6" />;
+    case 'FaLeaf':
+      return <FaLeaf className="w-6 h-6" />;
+    case 'FaWrench':
+      return <FaWrench className="w-6 h-6" />;
+    case 'FaSnowflake':
+      return <FaSnowflake className="w-6 h-6" />;
+    case 'FaBolt':
+      return <FaBolt className="w-6 h-6" />;
+    case 'FaWind':
+      return <FaWind className="w-6 h-6" />;
+    case 'FaHardHat':
+      return <FaHardHat className="w-6 h-6" />;
+    case 'FaRuler':
+      return <FaRuler className="w-6 h-6" />;
+    case 'FaStar':
+      return <FaStar className="w-6 h-6" />;
+    case 'FaDollarSign':
+      return <FaDollarSign className="w-6 h-6" />;
+    case 'FaChartLine':
+      return <FaChartLine className="w-6 h-6" />;
+    case 'FaClock':
+      return <FaClock className="w-6 h-6" />;
+    case 'MdApartment':
+      return <MdApartment className="w-6 h-6" />;
+    case 'MdRoofing':
+      return <MdRoofing className="w-6 h-6" />;
+    case 'MdHouse':
+      return <MdHouse className="w-6 h-6" />;
+    case 'MdConstruction':
+      return <MdConstruction className="w-6 h-6" />;
+    case 'MdWaterDrop':
+      return <MdWaterDrop className="w-6 h-6" />;
+    case 'GiHouse':
+      return <GiHouse className="w-6 h-6" />;
+    case 'GiWindow':
+      return <GiWindow className="w-6 h-6" />;
+    case 'GiCementShoes':
+      return <GiCementShoes className="w-6 h-6" />;
+    case 'HiOutlineOfficeBuilding':
+      return <HiOutlineOfficeBuilding className="w-6 h-6" />;
+    case 'BsHouseDoor':
+      return <BsHouseDoor className="w-6 h-6" />;
+    default:
+      return <FaHome className="w-6 h-6" />;
+  }
+};
+
+const Admin: React.FC = () => {
   const [content, setContent] = useState<Content | null>(null);
   const [activeTab, setActiveTab] = useState('business');
   const [isSaving, setIsSaving] = useState(false);
@@ -149,19 +181,19 @@ export default function Admin() {
     }
   }, []);
 
-  const handleContentChange = (path: string, value: any) => {
+  const handleContentChange = (path: string, value: unknown): void => {
     setContent(prev => {
       if (!prev) return prev;
       const parts = path.split('.');
       const newContent = { ...prev };
-      let current: any = newContent;
+      let current: Record<string, unknown> = newContent;
       
       // Create nested objects if they don't exist
       for (let i = 0; i < parts.length - 1; i++) {
         if (!current[parts[i]]) {
           current[parts[i]] = {};
         }
-        current = current[parts[i]];
+        current = current[parts[i]] as Record<string, unknown>;
       }
       
       current[parts[parts.length - 1]] = value;
@@ -169,20 +201,20 @@ export default function Admin() {
     });
   };
 
-  const handleNestedChange = (path: string, value: any) => {
+  const handleNestedChange = (path: string, value: unknown): void => {
     handleContentChange(path, value);
   };
 
-  const handleArrayItemChange = (path: string, index: number, value: any) => {
+  const handleArrayItemChange = (path: string, index: number, value: unknown): void => {
     setContent(prev => {
       if (!prev) return prev;
       const parts = path.split('.');
       const newContent = { ...prev };
-      let current: any = newContent;
+      let current: Record<string, unknown> = newContent;
       for (let i = 0; i < parts.length - 1; i++) {
-        current = current[parts[i]];
+        current = current[parts[i]] as Record<string, unknown>;
       }
-      const array = current[parts[parts.length - 1]];
+      const array = current[parts[parts.length - 1]] as unknown[];
       if (value === null) {
         array.splice(index, 1);
       } else {
@@ -192,7 +224,7 @@ export default function Admin() {
     });
   };
 
-  const handleSave = async () => {
+  const handleSave = async (): Promise<void> => {
     if (!content) return Promise.reject('No content to save');
     
     setIsSaving(true);
@@ -250,15 +282,9 @@ export default function Admin() {
                   {isSaving ? 'Saving...' : 'Save Changes'}
                 </button>
               </div>
-              <button
-                onClick={() => {
-                  sessionStorage.removeItem('adminAuthenticated');
-                  setIsAuthenticated(false);
-                }}
-                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
-              >
-                Logout
-              </button>
+              {saveStatus && (
+                <div className="text-sm text-gray-600">{saveStatus}</div>
+              )}
             </div>
 
             {saveStatus && (
@@ -379,7 +405,7 @@ export default function Admin() {
                       <label className="block text-sm font-medium text-gray-700">Location</label>
                       <input
                         type="text"
-                        value=Walsall
+                        value={content.business.location}
                         onChange={(e) => handleContentChange('business.location', e.target.value)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       />
@@ -2943,4 +2969,6 @@ export default function Admin() {
       </div>
     </div>
   );
-} 
+};
+
+export default Admin; 
