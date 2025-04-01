@@ -1,3 +1,5 @@
 {
-  "buildCommand": "npm run build -- --no-lint"
+  "buildCommand": "npm run build -- --no-lint",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs"
 } 
