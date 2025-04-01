@@ -103,15 +103,15 @@ export default function Header({ content }: HeaderProps) {
   };
 
   const headerStyle = {
-    backgroundColor: '#ffffff',
-    borderBottom: '1px solid #e5e7eb',
-    boxShadow: isScrolled ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
+    backgroundColor: '#000000',
+    borderBottom: '1px solid #222222',
+    boxShadow: isScrolled ? '0 2px 4px rgba(0,0,0,0.2)' : 'none',
     transition: 'all 0.3s ease-in-out',
     top: scrollDirection === 'down' && isScrolled && showTopBar ? '0' : (showTopBar ? '40px' : '0'),
   };
 
   const linkStyle = {
-    color: theme?.header?.linkColor || '#1e2756',
+    color: theme?.header?.linkColor || '#ffffff',
     transition: 'all 0.2s ease-in-out',
   };
 
@@ -198,36 +198,16 @@ export default function Header({ content }: HeaderProps) {
       <header style={headerStyle} className="w-full bg-white absolute transition-all duration-300">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16 md:h-20 lg:h-24">
-            {/* Logo and Business Name */}
-            <Link href="/" className="flex items-center space-x-2 md:space-x-3 group">
-              {business.logo && (
-                <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 overflow-hidden">
-                  <Image 
-                    src={business.logo} 
-                    alt={business.name} 
-                    fill
-                    className="object-contain transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, (max-width: 1024px) 56px, 64px"
-                    priority
-                  />
-                </div>
-              )}
-              <div className="flex flex-col">
-                <span 
-                  className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight truncate max-w-[150px] sm:max-w-[200px] md:max-w-none"
-                  style={linkStyle}
-                >
-                  {business.name}
-                </span>
-                {business.tagline && (
-                  <span 
-                    className="text-xs sm:text-sm text-gray-600 hidden sm:block"
-                    style={{ color: theme?.header?.linkColor || '#4B5563' }}
-                  >
-                    {business.tagline}
-                  </span>
-                )}
-              </div>
+            {/* Logo */}
+            <Link href="/" className="flex-shrink-0 relative">
+              <Image
+                src="/images/logo/logo.png"
+                alt="Storm Guard Roofing"
+                width={200}
+                height={60}
+                className="w-[150px] sm:w-[180px] md:w-[200px] h-auto object-contain max-h-[60px] md:max-h-[80px]"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -257,10 +237,18 @@ export default function Header({ content }: HeaderProps) {
               {showCTA && (
                 <Link
                   href={ctaLink}
-                  className="inline-flex items-center px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:opacity-90 whitespace-nowrap"
-                  style={{ backgroundColor: theme?.primaryColor || theme?.header?.backgroundColor || '#1e2756' }}
+                  className="inline-flex items-center px-4 lg:px-6 py-2.5 lg:py-3.5 rounded-lg text-sm lg:text-base font-bold text-white transition-all duration-300 hover:opacity-100 transform hover:scale-105 hover:-translate-y-0.5 shadow-xl whitespace-nowrap"
+                  style={{ 
+                    backgroundColor: 'rgb(239, 68, 68)',
+                    boxShadow: '0 8px 20px -3px rgba(239, 68, 68, 0.5), 0 0 15px -3px rgba(239, 68, 68, 0.4)'
+                  }}
                 >
-                  {ctaText}
+                  <span className="relative z-10 flex items-center">
+                    {ctaText}
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
                 </Link>
               )}
             </div>
@@ -359,11 +347,19 @@ export default function Header({ content }: HeaderProps) {
               {showCTA && (
                 <Link
                   href={ctaLink}
-                  className="inline-flex items-center justify-center w-full px-6 py-4 rounded-lg text-base font-medium text-white transition-all duration-200 hover:opacity-90"
-                  style={{ backgroundColor: theme?.primaryColor || theme?.header?.backgroundColor || '#1e2756' }}
+                  className="inline-flex items-center justify-center w-full px-6 py-4 rounded-lg text-base font-bold text-white transition-all duration-300 hover:opacity-100 transform hover:scale-105 shadow-xl"
+                  style={{ 
+                    backgroundColor: 'rgb(239, 68, 68)',
+                    boxShadow: '0 8px 20px -3px rgba(239, 68, 68, 0.5), 0 0 15px -3px rgba(239, 68, 68, 0.4)'
+                  }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {ctaText}
+                  <span className="relative z-10 flex items-center">
+                    {ctaText}
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
                 </Link>
               )}
             </div>

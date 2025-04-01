@@ -16,26 +16,26 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
   // Default areas if none exist
   const defaultAreas = [
     {
-      name: "Crewe",
-      description: "As Crewe's trusted roofing contractor, we understand the unique challenges that Cheshire weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Crewe's diverse architectural styles.",
+      name: "Walsall",
+      description: "As Walsall's trusted roofing contractor, we understand the unique challenges that the West Midlands weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Walsall's diverse architectural styles.",
       image: "/images/areas/residential1.jpg",
-      tags: ["Weather Resistant", "Local Crewe Roofers", "Energy Efficient"],
+      tags: ["Weather Resistant", "Local Walsall Roofers", "Energy Efficient"],
       ctaText: "Request a Free Quote",
       ctaLink: "/contact"
     },
     {
-      name: "Nantwich",
-      description: "Nantwich homeowners trust our Crewe roofers for traditional and modern roofing solutions. Our specialised materials and installation techniques help protect your home from the varied weather conditions of Cheshire.",
+      name: "West Bromwich",
+      description: "Serving West Bromwich with expert roofing solutions. Our specialised materials and installation techniques help protect your home from the varied weather conditions.",
       image: "/images/areas/town1.jpg",
       tags: ["Traditional Style Compatible", "Heritage Building Expertise", "Local Weather Protection"],
       ctaText: "Get Your Free Quote",
       ctaLink: "/contact"
     },
     {
-      name: "Sandbach",
-      description: "Serving Sandbach with expert roofing solutions from our base in Crewe. Our team of experienced roofers specialises in both traditional and contemporary roofing styles, ensuring your property is well-protected against Cheshire's weather.",
+      name: "Dudley",
+      description: "Our team of experienced roofers specialises in both traditional and contemporary roofing styles, ensuring your property is well-protected against the local weather.",
       image: "/images/areas/commercial1.jpg",
-      tags: ["Experienced Crewe Roofers", "Mixed Style Solutions", "Comprehensive Protection"],
+      tags: ["Experienced Roofers", "Mixed Style Solutions", "Comprehensive Protection"],
       ctaText: "Contact Us for a Quote",
       ctaLink: "/contact"
     }
@@ -43,69 +43,78 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
 
   const servingAreas = content.homepage.servingAreas || defaultAreas;
 
-  // Ensure all areas have valid images and use a fallback path
-  const areasWithValidImages = servingAreas.map(area => ({
-    ...area,
-    // Use a fallback image path if none is provided or it's empty
-    image: area.image && area.image.trim() !== '' 
-      ? area.image 
-      : `/images/areas/residential1.jpg`
-  }));
-
   return (
-    <section className="py-20 bg-white overflow-hidden relative">
-      {/* Top decorative element */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-gray-50 to-transparent"></div>
+    <section className="py-20 bg-gradient-to-b from-black to-gray-900 text-white overflow-hidden relative">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{ backgroundImage: 'url("/images/pattern.png")', backgroundRepeat: 'repeat' }}></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Badge */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium"
-            style={{ 
-              backgroundColor: primaryColorLight,
-              color: primaryColor
-            }}>
-            Roofers in {content.business.location} & Cheshire
+          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white backdrop-blur-sm">
+            Roofers in Walsall & the West Midlands
           </div>
         </div>
         
         {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Serving {content.business.location} & Surrounding Areas
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-6">
+            Serving Walsall & Surrounding Areas
           </h2>
-          <p className="text-xl text-gray-600">
-            Our roofing solutions are tailored to the specific climate challenges and architectural styles of {content.business.location} and Cheshire. We understand the unique weather patterns and building requirements of the local area.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Our roofing solutions are tailored to the specific climate challenges and architectural styles of Walsall the West Midlands. We understand the unique weather patterns and building requirements of the local area.
           </p>
         </div>
         
         {/* Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {areasWithValidImages.map((area, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="relative h-48">
-                <Image
-                  src={area.image}
-                  alt={area.name}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl font-bold text-white">{area.name}</h3>
-                  <p className="text-white/90 mt-2">{area.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {area.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-2 py-1 bg-white/20 text-white text-sm rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {servingAreas.map((area, index) => (
+            <div 
+              key={index} 
+              className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+            >
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-white">
+                  {area.name}
+                </h3>
+                <p className="text-gray-300 mb-6 line-clamp-3">
+                  {area.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {area.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-3 py-1 bg-white/10 text-white text-sm rounded-full transition-all duration-300 group-hover:bg-white/20"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
+                <a 
+                  href={area.ctaLink} 
+                  className="inline-flex items-center text-white hover:text-gray-200 transition-colors"
+                >
+                  <span>Learn more</span>
+                  <svg 
+                    className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" 
+                    />
+                  </svg>
+                </a>
               </div>
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform rotate-45 opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-24 h-24 bg-gradient-to-tr from-white/10 to-transparent rounded-full blur-2xl transform -rotate-45 opacity-50 group-hover:opacity-75 transition-opacity"></div>
             </div>
           ))}
         </div>

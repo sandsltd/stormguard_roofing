@@ -8,7 +8,7 @@ interface IntroductionSectionProps {
 
 export default function IntroductionSection({ content }: IntroductionSectionProps) {
   const introduction = content.homepage.introduction || {
-    title: "Dorset's Most Trusted",
+    title: "Walsall's Most Trusted",
     subtitle: "Roofing Specialists",
     description: "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service.",
     image: "/images/roofers/team_of_roofers.jpg",

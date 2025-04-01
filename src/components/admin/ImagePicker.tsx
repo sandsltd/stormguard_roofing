@@ -16,10 +16,10 @@ export default function ImagePicker({ value, onChange, category, location }: Ima
 
   // Default images for different locations
   const defaultLocationImages = {
-    'crewe': [
-      '/images/areas/options/crewe-residential.jpg',
-      '/images/areas/options/crewe-commercial.jpg',
-      '/images/areas/options/crewe-historic.jpg',
+    'Walsall': [
+      '/images/areas/options/Walsall-residential.jpg',
+      '/images/areas/options/Walsall-commercial.jpg',
+      '/images/areas/options/Walsall-historic.jpg',
     ],
     'nantwich': [
       '/images/areas/options/nantwich-canal.jpg',

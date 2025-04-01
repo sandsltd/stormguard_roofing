@@ -324,7 +324,7 @@ function getDefaultContent(): Content {
       phone: '07956 530018',
       email: 'info@yourbusiness.com',
       address: '123 Business Street, City, Country',
-      location: 'Crewe', // Default location
+      location: 'Walsall', // Default location
       logo: '/images/logo.png'
     },
     theme: {

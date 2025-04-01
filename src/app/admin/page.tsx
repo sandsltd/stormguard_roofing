@@ -379,7 +379,7 @@ export default function Admin() {
                       <label className="block text-sm font-medium text-gray-700">Location</label>
                       <input
                         type="text"
-                        value={content.business.location}
+                        value=Walsall
                         onChange={(e) => handleContentChange('business.location', e.target.value)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       />
@@ -399,7 +399,7 @@ export default function Admin() {
                         type="text"
                         value={content.business.tagline || ""}
                         onChange={(e) => handleContentChange('business.tagline', e.target.value)}
-                        placeholder="e.g., Cheshire's Premier Roofing Specialists"
+                        placeholder="e.g., West Midlands's Premier Roofing Specialists"
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
@@ -852,7 +852,7 @@ export default function Admin() {
                       {!content.homepage.introduction && (
                       <button
                           onClick={() => handleContentChange('homepage.introduction', {
-                            title: "Dorset's Most Trusted",
+                            title: "Walsall's Most Trusted",
                             subtitle: "Roofing Specialists",
                             description: "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service. From simple repairs to complete roof replacements, our team delivers superior results that stand the test of time.",
                             image: "/images/roofers/team_of_roofers.jpg",
@@ -878,7 +878,7 @@ export default function Admin() {
                                   value={content.homepage.introduction.title}
                                   onChange={(e) => handleContentChange('homepage.introduction.title', e.target.value)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  placeholder="e.g., Dorset's Most Trusted"
+                                  placeholder="e.g.,Walsall's Most Trusted"
                       />
                     </div>
                     <div>
@@ -1156,8 +1156,8 @@ export default function Admin() {
                       {!content.homepage.servingAreasSection && (
                         <button
                           onClick={() => handleContentChange('homepage.servingAreasSection', {
-                            title: `Serving ${content.business.location} & Surrounding Areas`,
-                            description: `Our roofing solutions are tailored to the specific climate challenges and architectural styles of ${content.business.location} and Cheshire. We understand the unique weather patterns and building requirements of the local area.`
+                            title: `Serving $Walsall & Surrounding Areas`,
+                            description: `Our roofing solutions are tailored to the specific climate challenges and architectural styles of $Walsall the West Midlands. We understand the unique weather patterns and building requirements of the local area.`
                           })}
                           className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
                         >
@@ -1176,7 +1176,7 @@ export default function Admin() {
                                   value={content.homepage.servingAreasSection.title}
                                   onChange={(e) => handleContentChange('homepage.servingAreasSection.title', e.target.value)}
                           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  placeholder="e.g., Serving Crewe & Surrounding Areas"
+                                  placeholder="e.g., Serving Walsall & Surrounding Areas"
                         />
                       </div>
                       <div>
@@ -1212,7 +1212,7 @@ export default function Admin() {
                                   type="text"
                                       value={area.name || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.servingAreas', index, { ...area, name: e.target.value })}
-                                      placeholder="e.g., Crewe, Nantwich, etc."
+                                      placeholder="e.g., Walsall, Nantwich, etc."
                               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 />
                               </div>
@@ -1512,9 +1512,9 @@ export default function Admin() {
                       {!content.homepage.serviceAreasSection && (
                         <button
                           onClick={() => handleContentChange('homepage.serviceAreasSection', {
-                            title: "Crewe Roofers Service Areas",
-                            subtitle: "Roofers in Crewe & Cheshire",
-                            description: "Crewe Roofers proudly serves homeowners and businesses throughout Crewe and Cheshire. Our expert local roofers provide top-quality roofing services across these areas."
+                            title: "Walsall Roofers Service Areas",
+                            subtitle: "Roofers in Walsall & West Midlands",
+                            description: "Walsall Roofers proudly serves homeowners and businesses throughout Walsall the West Midlands. Our expert local roofers provide top-quality roofing services across these areas."
                           })}
                           className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
                         >
@@ -1533,7 +1533,7 @@ export default function Admin() {
                                   value={content.homepage.serviceAreasSection.subtitle}
                                   onChange={(e) => handleContentChange('homepage.serviceAreasSection.subtitle', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
-                                  placeholder="e.g., Roofers in Crewe & Cheshire"
+                                  placeholder="e.g., Roofers in Walsall & West Midlands"
                       />
                     </div>
                     <div>
@@ -1543,7 +1543,7 @@ export default function Admin() {
                                   value={content.homepage.serviceAreasSection.title}
                                   onChange={(e) => handleContentChange('homepage.serviceAreasSection.title', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
-                                  placeholder="e.g., Crewe Roofers Service Areas"
+                                  placeholder="e.g., Walsall Roofers Service Areas"
                       />
                     </div>
                     <div>
@@ -1579,7 +1579,7 @@ export default function Admin() {
                               type="text"
                                       value={area.name || ''}
                                       onChange={(e) => handleArrayItemChange('homepage.serviceAreas', index, { ...area, name: e.target.value })}
-                                      placeholder="e.g., Crewe, Nantwich, etc."
+                                      placeholder="e.g., Walsall, Nantwich, etc."
                                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                       />
                     </div>

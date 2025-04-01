@@ -12,14 +12,14 @@ interface ServiceAreasSectionProps {
 export default function ServiceAreasSection({ content }: ServiceAreasSectionProps) {
   // Get section content or use defaults
   const serviceAreasSection = content.homepage.serviceAreasSection || {
-    title: "Crewe Roofers Service Areas",
-    subtitle: "Roofers in Crewe & Cheshire",
-    description: "Crewe Roofers proudly serves homeowners and businesses throughout Crewe and Cheshire. Our expert local roofers provide top-quality roofing services across these areas."
+    title: "Walsall Roofers Service Areas",
+    subtitle: "Roofers in Walsall & West Midlands",
+    description: "Walsall Roofers proudly serves homeowners and businesses throughout Walsall the West Midlands. Our expert local roofers provide top-quality roofing services across these areas."
   };
 
   // Get service areas or use default areas if none exist
   const serviceAreas = content.homepage.serviceAreas || [
-    { name: "Crewe", link: "/contact" },
+    { name: "Walsall", link: "/contact" },
     { name: "Holmes Chapel", link: "/contact" },
     { name: "Wheelock", link: "/contact" },
     { name: "Nantwich", link: "/contact" },
@@ -75,13 +75,13 @@ export default function ServiceAreasSection({ content }: ServiceAreasSectionProp
         {/* Call to action */}
         <div className="text-center mt-12">
           <p className="text-lg text-gray-700 mb-6">
-            Don&apos;t see your Cheshire area listed? Our {content.business.location} roofers may still be able to help!
+            Don&apos;t see your West Midlands area listed? Our Walsall roofers may still be able to help!
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
           >
-            Contact {content.business.location} Roofers →
+            Contact Walsall Roofers →
           </Link>
         </div>
       </div>

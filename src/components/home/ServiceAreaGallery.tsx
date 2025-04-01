@@ -53,7 +53,7 @@ export default function ServiceAreaGallery({ content, images }: ServiceAreaGalle
               View Our Recent Projects
             </h2>
             <p className="text-lg text-gray-700">
-              Explore our recent roofing projects completed across {content.business.location} and Cheshire. Our gallery showcases our quality craftsmanship and attention to detail.
+              Explore our recent roofing projects completed across Walsall the West Midlands. Our gallery showcases our quality craftsmanship and attention to detail.
             </p>
           </div>
           <Link href="/portfolio" className="inline-flex items-center px-6 py-3 rounded-lg border-2 font-medium transition-colors hover:bg-gray-100" 
@@ -89,7 +89,7 @@ export default function ServiceAreaGallery({ content, images }: ServiceAreaGalle
               
               {/* Location tag - you could make this dynamic based on image metadata if available */}
               <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-white font-medium text-lg">{content.business.location} Project</div>
+                <div className="text-white font-medium text-lg">Walsall Project</div>
                 <div className="text-white text-opacity-80 text-sm">Completed {new Date().getFullYear()}</div>
               </div>
             </div>

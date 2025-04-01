@@ -58,7 +58,7 @@ export default async function AboutPage() {
               {/* Main Heading - No background container */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
                 <span className="text-white">About</span>
-                <span className="block mt-2" style={{ color: content.theme?.primaryColor || '#3b82f6' }}>{business.name}</span>
+                <span className="block mt-2 text-white" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>{business.name}</span>
               </h1>
               
               {/* Subtitle with divider line */}

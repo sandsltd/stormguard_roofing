@@ -1,8 +1,8 @@
 {
   "business": {
-    "name": "Stormguard Roofing",
+    "name": "Storm Guard Roofing",
     "phone": "07765197450",
-    "email": "tysonclee@gmail.com",
+    "email": "info@saunders-simmons.co.uk",
     "address": "Grest Wyrley, Walsall",
     "logo": "/images/logo/saunders_simmons_ltd.png",
     "tagline": "Reliable Roofing, Built on 18 Years of Experience",
@@ -216,9 +216,9 @@
     },
     "servingAreas": [
       {
-        "name": "Crewe",
+        "name": "Walsall",
         "description": "As Walsall's trusted roofing contractor, we understand the unique challenges that the local weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Walsall's diverse architectural styles.",
-        "image": "/images/areas/crewe.jpg",
+        "image": "/images/areas/Walsall.jpg",
         "tags": [
           "Weather Resistant",
           "Local Walsall Roofers",
@@ -487,7 +487,7 @@
     "subtitle": "Get in Touch with Our Team",
     "address": "Walsall, West Midlands",
     "phone": "07765197450",
-    "email": "tysonclee@gmail.com",
+    "email": "Tysonclee@gmail.com",
     "hours": "Mon-Fri: 8:00 AM - 6:00 PM",
     "form": {
       "nameLabel": "Your Name",
@@ -548,9 +548,9 @@
     "header": {
       "backgroundColor": "#000000",
       "textColor": "#ffffff",
-      "linkColor": "#000000",
+      "linkColor": "#ffffff",
       "iconColor": "#ff2600",
-      "linkHoverColor": "#3f37ff"
+      "linkHoverColor": "#ff2600"
     },
     "footer": {
       "backgroundColor": "#3a88fe",
