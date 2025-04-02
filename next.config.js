@@ -4,8 +4,15 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   images: {
-    domains: ['localhost', 'www.localroofernearme.co.uk'],
     remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.localroofernearme.co.uk'
+      },
       {
         protocol: 'https',
         hostname: '**.localroofernearme.co.uk'

@@ -99,10 +99,10 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
                   ))}
                 </div>
                 <a 
-                  href={area.buttonLink || area.ctaLink} 
+                  href={area.ctaLink || '/contact'} 
                   className="inline-flex items-center text-white hover:text-gray-200 transition-colors"
                 >
-                  <span>{area.buttonText || area.ctaText || "Learn more"}</span>
+                  <span>{area.ctaText || "Learn more"}</span>
                   <svg 
                     className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" 
                     fill="none" 
