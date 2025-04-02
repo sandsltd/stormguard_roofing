@@ -388,25 +388,25 @@ export default async function BlogPost({
                 <h3 className="text-xl font-bold p-4 border-b bg-gray-50 text-gray-800">Categories</h3>
                 <ul className="divide-y divide-gray-100">
                   <li className="hover:bg-gray-50 transition-colors">
-                    <Link href="/blog/category/roof-repairs" className="flex justify-between p-4 text-gray-800">
+                    <Link href="/blog" className="flex justify-between p-4 text-gray-800">
                       <span>Roof Repairs</span>
                       <span className="bg-red-100 text-red-700 px-2.5 py-0.5 rounded-full text-sm font-medium">12</span>
                     </Link>
                   </li>
                   <li className="hover:bg-gray-50 transition-colors">
-                    <Link href="/blog/category/installation" className="flex justify-between p-4 text-gray-800">
+                    <Link href="/blog" className="flex justify-between p-4 text-gray-800">
                       <span>Installation</span>
                       <span className="bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full text-sm font-medium">8</span>
                     </Link>
                   </li>
                   <li className="hover:bg-gray-50 transition-colors">
-                    <Link href="/blog/category/maintenance" className="flex justify-between p-4 text-gray-800">
+                    <Link href="/blog" className="flex justify-between p-4 text-gray-800">
                       <span>Maintenance</span>
                       <span className="bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full text-sm font-medium">15</span>
                     </Link>
                   </li>
                   <li className="hover:bg-gray-50 transition-colors">
-                    <Link href="/blog/category/emergency" className="flex justify-between p-4 text-gray-800">
+                    <Link href="/blog" className="flex justify-between p-4 text-gray-800">
                       <span>Emergency Repairs</span>
                       <span className="bg-amber-100 text-amber-700 px-2.5 py-0.5 rounded-full text-sm font-medium">5</span>
                     </Link>
