@@ -3,12 +3,12 @@
     "name": "Storm Guard Roofing",
     "phone": "07765197450",
     "email": "info@saunders-simmons.co.uk",
-    "address": "Grest Wyrley, Walsall",
+    "address": "Great Wyrley, Cannock",
     "logo": "/images/logo/saunders_simmons_ltd.png",
-    "tagline": "Reliable Roofing, Built on 18 Years of Experience",
+    "tagline": "Cannock's Most Reliable Roofer with 18 Years of Experience",
     "establishedYear": "2007",
-    "description": "Based in Great Wyrley and covering a 20-mile radius including Telford, Dudley, Tamworth, and Stoke-on-Trent, we bring over 18 years of experience to every job. From full roof replacements and emergency repairs to specialised installations like rubber, felt, slate, and fibreglass roofing, we’ve got every angle covered. Whether it’s a dormer window, chimney repair, or a full warm roof construction – we deliver professional results, high standards, and complete peace of mind.",
-    "mission": "Our mission is to provide high-quality, long-lasting roofing solutions with honesty, professionalism, and care – protecting homes and businesses across the West Midlands, one roof at a time.",
+    "description": "As the leading roofer in Cannock, we service a 20-mile radius including Telford, Dudley, Tamworth, and Stoke-on-Trent, bringing over 18 years of experience to every job. From full roof replacements and emergency repairs to specialised installations like rubber, felt, slate, and fibreglass roofing, we've got every angle covered. Whether it's a dormer window, chimney repair, or a full warm roof construction – we deliver professional results, high standards, and complete peace of mind for property owners throughout Cannock and surrounding areas.",
+    "mission": "Our mission is to provide high-quality, long-lasting roofing solutions with honesty, professionalism, and care – protecting homes and businesses across Staffordshire, one roof at a time.",
     "hero": "/images/roofers/roofer_fixing_tile_on_roof.png",
     "about": {
       "image": "/images/roofers/roofer_team.jpg"
@@ -16,7 +16,7 @@
     "coreValues": [
       {
         "title": "Trust",
-        "description": "We’ve built our reputation over 18 years by being honest, dependable, and delivering what we promise."
+        "description": "We've built our reputation over 18 years by being honest, dependable, and delivering what we promise."
       },
       {
         "title": "Quality Workmanship",
@@ -24,7 +24,7 @@
       },
       {
         "title": "Customer Commitment ",
-        "description": "From the first call to the final clean-up, we treat every property like it’s our own and every customer like a neighbour.\n"
+        "description": "From the first call to the final clean-up, we treat every property like it's our own and every customer like a neighbour.\n"
       }
     ],
     "team": [
@@ -62,135 +62,158 @@
     },
     "features": [
       {
-        "title": "All Roofing Types Covered",
-        "description": "From flat roofs and pitched roofs to slate, felt, and rubber installations – we’ve got the skills and experience to handle it all.\n\n",
-        "icon": "shield-check"
+        "title": "Professional Roofer in Cannock",
+        "description": "As Cannock's trusted roofing company, we deliver expert roofing services with attention to detail and quality craftsmanship. Our dedicated team of professional roofers brings over 18 years of experience to every project in Cannock.",
+        "icon": "shield-check",
+        "learnMoreLink": "/services"
       },
       {
-        "title": "Emergency Roofing Service",
-        "description": "When the unexpected happens, we’re ready. Fast response times and reliable fixes when you need them most.",
-        "icon": "star"
+        "title": "Fully Insured Specialists",
+        "description": "We're fully insured roofing specialists with comprehensive coverage, giving you complete peace of mind when we work on your property. Our professional standards ensure your Cannock property is in safe hands.",
+        "icon": "star",
+        "learnMoreLink": "/about"
       },
       {
-        "title": "18 Years of Experience",
-        "description": "A proven track record built on nearly two decades of hands-on roofing across the West Midlands.",
-        "icon": "check-circle"
+        "title": "Complete Roofing Services",
+        "description": "We provide a full spectrum of roofing solutions in Cannock including pitched and flat roofs, leadwork, dormers, skylights, chimney work, rubber roofing, fiberglass installations, and emergency repairs for all property types.",
+        "icon": "home",
+        "learnMoreLink": "/services"
+      },
+      {
+        "title": "Emergency Roof Repairs",
+        "description": "When you need urgent help, our emergency roof repair service responds quickly throughout Cannock. We address leaks, storm damage, and other unexpected issues to protect your property.",
+        "icon": "bolt",
+        "learnMoreLink": "/services"
+      },
+      {
+        "title": "Free, Detailed Quotes",
+        "description": "We provide transparent, no-obligation quotes for all roofing projects in Cannock. Our detailed estimates break down costs for materials and labor with no hidden charges.",
+        "icon": "document-text",
+        "learnMoreLink": "/contact"
+      },
+      {
+        "title": "Fully Insured Workmanship",
+        "description": "All our roofing work in Cannock is fully insured and backed by our quality guarantee. We prioritize safety and excellence on every project, giving you complete peace of mind.",
+        "icon": "check-badge",
+        "learnMoreLink": "/about"
       }
     ],
     "services": [
       {
-        "title": "Roof Installation",
-        "description": "Professional installation of new roofs by our team of certified experts. ",
-        "image": "/images/roofers/roofer_installing_new_roof.png",
+        "title": "Pitched Roof Services",
+        "description": "Professional pitched roof installation, repair, and replacement services from Cannock's trusted roofers. We work with slate, tile, and ridged systems, providing comprehensive solutions including dry verge and dry ridge installations for complete weather protection.",
+        "image": "/images/roofers/roofer_installing_roofing_tiles.png",
         "features": [
-          "Certified installation technicians",
-          "Premium materials with manufacturer warranties",
-          "Energy-efficient solutions",
-          "Proper ventilation and insulation",
-          "Clean site management and thorough cleanup"
+          "Slate & tiled roof installation",
+          "Ridged tiles installation",
+          "Dry verge & dry ridge systems",
+          "Complete roof replacements",
+          "Moss removal treatments"
         ]
       },
       {
-        "title": "Roof Repairs",
-        "description": "Swift and reliable repair services for all types of roofing issues.",
-        "image": "/images/roofers/roofer_repairing_roof.png",
-        "features": [
-          "Emergency repair services available",
-          "Comprehensive leak detection",
-          "Shingle replacement and restoration",
-          "Flashing and vent repair",
-          "Storm damage remediation"
-        ]
-      },
-      {
-        "title": "Roof Inspections",
-        "description": "Thorough roof inspections by our experienced professionals.",
-        "image": "/images/roofers/roofer_on_roof.png",
-        "features": [
-          "Detailed roof condition reports",
-          "Moisture and leak detection",
-          "Structural integrity assessment",
-          "Drainage system evaluation",
-          "Maintenance recommendations"
-        ]
-      },
-      {
-        "title": "Roof Maintenance",
-        "description": "Proactive maintenance programs designed to maximize your roof's lifespan and performance. Our scheduled maintenance services include debris removal, gutter cleaning, moss treatment, minor repairs, and weatherproofing. Regular maintenance prevents unexpected issues, extends roof longevity, and ensures your warranty remains valid while protecting your investment.",
-        "image": "/images/roofers/roofer_removing_damaged_tiles.png",
-        "features": [
-          "Seasonal inspection and cleaning",
-          "Gutter and downspout maintenance",
-          "Moss and algae prevention treatments",
-          "Minor repair identification and resolution",
-          "Weatherproofing and sealant application"
-        ]
-      },
-      {
-        "title": "Gutter Services",
-        "description": "Expert installation, repair, and maintenance of guttering systems essential for protecting your property from water damage. Our specialists properly size, slope, and secure gutters and downspouts to efficiently channel water away from your foundation. We offer seamless gutter options, gutter guards, and complete rainwater management solutions customized for your specific property needs.",
+        "title": "Flat Roof Solutions",
+        "description": "Expert flat roof installation and repair services from specialists who work with multiple flat roofing systems. We offer EPDM rubber, felt, GRP fiberglass, single ply membrane, and hot melt solutions for residential and commercial properties in Cannock.",
         "image": "/images/roofers/roofer_installing_felt_tiles.png",
         "features": [
-          "Seamless gutter installation",
-          "Gutter repair and realignment",
-          "Downspout optimization",
-          "Gutter guard installation",
-          "Complete rainwater management systems"
+          "EPDM rubber roofing",
+          "GRP fiberglass roofing",
+          "Felt roofing systems",
+          "Single ply membrane installation",
+          "Liquid plastic & sealoflex options"
         ]
       },
       {
-        "title": "Emergency Roofing",
-        "description": "24/7 emergency response services for unexpected roof damage caused by storms, fallen debris, or sudden failures. Our rapid response team quickly secures your property to prevent further damage, provides temporary solutions where needed, and develops plans for permanent repairs. We work directly with insurance companies to streamline the claims process during these stressful situations.",
-        "image": "/images/roofers/roofer_repairing_tiles.png",
+        "title": "Chimney & Leadwork",
+        "description": "Comprehensive chimney installation, repair and maintenance services alongside professional leadwork. Our team addresses all chimney issues including rebuilding, repointing, flashing repairs, cowling installation, and weatherproofing for complete protection.",
+        "image": "/images/roofers/hammering_nail_roof.png",
         "features": [
-          "24/7 rapid response team",
-          "Temporary weatherproofing",
-          "Storm damage assessment",
-          "Insurance claim assistance",
-          "Priority scheduling for permanent repairs"
+          "Chimney installation & rebuilding",
+          "Cowling installation & repair",
+          "Expert leadwork installation",
+          "Flashing repairs & weatherproofing",
+          "Chimney maintenance services"
+        ]
+      },
+      {
+        "title": "Roof Windows & Dormers",
+        "description": "Professional installation of roof windows, skylights, dormers, and roof lights to enhance natural lighting in your property. Our specialists ensure proper fitting, insulation, and weatherproofing for all roof apertures with energy-efficient options available.",
+        "image": "/images/roofers/roofer_installing.png",
+        "features": [
+          "Dormer window installation",
+          "Roof window fitting & repair",
+          "Skylight & roof light solutions",
+          "Polycarbonate roofing installation",
+          "Energy efficient glass options"
+        ]
+      },
+      {
+        "title": "Emergency Repair Services",
+        "description": "Fast response emergency roof repair services for leaks, storm damage, and unexpected issues throughout Cannock. Our professional team provides thorough inspections, effective repairs, and preventative measures to protect your property from further damage.",
+        "image": "/images/roofers/roofer_repairing_roof_with_harness.png",
+        "features": [
+          "24/7 emergency call-out service",
+          "Storm damage assessment & repair",
+          "Leak detection & resolution",
+          "Comprehensive roof inspection reports",
+          "Temporary & permanent weatherproofing"
         ]
       },
       {
         "title": "Commercial Roofing",
-        "description": "Specialized roofing solutions for commercial buildings focusing on durability, energy efficiency, and minimal business disruption. Our commercial services include flat roof systems, metal roofing, TPO/EPDM membranes, and preventative maintenance programs. We understand the unique requirements of commercial properties and provide tailored solutions that protect your business investments.",
-        "image": "/images/roofers/roofer_installing_roofing_tiles.png",
+        "description": "Specialized commercial roofing solutions including warm roof construction, asphalt roofing, and large-scale flat roof installations. Our experienced team understands the specific requirements for business properties in Cannock and provides services with minimal disruption.",
+        "image": "/images/roofers/aerial_roofer_on_roof_repairing.png",
         "features": [
-          "Flat roof and membrane systems",
-          "Metal and industrial roofing solutions",
-          "Energy-efficient cool roof options",
-          "Scheduled maintenance programs",
-          "Building code and regulation compliance"
+          "Warm roof construction",
+          "Asphalt roofing installation & repair",
+          "Commercial flat roofing systems",
+          "Industrial & warehouse roofing",
+          "Scheduled maintenance programs"
         ]
       }
     ],
     "testimonials": [
       {
-        "quote": "Exceptional service from start to finish. Highly recommended!",
-        "author": "John Smith",
-        "role": "Homeowner",
-        "text": "Test"
+        "quote": "Very professional, very polite and the quality of their work is outstanding. They took their time and didn't rush to finish the job. Job was done at the highest standard. Very happy with all the work.",
+        "author": "Verified Customer",
+        "role": "Whole Roof Replacement, WS7"
       },
       {
-        "quote": "Professional team that delivered exactly what they promised.",
-        "author": "Sarah Johnson",
-        "role": "Property Manager"
+        "quote": "Thank you StormGuard! Amos was prompt, honest and professional when he came to look at the job. Well prepared with a drone to review the area and was able to show me the problem. Booked in for the next day, he and his partner carried out the work expertly.",
+        "author": "Verified Customer",
+        "role": "Roof Repair, ST3"
       },
       {
-        "author": "Clive Jones",
-        "role": "Happyland, Cornwall",
-        "quote": "Great service, very happy!"
+        "quote": "Really pleased with the work done. Very efficient; gave clear information on the work to be done, easy to make arrangements for the date of work and how long it would take. Cleared up very well. Would highly recommend Amos and Stormguard.",
+        "author": "Verified Customer",
+        "role": "Roof Felt Replacement, WV6"
+      },
+      {
+        "quote": "Amos and his team were professional and did a great job repairing my roof. Would definitely recommend to anyone. Amos was trustworthy and reliable and did what he said he would do to get the job done as agreed. Very happy with the job and performed to a good quality.",
+        "author": "Verified Customer",
+        "role": "Roof Repair, DY4"
+      },
+      {
+        "quote": "Brilliant, speedy, friendly service, the team kept me informed throughout the process, and left the property nice and tidy afterwards.",
+        "author": "Verified Customer",
+        "role": "Roof Repairs and Refelting, WS12"
+      },
+      {
+        "quote": "Amos was very quick to reply to any messages and came the following day to check the roof and provide a quote. Very pleased with all work carried out and will use in the future for other planned work.",
+        "author": "Verified Customer",
+        "role": "Complete Roof Renovation, WS11"
       }
     ],
-    "heroTitle": "Profesional Roofing Solutions In Dorchester",
+    "heroTitle": "Professional Roofing Solutions In Cannock",
     "heroSubtitle": "Trusted roofers near you",
     "premiumHero": {
       "backgroundImage": "/images/roofers/roofer_fixing_tile_on_roof.png",
       "title": {
-        "line1": "Roofing",
-        "line2": "Reliability",
-        "line3": "Results"
+        "line1": "Trusted",
+        "line2": "Roofer in",
+        "line3": "Cannock"
       },
-      "subtitle": "Expert roofing services built on 18 years of trust, quality, and local pride.",
+      "subtitle": "Professional roofing services from the most experienced roofer in Cannock. Providing quality repairs, replacements, and installations with over 18 years of experience.",
       "ctaPrimary": {
         "text": "Get a Free Quote",
         "link": "/contact"
@@ -199,136 +222,185 @@
         "text": "Our Services",
         "link": "/services"
       },
-      "featureBadges": [
-        "Licensed & Insured",
-        "18+ Years Experience",
-        "Free Inspections",
-        "Emergency Service"
-      ]
+      "featureBadges": ["Fully Insured Specialists", "18+ Years Experience", "Free Roof Inspections", "Emergency Repairs"]
     },
     "servicesSection": {
-      "title": "Comprehensive Roofing Solutions",
-      "description": "From installation and repairs to maintenance and emergency services, our expert roofers provide a full range of professional roofing solutions for residential and commercial properties."
+      "title": "Complete Roofing Services in Cannock",
+      "description": "From pitched and flat roofs to specialist installations and emergency repairs, we offer a full spectrum of professional roofing solutions"
     },
     "servingAreasSection": {
-      "title": "Serving Walsall & Surrounding Areas",
-      "description": "Our roofing solutions are tailored to the specific climate challenges and architectural styles of Walsall and surrounding area. We understand the unique weather patterns and building requirements of the local area."
+      "title": "Trusted Roofer Serving Cannock",
+      "description": "Professional roofing services throughout Cannock and surrounding areas"
     },
     "servingAreas": [
       {
-        "name": "Walsall",
-        "description": "As Walsall's trusted roofing contractor, we understand the unique challenges that the local weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Walsall's diverse architectural styles.",
-        "image": "/images/areas/Walsall.jpg",
-        "tags": [
-          "Weather Resistant",
-          "Local Walsall Roofers",
-          "Energy Efficient"
-        ],
-        "ctaText": "Request a Free Quote",
-        "ctaLink": "/contact"
+        "name": "Cannock Town Centre",
+        "description": "Providing quality roofing services to homes and businesses in Cannock town centre. Our professional roofers deliver reliable repairs, maintenance, and installations to keep your property protected.",
+        "image": "/images/roofers/roofer_installing_roofing_tiles.png",
+        "tags": ["Roof Repairs", "Roof Replacement", "Flat Roofs", "Emergency Service"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "name": "West Bromwich ",
-        "description": "Nantwich homeowners trust our West Bromwich  roofers for traditional and modern roofing solutions. Our specialised materials and installation techniques help protect your home from the varied weather conditions of West Bromwich.",
-        "image": "/images/areas/nantwich.jpg",
-        "tags": [
-          "Traditional Style Compatible",
-          "Heritage Building Expertise",
-          "Local Weather Protection"
-        ],
-        "ctaText": "Get Your Free Quote",
-        "ctaLink": "/contact"
+        "name": "Hednesford",
+        "description": "Expert roofing solutions for Hednesford properties from Cannock's most trusted roofing company. We offer comprehensive roofing work, from minor repairs to complete replacements.",
+        "image": "/images/roofers/roofer_installing_orange_slate.png",
+        "tags": ["Chimney Repairs", "Roof Installation", "Guttering", "Roof Maintenance"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "name": "Dudley",
-        "description": "Serving Dudley with expert roofing solutions from our base in Walsall. Our team of experienced roofers specialises in both traditional and contemporary roofing styles, ensuring your property is well-protected against the local weather.",
-        "image": "/images/areas/sandbach.jpg",
-        "tags": [
-          "Experienced Dudley Roofers",
-          "Mixed Style Solutions",
-          "Comprehensive Protection"
-        ],
-        "ctaText": "Contact Us for a Quote",
-        "ctaLink": "/contact"
-      }
-    ],
-    "serviceAreasSection": {
-      "title": "Walsall Roofers Service Areas",
-      "subtitle": "Roofers in Walsall",
-      "description": "Walsall Roofers proudly serves homeowners and businesses throughout Walsall and the surrounding areas. Our expert local roofers provide top-quality roofing services across these areas."
-    },
-    "serviceAreas": [
-      {
-        "name": "Sutton Coldfield ",
-        "link": "/contact"
+        "name": "Heath Hayes",
+        "description": "Professional roofing services for Heath Hayes residents and businesses. Our team of reliable roofers provides quality workmanship on all roofing projects, large and small.",
+        "image": "/images/roofers/roofer_installing_felt_tiles.png",
+        "tags": ["Tile Replacement", "Flat Roofs", "Slate Roofing", "Insurance Work"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "name": "West Bromwich",
-        "link": "/contact"
-      },
-      {
-        "name": "Solihull",
-        "link": "/contact"
-      },
-      {
-        "name": "Dudley",
-        "link": "/contact"
-      },
-      {
-        "name": "Halesowen",
-        "link": "/contact"
-      },
-      {
-        "name": "Stourbridge",
-        "link": "/contact"
-      },
-      {
-        "name": "Smethwick",
-        "link": "/contact"
-      },
-      {
-        "name": "Tamworth",
-        "link": "/contact"
-      },
-      {
-        "name": "Cannock",
-        "link": "/contact"
-      },
-      {
-        "name": "Lichfield",
-        "link": "/contact"
-      },
-      {
-        "name": "Burntwood",
-        "link": "/contact"
+        "name": "Rugeley",
+        "description": "Comprehensive roofing services for Rugeley properties from our experienced team of professional roofers. We deliver reliable, high-quality roof repairs and installations.",
+        "image": "/images/roofers/roofer_repairing_roof.png",
+        "tags": ["Emergency Repairs", "Roof Replacement", "Commercial Roofing", "Domestic Roofing"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
         "name": "Great Wyrley",
-        "link": "/contact"
+        "description": "Quality roofing services for Great Wyrley residents by professional roofers with local knowledge. We provide complete roof solutions including repairs, maintenance, and installations.",
+        "image": "/images/roofers/roofer_fixing_tile_on_roof.png",
+        "tags": ["Pitched Roofing", "EPDM Rubber Roofing", "Leadwork", "Roof Inspections"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
         "name": "Cheslyn Hay",
-        "link": "/contact"
+        "description": "Reliable roofing solutions for Cheslyn Hay homes and businesses. Our expert roofers deliver professional services from minor repairs to complete roof replacements.",
+        "image": "/images/roofers/roofer_kneeling.png",
+        "tags": ["Roof Maintenance", "Tile Repairs", "Chimney Work", "Waterproofing"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "name": "Telford",
-        "link": "/contact"
+        "name": "Norton Canes",
+        "description": "Professional roofing services for Norton Canes properties. We provide high-quality repairs, maintenance, and installations with attention to detail and exceptional workmanship.",
+        "image": "/images/roofers/hammering_nail_roof.png",
+        "tags": ["Slate Roofing", "GRP Fiberglass", "Roof Windows", "Emergency Repairs"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "name": "Tamworth",
-        "link": "/contact"
+        "name": "Penkridge",
+        "description": "Complete roofing solutions for Penkridge residents and businesses. Our team delivers professional installations, repairs and maintenance with quality materials and craftsmanship.",
+        "image": "/images/roofers/roofer_on_roof.png",
+        "tags": ["Commercial Roofing", "Tile Replacement", "Roof Inspections", "Lead Flashing"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
       },
       {
-        "name": "Stoke-on-Trent",
-        "link": "/contact"
+        "name": "Bridgtown",
+        "description": "Expert roofing services for Bridgtown properties from Cannock's trusted roofing specialists. We provide professional solutions for all residential and commercial roofing needs.",
+        "image": "/images/roofers/aerial_roofer_on_roof_repairing.png",
+        "tags": ["Flat Roofing", "Ridge Tiles", "Velux Windows", "Gutter Maintenance"],
+        "buttonText": "Get a Free Quote",
+        "buttonLink": "/contact"
+      }
+    ],
+    "serviceAreasSection": {
+      "title": "Roofing Services Throughout Cannock",
+      "subtitle": "Your Local Roofer in Cannock & Surrounding Areas",
+      "description": "We provide professional roofing services across Cannock and neighboring communities. As a reliable roofing company based in the area, we understand the local architecture and weather challenges."
+    },
+    "serviceAreas": [
+      {
+        "name": "Cannock",
+        "link": "/locations/cannock"
+      },
+      {
+        "name": "Hednesford",
+        "link": "/locations/hednesford"
+      },
+      {
+        "name": "Heath Hayes",
+        "link": "/locations/heath-hayes"
+      },
+      {
+        "name": "Rugeley",
+        "link": "/locations/rugeley"
+      },
+      {
+        "name": "Bridgtown",
+        "link": "/locations/bridgtown"
+      },
+      {
+        "name": "Cheslyn Hay",
+        "link": "/locations/cheslyn-hay"
+      },
+      {
+        "name": "Great Wyrley",
+        "link": "/locations/great-wyrley"
+      },
+      {
+        "name": "Huntington",
+        "link": "/locations/huntington"
+      },
+      {
+        "name": "Norton Canes",
+        "link": "/locations/norton-canes"
+      },
+      {
+        "name": "Penkridge",
+        "link": "/locations/penkridge"
+      },
+      {
+        "name": "Brereton",
+        "link": "/locations/brereton"
+      },
+      {
+        "name": "Wimblebury",
+        "link": "/locations/wimblebury"
       }
     ],
     "featuresSection": {
-      "title": "Why Choose Us",
-      "description": "With over 18 years in the trade, we’ve built a reputation for reliable service, quality workmanship, and honest advice. From minor repairs to full roof replacements, we handle every job with care and attention to detail. We cover all aspects of roofing – including flat roofs, slate and tiled roofing, chimney work, skylights, and emergency callouts.",
+      "title": "Why Choose StormGuard as Your Roofer in Cannock",
+      "description": "With over 18 years as Cannock's trusted roofer, we've built a reputation for reliable service, quality workmanship, and honest advice. From minor repairs to full roof replacements, we handle every job with care and attention to detail. We cover all aspects of roofing – including flat roofs, slate and tiled roofing, chimney work, skylights, and emergency callouts.",
       "ctaText": "View All Our Services",
       "ctaLink": "/services"
-    }
+    },
+    "faqSection": {
+      "title": "FAQ About Our Roofer Services in Cannock",
+      "description": "Find answers to common questions about our professional roofing services in Cannock"
+    },
+    "faqs": [
+      {
+        "question": "What makes StormGuard the best roofer in Cannock?",
+        "answer": "As the premier roofer in Cannock, StormGuard combines 18+ years of experience with full insurance coverage, professional qualifications, and countless positive reviews from satisfied customers. Our roofing team brings local knowledge, expert craftsmanship, and responsive service to every project, whether it's an emergency repair or complete roof replacement. We're deeply connected to the Cannock community and committed to delivering exceptional roofing solutions that protect homes and businesses throughout the area."
+      },
+      {
+        "question": "Why should I choose a local roofer in Cannock?",
+        "answer": "A local roofer in Cannock understands the specific roofing challenges in the area, can respond quickly for emergency repairs, and has established relationships with local suppliers for quality materials. At StormGuard Roofing, we've been serving Cannock for over 18 years, delivering reliable roofing work while contributing to the local community."
+      },
+      {
+        "question": "What qualifications should a professional roofer in Cannock have?",
+        "answer": "When hiring a roofer in Cannock, look for proper insurance coverage, proven experience, professional certifications, and positive reviews from local customers. Our team at StormGuard Roofing meets all these requirements and more, ensuring your roofing project is in safe, capable hands."
+      },
+      {
+        "question": "How do I know if I need a roof repair or complete replacement?",
+        "answer": "Signs that you might need roofing work include missing or damaged tiles, leaks, sagging areas, increased energy bills, and a roof that's over 20-25 years old. Our professional roofers can conduct a thorough inspection of your Cannock property and provide honest recommendations for repair work or full replacement based on the condition of your roof."
+      },
+      {
+        "question": "Do you provide quotes for roofing projects in Cannock?",
+        "answer": "Yes, we provide free, detailed quotes for all roofing projects in Cannock and surrounding areas. Our quotes include a breakdown of materials, labor costs, and project timeline. We believe in transparent pricing with no hidden charges, allowing you to make an informed decision about your roofing project."
+      },
+      {
+        "question": "What types of roofing services do you offer in Cannock?",
+        "answer": "We offer an extensive range of roofing services in Cannock including pitched roof installation and repair, flat roofing systems (EPDM rubber, felt, fiberglass, single ply membrane), leadwork installation, chimney repairs and installation, roof windows and dormers, emergency repairs, and commercial roofing solutions. Our professional team is experienced with all roofing types including slate, tile, ridged systems, dry verge and ridge, asphalt, and warm roof construction for both residential and commercial properties."
+      },
+      {
+        "question": "How long does a typical roofing project take in Cannock?",
+        "answer": "Project timelines vary depending on the scope of work, property size, and weather conditions. Small repairs may take 1-2 days, while complete roof replacements typically take 1-2 weeks. At StormGuard Roofing, we work efficiently while maintaining high-quality standards on every roofing project in Cannock."
+      }
+    ]
   },
   "about": {
     "title": "About Us",
@@ -371,121 +443,32 @@
   },
   "services": {
     "hero": {
-      "title": "Our Professional",
-      "subtitle": "Comprehensive solutions tailored to meet your needs with quality and reliability!!",
-      "subtitle2": "Solutions",
+      "title": "Professional Roofing",
+      "subtitle": "Quality roofing services in Cannock",
+      "subtitle2": "Services",
       "backgroundImage": "/images/roofers/roofer_installing_roofing_tiles.png",
-      "badge": "Expert Solutions"
-    },
-    "services": [
-      {
-        "title": "Roof Installation",
-        "description": "Professional installation of new roofs by our team of certified experts. We use only premium materials and follow industry-best practices to ensure your new roof is durable, energy-efficient, and aesthetically pleasing. Our installations include comprehensive waterproofing and proper ventilation solutions tailored to your specific property requirements.",
-        "image": "/images/roofers/roofer_installing_new_roof.png",
-        "features": [
-          "Certified installation technicians",
-          "Premium materials with manufacturer warranties",
-          "Energy-efficient solutions",
-          "Proper ventilation and insulation",
-          "Clean site management and thorough cleanup"
-        ]
+      "badge": "ROOFER CANNOCK",
+      "ctaPrimary": {
+        "text": "Get a Free Quote",
+        "link": "/contact"
       },
-      {
-        "title": "Roof Repa",
-        "description": "Swift and reliable repair services for all types of roofing issues. Our experienced technicians quickly identify and fix leaks, damaged shingles, flashing problems, and structural concerns before they escalate into major problems. We provide transparent assessments and lasting solutions that extend the life of your existing roof while maintaining its integrity and appearance.",
-        "image": "/images/roofers/roofer_repairing_roof.png",
-        "features": [
-          "Emergency repair services available",
-          "Comprehensive leak detection",
-          "Shingle replacement and restoration",
-          "Flashing and vent repair",
-          "Storm damage remediation"
-        ]
-      },
-      {
-        "title": "Roof Inspections",
-        "description": "Thorough roof inspections by our experienced professionals help identify potential issues before they become costly problems. Our detailed assessment evaluates structural integrity, material condition, drainage systems, and signs of water damage. We provide comprehensive reports with photographic evidence and clear recommendations to maintain your roof's optimal performance.",
-        "image": "/images/roofers/roofer_on_roof.png",
-        "features": [
-          "Detailed roof condition reports",
-          "Moisture and leak detection",
-          "Structural integrity assessment",
-          "Drainage system evaluation",
-          "Maintenance recommendations"
-        ]
-      },
-      {
-        "title": "Roof Maintenance",
-        "description": "Proactive maintenance programs designed to maximize your roof's lifespan and performance. Our scheduled maintenance services include debris removal, gutter cleaning, moss treatment, minor repairs, and weatherproofing.",
-        "image": "/images/roofers/roofer_removing_damaged_tiles.png",
-        "features": [
-          "Seasonal inspection and cleaning",
-          "Gutter and downspout maintenance",
-          "Moss and algae prevention treatments",
-          "Minor repair identification and resolution",
-          "Weatherproofing and sealant application"
-        ]
-      },
-      {
-        "title": "Gutter Services",
-        "description": "Expert installation, repair, and maintenance of guttering systems essential for protecting your property from water damage. Our specialists properly size, slope, and secure gutters and downspouts to efficiently channel water away from your foundation. We offer seamless gutter options, gutter guards, and complete rainwater management solutions customized for your specific property needs.",
-        "image": "/images/roofers/roofer_installing_felt_tiles.png",
-        "features": [
-          "Seamless gutter installation",
-          "Gutter repair and realignment",
-          "Downspout optimization",
-          "Gutter guard installation",
-          "Complete rainwater management systems"
-        ]
-      },
-      {
-        "title": "Emergency Roofing",
-        "description": "24/7 emergency response services for unexpected roof damage caused by storms, fallen debris, or sudden failures. Our rapid response team quickly secures your property to prevent further damage, provides temporary solutions where needed, and develops plans for permanent repairs. We work directly with insurance companies to streamline the claims process during these stressful situations.",
-        "image": "/images/roofers/roofer_repairing_tiles.png",
-        "features": [
-          "24/7 rapid response team",
-          "Temporary weatherproofing",
-          "Storm damage assessment",
-          "Insurance claim assistance",
-          "Priority scheduling for permanent repairs"
-        ]
-      },
-      {
-        "title": "Commercial Roofing",
-        "description": "Specialized roofing solutions for commercial buildings focusing on durability, energy efficiency, and minimal business disruption. Our commercial services include flat roof systems, metal roofing, TPO/EPDM membranes, and preventative maintenance programs. We understand the unique requirements of commercial properties and provide tailored solutions that protect your business investments.",
-        "image": "/images/roofers/roofer_installing_roofing_tiles.png",
-        "features": [
-          "Flat roof and membrane systems",
-          "Metal and industrial roofing solutions",
-          "Energy-efficient cool roof options",
-          "Scheduled maintenance programs",
-          "Building code and regulation compliance"
-        ]
-      },
-      {
-        "title": "Roof Replacement",
-        "description": "Complete roof replacement services with a wide selection of high-quality materials to enhance your property's protection, efficiency, and curb appeal. Our methodical process includes detailed assessment, careful removal of old materials, structural repairs, and precise installation of your chosen roofing system. We handle all permitting requirements and ensure proper disposal of old materials.",
-        "image": "/images/roofers/roofer_fixing_tile_on_roof.png",
-        "features": [
-          "Wide selection of premium materials",
-          "Architectural and designer shingle options",
-          "Complete removal and structural repair",
-          "Enhanced insulation and ventilation",
-          "Extended manufacturer warranties"
-        ]
+      "ctaSecondary": {
+        "text": "View All Services",
+        "link": "#services"
       }
-    ],
+    },
+    "services": [],
     "cta": {
-      "title": "Ready to Start Your Roofing Project?",
-      "description": "Contact us today for a free consultation and estimate. Our team of experts is ready to help you with all your roofing needs.",
-      "buttonText": "Contact Us Now",
+      "title": "Comprehensive Roofing Services for Every Need in Cannock",
+      "description": "With over 40 different roofing services available, our professional roofers are ready to help with all your Cannock roofing needs. Contact us today for a free, no-obligation quote on any roofing project.",
+      "buttonText": "Contact Us Today",
       "buttonLink": "/contact"
     }
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch with Our Team",
-    "address": "Walsall, West Midlands",
+    "address": "Cannock, Staffordshire",
     "phone": "07765197450",
     "email": "Tysonclee@gmail.com",
     "hours": "Mon-Fri: 8:00 AM - 6:00 PM",
@@ -534,9 +517,9 @@
       "submitButtonText": "Send Message"
     },
     "formTitle": "Get In Touch With Our Team",
-    "formDescription": "Request a free quote or discuss your roofing needs with our expert team serving Walsall and surrounding areas.",
+    "formDescription": "Request a free quote or discuss your roofing needs with our expert team serving Cannock and surrounding areas.",
     "heroImage": "images/roofers/roofer_installing_roofing_tiles.png",
-    "mapUrl": ""
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2419.64970353181!2d-2.019502!3d52.6663045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709f244c7da803%3A0x58ca0e6c52c34a3!2sStormguard%20roofing!5e0!3m2!1sen!2suk!4v1743602732088!5m2!1sen!2suk"
   },
   "socials": {
     "facebook": "",
@@ -584,8 +567,59 @@
     ],
     "ctaButton": {
       "text": "Get a Free Quote",
-      "link": "/quote",
+      "link": "/contact",
       "show": true
     }
+  },
+  "seo": {
+    "global": {
+      "siteTitle": "StormGuard Roofing | Professional Roofer Cannock",
+      "siteDescription": "Trusted roofer in Cannock providing professional roofing services, repairs, and replacements with high-quality craftsmanship and reliable service.",
+      "siteTitleTemplate": "%s | StormGuard Roofing - Cannock",
+      "defaultOgImage": "/images/og-image.jpg",
+      "keywords": "roofer cannock, professional roofing, roof repair, fully insured specialists, roofing company, reliable roofer, roofing work, flat roof, repairs and replacement, multiple quotes, cannock roofing, roofing project, quality roofing solutions, emergency roof repair",
+      "googleAnalyticsId": "G-EQGPP8R7GE",
+      "ogType": "website",
+      "favicon": {
+        "ico": "/favicon.ico",
+        "png": "/favicon.png"
+      }
+    },
+    "pages": {
+      "home": {
+        "title": "Expert Roofer Cannock | Quality Roofing Services & Repairs",
+        "description": "Looking for a reliable roofer in Cannock? StormGuard offers professional roofing services, repairs and replacements. Free quotes, emergency repairs & quality roofing solutions with 18+ years experience.",
+        "keywords": "roofer cannock, roof repair, roofing company, reliable roofer, roofing work, professional roofing, quality roofing, flat roof, repairs and replacement, cannock roofing, federation of roofing contractors",
+        "ogImage": "/images/home-og.jpg",
+        "ogType": "website"
+      },
+      "about": {
+        "title": "About StormGuard | Professional Roofer Cannock Since 2007",
+        "description": "Learn about StormGuard Roofing, Cannock's trusted roofer with 18+ years experience. Quality workmanship, fully insured professional roofing services and repairs.",
+        "keywords": "roofer cannock, professional roofing, about stormguard, roofing company history, reliable roofer",
+        "ogImage": "/images/about-og.jpg"
+      },
+      "services": {
+        "title": "Roofing Services Cannock | Repairs, Replacements & Installation",
+        "description": "Professional roofing services in Cannock including repairs, replacements, flat roofs and emergency repairs. Quality workmanship from Cannock's trusted roofers.",
+        "keywords": "roofer cannock, roofing services, roof repair, roof installation, flat roof, chimney repairs, emergency repairs, professional roofing",
+        "ogImage": "/images/services-og.jpg"
+      },
+      "contact": {
+        "title": "Contact StormGuard | Professional Roofer Cannock",
+        "description": "Contact Cannock's trusted roofing professionals for free quotes, emergency repairs and professional roofing services. Call 07765197450 for immediate assistance.",
+        "keywords": "roofer cannock, contact roofer, roofing quotes, roofing estimates, professional roofing, roof repair",
+        "ogImage": "/images/contact-og.jpg"
+      }
+    }
+  },
+  "introduction": {
+    "title": "Trusted Roofer in Cannock Since 2007",
+    "subtitle": "Professional roofing services with quality craftsmanship",
+    "description": "StormGuard Roofing is Cannock's leading roofing company, delivering exceptional roofing work for over 18 years. As the most reliable roofer in Cannock, we specialize in all aspects of roofing, including repairs and replacement, flat roof installations, and emergency repairs. Our fully insured, professional team ensures we provide high-quality workmanship on every project. From minor repairs to complete roof replacements, our team of professional roofers brings experience, reliability, and attention to detail to every job in Cannock.",
+    "image": "/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg",
+    "yearFounded": "2007",
+    "projectsCompleted": "1,500+",
+    "satisfaction": "99%"
   }
 }

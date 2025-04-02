@@ -8,11 +8,11 @@ interface IntroductionSectionProps {
 
 export default function IntroductionSection({ content }: IntroductionSectionProps) {
   const introduction = content.homepage.introduction || {
-    title: "Walsall's Most Trusted",
+    title: "Cannock's Most Trusted",
     subtitle: "Roofing Specialists",
-    description: "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service.",
-    image: "/images/roofers/team_of_roofers.jpg",
-    yearFounded: "2010",
+    description: "With over a decade of experience serving Cannock and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service.",
+    image: "/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg",
+    yearFounded: "2007",
     projectsCompleted: "500+",
     satisfaction: "98%"
   };
@@ -37,7 +37,7 @@ export default function IntroductionSection({ content }: IntroductionSectionProp
                 <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
                   <Image 
                     src={introduction.image} 
-                    alt="Professional Roofing Team" 
+                    alt="Professional Roofing Team in Cannock - StormGuard" 
                     fill
                     className="object-cover object-center transform transition-transform duration-500 hover:scale-105"
                   />

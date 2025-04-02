@@ -47,13 +47,13 @@ export default function ServiceAreaGallery({ content, images }: ServiceAreaGalle
           <div className="md:max-w-xl mb-8 md:mb-0">
             <div className="inline-block rounded-full px-4 py-2 text-sm font-medium shadow-sm mb-4" 
                  style={{ backgroundColor: primaryColorLight, color: primaryColor }}>
-              Our Work
+              Cannock Roofer Portfolio
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              View Our Recent Projects
+              View Our Roofing Projects in Cannock
             </h2>
             <p className="text-lg text-gray-700">
-              Explore our recent roofing projects completed across Walsall the West Midlands. Our gallery showcases our quality craftsmanship and attention to detail.
+              Explore our recent roofing projects completed across Cannock and Staffordshire. Our gallery showcases our quality craftsmanship and attention to detail.
             </p>
           </div>
           <Link href="/portfolio" className="inline-flex items-center px-6 py-3 rounded-lg border-2 font-medium transition-colors hover:bg-gray-100" 
@@ -73,7 +73,7 @@ export default function ServiceAreaGallery({ content, images }: ServiceAreaGalle
               <div className="relative w-full h-full transform transition-transform duration-500 group-hover:scale-105">
                 <Image
                   src={image}
-                  alt={`Roofing project ${index + 1}`}
+                  alt={`Roofer Cannock project ${index + 1} - StormGuard Roofing`}
                   fill
                   className="object-cover"
                 />
@@ -89,7 +89,7 @@ export default function ServiceAreaGallery({ content, images }: ServiceAreaGalle
               
               {/* Location tag - you could make this dynamic based on image metadata if available */}
               <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-white font-medium text-lg">Walsall Project</div>
+                <div className="text-white font-medium text-lg">Cannock Project</div>
                 <div className="text-white text-opacity-80 text-sm">Completed {new Date().getFullYear()}</div>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function ServiceAreaGallery({ content, images }: ServiceAreaGalle
             <div className="relative w-full h-full">
               <Image
                 src={activeImage}
-                alt="Enlarged project image"
+                alt="Professional roofer Cannock project - StormGuard"
                 width={1200}
                 height={800}
                 className="mx-auto object-contain max-h-[85vh]"

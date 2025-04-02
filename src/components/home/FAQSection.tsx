@@ -37,8 +37,8 @@ export default function FAQSection({ content }: FAQSectionProps) {
       answer: "Yes, we offer emergency roof repair services for situations that require immediate attention, such as storm damage or leaks that are causing damage to your property. Our emergency team is available to respond quickly to protect your home from further damage. Please contact our emergency line for immediate assistance."
     },
     {
-      question: "What roofing materials do you recommend for Walsall homes?",
-      answer: "For homes in Walsall, we typically recommend materials that can withstand the local weather conditions, which include frequent rainfall and occasional strong winds. Clay and concrete tiles are popular options as they provide excellent durability and weather resistance. Slate is another premium option that provides superior longevity. For more modern properties, high-quality asphalt shingles or metal roofing systems can provide good protection while being more cost-effective."
+      question: "What roofing materials do you recommend for Cannock homes?",
+      answer: "For homes in Cannock, we typically recommend materials that can withstand the local weather conditions, which include frequent rainfall and occasional strong winds. Clay and concrete tiles are popular options as they're durable and complement the architectural styles in the area. We also offer high-quality slate options, which provide excellent longevity and a classic appearance. For flat roofs, we recommend modern EPDM or GRP fiberglass systems that provide superior waterproofing. During our free consultation, we'll assess your specific needs and recommend the most suitable materials for your Cannock property.",
     },
     {
       question: "How often should I have my roof inspected?",

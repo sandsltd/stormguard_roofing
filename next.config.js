@@ -3,6 +3,15 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  images: {
+    domains: ['localhost', 'www.localroofernearme.co.uk'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.localroofernearme.co.uk'
+      }
+    ]
+  },
   experimental: {
     optimizeCss: {
       // Enable CSS optimization with critters

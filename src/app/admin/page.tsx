@@ -410,13 +410,14 @@ const Admin: React.FC = () => {
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Phone</label>
+                    <div className="col-span-12 sm:col-span-4">
+                      <label htmlFor="business-phone" className="block text-sm font-medium text-gray-700">Business Phone</label>
                       <input
                         type="text"
                         value={content.business.phone}
                         onChange={(e) => handleContentChange('business.phone', e.target.value)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="e.g. 01234 567890"
                       />
                     </div>
                     <div>
@@ -881,8 +882,8 @@ const Admin: React.FC = () => {
                             title: "Walsall's Most Trusted",
                             subtitle: "Roofing Specialists",
                             description: "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service. From simple repairs to complete roof replacements, our team delivers superior results that stand the test of time.",
-                            image: "/images/roofers/team_of_roofers.jpg",
-                            yearFounded: "2010",
+                            image: "/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg",
+                            yearFounded: "2007",
                             projectsCompleted: "500+",
                             satisfaction: "98%"
                           })}
@@ -950,7 +951,7 @@ const Admin: React.FC = () => {
                                   value={content.homepage.introduction.yearFounded}
                                   onChange={(e) => handleContentChange('homepage.introduction.yearFounded', e.target.value)}
                                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  placeholder="e.g., 2010"
+                                  placeholder="e.g., 2007"
                                 />
                               </div>
                               <div>
@@ -2012,13 +2013,13 @@ const Admin: React.FC = () => {
                         <label className="block text-sm font-medium text-gray-700">Hero Background Image</label>
                         <input
                           type="text"
-                          value={content.contact.heroImage || '/images/roofers/team_of_roofers.jpg'}
+                          value={content.contact.heroImage || '/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg'}
                           onChange={(e) => handleContentChange('contact.heroImage', e.target.value)}
                           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="e.g. /images/roofers/team_of_roofers.jpg"
+                          placeholder="e.g. /images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg"
                         />
                         <p className="mt-1 text-sm text-gray-500">
-                          Enter the path to your hero background image. Available images are in the /images/roofers/ directory.
+                          Enter the path to your hero background image. Available images are in the /images/client-images/ directory.
                         </p>
                       </div>
 

@@ -72,12 +72,18 @@ export default function FeaturesSection({ content }: FeaturesSectionProps) {
               <h3 className="text-2xl font-bold mb-3 text-gray-800">{feature.title}</h3>
               <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               <div className="mt-6 pt-6 border-t border-gray-100">
-                <a href={feature.learnMoreLink || '#'} className="inline-flex items-center font-medium" style={{ color: primaryColor }}>
-                  {feature.learnMoreText || "Learn more"}
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
+                {feature.learnMoreLink && (
+                  <a 
+                    href={feature.learnMoreLink} 
+                    className="mt-4 inline-flex items-center text-sm font-medium transition-all hover:opacity-80 group"
+                    style={{ color: primaryColor }}
+                  >
+                    Learn more about our {feature.title.toLowerCase()} 
+                    <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           ))}

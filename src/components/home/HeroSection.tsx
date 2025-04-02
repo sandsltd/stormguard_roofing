@@ -14,7 +14,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
     title: {
       line1: 'Expert',
       line2: 'Roofing Services',
-      line3: 'In Dorchester'
+      line3: 'In Cannock'
     },
     subtitle: 'Professional roofing solutions with superior craftsmanship and unmatched customer service. We\'ve got you covered.',
     ctaPrimary: {
@@ -56,7 +56,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
         <div className="absolute inset-0">
           <Image
             src={premiumHero.backgroundImage}
-            alt="Professional Roofer"
+            alt="Professional Roofer in Cannock - StormGuard Roofing"
             fill
             className="object-cover object-center brightness-[0.95]"
             priority
@@ -86,7 +86,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-5 md:mb-6 animate-fade-in-up bg-red-500/10 border border-red-500/20">
                 <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full animate-pulse bg-red-500"></span>
-                <span className="text-white font-medium text-xs sm:text-sm uppercase tracking-wider">{content.business.tagline}</span>
+                <span className="text-white font-medium text-xs sm:text-sm uppercase tracking-wider">Professional Roofer in Cannock</span>
               </div>
               
               {/* Main Heading with Gradient Text */}

@@ -53,7 +53,7 @@
     ],
     "ctaButton": {
       "text": "Get a Free Quote",
-      "link": "/quote",
+      "link": "/contact",
       "show": true
     }
   },
@@ -86,7 +86,7 @@
       "subtitle": "Roofing Specialists",
       "description": "With over a decade of experience serving Dorchester and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service. From simple repairs to complete roof replacements, our team delivers superior results that stand the test of time.",
       "image": "/images/roofers/team_of_roofers.jpg",
-      "yearFounded": "2010",
+      "yearFounded": "2007",
       "projectsCompleted": "500+",
       "satisfaction": "98%"
     },

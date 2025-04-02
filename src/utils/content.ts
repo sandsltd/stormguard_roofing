@@ -139,6 +139,8 @@ export interface Content {
       tags: string[];
       ctaText?: string;
       ctaLink?: string;
+      buttonText?: string;
+      buttonLink?: string;
     }>;
     features: Array<{
       title: string;
@@ -388,7 +390,7 @@ function getDefaultContent(): Content {
       ],
       ctaButton: {
         text: 'Get a Free Quote',
-        link: '/quote',
+        link: '/contact',
         show: true
       }
     },
@@ -403,7 +405,7 @@ function getDefaultContent(): Content {
         subtitle: 'Professional Services You Can Trust',
         ctaPrimary: {
           text: 'Get a Free Quote',
-          link: '/quote'
+          link: '/contact'
         },
         ctaSecondary: {
           text: 'Learn More',
@@ -470,7 +472,9 @@ function getDefaultContent(): Content {
           image: '/images/area1.jpg',
           tags: ['Tag1', 'Tag2'],
           ctaText: 'Learn More',
-          ctaLink: '/areas'
+          ctaLink: '/areas',
+          buttonText: 'Learn More',
+          buttonLink: '/about'
         }
       ],
       features: [

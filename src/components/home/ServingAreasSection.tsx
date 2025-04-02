@@ -16,10 +16,10 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
   // Default areas if none exist
   const defaultAreas = [
     {
-      name: "Walsall",
-      description: "As Walsall's trusted roofing contractor, we understand the unique challenges that the West Midlands weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Walsall's diverse architectural styles.",
-      image: "/images/areas/residential1.jpg",
-      tags: ["Weather Resistant", "Local Walsall Roofers", "Energy Efficient"],
+      name: "Cannock",
+      description: "As Cannock's trusted roofing contractor, we understand the unique challenges that the Staffordshire weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Cannock's diverse architectural styles.",
+      image: "/images/locations/cannock-town.jpg",
+      tags: ["Weather Resistant", "Local Cannock Roofers", "Energy Efficient"],
       ctaText: "Request a Free Quote",
       ctaLink: "/contact"
     },
@@ -54,17 +54,23 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
         {/* Badge */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white backdrop-blur-sm">
-            Roofers in Walsall & the West Midlands
+            Roofers in Cannock & Staffordshire
           </div>
         </div>
         
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">
-            Serving Walsall & Surrounding Areas
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3">
+            Roofers in Cannock & Staffordshire
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our roofing solutions are tailored to the specific climate challenges and architectural styles of Walsall the West Midlands. We understand the unique weather patterns and building requirements of the local area.
+          
+          {/* Subheading */}
+          <div className="text-lg text-center max-w-3xl mx-auto text-gray-600 mb-12">
+            Serving Cannock & Surrounding Areas
+          </div>
+          
+          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-10">
+            Our roofing solutions are tailored to the specific climate challenges and architectural styles of Cannock and Staffordshire. We understand the unique weather patterns and building requirements of the local area.
           </p>
         </div>
         
@@ -93,10 +99,10 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
                   ))}
                 </div>
                 <a 
-                  href={area.ctaLink} 
+                  href={area.buttonLink || area.ctaLink} 
                   className="inline-flex items-center text-white hover:text-gray-200 transition-colors"
                 >
-                  <span>Learn more</span>
+                  <span>{area.buttonText || area.ctaText || "Learn more"}</span>
                   <svg 
                     className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" 
                     fill="none" 

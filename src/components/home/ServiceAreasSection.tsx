@@ -12,14 +12,14 @@ interface ServiceAreasSectionProps {
 export default function ServiceAreasSection({ content }: ServiceAreasSectionProps) {
   // Get section content or use defaults
   const serviceAreasSection = content.homepage.serviceAreasSection || {
-    title: "Walsall Roofers Service Areas",
-    subtitle: "Roofers in Walsall & West Midlands",
-    description: "Walsall Roofers proudly serves homeowners and businesses throughout Walsall the West Midlands. Our expert local roofers provide top-quality roofing services across these areas."
+    title: "Cannock Roofers Service Areas",
+    subtitle: "Roofers in Cannock & Staffordshire",
+    description: "StormGuard Roofing proudly serves homeowners and businesses throughout Cannock and Staffordshire. Our expert local roofers provide top-quality roofing services across these areas."
   };
 
   // Get service areas or use default areas if none exist
   const serviceAreas = content.homepage.serviceAreas || [
-    { name: "Walsall", link: "/contact" },
+    { name: "Cannock", link: "/contact" },
     { name: "Holmes Chapel", link: "/contact" },
     { name: "Wheelock", link: "/contact" },
     { name: "Nantwich", link: "/contact" },
@@ -75,13 +75,17 @@ export default function ServiceAreasSection({ content }: ServiceAreasSectionProp
         {/* Call to action */}
         <div className="text-center mt-12">
           <p className="text-lg text-gray-700 mb-6">
-            Don&apos;t see your West Midlands area listed? Our Walsall roofers may still be able to help!
+            Don&apos;t see your Staffordshire area listed? Our Cannock roofers may still be able to help!
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl transition-all transform hover:scale-105 hover:shadow-xl"
+            style={{ backgroundColor: primaryColor }}
           >
-            Contact Walsall Roofers →
+            Contact Cannock Roofers
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </Link>
         </div>
       </div>

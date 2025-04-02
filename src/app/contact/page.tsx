@@ -84,7 +84,7 @@ export default function Contact() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: `url("${content.contact.heroImage || '/images/roofers/team_of_roofers.jpg'}")` 
+            backgroundImage: `url("${content.contact.heroImage || '/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg'}")` 
           }}
         />
         <div className="absolute inset-0 bg-black/70 sm:bg-black/60" />

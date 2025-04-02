@@ -24,25 +24,25 @@ export default function Footer({ content, theme }: FooterProps) {
   const { business } = content;
   
   return (
-    <footer className="bg-[#111827] text-white">
+    <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-12 pb-16">
           {/* Left Column - Company Info */}
           <div className="lg:col-span-5">
-            <h3 className="text-lg font-semibold h-[24px] mb-6 pb-3 border-b border-orange-500/20">{business.name}</h3>
-            {business.logo && (
-              <Link href="/" className="block">
-                <div className="relative w-48 h-20">
-                  <Image 
-                    src={business.logo} 
-                    alt={business.name} 
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-              </Link>
-            )}
+            <h3 className="text-lg font-semibold h-[24px] mb-6 pb-3 border-b border-red-600/20">About Us</h3>
+            
+            <Link href="/" className="block">
+              <div className="relative w-48 h-20">
+                <Image 
+                  src="/images/logo/logo.png" 
+                  alt={business.name} 
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
+            
             <div className="space-y-6 mt-8">
               <div>
                 {business.tagline && (
@@ -51,20 +51,16 @@ export default function Footer({ content, theme }: FooterProps) {
               </div>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <FaMapMarkerAlt className="w-5 h-5 mt-1 text-orange-500 shrink-0" />
+                  <FaMapMarkerAlt className="w-5 h-5 mt-1 text-red-600 shrink-0" />
                   <span className="ml-3 text-gray-300 hover:text-gray-200 transition-colors">{business.address}</span>
                 </div>
                 <a href={`tel:${business.phone}`} className="flex items-center group hover:translate-x-1 transition-transform">
-                  <FaPhone className="w-5 h-5 text-orange-500 shrink-0" />
+                  <FaPhone className="w-5 h-5 text-red-600 shrink-0" />
                   <span className="ml-3 text-gray-300 group-hover:text-white transition-colors">{business.phone}</span>
-                </a>
-                <a href={`mailto:${business.email}`} className="flex items-center group hover:translate-x-1 transition-transform">
-                  <FaEnvelope className="w-5 h-5 text-orange-500 shrink-0" />
-                  <span className="ml-3 text-gray-300 group-hover:text-white transition-colors">{business.email}</span>
                 </a>
                 {content.contact?.hours && (
                   <div className="flex items-start">
-                    <FaClock className="w-5 h-5 mt-1 text-orange-500 shrink-0" />
+                    <FaClock className="w-5 h-5 mt-1 text-red-600 shrink-0" />
                     <span className="ml-3 text-gray-300 hover:text-gray-200 transition-colors">{content.contact.hours}</span>
                   </div>
                 )}
@@ -74,7 +70,7 @@ export default function Footer({ content, theme }: FooterProps) {
 
           {/* Middle Column - Quick Links */}
           <div className="lg:col-span-3">
-            <h3 className="text-lg font-semibold h-[24px] mb-6 pb-3 border-b border-orange-500/20">Quick Links</h3>
+            <h3 className="text-lg font-semibold h-[24px] mb-6 pb-3 border-b border-red-600/20">Quick Links</h3>
             <ul className="space-y-3">
               {(content.header?.menuItems || []).map((item) => (
                 <li key={item.text}>
@@ -82,7 +78,7 @@ export default function Footer({ content, theme }: FooterProps) {
                     href={item.link}
                     className="text-gray-300 hover:text-white transition-all flex items-center group hover:translate-x-1"
                   >
-                    <span className="w-1 h-1 bg-orange-500 rounded-full mr-2 transition-all duration-200 group-hover:w-2" />
+                    <span className="w-1 h-1 bg-red-600 rounded-full mr-2 transition-all duration-200 group-hover:w-2" />
                     {item.text}
                   </Link>
                 </li>
@@ -92,12 +88,12 @@ export default function Footer({ content, theme }: FooterProps) {
 
           {/* Right Column - Business Info */}
           <div className="lg:col-span-4">
-            <h3 className="text-lg font-semibold h-[24px] mb-6 pb-3 border-b border-orange-500/20">Business Information</h3>
+            <h3 className="text-lg font-semibold h-[24px] mb-6 pb-3 border-b border-red-600/20">Business Information</h3>
             <div className="space-y-6">
               {content.header?.businessHours && (
                 <div className="space-y-2">
                   <h4 className="text-white font-medium flex items-center">
-                    <span className="w-1 h-1 bg-orange-500 rounded-full mr-2" />
+                    <span className="w-1 h-1 bg-red-600 rounded-full mr-2" />
                     Opening Hours
                   </h4>
                   <p className="text-gray-300 pl-3">{content.header.businessHours}</p>
@@ -106,7 +102,7 @@ export default function Footer({ content, theme }: FooterProps) {
               {content.header?.insuranceText && (
                 <div className="space-y-2">
                   <h4 className="text-white font-medium flex items-center">
-                    <span className="w-1 h-1 bg-orange-500 rounded-full mr-2" />
+                    <span className="w-1 h-1 bg-red-600 rounded-full mr-2" />
                     Insurance
                   </h4>
                   <p className="text-gray-300 pl-3">{content.header.insuranceText}</p>
@@ -115,7 +111,7 @@ export default function Footer({ content, theme }: FooterProps) {
               {content.header?.experienceText && (
                 <div className="space-y-2">
                   <h4 className="text-white font-medium flex items-center">
-                    <span className="w-1 h-1 bg-orange-500 rounded-full mr-2" />
+                    <span className="w-1 h-1 bg-red-600 rounded-full mr-2" />
                     Experience
                   </h4>
                   <p className="text-gray-300 pl-3">{content.header.experienceText}</p>
@@ -131,7 +127,7 @@ export default function Footer({ content, theme }: FooterProps) {
             href="https://www.localroofernearme.co.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center p-4 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-all duration-300 group hover:translate-y-[-2px]"
+            className="flex items-center p-4 bg-black border border-gray-800 rounded-lg hover:bg-gray-900 transition-all duration-300 group hover:translate-y-[-2px]"
           >
             <div className="h-12 w-12 bg-white/10 rounded-md p-2 flex-shrink-0 group-hover:bg-white/20 transition-colors duration-300">
               <Image 
@@ -152,7 +148,7 @@ export default function Footer({ content, theme }: FooterProps) {
             href="https://www.saunder-simmons.co.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center p-4 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-all duration-300 group hover:translate-y-[-2px]"
+            className="flex items-center p-4 bg-black border border-gray-800 rounded-lg hover:bg-gray-900 transition-all duration-300 group hover:translate-y-[-2px]"
           >
             <div className="h-12 w-12 bg-white/10 rounded-md p-2 flex-shrink-0 group-hover:bg-white/20 transition-colors duration-300">
               <Image 
@@ -174,20 +170,6 @@ export default function Footer({ content, theme }: FooterProps) {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
-            <div className="flex items-center gap-6">
-              <Link 
-                href="/privacy-policy"
-                className="text-sm text-gray-400 hover:text-white transition-colors hover:translate-x-1 inline-block"
-              >
-                Privacy Policy
-              </Link>
-              <Link 
-                href="/terms"
-                className="text-sm text-gray-400 hover:text-white transition-colors hover:translate-x-1 inline-block"
-              >
-                Terms of Service
-              </Link>
-            </div>
           </div>
         </div>
       </div>

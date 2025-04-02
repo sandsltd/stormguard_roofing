@@ -166,6 +166,21 @@ export default function Header({ content }: HeaderProps) {
                   <FaStar style={topBarIconStyle} className="text-sm" />
                   <span className="text-sm whitespace-nowrap">{header?.experienceText || "5+ Years Experience"}</span>
                 </div>
+                <a
+                  href="https://maps.app.goo.gl/AFW2kdwb8TBt2Rfr9"
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="hidden lg:flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                >
+                  <div className="flex text-yellow-400">
+                    <FaStar size={12} />
+                    <FaStar size={12} />
+                    <FaStar size={12} />
+                    <FaStar size={12} />
+                    <FaStar size={12} />
+                  </div>
+                  <span className="text-sm whitespace-nowrap">5.0 on Google</span>
+                </a>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
@@ -176,16 +191,6 @@ export default function Header({ content }: HeaderProps) {
                     style={topBarLinkStyle}
                   >
                     {business.phone}
-                  </a>
-                </div>
-                <div className="hidden md:flex items-center space-x-2">
-                  <FaEnvelope style={topBarIconStyle} className="text-sm" />
-                  <a 
-                    href={`mailto:${business.email}`}
-                    className="text-sm hover:opacity-80 transition-opacity whitespace-nowrap"
-                    style={topBarLinkStyle}
-                  >
-                    {business.email}
                   </a>
                 </div>
               </div>
@@ -279,13 +284,23 @@ export default function Header({ content }: HeaderProps) {
           style={{ top: showTopBar ? '50px' : '0' }}
         >
           <div className="px-4 py-6 h-full overflow-y-auto">
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <svg className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
             <nav className="flex flex-col space-y-6">
               {menuItems.map((item) => (
                 <Link 
                   key={item.text}
                   href={item.link}
                   className="font-medium text-lg py-2 border-b border-gray-100 flex justify-between items-center"
-                  style={linkStyle}
+                  style={{ color: '#000000' }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.text}
@@ -308,25 +323,9 @@ export default function Header({ content }: HeaderProps) {
                     <a 
                       href={`tel:${business.phone}`}
                       className="text-base font-medium"
-                      style={linkStyle}
+                      style={{ color: '#000000' }}
                     >
                       {business.phone}
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <FaEnvelope style={iconStyle} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Email</p>
-                    <a 
-                      href={`mailto:${business.email}`}
-                      className="text-base font-medium"
-                      style={linkStyle}
-                    >
-                      {business.email}
                     </a>
                   </div>
                 </div>
@@ -337,7 +336,7 @@ export default function Header({ content }: HeaderProps) {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Hours</p>
-                    <p className="text-base font-medium" style={linkStyle}>
+                    <p className="text-base font-medium" style={{ color: '#000000' }}>
                       {header?.businessHours || "Mon-Fri: 8am-6pm"}
                     </p>
                   </div>
