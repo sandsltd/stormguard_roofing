@@ -57,10 +57,38 @@ export default function Contact() {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send the form data to a server or API
-    // For now, we'll just simulate a successful submission
-    setTimeout(() => {
+    
+    // Set form status to indicate processing
+    setFormStatus('idle');
+    
+    // Prepare the data
+    const formSubmission = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || 'Not provided',
+      service: formData.service || 'Not specified',
+      message: formData.message,
+      recipient: 'hello@saunders-simmons.co.uk',
+      subject: `New Contact Form Submission: ${formData.service || 'General Inquiry'}`
+    };
+    
+    // Send the form data
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formSubmission),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
       setFormStatus('success');
+      // Reset form fields
       setFormData({
         name: '',
         email: '',
@@ -73,7 +101,16 @@ export default function Contact() {
       setTimeout(() => {
         setFormStatus('idle');
       }, 5000);
-    }, 1000);
+    })
+    .catch(error => {
+      console.error('Error sending form:', error);
+      setFormStatus('error');
+      
+      // Reset form status after 5 seconds
+      setTimeout(() => {
+        setFormStatus('idle');
+      }, 5000);
+    });
   };
 
   return (
@@ -269,7 +306,7 @@ export default function Contact() {
                     className="w-full px-5 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
                   >
                     <option value="">Select a service</option>
-                    {services.services.map((service, index) => (
+                    {content.homepage.services.map((service, index) => (
                       <option key={index} value={service.title}>
                         {service.title}
                       </option>
