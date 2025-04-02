@@ -1,6 +1,10 @@
 # Allow all web crawlers
 User-agent: *
 Allow: /
+Allow: /_next/image
+Allow: /_next/static
+Disallow: /_next/data/
+Disallow: /api/
 
 # Sitemap
 Sitemap: https://www.roofercannock.co.uk/sitemap.xml 
