@@ -21,75 +21,101 @@ export default async function AboutPage() {
       />
 
       {/* Hero Section with Background Image */}
-      <div className="relative h-[70vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden pt-28 sm:pt-44 md:pt-56 lg:pt-64 pb-16 sm:pb-24 md:pb-36">
+      <div className="relative min-h-[100dvh] overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32">
         <div className="absolute inset-0">
           <Image 
             src={business.hero || "/images/hero-placeholder.jpg"} 
             alt={`${business.name} Team`}
             fill
-            className="object-cover object-center"
+            className="object-cover object-center brightness-[0.95]"
             priority
             quality={90}
             sizes="100vw"
           />
-          {/* Gradient Overlay - Stronger gradient for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/70 md:from-black/90 md:via-black/60 md:to-black/70"></div>
+          {/* Gradient Overlay - Using the homepage style */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
           
-          {/* Pattern Overlay with different opacity */}
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10"></div>
+          {/* Pattern Overlay for Texture */}
+          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-20"></div>
           
-          {/* Different animated highlights positioning */}
-          <div className="absolute top-[20%] right-[10%] w-1/2 h-1/2 rounded-full blur-3xl animate-pulse-slow" 
-            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}15` }}></div>
-          <div className="absolute -bottom-[10%] left-[5%] w-2/3 h-2/3 rounded-full blur-3xl animate-pulse-slow animation-delay-2000" 
-            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}10` }}></div>
+          {/* Animated Highlights - Matching homepage style */}
+          <div className="absolute -top-[20%] -left-[10%] w-full h-full rounded-full blur-3xl animate-pulse-slow opacity-30" 
+            style={{ backgroundColor: 'rgba(220, 38, 38, 0.15)' }} />
+          <div className="absolute -bottom-[20%] -right-[10%] w-full h-full rounded-full blur-3xl animate-pulse-slow animation-delay-2000 opacity-30" 
+            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}15` }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 rounded-full blur-3xl animate-pulse-slow animation-delay-1000 opacity-30" 
+            style={{ backgroundColor: 'rgba(220, 38, 38, 0.2)' }} />
         </div>
         
-        {/* Content Container - Clean layout with no background container */}
-        <div className="relative z-10 h-full flex items-center justify-center px-4 sm:px-6 md:px-12">
+        {/* Content Container */}
+        <div className="relative z-10 min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] flex items-center px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-7xl mx-auto w-full">
-            <div className="max-w-3xl mx-auto text-center">
-              {/* Badge - Clean style with border accent */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 mb-6 sm:mb-8 animate-fade-in-up border-b-2"
-                  style={{ borderColor: content.theme?.primaryColor || '#3b82f6' }}>
-                  <span className="text-white font-medium text-xs sm:text-sm tracking-wider">ESTABLISHED {business.establishedYear || '2000'}</span>
+            <div className="max-w-3xl">
+              {/* Badge - Match homepage style */}
+              <div className="inline-flex items-center gap-2 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-5 md:mb-6 animate-fade-in-up bg-red-500/10 border border-red-500/20">
+                <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full animate-pulse bg-red-500"></span>
+                <span className="text-white font-medium text-xs sm:text-sm uppercase tracking-wider">ESTABLISHED {business.establishedYear || '2000'}</span>
               </div>
               
-              {/* Main Heading - No background container */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white leading-tight animate-fade-in-up animation-delay-300" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
-                <span className="text-white">About</span>
-                <span className="block mt-2 text-white" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>{business.name}</span>
+              {/* Main Heading with Gradient Text - Maintain about content */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-5 md:mb-6 text-white leading-[1.15] animate-fade-in-up animation-delay-300" style={{ textShadow: '0 4px 8px rgba(0,0,0,0.75)' }}>
+                <span className="block text-white">About</span>
+                <span className="text-white block my-1 sm:my-2">{business.name}</span>
+                <span className="block text-red-500">Our Story</span>
               </h1>
               
-              {/* Subtitle with divider line */}
-              <div className="mb-6 sm:mb-8 md:mb-10 animate-fade-in-up animation-delay-600">
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed mx-auto" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
+              {/* Subtitle with Line Animation */}
+              <div className="group relative inline-block mb-6 sm:mb-8 md:mb-10 animate-fade-in-up animation-delay-600">
+                <p className="text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed max-w-2xl font-light" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.75)' }}>
                   {business.tagline || 'Your trusted local business dedicated to excellent service and exceptional quality'}
                 </p>
-                <div className="w-16 md:w-20 h-1 mx-auto mt-4 sm:mt-6" style={{ backgroundColor: content.theme?.primaryColor || '#3b82f6' }}></div>
+                <span className="block w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-red-500 to-transparent transition-all duration-700 ease-out"></span>
               </div>
               
-              {/* CTA Buttons - Clean styling */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up animation-delay-900">
+              {/* CTA Buttons with Enhanced Glass Effect */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 animate-fade-in-up animation-delay-900">
                 <a
                   href="#contact"
-                  className="bg-white text-gray-900 hover:bg-gray-100 px-6 sm:px-8 py-3 rounded-md text-sm sm:text-base md:text-lg font-medium transition-all duration-300 flex items-center justify-center"
+                  className="relative overflow-hidden inline-flex items-center justify-center text-white px-6 sm:px-8 py-4 rounded-lg text-base sm:text-lg font-bold hover:opacity-100 transition-all duration-300 shadow-xl group transform hover:scale-105 hover:-translate-y-1 bg-red-600 hover:bg-red-500"
                 >
-                  <span className="flex items-center">
+                  <span className="relative z-10 flex items-center">
                     Get a Quote
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </span>
+                  <div className="absolute right-0 w-12 h-full bg-white/20 transform skew-x-12 translate-x-0 transition-transform group-hover:translate-x-40 ease-out duration-700" />
                 </a>
                 <a
                   href="#history"
-                  className="text-white border-2 border-white hover:bg-white/10 px-6 sm:px-8 py-3 rounded-md text-sm sm:text-base md:text-lg font-medium transition-all duration-300 flex items-center justify-center"
+                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-6 sm:px-8 py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
                 >
                   Our History
                 </a>
               </div>
+              
+              {/* Key Feature Badges */}
+              <div className="mt-6 sm:mt-8 md:mt-10 flex flex-wrap gap-3 animate-fade-in-up animation-delay-1200">
+                {['Professional Team', 'Over 15 Years Experience', 'Quality Service', 'Customer Satisfaction'].map((item, index) => (
+                  <div key={index} className="flex items-center bg-black/30 backdrop-blur-md px-3 sm:px-4 py-2 rounded-full border border-red-500/20 text-sm sm:text-base">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <span className="text-white">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Scroll Down Indicator */}
+        <div className="absolute bottom-8 sm:bottom-12 right-4 sm:right-8 z-10 animate-bounce hidden sm:flex">
+          <div className="flex flex-col items-center">
+            <span className="text-white text-xs sm:text-sm mb-2">Scroll Down</span>
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </div>
         </div>
       </div>
