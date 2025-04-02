@@ -145,7 +145,7 @@ export default function Footer({ content, theme }: FooterProps) {
           </a>
 
           <a 
-            href="https://www.saunder-simmons.co.uk"
+            href="https://www.saunders-simmons.co.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center p-4 bg-black border border-gray-800 rounded-lg hover:bg-gray-900 transition-all duration-300 group hover:translate-y-[-2px]"
