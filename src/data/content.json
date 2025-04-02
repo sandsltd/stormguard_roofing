@@ -403,7 +403,7 @@
     ]
   },
   "about": {
-    "title": "About Us",
+    "title": "Cannock's Trusted Roofer Since 2007 | StormGuard Roofing",
     "subtitle": "Your Trusted Roofing Partner",
     "heroImage": "/images/about-hero.jpg",
     "mainContent": {
@@ -463,10 +463,14 @@
       "description": "With over 40 different roofing services available, our professional roofers are ready to help with all your Cannock roofing needs. Contact us today for a free, no-obligation quote on any roofing project.",
       "buttonText": "Contact Us Today",
       "buttonLink": "/contact"
-    }
+    },
+    "title": "Cannock Roofing Services | Professional Roofer For All Roof Types",
+    "description": "Complete roofing services from Cannock's expert roofer. Specializing in pitched roofs, flat roofs, roof repairs, chimney work, emergency repairs, and commercial roofing throughout Cannock.",
+    "keywords": "roofer cannock, roofing services cannock, roof repairs cannock, flat roof cannock, pitched roof cannock, emergency roofer cannock, chimney repairs, roof installation, professional roofer, commercial roofing cannock",
+    "ogImage": "/images/services-og.jpg"
   },
   "contact": {
-    "title": "Contact Us",
+    "title": "Contact Your Local Cannock Roofer | Free Quotes & Estimates",
     "subtitle": "Get in Touch with Our Team",
     "address": "Cannock, Staffordshire",
     "phone": "07765197450",
@@ -519,7 +523,11 @@
     "formTitle": "Get In Touch With Our Team",
     "formDescription": "Request a free quote or discuss your roofing needs with our expert team serving Cannock and surrounding areas.",
     "heroImage": "images/roofers/roofer_installing_roofing_tiles.png",
-    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2419.64970353181!2d-2.019502!3d52.6663045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709f244c7da803%3A0x58ca0e6c52c34a3!2sStormguard%20roofing!5e0!3m2!1sen!2suk!4v1743602732088!5m2!1sen!2suk"
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2419.64970353181!2d-2.019502!3d52.6663045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709f244c7da803%3A0x58ca0e6c52c34a3!2sStormguard%20roofing!5e0!3m2!1sen!2suk!4v1743602732088!5m2!1sen!2suk",
+    "title": "Contact StormGuard | Professional Roofer Cannock",
+    "description": "Contact Cannock's trusted roofing professionals for free quotes, emergency repairs and professional roofing services. Call 07765197450 for immediate assistance.",
+    "keywords": "roofer cannock, contact roofer, roofing quotes, roofing estimates, professional roofing, roof repair",
+    "ogImage": "/images/contact-og.jpg"
   },
   "socials": {
     "facebook": "",
@@ -587,28 +595,28 @@
     },
     "pages": {
       "home": {
-        "title": "Expert Roofer Cannock | Quality Roofing Services & Repairs",
-        "description": "Looking for a reliable roofer in Cannock? StormGuard offers professional roofing services, repairs and replacements. Free quotes, emergency repairs & quality roofing solutions with 18+ years experience.",
-        "keywords": "roofer cannock, roof repair, roofing company, reliable roofer, roofing work, professional roofing, quality roofing, flat roof, repairs and replacement, cannock roofing, federation of roofing contractors",
+        "title": "Roofer Cannock | Trusted Local Roofing Services & Repairs",
+        "description": "Looking for a reliable roofer in Cannock? StormGuard is Cannock's top-rated roofer providing professional roofing services, repairs and installations with 18+ years experience. Free quotes and quality guaranteed.",
+        "keywords": "roofer cannock, local roofer cannock, cannock roofer, roofing services cannock, roof repairs cannock, professional roofer, roofing work, roof replacement cannock, flat roof specialists, emergency roofer cannock",
         "ogImage": "/images/home-og.jpg",
         "ogType": "website"
       },
       "about": {
-        "title": "About StormGuard | Professional Roofer Cannock Since 2007",
-        "description": "Learn about StormGuard Roofing, Cannock's trusted roofer with 18+ years experience. Quality workmanship, fully insured professional roofing services and repairs.",
-        "keywords": "roofer cannock, professional roofing, about stormguard, roofing company history, reliable roofer",
+        "title": "Cannock's Trusted Roofer Since 2007 | StormGuard Roofing",
+        "description": "Meet StormGuard, Cannock's most experienced roofer with 18+ years of professional roofing expertise. Fully insured specialists providing quality workmanship across Cannock and surrounding areas.",
+        "keywords": "roofer cannock, trusted roofer cannock, professional roofer cannock, cannock roofing company, roofing specialists cannock, experienced roofer, 18 years experience, fully insured roofer",
         "ogImage": "/images/about-og.jpg"
       },
       "services": {
-        "title": "Roofing Services Cannock | Repairs, Replacements & Installation",
-        "description": "Professional roofing services in Cannock including repairs, replacements, flat roofs and emergency repairs. Quality workmanship from Cannock's trusted roofers.",
-        "keywords": "roofer cannock, roofing services, roof repair, roof installation, flat roof, chimney repairs, emergency repairs, professional roofing",
+        "title": "Cannock Roofing Services | Professional Roofer For All Roof Types",
+        "description": "Complete roofing services from Cannock's expert roofer. Specializing in pitched roofs, flat roofs, roof repairs, chimney work, emergency repairs, and commercial roofing throughout Cannock.",
+        "keywords": "roofer cannock, roofing services cannock, roof repairs cannock, flat roof cannock, pitched roof cannock, emergency roofer cannock, chimney repairs, roof installation, professional roofer, commercial roofing cannock",
         "ogImage": "/images/services-og.jpg"
       },
       "contact": {
-        "title": "Contact StormGuard | Professional Roofer Cannock",
-        "description": "Contact Cannock's trusted roofing professionals for free quotes, emergency repairs and professional roofing services. Call 07765197450 for immediate assistance.",
-        "keywords": "roofer cannock, contact roofer, roofing quotes, roofing estimates, professional roofing, roof repair",
+        "title": "Contact Your Local Cannock Roofer | Free Quotes & Estimates",
+        "description": "Need a professional roofer in Cannock? Contact StormGuard Roofing for free quotes, emergency repairs and expert roofing advice. Call 07765197450 for same-day service.",
+        "keywords": "roofer cannock, contact roofer cannock, roofing quotes cannock, free roofing estimate, emergency roofer cannock, professional roofing cannock, cannock roof repair",
         "ogImage": "/images/contact-og.jpg"
       }
     }

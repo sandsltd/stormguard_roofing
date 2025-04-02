@@ -17,10 +17,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Professional Roofing and home improvement services",
-  description: "Professional roofing and home improvement services for residential and commercial properties",
-};
+// Remove the global metadata that's overriding page-specific metadata
+// export const metadata: Metadata = {
+//   title: "Professional Roofing and home improvement services",
+//   description: "Professional roofing and home improvement services for residential and commercial properties",
+// };
 
 export const revalidate = 3600; // Revalidate every hour
 
