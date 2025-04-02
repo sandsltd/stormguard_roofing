@@ -41,8 +41,8 @@ const articleSchema = {
       "url": "https://stormguardroofers.co.uk/images/logo.png"
     }
   },
-  "datePublished": "2025-04-05",
-  "dateModified": "2025-04-05",
+  "datePublished": "2025-04-02",
+  "dateModified": "2025-04-02",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://stormguardroofers.co.uk/blog/common-roofing-problems-cannock"
@@ -56,7 +56,7 @@ export default async function BlogPost() {
   // Blog post data
   const post = {
     title: "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
-    date: "April 5, 2025",
+    date: "April 2, 2025",
     author: "StormGuard Roofing",
     authorRole: "Cannock's Trusted Roofing Experts",
     image: "/images/roofers/roofer_removing_damaged_tiles.png",
@@ -410,7 +410,7 @@ export default async function BlogPost() {
                             Emergency Roof Repairs in Cannock: What Constitutes an Emergency?
                           </Link>
                         </h4>
-                        <span className="text-sm text-gray-500">April 19, 2025</span>
+                        <span className="text-sm text-gray-500">March 26, 2025</span>
                       </div>
                     </div>
                   </div>
@@ -430,7 +430,7 @@ export default async function BlogPost() {
                             Pitched vs. Flat Roofs: A Cannock Homeowner's Guide
                           </Link>
                         </h4>
-                        <span className="text-sm text-gray-500">April 12, 2025</span>
+                        <span className="text-sm text-gray-500">March 19, 2025</span>
                       </div>
                     </div>
                   </div>

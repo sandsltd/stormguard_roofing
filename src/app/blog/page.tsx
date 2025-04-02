@@ -34,7 +34,7 @@ export default async function BlogPage() {
       title: "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
       slug: "common-roofing-problems-cannock",
       excerpt: "Discover the most common roofing issues faced by Cannock homeowners and learn how a professional roofer in Cannock can help solve these problems efficiently.",
-      date: "April 5, 2025",
+      date: "April 2, 2025",
       image: "/images/roofers/roofer_removing_damaged_tiles.png",
       categories: ["Roof Repairs", "Maintenance"]
     },
@@ -43,7 +43,7 @@ export default async function BlogPage() {
       title: "Pitched vs. Flat Roofs: A Cannock Homeowner's Guide",
       slug: "pitched-vs-flat-roofs-cannock-guide",
       excerpt: "Confused about which roofing style is best for your Cannock property? Our expert roofers in Cannock compare pitched and flat roof options to help you decide.",
-      date: "April 12, 2025",
+      date: "March 19, 2025",
       image: "/images/roofers/roofer_installing_roofing_tiles.png",
       categories: ["Roof Types", "Installation"]
     },
@@ -52,7 +52,7 @@ export default async function BlogPage() {
       title: "Emergency Roof Repairs in Cannock: What Constitutes an Emergency?",
       slug: "emergency-roof-repairs-cannock",
       excerpt: "Learn when to call an emergency roofer in Cannock and what situations require immediate professional attention to protect your home from further damage.",
-      date: "April 19, 2025",
+      date: "March 26, 2025",
       image: "/images/roofers/roofer_repairing_roof_with_harness.png",
       categories: ["Emergency Repairs", "Safety"]
     }

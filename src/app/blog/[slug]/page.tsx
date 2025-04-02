@@ -12,9 +12,9 @@ const getBlogData = (slug: string) => {
   const posts = {
     'common-roofing-problems-cannock': {
       title: "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
-      date: "April 5, 2025",
-      author: "James Saunders",
-      authorRole: "Lead Roofer in Cannock",
+      date: "April 2, 2025",
+      author: "StormGuard Roofing",
+      authorRole: "Cannock's Trusted Roofing Experts",
       image: "/images/roofers/roofer_removing_damaged_tiles.png",
       categories: ["Roof Repairs", "Maintenance"],
       content: `
@@ -113,9 +113,9 @@ const getBlogData = (slug: string) => {
     },
     'pitched-vs-flat-roofs-cannock-guide': {
       title: "Pitched vs. Flat Roofs: A Cannock Homeowner's Guide",
-      date: "April 12, 2025",
-      author: "James Saunders",
-      authorRole: "Lead Roofer in Cannock",
+      date: "March 19, 2025",
+      author: "StormGuard Roofing",
+      authorRole: "Cannock's Trusted Roofing Experts",
       image: "/images/roofers/roofer_installing_roofing_tiles.png",
       categories: ["Roof Types", "Installation"],
       content: "<p>Sample content for pitched vs flat roofs article...</p>",
@@ -124,9 +124,9 @@ const getBlogData = (slug: string) => {
     },
     'emergency-roof-repairs-cannock': {
       title: "Emergency Roof Repairs in Cannock: What Constitutes an Emergency?",
-      date: "April 19, 2025",
-      author: "James Saunders",
-      authorRole: "Lead Roofer in Cannock",
+      date: "March 26, 2025",
+      author: "StormGuard Roofing",
+      authorRole: "Cannock's Trusted Roofing Experts",
       image: "/images/roofers/roofer_repairing_roof_with_harness.png",
       categories: ["Emergency Repairs", "Safety"],
       content: "<p>Sample content for emergency roof repairs article...</p>",
@@ -167,7 +167,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+// Fix the type error by using the appropriate Next.js type
+export default async function BlogPost({ 
+  params,
+}: {
+  params: { slug: string };
+}) {
   const content = await getContent();
   const post = getBlogData(params.slug);
   
@@ -213,8 +218,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 rounded-full bg-gray-300 mr-3 flex items-center justify-center">
-                {post.author.charAt(0)}
+              <div className="w-10 h-10 rounded-full bg-gray-300 mr-3 flex items-center justify-center overflow-hidden">
+                <Image src="/images/logo.png" alt="StormGuard Roofing" width={40} height={40} className="object-contain" />
               </div>
               <div>
                 <p className="font-medium">{post.author}</p>
@@ -250,42 +255,81 @@ export default async function BlogPost({ params }: { params: { slug: string } })
               </article>
               
               {/* Author Bio */}
-              <div className="mt-12 p-6 bg-gray-50 rounded-lg border border-gray-100">
+              <div className="mt-12 p-6 bg-white rounded-lg border border-gray-200 shadow-md">
                 <div className="flex items-start sm:items-center flex-col sm:flex-row">
-                  <div className="w-16 h-16 rounded-full bg-gray-300 mr-5 flex items-center justify-center flex-shrink-0 mb-4 sm:mb-0">
-                    {post.author.charAt(0)}
+                  <div className="w-16 h-16 rounded-full overflow-hidden mr-5 flex-shrink-0 mb-4 sm:mb-0">
+                    <Image 
+                      src="/images/logo.png" 
+                      alt="StormGuard Roofing" 
+                      width={64} 
+                      height={64}
+                      className="object-contain"
+                    />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">{post.author}</h3>
-                    <p className="text-gray-600 mb-3">{post.authorRole}</p>
-                    <p className="text-gray-800">
-                      With over 18 years of experience as a professional roofer in Cannock, 
-                      James leads our team with unmatched expertise in all aspects of roofing. 
-                      He specializes in emergency repairs and traditional roofing techniques.
+                    <h3 className="text-xl font-bold mb-2 text-gray-800">{post.author}</h3>
+                    <p className="text-red-600 font-medium mb-3">{post.authorRole}</p>
+                    <p className="text-gray-700">
+                      With over 18 years of experience as professional roofers in Cannock, 
+                      StormGuard Roofing provides unmatched expertise in all aspects of roofing. 
+                      We specialize in emergency repairs and traditional roofing techniques.
                     </p>
                   </div>
                 </div>
               </div>
               
               {/* Share Buttons */}
-              <div className="mt-10">
-                <h4 className="text-lg font-medium mb-4">Share this article</h4>
+              <div className="mt-10 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h4 className="text-lg font-bold mb-4 flex items-center text-gray-800">
+                  <svg className="w-5 h-5 mr-2 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                  </svg>
+                  Share this article
+                </h4>
                 <div className="flex gap-3">
-                  <button className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700">
+                  <a 
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://stormguardroofers.co.uk/blog/${params.slug}`)}`} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition flex items-center justify-center w-10 h-10"
+                    aria-label="Share on Facebook"
+                  >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
-                  </button>
-                  <button className="p-3 bg-blue-400 text-white rounded-full hover:bg-blue-500">
+                  </a>
+                  <a 
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://stormguardroofers.co.uk/blog/${params.slug}`)}`} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-blue-400 text-white rounded-full hover:bg-blue-500 transition flex items-center justify-center w-10 h-10"
+                    aria-label="Share on Twitter"
+                  >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.017 10.017 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482 13.98 13.98 0 01-10.15-5.145 4.921 4.921 0 001.524 6.574 4.904 4.904 0 01-2.23-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                     </svg>
-                  </button>
-                  <button className="p-3 bg-green-600 text-white rounded-full hover:bg-green-700">
+                  </a>
+                  <a 
+                    href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`I thought you might find this article interesting: https://stormguardroofers.co.uk/blog/${params.slug}`)}`}
+                    className="p-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition flex items-center justify-center w-10 h-10"
+                    aria-label="Share via Email"
+                  >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1zm-5.339 13.337c-.186.184-.32.331-.518.331-.193 0-.33-.145-.518-.33l-1.834-1.835-4.504 4.503-.513-1.543 4.503-4.504-1.835-1.834a4.684 4.684 0 01-.33-.518c0-.194.145-.33.33-.518L8.138 8l.508-.508 1.093 1.093L16 3.343v3.314L9.846 12.01 10.94 13.1l.517-.516 7.2 7.2v-3.314l-3.996-3.996" />
+                      <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
                     </svg>
-                  </button>
+                  </a>
+                  <a 
+                    href={`https://wa.me/?text=${encodeURIComponent(`Check out this roofing article: https://stormguardroofers.co.uk/blog/${params.slug}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition flex items-center justify-center w-10 h-10"
+                    aria-label="Share on WhatsApp"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12s12-5.373 12-12c0-6.628-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -293,88 +337,92 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             {/* Sidebar */}
             <div className="w-full lg:w-1/3">
               {/* Related Posts */}
-              <div className="mb-10">
-                <h3 className="text-xl font-bold mb-5 pb-2 border-b">Related Articles</h3>
-                <div className="space-y-6">
-                  <div className="flex gap-3">
-                    <div className="w-20 h-20 relative flex-shrink-0">
-                      <Image 
-                        src="/images/roofers/roofer_repairing_roof_with_harness.png"
-                        alt="Emergency Roof Repairs in Cannock"
-                        fill
-                        className="object-cover rounded"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1 line-clamp-2">
-                        <Link href="/blog/emergency-roof-repairs-cannock" className="hover:text-red-600 transition">
-                          Emergency Roof Repairs in Cannock: What Constitutes an Emergency?
-                        </Link>
-                      </h4>
-                      <span className="text-sm text-gray-500">April 19, 2025</span>
+              <div className="mb-10 bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                <h3 className="text-xl font-bold p-4 border-b bg-gray-50 text-gray-800">Related Articles</h3>
+                <div className="divide-y divide-gray-100">
+                  <div className="p-4 hover:bg-gray-50 transition-colors">
+                    <div className="flex gap-3">
+                      <div className="w-20 h-20 relative flex-shrink-0 rounded-md overflow-hidden">
+                        <Image 
+                          src="/images/roofers/roofer_repairing_roof_with_harness.png"
+                          alt="Emergency Roof Repairs in Cannock"
+                          fill
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-medium mb-1 line-clamp-2 hover:text-red-600 transition-colors text-gray-800">
+                          <Link href="/blog/emergency-roof-repairs-cannock">
+                            Emergency Roof Repairs in Cannock: What Constitutes an Emergency?
+                          </Link>
+                        </h4>
+                        <span className="text-sm text-gray-500">March 26, 2025</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex gap-3">
-                    <div className="w-20 h-20 relative flex-shrink-0">
-                      <Image 
-                        src="/images/roofers/roofer_installing_roofing_tiles.png"
-                        alt="Pitched vs. Flat Roofs: A Cannock Homeowner's Guide"
-                        fill
-                        className="object-cover rounded"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1 line-clamp-2">
-                        <Link href="/blog/pitched-vs-flat-roofs-cannock-guide" className="hover:text-red-600 transition">
-                          Pitched vs. Flat Roofs: A Cannock Homeowner's Guide
-                        </Link>
-                      </h4>
-                      <span className="text-sm text-gray-500">April 12, 2025</span>
+                  <div className="p-4 hover:bg-gray-50 transition-colors">
+                    <div className="flex gap-3">
+                      <div className="w-20 h-20 relative flex-shrink-0 rounded-md overflow-hidden">
+                        <Image 
+                          src="/images/roofers/roofer_installing_roofing_tiles.png"
+                          alt="Pitched vs. Flat Roofs: A Cannock Homeowner's Guide"
+                          fill
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-medium mb-1 line-clamp-2 hover:text-red-600 transition-colors text-gray-800">
+                          <Link href="/blog/pitched-vs-flat-roofs-cannock-guide">
+                            Pitched vs. Flat Roofs: A Cannock Homeowner's Guide
+                          </Link>
+                        </h4>
+                        <span className="text-sm text-gray-500">March 19, 2025</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               
               {/* Categories */}
-              <div className="mb-10">
-                <h3 className="text-xl font-bold mb-5 pb-2 border-b">Categories</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="/blog/category/roof-repairs" className="flex justify-between hover:text-red-600 transition">
+              <div className="mb-10 bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                <h3 className="text-xl font-bold p-4 border-b bg-gray-50 text-gray-800">Categories</h3>
+                <ul className="divide-y divide-gray-100">
+                  <li className="hover:bg-gray-50 transition-colors">
+                    <Link href="/blog/category/roof-repairs" className="flex justify-between p-4 text-gray-800">
                       <span>Roof Repairs</span>
-                      <span className="bg-gray-100 px-2 rounded-full text-sm">12</span>
+                      <span className="bg-red-100 text-red-700 px-2.5 py-0.5 rounded-full text-sm font-medium">12</span>
                     </Link>
                   </li>
-                  <li>
-                    <Link href="/blog/category/installation" className="flex justify-between hover:text-red-600 transition">
+                  <li className="hover:bg-gray-50 transition-colors">
+                    <Link href="/blog/category/installation" className="flex justify-between p-4 text-gray-800">
                       <span>Installation</span>
-                      <span className="bg-gray-100 px-2 rounded-full text-sm">8</span>
+                      <span className="bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full text-sm font-medium">8</span>
                     </Link>
                   </li>
-                  <li>
-                    <Link href="/blog/category/maintenance" className="flex justify-between hover:text-red-600 transition">
+                  <li className="hover:bg-gray-50 transition-colors">
+                    <Link href="/blog/category/maintenance" className="flex justify-between p-4 text-gray-800">
                       <span>Maintenance</span>
-                      <span className="bg-gray-100 px-2 rounded-full text-sm">15</span>
+                      <span className="bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full text-sm font-medium">15</span>
                     </Link>
                   </li>
-                  <li>
-                    <Link href="/blog/category/emergency" className="flex justify-between hover:text-red-600 transition">
+                  <li className="hover:bg-gray-50 transition-colors">
+                    <Link href="/blog/category/emergency" className="flex justify-between p-4 text-gray-800">
                       <span>Emergency Repairs</span>
-                      <span className="bg-gray-100 px-2 rounded-full text-sm">5</span>
+                      <span className="bg-amber-100 text-amber-700 px-2.5 py-0.5 rounded-full text-sm font-medium">5</span>
                     </Link>
                   </li>
                 </ul>
               </div>
               
               {/* CTA Box */}
-              <div className="bg-red-50 border border-red-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold mb-3">Need a Professional Roofer in Cannock?</h3>
-                <p className="mb-4 text-gray-700">
+              <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 shadow-lg">
+                <h3 className="text-xl font-bold mb-3 text-white">Need a Professional Roofer in Cannock?</h3>
+                <p className="mb-6 text-white opacity-90">
                   Our team of experienced roofers is ready to help with any roofing issues you may have.
                 </p>
                 <Link 
                   href="/contact" 
-                  className="block w-full py-3 bg-red-600 text-white text-center font-medium rounded-lg hover:bg-red-700 transition"
+                  className="block w-full py-3 bg-white text-red-600 text-center font-medium rounded-lg hover:bg-gray-100 transition shadow-md"
                 >
                   Get a Free Quote
                 </Link>

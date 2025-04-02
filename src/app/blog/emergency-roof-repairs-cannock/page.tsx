@@ -46,15 +46,15 @@ export default async function BlogPost() {
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Emergency Roof Repairs in Cannock: What Constitutes an Emergency?</h1>
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 rounded-full bg-gray-300 mr-3 flex items-center justify-center">
-                J
+              <div className="w-10 h-10 rounded-full bg-gray-300 mr-3 flex items-center justify-center overflow-hidden">
+                <Image src="/images/logo.png" alt="StormGuard Roofing" width={40} height={40} className="object-contain" />
               </div>
               <div>
-                <p className="font-medium">James Saunders</p>
-                <p className="text-sm text-gray-300">Lead Roofer in Cannock</p>
+                <p className="font-medium">StormGuard Roofing</p>
+                <p className="text-sm text-gray-300">Cannock's Trusted Roofing Experts</p>
               </div>
               <span className="mx-4">|</span>
-              <time className="text-gray-300">April 19, 2025</time>
+              <time className="text-gray-300">March 26, 2025</time>
             </div>
           </div>
         </div>
@@ -76,8 +76,8 @@ export default async function BlogPost() {
       <div className="py-12">
         <div className="container mx-auto px-4">
           <div className="text-center py-16">
-            <h2 className="text-2xl font-bold mb-6">Coming Soon!</h2>
-            <p className="text-lg mb-8">This blog post is currently being developed by our expert team.</p>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Coming Soon!</h2>
+            <p className="text-lg mb-8 text-gray-700">This blog post is currently being developed by our expert team.</p>
             <Link 
               href="/blog"
               className="px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition"
@@ -92,7 +92,7 @@ export default async function BlogPost() {
       <div className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Need Emergency Roof Repairs in Cannock?</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">Need Emergency Roof Repairs in Cannock?</h2>
             <p className="text-lg text-gray-300 mb-8">
               Our team of expert roofers is available 24/7 for emergency roofing services throughout Cannock
             </p>

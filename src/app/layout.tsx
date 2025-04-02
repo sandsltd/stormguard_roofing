@@ -32,7 +32,8 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!content || !content.seo?.global) {
     return {
       title: "StormGuard Roofing | Professional Roofer Cannock",
-      description: "Trusted roofer in Cannock providing professional roofing services, repairs, and replacements with high-quality craftsmanship and reliable service."
+      description: "Trusted roofer in Cannock providing professional roofing services, repairs, and replacements with high-quality craftsmanship and reliable service.",
+      metadataBase: new URL('https://stormguardroofers.co.uk'),
     };
   }
   
@@ -41,6 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: content.seo.global.siteTitle,
     description: content.seo.global.siteDescription,
     keywords: content.seo.global.keywords,
+    metadataBase: new URL('https://stormguardroofers.co.uk'),
     openGraph: {
       title: content.seo.global.siteTitle,
       description: content.seo.global.siteDescription,
