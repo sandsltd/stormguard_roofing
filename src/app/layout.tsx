@@ -69,6 +69,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <head>
+        <link rel="icon" href="/favicon_io-29/favicon.ico" />
         <GoogleAnalytics />
         <Script
           id="schema-local-business"

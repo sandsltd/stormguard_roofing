@@ -57,7 +57,7 @@ const SeoHead: React.FC<SeoHeadProps> = ({
         : `${finalTitle} | ${globalSeo.siteTitle}`);
   
   // Construct the canonical URL
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://stormguardroofing.co.uk';
   const canonicalUrl = `${baseUrl}${pathname}`;
   
   // Use useEffect to set metadata because this is a client component
@@ -99,6 +99,9 @@ const SeoHead: React.FC<SeoHeadProps> = ({
     }
     canonicalElement.href = canonicalUrl;
     
+    // Update favicon tags
+    updateFaviconTags();
+    
     // Cleanup function
     return () => {
       // No cleanup needed as we're modifying the document directly
@@ -114,6 +117,39 @@ const SeoHead: React.FC<SeoHeadProps> = ({
       document.head.appendChild(metaTag);
     }
     metaTag.content = content;
+  };
+  
+  // Helper function to update favicon tags
+  const updateFaviconTags = () => {
+    // Standard favicon
+    updateLinkTag('icon', '/favicon_io-29/favicon-32x32.png', 'image/png', '32x32');
+    updateLinkTag('icon', '/favicon_io-29/favicon-16x16.png', 'image/png', '16x16');
+    
+    // Apple Touch Icon
+    updateLinkTag('apple-touch-icon', '/favicon_io-29/apple-touch-icon.png');
+    
+    // Android Chrome
+    updateLinkTag('icon', '/favicon_io-29/android-chrome-192x192.png', 'image/png', '192x192');
+    updateLinkTag('icon', '/favicon_io-29/android-chrome-512x512.png', 'image/png', '512x512');
+    
+    // Web Manifest
+    updateLinkTag('manifest', '/favicon_io-29/site.webmanifest');
+  };
+  
+  // Helper function to update link tags
+  const updateLinkTag = (rel: string, href: string, type?: string, sizes?: string) => {
+    let selector = `link[rel="${rel}"]`;
+    if (sizes) selector += `[sizes="${sizes}"]`;
+    
+    let linkTag = document.querySelector(selector) as HTMLLinkElement;
+    if (!linkTag) {
+      linkTag = document.createElement('link');
+      linkTag.rel = rel;
+      if (type) linkTag.type = type;
+      if (sizes) linkTag.setAttribute('sizes', sizes);
+      document.head.appendChild(linkTag);
+    }
+    linkTag.href = href;
   };
   
   // This component doesn't render anything visible
