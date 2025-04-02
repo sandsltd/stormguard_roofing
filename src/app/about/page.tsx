@@ -24,7 +24,7 @@ export default async function AboutPage() {
       <div className="relative min-h-[100dvh] overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32">
         <div className="absolute inset-0">
           <Image 
-            src={business.hero || "/images/hero-placeholder.jpg"} 
+            src="/images/roofers/team_of_roofers.jpg"
             alt={`${business.name} Team`}
             fill
             className="object-cover object-center brightness-[0.95]"
@@ -75,7 +75,7 @@ export default async function AboutPage() {
               {/* CTA Buttons with Enhanced Glass Effect */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 animate-fade-in-up animation-delay-900">
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="relative overflow-hidden inline-flex items-center justify-center text-white px-6 sm:px-8 py-4 rounded-lg text-base sm:text-lg font-bold hover:opacity-100 transition-all duration-300 shadow-xl group transform hover:scale-105 hover:-translate-y-1 bg-red-600 hover:bg-red-500"
                 >
                   <span className="relative z-10 flex items-center">
@@ -164,7 +164,7 @@ export default async function AboutPage() {
             <div className="relative rounded-xl overflow-hidden shadow-xl">
               <div className="aspect-w-4 aspect-h-3">
                 <Image 
-                  src={business.about?.image || "/images/about-placeholder.jpg"} 
+                  src="/images/client-images/unnamed-12.webp"
                   alt={`About ${business.name}`}
                   width={600}
                   height={450}
@@ -290,9 +290,21 @@ export default async function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
               Contact Us Today
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
               Have a question or ready to start your project? We're here to help.
             </p>
+            <div className="flex justify-center mb-8">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-md"
+                style={{ backgroundColor: content.theme?.primaryColor || '#1e3a8a' }}
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Visit Contact Page
+              </a>
+            </div>
           </div>
           
           <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
