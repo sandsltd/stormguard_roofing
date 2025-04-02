@@ -15,6 +15,7 @@ import SeoHead from '@/components/SeoHead';
 import { ServiceItem } from '@/utils/types';
 import Script from 'next/script';
 import type { Metadata } from "next";
+import FeaturedBlogSection from '@/components/home/FeaturedBlogSection';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -46,6 +47,148 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
+
+// JSON-LD for rich snippets and SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://stormguardroofers.co.uk/#website",
+      "url": "https://stormguardroofers.co.uk/",
+      "name": "StormGuard Roofing | Expert Roofers in Cannock",
+      "description": "Professional roofing services in Cannock and surrounding areas. Experts in repairs, replacements, and installations with over 18 years experience.",
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": "https://stormguardroofers.co.uk/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      ],
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://stormguardroofers.co.uk/#organization",
+      "name": "StormGuard Roofing",
+      "url": "https://stormguardroofers.co.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "inLanguage": "en-GB",
+        "url": "https://stormguardroofers.co.uk/images/logo.png",
+        "width": 280,
+        "height": 60,
+        "caption": "StormGuard Roofing Logo"
+      },
+      "image": "https://stormguardroofers.co.uk/images/logo.png",
+      "description": "Professional roofing services in Cannock and surrounding areas. Experts in repairs, replacements, and installations with over 18 years experience.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Roof Street",
+        "addressLocality": "Cannock",
+        "postalCode": "WS11 1AB",
+        "addressCountry": "UK"
+      },
+      "telephone": "+441543123456",
+      "priceRange": "££",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "16:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/stormguardroofers",
+        "https://twitter.com/stormguardroof",
+        "https://www.instagram.com/stormguardroofers/"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://stormguardroofers.co.uk/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
+      "image": "https://stormguardroofers.co.uk/images/roofers/roofer_removing_damaged_tiles.png",
+      "author": {
+        "@type": "Organization",
+        "name": "StormGuard Roofing"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "StormGuard Roofing",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://stormguardroofers.co.uk/images/logo.png"
+        }
+      },
+      "datePublished": "2025-04-05",
+      "description": "Discover the most common roofing issues faced by Cannock homeowners and learn how a professional roofer in Cannock can help solve these problems efficiently."
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Pitched vs. Flat Roofs: A Cannock Homeowner's Guide",
+      "image": "https://stormguardroofers.co.uk/images/roofers/roofer_installing_roofing_tiles.png",
+      "author": {
+        "@type": "Organization",
+        "name": "StormGuard Roofing"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "StormGuard Roofing",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://stormguardroofers.co.uk/images/logo.png"
+        }
+      },
+      "datePublished": "2025-04-12",
+      "description": "Confused about which roofing style is best for your Cannock property? Our expert roofers in Cannock compare pitched and flat roof options to help you decide."
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Emergency Roof Repairs in Cannock: What Constitutes an Emergency?",
+      "image": "https://stormguardroofers.co.uk/images/roofers/roofer_repairing_roof_with_harness.png",
+      "author": {
+        "@type": "Organization",
+        "name": "StormGuard Roofing"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "StormGuard Roofing",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://stormguardroofers.co.uk/images/logo.png"
+        }
+      },
+      "datePublished": "2025-04-19",
+      "description": "Learn when to call an emergency roofer in Cannock and what situations require immediate professional attention to protect your home from further damage."
+    }
+  ]
+};
 
 export default async function Home() {
   const content = await getContent();
@@ -101,12 +244,21 @@ export default async function Home() {
   };
 
   return (
-    <>
+    <main className="min-h-screen">
+      <Script
+        id="json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       {/* SEO Head */}
       <SeoHead 
         content={content} 
         pageKey="home"
       />
+
+      {/* SEO H1 Heading - Visually hidden but available to search engines */}
+      <h1 className="sr-only">Professional Roofer in Cannock - StormGuard Roofing Services</h1>
 
       {/* Schema markup */}
       <Script
@@ -171,8 +323,11 @@ export default async function Home() {
       {/* Testimonials Section */}
       <TestimonialsSection content={content} />
 
+      {/* FeaturedBlogSection */}
+      <FeaturedBlogSection content={content} />
+
       {/* Contact Section */}
       <ContactSection content={content} />
-    </>
+    </main>
   );
 }

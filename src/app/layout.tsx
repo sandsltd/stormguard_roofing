@@ -95,7 +95,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <head>
         <link rel="icon" href="/favicon_io-29/favicon.ico" />
         <GoogleAnalytics />
@@ -107,7 +107,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}>
         <div className="flex flex-col min-h-screen">
           <Header content={content} />
           <main>{children}</main>

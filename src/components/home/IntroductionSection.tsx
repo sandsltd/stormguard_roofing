@@ -1,106 +1,132 @@
 import React from 'react';
 import { Content } from '@/utils/content';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface IntroductionSectionProps {
   content: Content;
 }
 
-export default function IntroductionSection({ content }: IntroductionSectionProps) {
-  const introduction = content.homepage.introduction || {
-    title: "Cannock's Most Trusted",
-    subtitle: "Roofing Specialists",
-    description: "With over a decade of experience serving Cannock and surrounding areas, we've built a reputation for quality craftsmanship, reliability, and exceptional customer service.",
-    image: "/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg",
-    yearFounded: "2007",
-    projectsCompleted: "500+",
-    satisfaction: "98%"
-  };
+// Define interface for the introduction content
+interface IntroductionContent {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  image?: string;
+  yearFounded?: string;
+  projectsCompleted?: string;
+  satisfaction?: string;
+}
 
-  // Use primary color from theme or default to blue
-  const primaryColor = content.theme?.primaryColor || '#3b82f6';
-  const primaryColorLight = `${primaryColor}15`; // 15% opacity version for backgrounds
+const IntroductionSection: React.FC<IntroductionSectionProps> = ({ content }) => {
+  
+  // Use the content prop to access the data with proper typing
+  const introContent = (content.homepage?.introduction || {}) as IntroductionContent;
+  const theme = content.theme || {};
   
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 inset-x-0 h-40" style={{background: `linear-gradient(to bottom, ${primaryColorLight}, transparent)`}}></div>
-      <div className="absolute -right-20 top-1/4 w-80 h-80 rounded-full opacity-50" style={{backgroundColor: primaryColorLight}}></div>
-      <div className="absolute -left-40 bottom-10 w-96 h-96 rounded-full opacity-40" style={{backgroundColor: primaryColorLight}}></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full opacity-60" style={{backgroundColor: primaryColorLight}}></div>
-              <div className="bg-white rounded-xl shadow-xl p-2 relative z-10">
-                <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
-                  <Image 
-                    src={introduction.image} 
-                    alt="Professional Roofing Team in Cannock - StormGuard" 
-                    fill
-                    className="object-cover object-center transform transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-xl opacity-20 transform -rotate-6" 
-                style={{background: `linear-gradient(to bottom right, ${primaryColor}, ${primaryColor}cc)`}}></div>
+    <section className="py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="block">Cannock's Most Trusted</span>
+              <span className="block text-red-600">Roofing Professionals</span>
+            </h2>
+            
+            <div className="prose prose-lg max-w-none mb-8">
+              <p>
+                <strong>Looking for a reliable roofer in Cannock?</strong> StormGuard Roofing provides 
+                expert roofing services throughout Cannock and surrounding areas. With over 18 years of 
+                experience, our team of professional <strong>Cannock roofers</strong> delivers quality 
+                workmanship and exceptional customer service.
+              </p>
+              <p>
+                Whether you need emergency repairs, a complete roof replacement, or regular maintenance, 
+                our <strong>experienced roofers in Cannock</strong> have the skills and expertise to handle 
+                all your roofing requirements efficiently and professionally.
+              </p>
+            </div>
+            
+            <div className="bg-gray-100 p-6 rounded-lg border-l-4 border-red-600 mb-8">
+              <h3 className="text-xl font-bold mb-3">Why Choose Our Roofer Services in Cannock?</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-red-600 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Local <strong>Cannock roofers</strong> with deep knowledge of the area</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-red-600 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>18+ years of <strong>roofing experience in Cannock</strong></span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-red-600 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Fully insured and certified <strong>roofer services in Cannock</strong></span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-red-600 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Emergency <strong>roof repairs in Cannock</strong> available 24/7</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href="/contact" 
+                className="px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition text-center"
+              >
+                Get a Free Quote
+              </Link>
+              <Link 
+                href="/services" 
+                className="px-6 py-3 border border-gray-300 rounded-lg font-bold hover:bg-gray-50 transition text-center"
+              >
+                Our Services
+              </Link>
             </div>
           </div>
           
-          <div className="order-1 lg:order-2">
-            <div className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium" 
-                style={{backgroundColor: primaryColorLight, color: primaryColor}}>
-                <span className="w-2 h-2 rounded-full mr-2" style={{backgroundColor: primaryColor}}></span>
-                Roofing Excellence Since {introduction.yearFounded}
+          <div className="order-1 md:order-2">
+            <div className="relative rounded-lg overflow-hidden shadow-xl">
+              <div className="aspect-w-4 aspect-h-3">
+                <Image 
+                  src={introContent.image || "/images/roofers/roofer_installing_roofing_tiles.png"}
+                  alt="Professional roofer in Cannock installing roofing tiles"
+                  fill
+                  className="object-cover"
+                />
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                {introduction.title} <br />
-                <span style={{ 
-                  backgroundImage: `linear-gradient(to right, ${primaryColor}, ${primaryColor}aa)`, 
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent'
-                }}>
-                  {introduction.subtitle}
-                </span>
-              </h2>
-              
-              <p className="text-lg text-gray-600 leading-relaxed">
-                {introduction.description}
-              </p>
-              
-              <div className="pt-4">
-                <div className="flex flex-wrap items-center gap-8">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" 
-                      style={{backgroundColor: primaryColorLight, color: primaryColor}}>
-                      <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">{introduction.projectsCompleted}</h4>
-                      <p className="text-sm text-gray-600">Projects Completed</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
-                      style={{backgroundColor: primaryColorLight, color: primaryColor}}>
-                      <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">{introduction.satisfaction}</h4>
-                      <p className="text-sm text-gray-600">Customer Satisfaction</p>
-                    </div>
-                  </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                <div className="flex items-center mb-2">
+                  <svg className="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg className="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg className="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg className="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg className="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+                  </svg>
+                  <span className="ml-2 text-white font-bold">5-Star Rated Roofer in Cannock</span>
                 </div>
+                <p className="text-white text-sm">
+                  "The best roofer in Cannock! Professional, reliable, and excellent workmanship."
+                </p>
               </div>
             </div>
           </div>
@@ -108,4 +134,6 @@ export default function IntroductionSection({ content }: IntroductionSectionProp
       </div>
     </section>
   );
-} 
+};
+
+export default IntroductionSection; 

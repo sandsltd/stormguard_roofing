@@ -569,6 +569,10 @@
         "link": "/services"
       },
       {
+        "text": "Blog",
+        "link": "/blog"
+      },
+      {
         "text": "Contact",
         "link": "/contact"
       }
@@ -618,6 +622,12 @@
         "description": "Need a professional roofer in Cannock? Contact StormGuard Roofing for free quotes, emergency repairs and expert roofing advice. Call 07765197450 for same-day service.",
         "keywords": "roofer cannock, contact roofer cannock, roofing quotes cannock, free roofing estimate, emergency roofer cannock, professional roofing cannock, cannock roof repair",
         "ogImage": "/images/contact-og.jpg"
+      },
+      "blog": {
+        "title": "Expert Roofing Blog | Cannock Roofer Tips & Advice",
+        "description": "Professional roofing tips, advice, and insights from Cannock's trusted local roofer. Learn about roof repairs, maintenance, and more from our expert team.",
+        "keywords": "roofer cannock, roofing blog, roof repairs cannock, roofing tips, roof maintenance cannock, cannock roofing advice",
+        "ogImage": "/images/blog-og.jpg"
       }
     }
   },
