@@ -142,7 +142,7 @@ export default async function AboutPage() {
                 </p>
                 <p>
                   From our humble beginnings, we've grown to become a trusted name in our industry, 
-                  all while maintaining our commitment to personalized service and craftsmanship.
+                  all while maintaining our commitment to personalised service and craftsmanship.
                 </p>
               </div>
               

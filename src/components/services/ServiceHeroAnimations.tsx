@@ -9,8 +9,14 @@ export default function ServiceHeroAnimations() {
   return (
     <style jsx global>{`
       @keyframes pulse-slow {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 0.7; }
+        0%, 100% { 
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% { 
+          opacity: 0.7;
+          transform: scale(1.1);
+        }
       }
       
       @keyframes fade-in-up {

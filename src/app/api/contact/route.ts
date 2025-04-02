@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
             </div>
             
             <div class="section">
-              <p><strong>Priority Action:</strong> Contact this lead as soon as possible to maximize your chance of conversion.</p>
+              <p><strong>Priority Action:</strong> Contact this lead as soon as possible to maximise your chance of conversion.</p>
             </div>
           </div>
           <div class="footer">
