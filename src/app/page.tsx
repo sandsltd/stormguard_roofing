@@ -14,8 +14,38 @@ import ServicesGrid from '@/components/ServicesGrid';
 import SeoHead from '@/components/SeoHead';
 import { ServiceItem } from '@/utils/types';
 import Script from 'next/script';
+import type { Metadata } from "next";
 
 export const revalidate = 3600; // Revalidate every hour
+
+// Generate metadata for the homepage
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContent();
+  
+  if (!content || !content.seo?.pages?.home) {
+    return {};
+  }
+  
+  const pageMetadata = content.seo.pages.home;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://roofercannock.co.uk';
+  
+  return {
+    title: pageMetadata.title,
+    description: pageMetadata.description,
+    keywords: pageMetadata.keywords,
+    openGraph: {
+      title: pageMetadata.title,
+      description: pageMetadata.description,
+      type: pageMetadata.ogType || 'website',
+      images: pageMetadata.ogImage ? [{
+        url: baseUrl + pageMetadata.ogImage,
+        width: 1200,
+        height: 630,
+        alt: pageMetadata.title
+      }] : undefined
+    },
+  };
+}
 
 export default async function Home() {
   const content = await getContent();

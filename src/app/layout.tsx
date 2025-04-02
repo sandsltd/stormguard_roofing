@@ -23,6 +23,33 @@ const geistMono = Geist_Mono({
 //   description: "Professional roofing and home improvement services for residential and commercial properties",
 // };
 
+// Instead, export a dynamic generateMetadata function
+export async function generateMetadata(): Promise<Metadata> {
+  // Fetch content
+  const content = await getContent();
+  
+  // Default fallback metadata if content isn't loaded yet
+  if (!content || !content.seo?.global) {
+    return {
+      title: "StormGuard Roofing | Professional Roofer Cannock",
+      description: "Trusted roofer in Cannock providing professional roofing services, repairs, and replacements with high-quality craftsmanship and reliable service."
+    };
+  }
+  
+  // Use the global SEO settings from content
+  return {
+    title: content.seo.global.siteTitle,
+    description: content.seo.global.siteDescription,
+    keywords: content.seo.global.keywords,
+    openGraph: {
+      title: content.seo.global.siteTitle,
+      description: content.seo.global.siteDescription,
+      type: 'website',
+      images: content.seo.global.defaultOgImage ? [content.seo.global.defaultOgImage] : undefined
+    },
+  };
+}
+
 export const revalidate = 3600; // Revalidate every hour
 
 export default async function RootLayout({

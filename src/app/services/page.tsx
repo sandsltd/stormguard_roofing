@@ -4,9 +4,39 @@ import { FaTools } from 'react-icons/fa';
 import ServiceHeroAnimations from '@/components/services/ServiceHeroAnimations';
 import ContactSection from '@/components/home/ContactSection';
 import SeoHead from '@/components/SeoHead';
+import type { Metadata } from "next";
 
 // Static site generation with revalidation
 export const revalidate = 3600; // Revalidate every hour
+
+// Generate metadata for the services page
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContent();
+  
+  if (!content || !content.seo?.pages?.services) {
+    return {};
+  }
+  
+  const pageMetadata = content.seo.pages.services;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://roofercannock.co.uk';
+  
+  return {
+    title: pageMetadata.title,
+    description: pageMetadata.description,
+    keywords: pageMetadata.keywords,
+    openGraph: {
+      title: pageMetadata.title,
+      description: pageMetadata.description,
+      type: 'website',
+      images: pageMetadata.ogImage ? [{
+        url: baseUrl + pageMetadata.ogImage,
+        width: 1200,
+        height: 630,
+        alt: pageMetadata.title
+      }] : undefined
+    },
+  };
+}
 
 // Remove static metadata as we're now using dynamic SEO settings
 // export const metadata = {

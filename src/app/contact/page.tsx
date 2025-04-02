@@ -12,7 +12,7 @@ import ContactHeroAnimations from '@/components/contact/ContactHeroAnimations';
 const SeoHead = dynamic(() => import('@/components/SeoHead'), { ssr: false });
 
 // This needs to be a client component for the form to work,
-// but we can still fetch the content on the server
+// but metadata is handled in a separate metadata.ts file
 export default function Contact() {
   const [content, setContent] = useState<Content | null>(null);
   const [formData, setFormData] = useState({

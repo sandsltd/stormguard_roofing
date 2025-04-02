@@ -7,6 +7,36 @@ import { ExtendedBusinessContent, ValueItem } from '@/components/about/BusinessT
 import ContactSection from '@/components/home/ContactSection';
 import AboutHeroAnimations from '@/components/about/AboutHeroAnimations';
 import SeoHead from '@/components/SeoHead';
+import type { Metadata } from "next";
+
+// Generate metadata for the about page
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContent();
+  
+  if (!content || !content.seo?.pages?.about) {
+    return {};
+  }
+  
+  const pageMetadata = content.seo.pages.about;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://roofercannock.co.uk';
+  
+  return {
+    title: pageMetadata.title,
+    description: pageMetadata.description,
+    keywords: pageMetadata.keywords,
+    openGraph: {
+      title: pageMetadata.title,
+      description: pageMetadata.description,
+      type: 'website',
+      images: pageMetadata.ogImage ? [{
+        url: baseUrl + pageMetadata.ogImage,
+        width: 1200,
+        height: 630,
+        alt: pageMetadata.title
+      }] : undefined
+    },
+  };
+}
 
 export default async function AboutPage() {
   const content = await getContent();
