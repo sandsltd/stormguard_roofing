@@ -34,6 +34,15 @@ const nextConfig = {
       }
     },
     scrollRestoration: true
+  },
+  // Add rewrites to handle sitemap and robots correctly
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap',
+        destination: '/sitemap.xml',
+      }
+    ]
   }
 }
 

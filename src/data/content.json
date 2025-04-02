@@ -314,51 +314,51 @@
     "serviceAreas": [
       {
         "name": "Cannock",
-        "link": "/locations/cannock"
+        "link": "/contact"
       },
       {
         "name": "Hednesford",
-        "link": "/locations/hednesford"
+        "link": "/contact"
       },
       {
         "name": "Heath Hayes",
-        "link": "/locations/heath-hayes"
+        "link": "/contact"
       },
       {
         "name": "Rugeley",
-        "link": "/locations/rugeley"
+        "link": "/contact"
       },
       {
         "name": "Bridgtown",
-        "link": "/locations/bridgtown"
+        "link": "/contact"
       },
       {
         "name": "Cheslyn Hay",
-        "link": "/locations/cheslyn-hay"
+        "link": "/contact"
       },
       {
         "name": "Great Wyrley",
-        "link": "/locations/great-wyrley"
+        "link": "/contact"
       },
       {
         "name": "Huntington",
-        "link": "/locations/huntington"
+        "link": "/contact"
       },
       {
         "name": "Norton Canes",
-        "link": "/locations/norton-canes"
+        "link": "/contact"
       },
       {
         "name": "Penkridge",
-        "link": "/locations/penkridge"
+        "link": "/contact"
       },
       {
         "name": "Brereton",
-        "link": "/locations/brereton"
+        "link": "/contact"
       },
       {
         "name": "Wimblebury",
-        "link": "/locations/wimblebury"
+        "link": "/contact"
       }
     ],
     "featuresSection": {

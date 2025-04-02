@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
+Disallow: /*.json$
+Crawl-delay: 1
+
+# Allow all web crawlers to access all content (except what's disallowed)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Specify the location of the sitemap
+Sitemap: https://stormguardroofing.co.uk/sitemap.xml 

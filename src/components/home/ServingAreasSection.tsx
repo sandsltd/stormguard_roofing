@@ -18,7 +18,7 @@ export default function ServingAreasSection({ content }: ServingAreasSectionProp
     {
       name: "Cannock",
       description: "As Cannock's trusted roofing contractor, we understand the unique challenges that the Staffordshire weather presents to your roof. From heavy rainfall to strong winds, our roofing solutions are designed to withstand the local climate while complementing Cannock's diverse architectural styles.",
-      image: "/images/locations/cannock-town.jpg",
+      image: "/images/contact-town.jpg",
       tags: ["Weather Resistant", "Local Cannock Roofers", "Energy Efficient"],
       ctaText: "Request a Free Quote",
       ctaLink: "/contact"
