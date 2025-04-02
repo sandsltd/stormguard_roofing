@@ -33,7 +33,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <head>
-        <GoogleAnalytics content={content} />
+        <GoogleAnalytics />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="flex flex-col min-h-screen">
