@@ -43,6 +43,24 @@ const nextConfig = {
         destination: '/sitemap.xml',
       }
     ]
+  },
+  // Add headers to properly serve XML files
+  async headers() {
+    return [
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/xml'
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600'
+          }
+        ]
+      }
+    ]
   }
 }
 
