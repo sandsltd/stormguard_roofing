@@ -86,7 +86,7 @@ export default function Contact() {
         {/* Main Background Image */}
         <div className="absolute inset-0">
           <Image
-            src={content.contact.heroImage || '/images/client-images/WhatsApp Image 2025-03-27 at 13.57.21 (1).jpeg'}
+            src="/images/roofers/roofer_kneeling.png"
             alt="Contact Us"
             fill
             className="object-cover object-center brightness-[0.95]"

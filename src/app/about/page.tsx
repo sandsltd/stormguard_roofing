@@ -24,7 +24,7 @@ export default async function AboutPage() {
       <div className="relative min-h-[100dvh] overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32">
         <div className="absolute inset-0">
           <Image 
-            src="/images/roofers/team_of_roofers.jpg"
+            src="/images/roofers/roofer_installing_new_roof.png"
             alt={`${business.name} Team`}
             fill
             className="object-cover object-center brightness-[0.95]"
