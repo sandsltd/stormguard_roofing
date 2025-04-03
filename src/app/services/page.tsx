@@ -59,9 +59,9 @@ export default async function Services() {
       <div className="relative min-h-[100dvh] overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32">
         {/* Main Background Image */}
         <div className="absolute inset-0">
-          <div className="relative h-[400px] md:h-[500px]">
+          <div className="relative h-full w-full">
             <Image
-              src={content.services.hero?.backgroundImage || "/images/client-images/roofer_installing_roofing_tiles.jpg"}
+              src="/images/roofers/tile_roof2.png"
               alt="Professional roofing services in Cannock"
               fill
               className="object-cover"

@@ -53,12 +53,12 @@ export default async function AboutPage() {
       {/* Hero Section with Background Image */}
       <div className="relative min-h-[100dvh] overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32">
         <div className="absolute inset-0">
-          <div className="relative h-[500px] w-full md:max-w-md lg:max-w-lg ml-auto">
+          <div className="relative h-full w-full">
             <Image 
-              src="/images/client-images/roofer_fixing_tile_on_roof.jpg"
-              alt="StormGuard Roofing team of professional roofers in Cannock" 
+              src="/images/roofers/tile_roof.png"
+              alt="Professional tile roofing in Cannock" 
               fill
-              className="object-cover rounded-lg"
+              className="object-cover"
             />
           </div>
           {/* Gradient Overlay - Using the homepage style */}
