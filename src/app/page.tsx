@@ -133,59 +133,38 @@ const jsonLd = {
     {
       "@type": "BlogPosting",
       "headline": "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
-      "image": "https://stormguardroofers.co.uk/images/roofers/roofer_removing_damaged_tiles.png",
+      "description": "Discover common roofing problems in Cannock homes and how professional roofer services can fix them effectively.",
       "author": {
-        "@type": "Organization",
+        "@type": "Organization", 
         "name": "StormGuard Roofing"
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "StormGuard Roofing",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://stormguardroofers.co.uk/images/logo.png"
-        }
-      },
-      "datePublished": "2025-04-05",
-      "description": "Discover the most common roofing issues faced by Cannock homeowners and learn how a professional roofer in Cannock can help solve these problems efficiently."
+      "image": "https://stormguardroofers.co.uk/images/client-images/roofer_removing_damaged_tiles.jpg",
+      "datePublished": "2025-04-02",
+      "url": "https://stormguardroofers.co.uk/blog/common-roofing-problems-cannock"
     },
     {
       "@type": "BlogPosting",
       "headline": "Pitched vs. Flat Roofs: A Cannock Homeowner's Guide",
-      "image": "https://stormguardroofers.co.uk/images/roofers/roofer_installing_roofing_tiles.png",
+      "description": "Compare pitched and flat roof options for your Cannock property with advice from local roofing experts.",
       "author": {
-        "@type": "Organization",
+        "@type": "Organization", 
         "name": "StormGuard Roofing"
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "StormGuard Roofing",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://stormguardroofers.co.uk/images/logo.png"
-        }
-      },
-      "datePublished": "2025-04-12",
-      "description": "Confused about which roofing style is best for your Cannock property? Our expert roofers in Cannock compare pitched and flat roof options to help you decide."
+      "image": "https://stormguardroofers.co.uk/images/client-images/roofer_installing_roofing_tiles.jpg",
+      "datePublished": "2025-03-19",
+      "url": "https://stormguardroofers.co.uk/blog/pitched-vs-flat-roofs-cannock-guide"
     },
     {
       "@type": "BlogPosting",
       "headline": "Emergency Roof Repairs in Cannock: What Constitutes an Emergency?",
-      "image": "https://stormguardroofers.co.uk/images/roofers/roofer_repairing_roof_with_harness.png",
+      "description": "Learn when to call for emergency roof repairs and how our Cannock roofers can protect your home from further damage.",
       "author": {
-        "@type": "Organization",
+        "@type": "Organization", 
         "name": "StormGuard Roofing"
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "StormGuard Roofing",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://stormguardroofers.co.uk/images/logo.png"
-        }
-      },
-      "datePublished": "2025-04-19",
-      "description": "Learn when to call an emergency roofer in Cannock and what situations require immediate professional attention to protect your home from further damage."
+      "image": "https://stormguardroofers.co.uk/images/client-images/roofer_repairing_roof_with_harness.jpg",
+      "datePublished": "2025-03-26",
+      "url": "https://stormguardroofers.co.uk/blog/emergency-roof-repairs-cannock"
     }
   ]
 };
@@ -198,7 +177,7 @@ export default async function Home() {
   }
 
   // Create homepage services adapted from the services structure
-  const homepageServices = content.homepage.services.map((service: ServiceItem) => ({
+  const homepageServices = content.services.services.map((service: ServiceItem) => ({
     title: service.title,
     description: service.description.split('.')[0] + '.',  // Just use first sentence for brevity
     link: "/contact"  // Changed from "/services" to "/contact" for "Get a Free Quote" buttons

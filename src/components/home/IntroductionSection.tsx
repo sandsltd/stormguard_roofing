@@ -98,10 +98,11 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({ content }) =>
             <div className="relative rounded-lg overflow-hidden shadow-xl">
               <div className="aspect-w-4 aspect-h-3">
                 <Image 
-                  src={introContent.image || "/images/roofers/roofer_installing_roofing_tiles.png"}
-                  alt="Professional roofer in Cannock installing roofing tiles"
-                  fill
-                  className="object-cover"
+                  className="h-full w-full object-cover rounded-lg shadow-lg"
+                  width={600}
+                  height={400}
+                  src={introContent.image || "/images/client-images/roofer_installing_roofing_tiles.jpg"}
+                  alt="Professional roofer in Cannock"
                 />
               </div>
               

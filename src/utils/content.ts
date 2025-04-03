@@ -547,7 +547,7 @@ function getDefaultContent(): Content {
         title: 'Our Services',
         subtitle: 'Professional Roofing Solutions for Every Need',
         subtitle2: 'Solutions',
-        backgroundImage: '/images/roofers/roofer_installing_roofing_tiles.png',
+        backgroundImage: '/images/client-images/roofer_installing_roofing_tiles.jpg',
         badge: 'EXPERT SOLUTIONS',
         ctaPrimary: {
           text: 'Get a Quote',

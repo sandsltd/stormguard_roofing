@@ -63,7 +63,7 @@ export default async function BlogPost() {
       {/* Featured Image */}
       <div className="relative h-80 md:h-96 lg:h-[500px]">
         <Image
-          src="/images/roofers/roofer_repairing_roof_with_harness.png"
+          src="/images/client-images/roofer_repairing_roof_with_harness.jpg"
           alt="Emergency roofer in Cannock repairing roof with safety harness"
           fill
           className="object-cover"

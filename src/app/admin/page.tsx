@@ -245,6 +245,56 @@ const Admin: React.FC = () => {
     }
   };
 
+  // Handle service changes
+  const handleServiceChange = (index: number, field: string, value: string) => {
+    if (!content) return;
+    const newServices = [...content.services.services];
+    newServices[index] = {
+      ...newServices[index],
+      [field]: value
+    };
+    setContent({
+      ...content,
+      services: {
+        ...content.services,
+        services: newServices
+      }
+    } as Content);
+  };
+
+  // Handle removing a service
+  const handleRemoveService = (index: number) => {
+    if (!content) return;
+    const newServices = [...content.services.services];
+    newServices.splice(index, 1);
+    setContent({
+      ...content,
+      services: {
+        ...content.services,
+        services: newServices
+      }
+    } as Content);
+  };
+
+  // Handle adding a new service
+  const handleAddService = () => {
+    if (!content) return;
+    const newServices = [...content.services.services, {
+      title: "New Service",
+      description: "Service description",
+      icon: "home",
+      buttonText: "Get a Free Quote",
+      buttonLink: "/contact"
+    }];
+    setContent({
+      ...content,
+      services: {
+        ...content.services,
+        services: newServices
+      }
+    } as Content);
+  };
+
   if (!isAuthenticated) {
     return <LoginScreen onLogin={() => setIsAuthenticated(true)} />;
   }
@@ -2524,7 +2574,7 @@ const Admin: React.FC = () => {
                             title: "Our Services",
                             subtitle: "Professional Roofing Solutions for Every Need",
                             subtitle2: "Solutions",
-                            backgroundImage: "/images/roofers/roofer_installing_roofing_tiles.png",
+                            backgroundImage: "/images/client-images/roofer_installing_roofing_tiles.jpg",
                             badge: "EXPERT SOLUTIONS",
                             ctaPrimary: {
                               text: "Get a Quote",
@@ -2667,14 +2717,10 @@ const Admin: React.FC = () => {
                           <div className="flex justify-between items-center mb-4">
                             <h4 className="text-lg font-medium">Service {index + 1}</h4>
                             <button
-                              onClick={() => {
-                                const newServices = [...content.services.services];
-                                newServices.splice(index, 1);
-                                handleNestedChange('services.services', newServices);
-                              }}
+                              onClick={() => handleRemoveService(index)}
                               className="text-red-600 hover:text-red-800"
                             >
-                              Remove Service
+                              Remove
                             </button>
                           </div>
                           
@@ -2684,11 +2730,7 @@ const Admin: React.FC = () => {
                               <input
                                 type="text"
                                 value={service.title}
-                                onChange={(e) => {
-                                  const newServices = [...content.services.services];
-                                  newServices[index] = { ...service, title: e.target.value };
-                                  handleNestedChange('services.services', newServices);
-                                }}
+                                onChange={(e) => handleServiceChange(index, 'title', e.target.value)}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Service title"
                               />
@@ -2698,11 +2740,7 @@ const Admin: React.FC = () => {
                               <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                               <textarea
                                 value={service.description}
-                                onChange={(e) => {
-                                  const newServices = [...content.services.services];
-                                  newServices[index] = { ...service, description: e.target.value };
-                                  handleNestedChange('services.services', newServices);
-                                }}
+                                onChange={(e) => handleServiceChange(index, 'description', e.target.value)}
                                 rows={4}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Service description"
@@ -2714,11 +2752,7 @@ const Admin: React.FC = () => {
                               <input
                                 type="text"
                                 value={service.buttonLink || '/contact'}
-                                onChange={(e) => {
-                                  const newServices = [...content.services.services];
-                                  newServices[index] = { ...service, buttonLink: e.target.value };
-                                  handleNestedChange('services.services', newServices);
-                                }}
+                                onChange={(e) => handleServiceChange(index, 'buttonLink', e.target.value)}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="/contact or #contact-form"
                               />
@@ -2728,15 +2762,7 @@ const Admin: React.FC = () => {
                       ))}
                       
                       <button
-                        onClick={() => {
-                          const newServices = [...content.services.services, {
-                            title: 'New Service',
-                            description: 'Enter service description here',
-                            link: '/contact',
-                            buttonLink: '/contact'
-                          }];
-                          handleNestedChange('services.services', newServices);
-                        }}
+                        onClick={handleAddService}
                         className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         Add New Service

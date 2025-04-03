@@ -59,29 +59,29 @@ export default async function Services() {
       <div className="relative min-h-[100dvh] overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32">
         {/* Main Background Image */}
         <div className="absolute inset-0">
-          <Image 
-            src={content.services.hero?.backgroundImage || "/images/roofers/roofer_installing_roofing_tiles.png"} 
-            alt="Our Services"
-            fill
-            className="object-cover object-center brightness-[0.95]"
-            priority
-            quality={90}
-            sizes="100vw"
-          />
-          
-          {/* Gradient Overlay - Adjusted for better image visibility */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
-          
-          {/* Pattern Overlay for Texture */}
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-20" />
-          
-          {/* Animated Highlights - Adjusted opacity */}
-          <div className="absolute -top-[20%] -left-[10%] w-full h-full rounded-full blur-3xl animate-pulse-slow opacity-30" 
-            style={{ backgroundColor: 'rgba(220, 38, 38, 0.15)' }} />
-          <div className="absolute -bottom-[20%] -right-[10%] w-full h-full rounded-full blur-3xl animate-pulse-slow animation-delay-2000 opacity-30" 
-            style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}15` }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 rounded-full blur-3xl animate-pulse-slow animation-delay-1000 opacity-30" 
-            style={{ backgroundColor: 'rgba(220, 38, 38, 0.2)' }} />
+          <div className="relative h-[400px] md:h-[500px]">
+            <Image
+              src={content.services.hero?.backgroundImage || "/images/client-images/roofer_installing_roofing_tiles.jpg"}
+              alt="Professional roofing services in Cannock"
+              fill
+              className="object-cover"
+              priority
+            />
+            
+            {/* Gradient Overlay - Adjusted for better image visibility */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
+            
+            {/* Pattern Overlay for Texture */}
+            <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-20" />
+            
+            {/* Animated Highlights - Adjusted opacity */}
+            <div className="absolute -top-[20%] -left-[10%] w-full h-full rounded-full blur-3xl animate-pulse-slow opacity-30" 
+              style={{ backgroundColor: 'rgba(220, 38, 38, 0.15)' }} />
+            <div className="absolute -bottom-[20%] -right-[10%] w-full h-full rounded-full blur-3xl animate-pulse-slow animation-delay-2000 opacity-30" 
+              style={{ backgroundColor: `${content.theme?.primaryColor || '#3b82f6'}15` }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 rounded-full blur-3xl animate-pulse-slow animation-delay-1000 opacity-30" 
+              style={{ backgroundColor: 'rgba(220, 38, 38, 0.2)' }} />
+          </div>
         </div>
         
         {/* Content Container */}
@@ -164,7 +164,7 @@ export default async function Services() {
       <div id="services" className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 gap-16">
-            {content.homepage.services.map((service: { 
+            {content.services.services.map((service: { 
               title: string; 
               description: string; 
               image: string;

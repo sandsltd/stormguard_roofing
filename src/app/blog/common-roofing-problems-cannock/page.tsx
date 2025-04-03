@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Discover common roofing problems in Cannock homes and how our professional roofer services can fix them. Expert solutions from Cannock's trusted local roofers.",
     type: 'article',
     images: [{
-      url: '/images/roofers/roofer_removing_damaged_tiles.png',
+      url: '/images/client-images/roofer_removing_damaged_tiles.jpg',
       width: 1200,
       height: 630,
       alt: "Roofer in Cannock repairing damaged tiles"
@@ -28,7 +28,7 @@ const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
-  "image": "https://stormguardroofers.co.uk/images/roofers/roofer_removing_damaged_tiles.png",
+  "image": "https://stormguardroofers.co.uk/images/client-images/roofer_removing_damaged_tiles.jpg",
   "author": {
     "@type": "Organization",
     "name": "StormGuard Roofing"
@@ -59,7 +59,7 @@ export default async function BlogPost() {
     date: "April 2, 2025",
     author: "StormGuard Roofing",
     authorRole: "Cannock's Trusted Roofing Experts",
-    image: "/images/roofers/roofer_removing_damaged_tiles.png",
+    image: "/images/client-images/roofer_removing_damaged_tiles.jpg",
     categories: ["Roof Repairs", "Maintenance"],
     metaDescription: "Discover common roofing problems in Cannock homes and how our professional roofer services can fix them. Expert solutions from Cannock's trusted local roofers.",
     keywords: "roofer cannock, roof repairs cannock, roofing problems cannock, local roofer cannock, cannock roofing services"
@@ -398,7 +398,7 @@ export default async function BlogPost() {
                     <div className="flex gap-3">
                       <div className="w-20 h-20 relative flex-shrink-0 rounded-md overflow-hidden">
                         <Image 
-                          src="/images/roofers/roofer_repairing_roof_with_harness.png"
+                          src="/images/client-images/roofer_repairing_roof_with_harness.jpg"
                           alt="Emergency Roof Repairs in Cannock"
                           fill
                           className="object-cover rounded"
@@ -418,7 +418,7 @@ export default async function BlogPost() {
                     <div className="flex gap-3">
                       <div className="w-20 h-20 relative flex-shrink-0 rounded-md overflow-hidden">
                         <Image 
-                          src="/images/roofers/roofer_installing_roofing_tiles.png"
+                          src="/images/client-images/roofer_installing_roofing_tiles.jpg"
                           alt="Pitched vs. Flat Roofs: A Cannock Homeowner's Guide"
                           fill
                           className="object-cover rounded"

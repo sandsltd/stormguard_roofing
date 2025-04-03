@@ -237,17 +237,11 @@ export default function ContactSection({ content }: ContactSectionProps) {
                   <select
                     id="service"
                     name="service"
-                    value={formData.service}
-                    onChange={handleInputChange}
-                    required={formFields.service.required}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors"
-                    style={{ 
-                      "--tw-ring-color": `${primaryColor}40`,
-                      outlineColor: primaryColor
-                    } as React.CSSProperties}
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
+                    required={formFields?.service?.required}
                   >
-                    <option value="">Select a service</option>
-                    {content.homepage.services?.map((service, index) => (
+                    <option value="">Select a Service</option>
+                    {content.services.services.map((service, index) => (
                       <option key={index} value={service.title}>
                         {service.title}
                       </option>

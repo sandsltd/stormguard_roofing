@@ -10,7 +10,7 @@ interface HeroSectionProps {
 export default function HeroSection({ content }: HeroSectionProps) {
   // Make sure we have default values for all nested properties to avoid "Cannot read properties of undefined" errors
   const defaultPremiumHero = {
-    backgroundImage: '/images/roofers/roofer_fixing_tile_on_roof.png',
+    backgroundImage: '/images/client-images/roofer_fixing_tile_on_roof.jpg',
     title: {
       line1: 'Expert',
       line2: 'Roofing Services',
@@ -46,6 +46,13 @@ export default function HeroSection({ content }: HeroSectionProps) {
       link: content.homepage.premiumHero?.ctaSecondary?.link || defaultPremiumHero.ctaSecondary.link,
     },
     featureBadges: content.homepage.premiumHero?.featureBadges || defaultPremiumHero.featureBadges,
+  };
+
+  // Default background image if not provided in content
+  const bgStyle = {
+    backgroundImage: `url('${content.homepage.premiumHero?.backgroundImage || '/images/client-images/roofer_fixing_tile_on_roof.jpg'}')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
   };
 
   return (

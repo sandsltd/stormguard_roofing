@@ -123,7 +123,7 @@ export default function Contact() {
         {/* Main Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/roofers/roofer_kneeling.png"
+            src="/images/client-images/roofer_installing_roofing_tiles.jpg"
             alt="Contact Us"
             fill
             className="object-cover object-center brightness-[0.95]"
@@ -301,12 +301,11 @@ export default function Contact() {
                   <select
                     id="service"
                     name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-5 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
+                    required={content.contact.formFields?.service?.required}
                   >
-                    <option value="">Select a service</option>
-                    {content.homepage.services.map((service, index) => (
+                    <option value="">Select a Service</option>
+                    {content.services.services.map((service, index) => (
                       <option key={index} value={service.title}>
                         {service.title}
                       </option>

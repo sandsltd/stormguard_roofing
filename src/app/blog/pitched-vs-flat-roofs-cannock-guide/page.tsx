@@ -63,7 +63,7 @@ export default async function BlogPost() {
       {/* Featured Image */}
       <div className="relative h-80 md:h-96 lg:h-[500px]">
         <Image
-          src="/images/roofers/roofer_installing_roofing_tiles.png"
+          src="/images/client-images/roofer_installing_roofing_tiles.jpg"
           alt="Roofer in Cannock installing roofing tiles"
           fill
           className="object-cover"

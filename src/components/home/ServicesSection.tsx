@@ -76,31 +76,42 @@ export default function ServicesSection({ content }: ServicesSectionProps) {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content.homepage.services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div 
-                className="h-3" 
-                style={{ backgroundColor: primaryColor }}
-              ></div>
+            <div
+              key={index}
+              className="group relative bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+            >
               <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div 
-                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
-                    style={{ backgroundColor: `${primaryColor}15`, color: primaryColor }}
-                  >
-                    {getIconComponent(service.icon)}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800">{service.title}</h3>
+                {/* Service Icon */}
+                <div className="mb-4">
+                  <span className="inline-block p-3 rounded-lg bg-red-50 text-red-600">
+                    {service.icon && (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    )}
+                  </span>
                 </div>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <div className="pt-2 mt-auto">
-                  <a 
-                    href={service.buttonLink || "/contact"} 
-                    className="inline-block px-5 py-2 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:opacity-90"
-                    style={{ backgroundColor: primaryColor }}
-                  >
-                    {service.buttonText || "Learn More"}
-                  </a>
-                </div>
+
+                {/* Service Title */}
+                <h3 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors duration-300">
+                  {service.title}
+                </h3>
+
+                {/* Service Description */}
+                <p className="text-gray-600 mb-4">
+                  {service.description}
+                </p>
+
+                {/* Learn More Link */}
+                <a
+                  href={service.buttonLink || "/contact"}
+                  className="inline-flex items-center text-red-600 hover:text-red-700 font-medium"
+                >
+                  {service.buttonText || "Get a Free Quote"}
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
               </div>
             </div>
           ))}

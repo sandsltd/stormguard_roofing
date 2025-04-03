@@ -8,33 +8,36 @@ interface FeaturedBlogSectionProps {
 }
 
 const FeaturedBlogSection: React.FC<FeaturedBlogSectionProps> = ({ content }) => {
-  // Featured blog posts (in a real implementation, these would come from a CMS or API)
-  const featuredPosts = [
+  // Sample blog post data
+  const blogPosts = [
     {
       id: 1,
       title: "The Most Common Roofing Problems in Cannock Homes (And How to Fix Them)",
+      excerpt: "Discover the most common roofing issues faced by Cannock homeowners and learn how our professional roofers can help solve these problems efficiently.",
+      date: "April 2, 2025",
       slug: "common-roofing-problems-cannock",
-      excerpt: "Discover the most common roofing issues faced by Cannock homeowners and learn how a professional roofer in Cannock can help solve these problems efficiently.",
-      date: "April 5, 2025",
-      image: "/images/roofers/roofer_removing_damaged_tiles.png",
+      image: "/images/client-images/roofer_removing_damaged_tiles.jpg",
+      authorName: "StormGuard Roofing",
       categories: ["Roof Repairs", "Maintenance"]
     },
     {
       id: 2,
       title: "Pitched vs. Flat Roofs: A Cannock Homeowner's Guide",
+      excerpt: "Confused about which roofing style is best for your Cannock property? Our expert roofers compare pitched and flat roof options to help you decide.",
+      date: "March 19, 2025",
       slug: "pitched-vs-flat-roofs-cannock-guide",
-      excerpt: "Confused about which roofing style is best for your Cannock property? Our expert roofers in Cannock compare pitched and flat roof options to help you decide.",
-      date: "April 12, 2025",
-      image: "/images/roofers/roofer_installing_roofing_tiles.png",
+      image: "/images/client-images/roofer_installing_roofing_tiles.jpg",
+      authorName: "StormGuard Roofing",
       categories: ["Roof Types", "Installation"]
     },
     {
       id: 3,
       title: "Emergency Roof Repairs in Cannock: What Constitutes an Emergency?",
+      excerpt: "Learn when to call an emergency roofer and what situations require immediate professional attention to protect your home from further damage.",
+      date: "March 26, 2025",
       slug: "emergency-roof-repairs-cannock",
-      excerpt: "Learn when to call an emergency roofer in Cannock and what situations require immediate professional attention to protect your home from further damage.",
-      date: "April 19, 2025",
-      image: "/images/roofers/roofer_repairing_roof_with_harness.png",
+      image: "/images/client-images/roofer_repairing_roof_with_harness.jpg",
+      authorName: "StormGuard Roofing",
       categories: ["Emergency Repairs", "Safety"]
     }
   ];
@@ -52,7 +55,7 @@ const FeaturedBlogSection: React.FC<FeaturedBlogSectionProps> = ({ content }) =>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredPosts.map((post) => (
+          {blogPosts.map((post) => (
             <div 
               key={post.id} 
               className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-lg"

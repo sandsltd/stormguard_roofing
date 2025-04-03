@@ -15,7 +15,7 @@ const getBlogData = (slug: string) => {
       date: "April 2, 2025",
       author: "StormGuard Roofing",
       authorRole: "Cannock's Trusted Roofing Experts",
-      image: "/images/roofers/roofer_removing_damaged_tiles.png",
+      image: "/images/client-images/roofer_removing_damaged_tiles.jpg",
       categories: ["Roof Repairs", "Maintenance"],
       content: `
         <p>As the most trusted <strong>roofer in Cannock</strong> with over 18 years of experience, we've seen firsthand the common roofing issues that local homeowners face. Cannock's unique weather patterns, with heavy rainfall and occasional strong winds, can take a toll on your roof over time.</p>
@@ -116,7 +116,7 @@ const getBlogData = (slug: string) => {
       date: "March 19, 2025",
       author: "StormGuard Roofing",
       authorRole: "Cannock's Trusted Roofing Experts",
-      image: "/images/roofers/roofer_installing_roofing_tiles.png",
+      image: "/images/client-images/roofer_installing_roofing_tiles.jpg",
       categories: ["Roof Types", "Installation"],
       content: "<p>Sample content for pitched vs flat roofs article...</p>",
       metaDescription: "Compare pitched and flat roof options for your Cannock property with expert advice from local roofers. Make the right choice with Cannock's trusted roofing specialists.",
@@ -127,7 +127,7 @@ const getBlogData = (slug: string) => {
       date: "March 26, 2025",
       author: "StormGuard Roofing",
       authorRole: "Cannock's Trusted Roofing Experts",
-      image: "/images/roofers/roofer_repairing_roof_with_harness.png",
+      image: "/images/client-images/roofer_repairing_roof_with_harness.jpg",
       categories: ["Emergency Repairs", "Safety"],
       content: "<p>Sample content for emergency roof repairs article...</p>",
       metaDescription: "Learn when to call for emergency roof repairs in Cannock and how our expert roofers can quickly protect your property from further damage.",
@@ -344,7 +344,7 @@ export default async function BlogPost({
                     <div className="flex gap-3">
                       <div className="w-20 h-20 relative flex-shrink-0 rounded-md overflow-hidden">
                         <Image 
-                          src="/images/roofers/roofer_repairing_roof_with_harness.png"
+                          src="/images/client-images/roofer_repairing_roof_with_harness.jpg"
                           alt="Emergency Roof Repairs in Cannock"
                           fill
                           className="object-cover rounded"
@@ -364,7 +364,7 @@ export default async function BlogPost({
                     <div className="flex gap-3">
                       <div className="w-20 h-20 relative flex-shrink-0 rounded-md overflow-hidden">
                         <Image 
-                          src="/images/roofers/roofer_installing_roofing_tiles.png"
+                          src="/images/client-images/roofer_installing_roofing_tiles.jpg"
                           alt="Pitched vs. Flat Roofs: A Cannock Homeowner's Guide"
                           fill
                           className="object-cover rounded"
