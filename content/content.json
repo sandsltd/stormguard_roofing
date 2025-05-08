@@ -221,17 +221,74 @@
   },
   "services": {
     "hero": {
-      "title": "Our Services",
-      "subtitle": "What we offer"
+      "title": "Professional Roofing",
+      "subtitle": "Quality roofing services in Cannock",
+      "subtitle2": "Services",
+      "backgroundImage": "/images/roofers/roofer_installing_roofing_tiles.png",
+      "badge": "ROOFER CANNOCK",
+      "ctaPrimary": {
+        "text": "Get a Free Quote",
+        "link": "/contact"
+      },
+      "ctaSecondary": {
+        "text": "View All Services",
+        "link": "#services"
+      }
     },
     "services": [
       {
-        "title": "Service 1",
-        "description": "Description of service 1",
-        "image": "/images/service1.jpg",
+        "title": "Pitched Roof Services",
+        "description": "Professional pitched roof installation, repair, and replacement services from Cannock's trusted roofers.",
+        "image": "/images/client-images/roofer_installing_roofing_tiles.jpg",
         "features": [
-          "Feature 1",
-          "Feature 2"
+          "New roof installation",
+          "Roof repairs and maintenance",
+          "Tile and slate roofing",
+          "Complete roof replacement"
+        ]
+      },
+      {
+        "title": "Flat Roof Solutions",
+        "description": "Expert flat roof installation and repair services from specialists who work with multiple flat roofing systems.",
+        "image": "/images/client-images/roofer_installing_felt_tiles.jpg",
+        "features": [
+          "EPDM rubber roofing",
+          "Felt roofing systems",
+          "Flat roof repairs",
+          "Waterproofing solutions"
+        ]
+      },
+      {
+        "title": "Chimney & Leadwork",
+        "description": "Comprehensive chimney installation, repair and maintenance services alongside professional leadwork.",
+        "image": "/images/client-images/roofer_fixing_tile_on_roof.jpg",
+        "features": [
+          "Chimney repairs",
+          "Lead flashing installation",
+          "Chimney rebuilding",
+          "Weatherproofing"
+        ]
+      },
+      {
+        "title": "Roof Windows & Dormers",
+        "description": "Professional installation of roof windows, skylights, dormers, and roof lights to enhance natural lighting.",
+        "image": "/images/client-images/roofer_repairing_roof_with_harness.jpg",
+        "features": [
+          "Velux window installation",
+          "Dormer construction",
+          "Skylight fitting",
+          "Natural light solutions"
+        ]
+      },
+      {
+        "title": "Emergency Repair Services",
+        "description": "Fast response emergency roof repair services for leaks, storm damage, and unexpected issues throughout Cannock.",
+        "image": "/images/client-images/roofer_installing_roofing_tiles.jpg",
+        "features": [
+          "24/7 emergency response",
+          "Storm damage repairs",
+          "Leak detection and repair",
+          "Temporary weather protection"
         ]
       }
     ],

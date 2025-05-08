@@ -33,5 +33,5 @@ export async function generateMetadata(): Promise<Metadata> {
 // Export default metadata but it will be overridden by the generateMetadata function
 export default {
   title: 'Contact Your Local Cannock Roofer | Free Quotes & Estimates',
-  description: 'Need a professional roofer in Cannock? Contact StormGuard Roofing for free quotes, emergency repairs and expert roofing advice. Call 07765197450 for same-day service.'
+  description: 'Need a professional roofer in Cannock? Contact StormGuard Roofing for free quotes, emergency repairs and expert roofing advice. Call 01543 229963 for same-day service.'
 } satisfies Metadata; 
