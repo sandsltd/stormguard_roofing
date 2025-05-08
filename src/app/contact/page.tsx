@@ -45,7 +45,7 @@ export default function Contact() {
     );
   }
 
-  const { business, contact, socials, services } = content;
+  const { business, contact, socials, homepage } = content;
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -301,11 +301,13 @@ export default function Contact() {
                   <select
                     id="service"
                     name="service"
+                    value={formData.service}
+                    onChange={handleChange}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
                     required={content.contact.formFields?.service?.required}
                   >
                     <option value="">Select a Service</option>
-                    {content.services.services.map((service, index) => (
+                    {homepage.services.map((service, index) => (
                       <option key={index} value={service.title}>
                         {service.title}
                       </option>

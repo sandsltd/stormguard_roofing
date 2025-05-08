@@ -237,58 +237,91 @@
     },
     "services": [
       {
-        "title": "Pitched Roof Services",
-        "description": "Professional pitched roof installation, repair, and replacement services from Cannock's trusted roofers.",
+        "title": "Roof Installation",
+        "description": "Professional installation of new roofs by expert roofers using premium materials and craftsmanship.",
         "image": "/images/client-images/roofer_installing_roofing_tiles.jpg",
         "features": [
           "New roof installation",
-          "Roof repairs and maintenance",
-          "Tile and slate roofing",
-          "Complete roof replacement"
+          "Premium materials",
+          "Expert craftsmanship",
+          "Quality guarantee"
         ]
       },
       {
-        "title": "Flat Roof Solutions",
-        "description": "Expert flat roof installation and repair services from specialists who work with multiple flat roofing systems.",
+        "title": "Roof Repairs",
+        "description": "Quick and reliable repairs for leaks, damaged shingles, and other roofing issues by local roofers.",
         "image": "/images/client-images/roofer_installing_felt_tiles.jpg",
         "features": [
-          "EPDM rubber roofing",
-          "Felt roofing systems",
-          "Flat roof repairs",
-          "Waterproofing solutions"
+          "Leak repairs",
+          "Tile replacement",
+          "Emergency fixes",
+          "Preventive maintenance"
         ]
       },
       {
-        "title": "Chimney & Leadwork",
-        "description": "Comprehensive chimney installation, repair and maintenance services alongside professional leadwork.",
+        "title": "Roof Inspections",
+        "description": "Comprehensive roof inspections by experienced roofers to identify issues before they become major problems.",
         "image": "/images/client-images/roofer_fixing_tile_on_roof.jpg",
         "features": [
-          "Chimney repairs",
-          "Lead flashing installation",
-          "Chimney rebuilding",
-          "Weatherproofing"
+          "Detailed assessment",
+          "Damage detection",
+          "Maintenance planning",
+          "Written reports"
         ]
       },
       {
-        "title": "Roof Windows & Dormers",
-        "description": "Professional installation of roof windows, skylights, dormers, and roof lights to enhance natural lighting.",
+        "title": "Roof Maintenance",
+        "description": "Regular maintenance services by local roofers to extend the life of your roof and prevent costly repairs.",
         "image": "/images/client-images/roofer_repairing_roof_with_harness.jpg",
         "features": [
-          "Velux window installation",
-          "Dormer construction",
-          "Skylight fitting",
-          "Natural light solutions"
+          "Regular check-ups",
+          "Cleaning services",
+          "Minor repairs",
+          "Preventive care"
         ]
       },
       {
-        "title": "Emergency Repair Services",
-        "description": "Fast response emergency roof repair services for leaks, storm damage, and unexpected issues throughout Cannock.",
+        "title": "Gutter Services",
+        "description": "Expert installation and repair of gutters and downspouts to protect your home from water damage.",
         "image": "/images/client-images/roofer_installing_roofing_tiles.jpg",
         "features": [
-          "24/7 emergency response",
-          "Storm damage repairs",
-          "Leak detection and repair",
-          "Temporary weather protection"
+          "Gutter installation",
+          "Downspout repair",
+          "Cleaning services",
+          "Water management"
+        ]
+      },
+      {
+        "title": "Emergency Roofers",
+        "description": "24/7 emergency services for roofs damaged by storms, wind, or fallen debris.",
+        "image": "/images/client-images/roofer_installing_felt_tiles.jpg",
+        "features": [
+          "24/7 availability",
+          "Storm damage repair",
+          "Emergency fixes",
+          "Quick response"
+        ]
+      },
+      {
+        "title": "Commercial Roofers",
+        "description": "Specialised roofing solutions for commercial buildings and businesses by experienced roofers.",
+        "image": "/images/client-images/roofer_fixing_tile_on_roof.jpg",
+        "features": [
+          "Commercial installations",
+          "Industrial roofing",
+          "Business solutions",
+          "Large-scale projects"
+        ]
+      },
+      {
+        "title": "Roof Replacement",
+        "description": "Complete roof replacement services from trusted roofers with a wide selection of materials and styles.",
+        "image": "/images/client-images/roofer_repairing_roof_with_harness.jpg",
+        "features": [
+          "Full replacement",
+          "Material selection",
+          "Expert installation",
+          "Quality guarantee"
         ]
       }
     ],
@@ -305,7 +338,35 @@
     "email": "info@yourbusiness.com",
     "hours": "Mon-Fri: 9am-5pm",
     "formTitle": "Contact Us",
-    "formDescription": "Send us a message"
+    "formDescription": "Send us a message",
+    "formFields": {
+      "name": {
+        "enabled": true,
+        "required": true,
+        "label": "Full Name"
+      },
+      "email": {
+        "enabled": true,
+        "required": true,
+        "label": "Email Address"
+      },
+      "phone": {
+        "enabled": true,
+        "required": false,
+        "label": "Phone Number"
+      },
+      "service": {
+        "enabled": true,
+        "required": false,
+        "label": "Service Required"
+      },
+      "message": {
+        "enabled": true,
+        "required": true,
+        "label": "Your Message"
+      },
+      "submitButtonText": "Send Message"
+    }
   },
   "socials": {
     "facebook": "https://facebook.com",
