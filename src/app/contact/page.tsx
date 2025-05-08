@@ -29,6 +29,7 @@ export default function Contact() {
     const loadContent = async () => {
       try {
         const data = await fetchContent();
+        console.log('Loaded content:', data); // Debug log
         setContent(data);
       } catch (error) {
         console.error('Error loading content:', error);
@@ -45,7 +46,19 @@ export default function Contact() {
     );
   }
 
+  console.log('Content in render:', content); // Debug log
   const { business, contact, socials, homepage } = content;
+  console.log('Homepage services:', homepage?.services); // Debug log
+  
+  // Default services in case they're not available in the content
+  const services = homepage?.services || [
+    { title: 'Pitched Roof Services' },
+    { title: 'Flat Roof Solutions' },
+    { title: 'Chimney & Leadwork' },
+    { title: 'Roof Windows & Dormers' },
+    { title: 'Emergency Repair Services' },
+    { title: 'Commercial Roofing' }
+  ];
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -307,7 +320,7 @@ export default function Contact() {
                     required={content.contact.formFields?.service?.required}
                   >
                     <option value="">Select a Service</option>
-                    {homepage.services.map((service, index) => (
+                    {services.map((service, index) => (
                       <option key={index} value={service.title}>
                         {service.title}
                       </option>
