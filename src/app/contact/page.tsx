@@ -8,6 +8,14 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import ContactHeroAnimations from '@/components/contact/ContactHeroAnimations';
 
+interface Service {
+  title: string;
+  description?: string;
+  icon?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
 // Dynamically import the SeoHead component with no SSR since this is a client component
 const SeoHead = dynamic(() => import('@/components/SeoHead'), { ssr: false });
 
@@ -51,7 +59,7 @@ export default function Contact() {
   console.log('Homepage services:', homepage?.services); // Debug log
   
   // Default services in case they're not available in the content
-  const services = homepage?.services || [
+  const services: Service[] = homepage?.services || [
     { title: 'Pitched Roof Services' },
     { title: 'Flat Roof Solutions' },
     { title: 'Chimney & Leadwork' },
@@ -320,7 +328,7 @@ export default function Contact() {
                     required={content.contact.formFields?.service?.required}
                   >
                     <option value="">Select a Service</option>
-                    {services.map((service, index) => (
+                    {services.map((service: Service, index: number) => (
                       <option key={index} value={service.title}>
                         {service.title}
                       </option>
