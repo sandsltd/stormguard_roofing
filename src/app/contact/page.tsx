@@ -56,10 +56,12 @@ export default function Contact() {
 
   console.log('Content in render:', content); // Debug log
   const { business, contact, socials, homepage } = content;
-  console.log('Homepage services:', homepage?.services); // Debug log
+  console.log('Homepage services:', homepage?.services);
+  console.log('Type of homepage.services:', typeof homepage?.services);
+  console.log('Is homepage.services an array:', Array.isArray(homepage?.services));
   
-  // Default services in case they're not available in the content
-  const services: Service[] = homepage?.services || [
+  // Default services array - ensure it's always an array
+  const defaultServices: Service[] = [
     { title: 'Pitched Roof Services' },
     { title: 'Flat Roof Solutions' },
     { title: 'Chimney & Leadwork' },
@@ -67,6 +69,23 @@ export default function Contact() {
     { title: 'Emergency Repair Services' },
     { title: 'Commercial Roofing' }
   ];
+  
+  // Ensure services is always an array
+  let services: Service[] = defaultServices;
+  
+  // Try to use homepage.services if it exists and is an array
+  if (homepage?.services && Array.isArray(homepage.services)) {
+    services = homepage.services;
+  }
+  // Special case: If it's an object with title and items properties, try to use items
+  else if (homepage?.services && typeof homepage.services === 'object' && 'items' in homepage.services) {
+    const servicesObj = homepage.services as any;
+    if (Array.isArray(servicesObj.items)) {
+      services = servicesObj.items;
+    }
+  }
+  
+  console.log('Final services array:', services);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
